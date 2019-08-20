@@ -1,0 +1,20 @@
+2019-08-20 02:24:59,572 : INFO : EPOCH 1 - PROGRESS: at 99.94% examples, 576 words/s, in_qsize 7, out_qsize 0 
+2019-08-20 02:25:36,673 : INFO : EPOCH 1 - PROGRESS: at 99.95% examples, 576 words/s, in_qsize 8, out_qsize 0 
+2019-08-20 02:25:45,808 : INFO : EPOCH 1 - PROGRESS: at 99.96% examples, 576 words/s, in_qsize 7, out_qsize 0 
+2019-08-20 02:26:00,959 : INFO : EPOCH 1 - PROGRESS: at 99.97% examples, 576 words/s, in_qsize 5, out_qsize 0 
+2019-08-20 02:26:37,210 : INFO : EPOCH 1 - PROGRESS: at 99.98% examples, 576 words/s, in_qsize 4, out_qsize 0 
+2019-08-20 02:26:46,495 : INFO : EPOCH 1 - PROGRESS: at 99.98% examples, 576 words/s, in_qsize 3, out_qsize 1
+2019-08-20 02:26:46,495 : INFO : worker thread finished; awaiting finish of 3 more threads
+2019-08-20 02:26:47,359 : INFO : worker thread finished; awaiting finish of 2 more threads
+2019-08-20 02:26:54,562 : INFO : EPOCH 1 - PROGRESS: at 99.99% examples, 576 words/s, in_qsize 1, out_qsize 1
+2019-08-20 02:26:54,563 : INFO : worker thread finished; awaiting finish of 1 more threads
+2019-08-20 02:26:57,146 : INFO : EPOCH 1 - PROGRESS: at 100.00% examples, 576 words/s, in_qsize 0, out_qsize 1
+2019-08-20 02:26:57,147 : INFO : worker thread finished; awaiting finish of 0 more threads
+2019-08-20 02:26:57,147 : INFO : EPOCH - 1 : training on 176585177 raw words (161358813 effective words) took 279969.2s, 576 effective words/s
+2019-08-20 02:27:47,225 : INFO : EPOCH 2 - PROGRESS: at 0.00% examples, 150 words/s, in_qsize 8, out_qsize 0
+2019-08-20 02:27:48,854 : INFO : EPOCH 2 - PROGRESS: at 0.00% examples, 297 words/s, in_qsize 8, out_qsize 0
+2019-08-20 02:27:53,274 : INFO : EPOCH 2 - PROGRESS: at 0.00% examples, 425 words/s, in_qsize 7, out_qsize 0
+2019-08-20 02:27:57,147 : INFO : EPOCH 2 - PROGRESS: at 0.01% examples, 547 words/s, in_qsize 7, out_qsize 0
+2019-08-20 02:28:28,506 : INFO : EPOCH 2 - PROGRESS: at 0.01% examples, 415 words/s, in_qsize 7, out_qsize 0
+2019-08-20 02:28:44,573 : INFO : EPOCH 2 - PROGRESS: at 0.01% examples, 433 words/s, in_qsize 7, out_qsize 0
+2019-08-20 02:28:49,069 : INFO : EPOCH 2 - PROGRESS: at 0.01% examples, 495 words/s, in_qsize 7, out_qsize 0
