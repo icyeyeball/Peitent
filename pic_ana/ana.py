@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+############################
+# Peicheng Lu 20190822
+############################
+# Usage: python ana.py input_img data_img
 
 import sys
 import cv2
@@ -10,7 +14,8 @@ def ROOTSIFT(grayIMG, kpsData):
     extractor = cv2.xfeatures2d.SIFT_create()
 
     (kps, descs) = extractor.compute(grayIMG, kpsData)
-
+    
+# RootSIFT part
     if len(kps) > 0:
 
         #L1-正規化
@@ -22,6 +27,7 @@ def ROOTSIFT(grayIMG, kpsData):
         #取平方根
 
         descs = np.sqrt(descs)
+# End of RootSIFT part
 
         return (kps, descs)
 
@@ -29,15 +35,17 @@ def ROOTSIFT(grayIMG, kpsData):
 
         return ([], None)
 
+#detector = cv2.xfeatures2d.SURF_create() # Fast version of SIFT
 detector = cv2.xfeatures2d.SIFT_create()
-#xfeature2d
+
 matcher = cv2.DescriptorMatcher_create("BruteForce")
+
 path1 = sys.argv[1]
 
 path2 = sys.argv[2]
 
-outpath = path1[0:-4] + "-comp" + path1[-4:-1] + path1[-1]
-
+outpath = path1.replace('Input','Output',1)
+outpath = outpath[0:-4] + "_comp.jpg"
 
 imageA = cv2.imread(path1)
 
@@ -63,13 +71,21 @@ rawMatches = matcher.knnMatch(featuresA, featuresB, 2)
 
 matches = []
 
+i = 0.0
+m0 = 0.0
+m1 = 0.0
 for m in rawMatches:
 
     print ("#1:{} , #2:{}".format(m[0].distance, m[1].distance))
 
     if len(m) == 2 and m[0].distance < m[1].distance * 0.8:
-
+   
+        i += 1.0
+        m0 += m[0].distance
+        m1 += m[1].distance
         matches.append((m[0].trainIdx, m[0].queryIdx))
+        
+#print ("#1:" float(m0))
 
 (hA, wA) = imageA.shape[:2]
 
@@ -89,6 +105,7 @@ for (trainIdx, queryIdx) in matches:
 
     cv2.line(vis, ptA, ptB, (np.random.randint(0, high=255),np.random.randint(0, high=255),np.random.randint(0, high=255)), 1)
 
+print (vis)
 cv2.imshow('My Image', vis)
 cv2.waitKey(0)
 cv2.imwrite(outpath, vis)

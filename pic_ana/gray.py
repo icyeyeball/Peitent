@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-
+############################
+# Peicheng Lu 20190822
+############################
+# Usage: python gray.py input_img
 import sys
 import cv2
 import numpy as np
