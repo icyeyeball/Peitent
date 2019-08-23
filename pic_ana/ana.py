@@ -43,6 +43,10 @@ grayA = cv2.cvtColor(imageA, cv2.COLOR_BGR2GRAY)
 
 grayB = cv2.cvtColor(imageB, cv2.COLOR_BGR2GRAY)
 
+grayA = cv2.GaussianBlur(grayA, (5, 5), 0)
+
+grayB = cv2.GaussianBlur(grayB, (5, 5), 0)  
+
 kpsA = detector.detect(grayA)
 
 kpsB = detector.detect(grayB)
@@ -64,11 +68,10 @@ for m in rawMatches:
 
     if len(m) == 2 and m[0].distance < m[1].distance * 0.8:
    
+        matches.append((m[0].trainIdx, m[0].queryIdx))
         i += 1.0
         m0 += m[0].distance
-        m1 += m[1].distance
-        matches.append((m[0].trainIdx, m[0].queryIdx))
-        
+        m1 += m[1].distance    
 #print ("#1:" float(m0))
 
 (hA, wA) = imageA.shape[:2]
@@ -88,7 +91,10 @@ for (trainIdx, queryIdx) in matches:
     ptB = (int(kpsB[trainIdx].pt[0] + wA), int(kpsB[trainIdx].pt[1]))
 
     cv2.line(vis, ptA, ptB, (np.random.randint(0, high=255),np.random.randint(0, high=255),np.random.randint(0, high=255)), 1)
-print ((m0+(m1*0.8))/i/2.)
+if i == 0.0:
+    print ("Totally can't matched")
+else:    
+    print ((m0+(m1*0.8))/i/2.)
 cv2.imshow('My Image', vis)
 cv2.waitKey(0)
 cv2.imwrite(outpath, vis)

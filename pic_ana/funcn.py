@@ -40,6 +40,10 @@ def PIC_ANA(input1, input2):
     grayA = cv2.cvtColor(imageA, cv2.COLOR_BGR2GRAY)
  
     grayB = cv2.cvtColor(imageB, cv2.COLOR_BGR2GRAY)
+    
+    grayA = cv2.GaussianBlur(grayA, (5, 5), 0)
+
+    grayB = cv2.GaussianBlur(grayB, (5, 5), 0)  
 
     kpsA = detector.detect(grayA)
 
@@ -84,12 +88,15 @@ def PIC_ANA(input1, input2):
         ptB = (int(kpsB[trainIdx].pt[0] + wA), int(kpsB[trainIdx].pt[1]))
     
         cv2.line(vis, ptA, ptB, (np.random.randint(0, high=255),np.random.randint(0, high=255),np.random.randint(0, high=255)), 1)
-    
+    if i == 0.0:
+        print ("Totally can't matched")
+    else:    
+        return (100.0, vis)
     #cv2.imshow('My Image', vis)
     #cv2.waitKey(0)
     #cv2.imwrite(outpath, vis)
     #cv2.destroyAllWindows()
-    return ((m0+(m1*0.8))/i/2., vis)
+    
 
 
 
