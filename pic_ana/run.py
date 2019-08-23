@@ -17,9 +17,8 @@ path = sys.argv[1]
 dis_l = []
 vis_l = []
 
-
 for f in files:
-    (dis, vis) = PIC_ANA(path, mypath + f)
+    (dis, vis, num) = PIC_ANA(path, mypath + f)
     dis_l.append(dis)
     vis_l.append(vis)
     for i in range(0,len(dis_l)-1): 
@@ -36,8 +35,8 @@ for f in files:
         del vis_l[10]
 	           
 for i in range(0,10):
-    outpath = "./Output/" + str(i) + ".jpg"
+    outpath = "./Output/" + str(i+1) + ".jpg"
     print ("===========================")
     print (dis_l[i])
-    print (outpath)    
+    print (outpath)
     cv2.imwrite(outpath, vis_l[i])

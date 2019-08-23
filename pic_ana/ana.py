@@ -92,9 +92,9 @@ for (trainIdx, queryIdx) in matches:
 
     cv2.line(vis, ptA, ptB, (np.random.randint(0, high=255),np.random.randint(0, high=255),np.random.randint(0, high=255)), 1)
 if i == 0.0:
-    print ("Totally can't matched")
+    return (100.0, vis)
 else:    
-    print ((m0+(m1*0.8))/i/2.)
+    return ((m0+(m1*0.8))/i/2., vis)
 cv2.imshow('My Image', vis)
 cv2.waitKey(0)
 cv2.imwrite(outpath, vis)
