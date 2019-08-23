@@ -1,4 +1,8 @@
-﻿# coding=utf-8
+﻿# -*- coding: utf-8 -*-
+############################
+# Peicheng Lu 20190822
+############################
+# python s2zh.py inputfile outputfile
 
 from langconv import *
 import jieba

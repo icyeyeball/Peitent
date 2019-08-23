@@ -1,4 +1,8 @@
 ﻿# -*- coding: utf-8 -*-
+############################
+# Peicheng Lu 20190822
+############################
+#
 
 import logging
 from gensim.models import word2vec

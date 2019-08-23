@@ -2,7 +2,7 @@
 ############################
 # Peicheng Lu 20190822
 ############################
-# Usage: python ana.py input_img data_img
+#
 import sys
 import cv2
 import numpy as np
@@ -10,29 +10,12 @@ import imutils
 
 def ROOTSIFT(grayIMG, kpsData):
 
-    extractor = cv2.xfeatures2d.SIFT_create()
-
+    #extractor = cv2.xfeatures2d.SIFT_create()
+    extractor = cv2.xfeatures2d.SURF_create()
+    
     (kps, descs) = extractor.compute(grayIMG, kpsData)
     
-# RootSIFT part
-    if len(kps) > 0:
-
-        #L1-正規化
-
-        eps=1e-7
-
-        descs /= (descs.sum(axis=1, keepdims=True) + eps)
-
-        #取平方根
-
-        descs = np.sqrt(descs)
-# End of RootSIFT part
-
-        return (kps, descs)
-
-    else:
-
-        return ([], None)
+    return (kps, descs)
 
 def PIC_ANA(input1, input2):
     #detector = cv2.xfeatures2d.SURF_create() # Fast version of SIFT
@@ -41,9 +24,8 @@ def PIC_ANA(input1, input2):
     matcher = cv2.DescriptorMatcher_create("BruteForce")
 
     path1 = input1
-
     path2 = input2
-
+    
     outpath = path1.replace('Input','Output',1)
     outpath = outpath[0:-4] + "_comp.jpg"
 
@@ -66,6 +48,7 @@ def PIC_ANA(input1, input2):
     (kpsA, featuresA) = ROOTSIFT(grayA, kpsA)
 
     (kpsB, featuresB) = ROOTSIFT(grayB, kpsB)
+    
 
     rawMatches = matcher.knnMatch(featuresA, featuresB, 2)
 
@@ -76,15 +59,14 @@ def PIC_ANA(input1, input2):
     m1 = 0.0
     for m in rawMatches:
 
-        print ("#1:{} , #2:{}".format(m[0].distance, m[1].distance))
+        #print ("#1:{} , #2:{}".format(m[0].distance, m[1].distance))
 
         if len(m) == 2 and m[0].distance < m[1].distance * 0.8:
-   
             matches.append((m[0].trainIdx, m[0].queryIdx))
-            i += 1.0
-            m0 += m[0].distance
-            m1 += m[1].distance
-        
+
+        m0 += m[0].distance
+        m1 += m[1].distance
+        i += 1.0
     (hA, wA) = imageA.shape[:2]
   
     (hB, wB) = imageB.shape[:2]
@@ -103,12 +85,11 @@ def PIC_ANA(input1, input2):
     
         cv2.line(vis, ptA, ptB, (np.random.randint(0, high=255),np.random.randint(0, high=255),np.random.randint(0, high=255)), 1)
     
-    print ((m0+m1)/i/2.)
     #cv2.imshow('My Image', vis)
     #cv2.waitKey(0)
     #cv2.imwrite(outpath, vis)
     #cv2.destroyAllWindows()
-    return ((m0+m1)/i/2., vis)
+    return ((m0+(m1*0.8))/i/2., vis)
 
 
 

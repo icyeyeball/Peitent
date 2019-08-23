@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+############################
+# Peicheng Lu 20190822
+############################
+# 
 import tensorflow as tf
 import math
 import numpy as np

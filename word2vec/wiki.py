@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+############################
+# Peicheng Lu 20190822
+############################
+# python wiki.py wiki_database
 
 import logging
 import sys

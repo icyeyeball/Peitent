@@ -11,30 +11,14 @@ import imutils
 
 def ROOTSIFT(grayIMG, kpsData):
 
-    extractor = cv2.xfeatures2d.SIFT_create()
-
+    #extractor = cv2.xfeatures2d.SIFT_create()
+    extractor = cv2.xfeatures2d.SURF_create()
+    
     (kps, descs) = extractor.compute(grayIMG, kpsData)
     
-# RootSIFT part
-    if len(kps) > 0:
-
-        #L1-正規化
-
-        eps=1e-7
-
-        descs /= (descs.sum(axis=1, keepdims=True) + eps)
-
-        #取平方根
-
-        descs = np.sqrt(descs)
-# End of RootSIFT part
-
-        return (kps, descs)
-
-    else:
-
-        return ([], None)
-
+    return (kps, descs)
+    
+    
 #detector = cv2.xfeatures2d.SURF_create() # Fast version of SIFT
 detector = cv2.xfeatures2d.SIFT_create()
 
@@ -104,8 +88,7 @@ for (trainIdx, queryIdx) in matches:
     ptB = (int(kpsB[trainIdx].pt[0] + wA), int(kpsB[trainIdx].pt[1]))
 
     cv2.line(vis, ptA, ptB, (np.random.randint(0, high=255),np.random.randint(0, high=255),np.random.randint(0, high=255)), 1)
-
-print (vis)
+print ((m0+(m1*0.8))/i/2.)
 cv2.imshow('My Image', vis)
 cv2.waitKey(0)
 cv2.imwrite(outpath, vis)
