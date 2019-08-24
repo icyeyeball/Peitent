@@ -10,22 +10,16 @@ python train.py # train word2vec model
 python demo.py # demo.py must be utf-8
 
 ---In Anaconda Prompt, do:---
-conda create --name tensorflow python=x.x anaconda
+(change python 3.7 to 3.6)
+conda install python=3.6
+conda create --name python36 python=3.6 anaconda
 activate tensorflow
 pip install tensorflow
 python -m pip install --upgrade pip
 conda update ipython
-conda create --name tensorflow-gpu python=x.x anaconda
+conda create --name python=3.6-gpu python=3.6 anaconda
 activate tensorflow-gpu
 pip install tensorflow-gpu
 python -m pip install --upgrade pip
 conda update ipython
-
----(change python 3.7 to 3.6)---
-/usr/local/lib/python3.7/site-packages/tensorflow/python/pywrap_tensorflow_internal.py
-================================================
----Install opencc (Failed)---
-Download from google-drive peitent---
-put it in Pythonxx/Lib
-cmd: pip install opencc-python
 
