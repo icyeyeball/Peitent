@@ -36,10 +36,14 @@ def PIC_ANA(input1, input2):
     imageA = imutils.resize(imageA, width = 600)
 
     imageB = imutils.resize(imageB, width = 600)
-
+    
     grayA = cv2.cvtColor(imageA, cv2.COLOR_BGR2GRAY)
  
     grayB = cv2.cvtColor(imageB, cv2.COLOR_BGR2GRAY)
+    
+    grayA = cv2.Canny(grayA, 30, 150)
+    
+    grayB = cv2.Canny(grayB, 30, 150)
     
     grayA = cv2.GaussianBlur(grayA, (5, 5), 0)
 
@@ -65,7 +69,7 @@ def PIC_ANA(input1, input2):
 
         #print ("#1:{} , #2:{}".format(m[0].distance, m[1].distance))
 
-        if len(m) == 2 and m[0].distance < m[1].distance * 0.8:
+        if len(m) == 2 and m[0].distance < m[1].distance * 0.7:
             matches.append((m[0].trainIdx, m[0].queryIdx))
 
         m0 += m[0].distance
