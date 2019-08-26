@@ -10,8 +10,8 @@ from bs4 import BeautifulSoup
 import re
 
 # Google 搜尋 URL
-google_url = 'https://www.google.com.tw/search?num=20&q='
-wiki_rul = 'https://zh.wikipedia.org/wiki/'
+google_url = 'https://www.google.com.tw/search?num=20&lr=lang_zh-TW&q='
+wiki_rul = 'https://zh.wikipedia.org/zh-tw/'
 
 # 查詢參數
 
