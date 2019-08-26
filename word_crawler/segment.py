@@ -12,11 +12,11 @@ def main():
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
     # jieba custom setting.
-    jieba.set_dictionary('../word_crawler/jieba_dict/dict.txt.big')
+    jieba.set_dictionary('./jieba_dict/dict.txt.big')
 
     # load stopwords set
     stopword_set = set()
-    with open('../word_crawler/jieba_dict/stopwords.txt','r', encoding='utf-8') as stopwords:
+    with open('./jieba_dict/stopwords.txt','r', encoding='utf-8') as stopwords:
         for stopword in stopwords:
             stopword_set.add(stopword.strip('\n'))
 
