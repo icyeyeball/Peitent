@@ -8,6 +8,8 @@ import requests
 import sys
 from bs4 import BeautifulSoup
 import re
+import time
+from langconv import *
 
 # Google 搜尋 URL
 google_url = 'https://www.google.com.tw/search?num=20&lr=lang_zh-TW&q='
@@ -34,7 +36,7 @@ if r.status_code == requests.codes.ok:
     items = soup.findAll("div", {"class": sp[sp.find('http://')-23:sp.find('http://')-18]})
     #items = soup.findAll("div", {"class": sp[sp.find('https://')-23:sp.find('https://')-18]})
 i = 1   
-with open('google.txt', 'w', encoding = 'utf-8') as f2:
+with open('google.txt', 'w', encoding = 'utf-8') as f:
     for item in items:
         # title
         #news_title = item.find("h3", {"class": "r"}).find("a").text
@@ -58,12 +60,13 @@ with open('google.txt', 'w', encoding = 'utf-8') as f2:
                 stories = str(soup2.find_all('p', class_=""))
                 stories = cop.sub('', stories)
                 print (stories)
-                f2.write(stories)
-                f2.write('\n')
+                f.write(stories)
+                f.write('\n')
                 #f2.write("--------------------------i = " + str(i))
                 #f2.write('\n')
                 #f2.write("url = " + str(url))
                 #f2.write('\n')
         #f2.write("=================================================")
-        f2.write('\n')
+        time.sleep(2)
+        f.write('\n')
         i += 1
