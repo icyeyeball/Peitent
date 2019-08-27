@@ -32,32 +32,53 @@ if r.status_code == requests.codes.ok:
     #print (sp)
     #print (sp[sp.find('http://')-23:sp.find('http://')-18])
     items = soup.findAll("div", {"class": sp[sp.find('http://')-23:sp.find('http://')-18]})
+    #print (sp[sp.find('http://')-23:sp.find('http://')-18])
     #items = soup.findAll("div", {"class": sp[sp.find('https://')-23:sp.find('https://')-18]})
-
+leng = 0
+i = 0
+list_ = []
 with open('google.txt', 'w', encoding = 'utf-8') as f2:
+
     for item in items:
-        # title
-        #news_title = item.find("h3", {"class": "r"}).find("a").text
-        #print (news_title)
+        if leng > 5000:
+            break
         # url
         href = str(item)
+        #print ("******************************************* i = " + str(i))
         if href.find('wiki') >= 0:
             url = k2
             #print (url)
         elif href.find('gov.tw') >= 0:
-            url = ''
+            url = ""
         else:
             url = href[href.find('http'):href.find('&amp')]
             #print (url)
-        if url == '':
+            
+        for j in range(0,len(list_)):
+            if url is "":
+                #print ("case 1  " + url)
+                break
+                i = 1
+            elif url is list_[j]:
+                #print ("case 2  " + url)
+                url = ""
+                break
+                i = 1
+            else:
+                pass
+            
+        if url == "":
+            i = 0
             continue
         else:
+            list_.append(url)
             res = requests.get(url, allow_redirects=False)
             if res.status_code == requests.codes.ok:
                 soup2 = BeautifulSoup(res.text, 'html.parser') 
                 stories = str(soup2.find_all('p', class_=""))
                 stories = cop.sub('', stories)
                 print (stories)
+                leng += len(stories)
                 f2.write(stories)
                 f2.write('\n')
                 #f2.write("--------------------------i = " + str(i))
@@ -66,3 +87,4 @@ with open('google.txt', 'w', encoding = 'utf-8') as f2:
                 #f2.write('\n')
         #f2.write("=================================================")
         f2.write('\n')
+    print (str(leng))

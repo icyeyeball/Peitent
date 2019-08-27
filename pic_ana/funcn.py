@@ -95,7 +95,7 @@ def PIC_ANA(input1, input2):
     if i == 0.0:
         return (100.0, vis, i)
     else:    
-        return ((m0+(m1*0.8))/i/2., vis, i)
+        return ((m0+(m1*0.7))/i/2., vis, i)
     #cv2.imshow('My Image', vis)
     #cv2.waitKey(0)
     #cv2.imwrite(outpath, vis)
