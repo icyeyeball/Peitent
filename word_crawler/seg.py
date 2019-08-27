@@ -7,9 +7,7 @@
 import jieba
 import logging
 
-def main():
-
-    logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
+def seg():
 
     # jieba custom setting.
     jieba.set_dictionary('./jieba_dict/dict.txt.big')
@@ -29,9 +27,6 @@ def main():
                 if word not in stopword_set:
                     output.write(word + ' ')
             output.write('\n')
-
-            if (texts_num + 1) % 1000 == 0:
-                logging.info("已完成前 %d 行的斷詞" % (texts_num + 1))
     output.close()
 
 if __name__ == '__main__':

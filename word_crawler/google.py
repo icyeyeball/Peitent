@@ -21,7 +21,7 @@ k2 = wiki_rul + my_params
 cop = re.compile("[^\u4e00-\u9fa5^^]")
 
 # 下載 Google 搜尋結果
-r = requests.get(k1, params = my_params)
+r = requests.get(k1, params = my_params, allow_redirects=False)
 
 # 確認是否下載成功
 if r.status_code == requests.codes.ok:

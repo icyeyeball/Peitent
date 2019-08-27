@@ -3,5 +3,6 @@ conda install beautifulsoup4
 
 anaconda search -t conda skimage urllib
 anaconda show xxx/urllibxx
-conda install --channel https://conda.anaconda.org/ActivisionGameScience urllib3
+conda install --channel https://conda.anaconda.org/ActivisionGameScience urllib3(?)
+pip install fake-useragent
 
