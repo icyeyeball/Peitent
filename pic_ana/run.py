@@ -49,7 +49,7 @@ for parent,dirnames,filenames in os.walk(queryPath):
         matches=flann.knnMatch(des1,des2,k=2) #匹配特征点，为了删选匹配点，指定k为2，这样对样本图的每个特征点，返回两个匹配
         (matchNum,matchesMask)=getMatchNum(matches,0.9) #通过比率条件，计算出匹配程度
         matchRatio=matchNum*100/len(matches)
-        drawParams=dict(matchColor=(0,255,0),  singlePointColor=(0,0,0), matchesMask=matchesMask, flags=0)
+        drawParams=dict(matchColor=(0,255,0),  singlePointColor=(0,0,255), matchesMask=matchesMask, flags=0)
 
 
         sampleImage=cv2.imread(samplePath)
