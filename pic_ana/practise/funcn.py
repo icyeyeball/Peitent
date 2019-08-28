@@ -42,6 +42,7 @@ def PIC_ANA(input1, input2):
     grayB = cv2.cvtColor(imageB, cv2.COLOR_BGR2GRAY)
     
     #grayA = cv2.Canny(grayA, 30, 150)
+    #grayA = cv2.Canny(grayA, 30, 150)
     
     #grayB = cv2.Canny(grayB, 30, 150)
     
@@ -100,8 +101,3 @@ def PIC_ANA(input1, input2):
     #cv2.waitKey(0)
     #cv2.imwrite(outpath, vis)
     #cv2.destroyAllWindows()
-    
-
-
-
-
