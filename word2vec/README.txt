@@ -3,17 +3,21 @@ https://drive.google.com/drive/folders/1ELeGUV6xF75hXCDW3fLeydo5IJms4KTZ?usp=sha
 From wiki Chinese database:
 zhwiki-20190801-pages-articles.xml.bz2 --wiki.py-->wiki_tests.txt--(split -n 10 wiki_tests.txt wiki)--do.sh(s2zh.py)--cat wiki* wiki_zh.txt-->wiki_zh.txt --segment.py-->wiki_seg.txt --train.py-->word2vec_20190801(model)
 ===============================================
-python wiki.py zhwiki-20190801-pages-articles.xml.bz2 # Parse wiki database
-python s2zh.py # simplified to traditional
+中文文字庫
+python wiki.py sys.argv[1] # *pages-articles.xml.bz2 343653  篇文章
+(python s2zh.py # simplified to traditional)
 python segment.py # Jieba
 python train.py # train word2vec model
 python demo.py # demo.py must be utf-8
-
+===============================================
+python wiki_en.py sys.argv[1] 
+python train_en.py
+===============================================
 ---In Anaconda Prompt, do:---
 (change python 3.7 to 3.6)
 conda install python=3.6
 conda create --name python36 python=3.6 anaconda
-activate tensorflow
+activate python36
 pip install tensorflow
 python -m pip install --upgrade pip
 conda update ipython

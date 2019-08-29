@@ -16,12 +16,12 @@ def main():
 
     # load stopwords set
     stopword_set = set()
-    with open('jieba_dict/stopwords.txt','r', encoding='utf-8') as stopwords:
+    with open('../jieba_dict/stopwords.txt','r', encoding='utf-8') as stopwords:
         for stopword in stopwords:
             stopword_set.add(stopword.strip('\n'))
 
-    output = open('../wiki_seg.txt', 'w', encoding='utf-8')
-    with open('../wiki_zh.txt', 'r', encoding='utf-8') as content :
+    output = open('../large_files/wiki_seg.txt', 'w', encoding='utf-8')
+    with open('../large_files/wiki_texts.txt', 'r', encoding='utf-8') as content :
         for texts_num, line in enumerate(content):
             line = line.strip('\n')
             words = jieba.cut(line, cut_all=False)

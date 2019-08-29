@@ -1,0 +1,13 @@
+#!/bin/bash
+
+i=1  # 這是累計的數值，亦即是 1, 2, 3....
+while [ "${i}" != "46" ]
+do
+	inname="./rawClass/"${i}".txt"
+	outname="./class_t/"${i}".txt"
+	python segment.py $inname $outname
+	i=$(($i+1))   # 每次 i 都會增加 1 
+
+done
+
+#34365
