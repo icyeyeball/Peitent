@@ -10,7 +10,7 @@ import re
 import gensim
 model = gensim.models.Word2Vec.load('../word2vec_20190801.model')
 cop = re.compile("[^\u4e00-\u9fa5^A-Z^a-z^ ^]")
-with open('./class/45.txt','r', encoding='utf-8') as f:
+with open('./class/1.txt','r', encoding='utf-8') as f:
     for line in f:
         line = line = cop.sub('', line)
         print (line)
