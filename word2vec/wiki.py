@@ -10,13 +10,13 @@ import sys
 from gensim.corpora import WikiCorpus
 
 def main():
-
+    """
     if len(sys.argv) != 2:
         print("Usage: python3 " + sys.argv[0] + "wiki_data_path")
         exit()
-
+    """
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
-    wiki_corpus = WikiCorpus(sys.argv[1], lemmatize=False ,dictionary={})
+    wiki_corpus = WikiCorpus("../large_files/zhwiki-20190801-pages-articles.xml.bz2", lemmatize=False ,dictionary={})
     texts_num = 0
 
     with open("../large_files/wiki_texts.txt",'w',encoding='utf-8') as output:
