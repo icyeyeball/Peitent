@@ -18,8 +18,8 @@ wiki_rul = 'https://zh.wikipedia.org/zh-tw/'
 my_params = sys.argv[1]
 k1 = google_url + my_params
 k2 = wiki_rul + my_params
-cop = re.compile("[^\u4e00-\u9fa5^ ^A-Z^a-z^]")
-
+#cop = re.compile("[^\u4e00-\u9fa5^ ^A-Z^a-z^]")
+cop = re.compile("[^\u4e00-\u9fa5^]")
 # 下載 Google 搜尋結果
 r = requests.get(k1, params = my_params, allow_redirects=False)
 

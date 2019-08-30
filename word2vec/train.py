@@ -22,7 +22,7 @@ def main():
     sentences = word2vec.LineSentence("../large_files/wiki_seg.txt")
     # Set values for various parameters
     num_features = 300    # Word vector dimensionality                      
-    min_word_count = 20   # Minimum word count                        
+    min_word_count = 2   # Minimum word count                        
     num_workers = 4       # Number of threads to run in parallel
     context = 10          # Context window size                                                                                    
     downsampling = 1e-3   # Downsample setting for frequent words

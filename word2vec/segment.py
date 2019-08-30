@@ -13,7 +13,7 @@ def main():
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
     cop = re.compile("[^\u4e00-\u9fa5^ ^A-Z^a-z^]")
     # jieba custom setting.
-    jieba.set_dictionary('../jieba_dict/dict.txt.big')
+    jieba.set_dictionary('../jieba_dict/dict.txt_new.big')
 
     # load stopwords set
     stopword_set = set()
@@ -27,6 +27,7 @@ def main():
             line = line.strip('\n')
             line = cop.sub('', line)
             words = jieba.cut_for_search(line)
+            #words = jieba.cut(line, cut_all=False)
             for word in words:
                 if word not in stopword_set:
                     output.write(word + ' ')

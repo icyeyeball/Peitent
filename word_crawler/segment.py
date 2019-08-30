@@ -12,7 +12,7 @@ def main():
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
     # jieba custom setting.
-    jieba.set_dictionary('../jieba_dict/dict.txt.big')
+    jieba.set_dictionary('../jieba_dict/dict.txt_new.big')
 
     # load stopwords set
     stopword_set = set()
@@ -24,7 +24,7 @@ def main():
     with open('./google.txt', 'r', encoding='utf-8') as content :
         for texts_num, line in enumerate(content):
             line = line.strip('\n')
-            words = jieba.cut(line, cut_all=False)
+            words = jieba.cut_for_search(line)
             for word in words:
                 if word not in stopword_set:
                     output.write(word + ' ')
