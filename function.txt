@@ -1,0 +1,5 @@
+cop = re.compile("[^\u4e00-\u9fa5^ ^A-Z^a-z^]")
+line = line = cop.sub('', line)
+
+model.most_similar(sys.argv[1])
+model.similarity(sys.argv[1], sys.argv[2])
