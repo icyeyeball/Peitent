@@ -21,13 +21,13 @@ def main():
     with open('../jieba_dict/stopwords.txt','r', encoding='utf-8') as stopwords:
         for stopword in stopwords:
             stopword_set.add(stopword.strip('\n'))
-
+    print ("====================Running " + sys.argv[1] +" to "+ sys.argv[2])
     output = open(sys.argv[2], 'w', encoding='utf-8')
     cop = re.compile("[^\u4e00-\u9fa5^ ^A-Z^a-z^]")
     with open(sys.argv[1], 'r', encoding='utf-8') as content :
         for texts_num, line in enumerate(content):
             line = line.strip('\n')
-            line = line = cop.sub('', line)
+            line = cop.sub('', line)
             words = jieba.cut(line, cut_all=False)
             for word in words:
                 if word not in stopword_set:

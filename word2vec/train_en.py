@@ -24,7 +24,7 @@ def main():
     num_features = 300    # Word vector dimensionality                      
     min_word_count = 20   # Minimum word count                        
     num_workers = 4       # Number of threads to run in parallel
-    context = 10          # Context window size                                                                                    q:
+    context = 10          # Context window size    
     downsampling = 1e-3   # Downsample setting for frequent words
     
     model = word2vec.Word2Vec(sentences, workers=num_workers, size=num_features, min_count = min_word_count, window = context, sample = downsampling)

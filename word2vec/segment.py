@@ -6,11 +6,12 @@
 
 import jieba
 import logging
+import re
 
 def main():
 
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
-
+    cop = re.compile("[^\u4e00-\u9fa5^ ^A-Z^a-z^]")
     # jieba custom setting.
     jieba.set_dictionary('../jieba_dict/dict.txt.big')
 
@@ -24,7 +25,8 @@ def main():
     with open('../large_files/wiki_texts.txt', 'r', encoding='utf-8') as content :
         for texts_num, line in enumerate(content):
             line = line.strip('\n')
-            words = jieba.cut(line, cut_all=False)
+            line = cop.sub('', line)
+            words = jieba.cut_for_search(line)
             for word in words:
                 if word not in stopword_set:
                     output.write(word + ' ')

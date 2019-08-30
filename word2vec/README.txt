@@ -5,7 +5,7 @@ zhwiki-20190801-pages-articles.xml.bz2 --wiki.py-->wiki_tests.txt--(split -n 10 
 ===============================================
 中文文字庫
 python wiki.py sys.argv[1] # *pages-articles.xml.bz2 343653  篇文章
-(python s2zh.py # simplified to traditional)
+(python s2zh.py # simplified to traditional) # 348822 行斷詞
 python segment.py # Jieba
 python train.py # train word2vec model
 python demo.py # demo.py must be utf-8
