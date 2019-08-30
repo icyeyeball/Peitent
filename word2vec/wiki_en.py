@@ -6,17 +6,16 @@
 
 import logging
 import sys
-
+import warnings
+warnings.filterwarnings(action='ignore', category=UserWarning, module='gensim')
+import gensim
 from gensim.corpora import WikiCorpus
+
 
 def main():
 
-    if len(sys.argv) != 2:
-        print("Usage: python3 " + sys.argv[0] + "wiki_data_path")
-        exit()
-
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
-    wiki_corpus = WikiCorpus(sys.argv[1], lemmatize=False ,dictionary={})
+    wiki_corpus = WikiCorpus("../large_files/enwiki-20190820-pages-articles-multistream.xml.bz2", lemmatize=False ,dictionary={})
     texts_num = 0
 
     with open("../large_files/wiki_en_texts.txt",'w',encoding='utf-8') as output:

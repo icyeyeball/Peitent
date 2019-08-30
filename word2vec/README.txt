@@ -3,13 +3,14 @@ https://drive.google.com/drive/folders/1ELeGUV6xF75hXCDW3fLeydo5IJms4KTZ?usp=sha
 From wiki Chinese database:
 zhwiki-20190801-pages-articles.xml.bz2 --wiki.py-->wiki_tests.txt--(split -n 10 wiki_tests.txt wiki)--do.sh(s2zh.py)--cat wiki* wiki_zh.txt-->wiki_zh.txt --segment.py-->wiki_seg.txt --train.py-->word2vec_20190801(model)
 ===============================================
-中文文字庫
+中文
 python wiki.py sys.argv[1] # *pages-articles.xml.bz2 343653  篇文章
 (python s2zh.py # simplified to traditional) # 348822 行斷詞
 python segment.py # Jieba
 python train.py # train word2vec model
 python demo.py # demo.py must be utf-8
 ===============================================
+英文
 python wiki_en.py sys.argv[1] 
 python train_en.py
 ===============================================
