@@ -7,11 +7,11 @@ zhwiki-20190801-pages-articles.xml.bz2 --wiki.py-->wiki_tests.txt--(split -n 10 
 python wiki.py sys.argv[1] # *pages-articles.xml.bz2 343653  篇文章
 (python s2zh.py # simplified to traditional) # 348822 行斷詞
 python segment.py # Jieba
-python train.py # train word2vec model
+python train.py # train word2vec model ~ 4G
 python demo.py # demo.py must be utf-8
 ===============================================
 英文
-python wiki_en.py sys.argv[1] 
+python wiki_en.py sys.argv[1]  # 4701273 篇文章 2639105662 positions
 python train_en.py
 ===============================================
 ---In Anaconda Prompt, do:---

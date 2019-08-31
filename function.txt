@@ -3,3 +3,6 @@ line = cop.sub('', line)
 
 model.most_similar(sys.argv[1])
 model.similarity(sys.argv[1], sys.argv[2])
+
+model = gensim.models.Word2Vec.load('mymodel')
+model.train(more_sentences)
