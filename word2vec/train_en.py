@@ -8,6 +8,7 @@ import logging
 from gensim.models import word2vec
 import os
 import tensorflow as tf
+import re
 
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
@@ -16,10 +17,11 @@ config = tf.ConfigProto(log_device_placement=True)
 config.gpu_options.per_process_gpu_memory_fraction = 0.9 # 占用GPU90%的显存 
 session = tf.Session(config=config)
 
-
+cop = re.compile("[^ ^A-Z^a-z^]")
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 sentences = word2vec.LineSentence("../large_files/wiki_en_texts.txt")
+           
 # Set values for various parameters
 num_features = 200    # Word vector dimensionality                      
 min_word_count = 20   # Minimum word count                        
