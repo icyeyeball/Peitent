@@ -9,7 +9,7 @@ import sys
 import gensim
 model = gensim.models.Word2Vec.load('../word2vec_20190801.model')
 
-print (model.most_similar(sys.argv[1]), topn=5)
+print (model.most_similar(sys.argv[1]))
 #print (model.similarity('女人', '男人'))
 
 #print (model.most_similar(positive=['first', 'third'], negative=['sentence'], topn=5))
