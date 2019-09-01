@@ -38,13 +38,15 @@ def main():
                         else:
                             for i in range(0,3):
                                 word_ = model.most_similar(word,topn=3)[i][0]
-                                print (word_)
+                                #print (word_)
                                 if word  == Converter('zh-hant').convert(word):
                                     word_ = Converter('zh-hant').convert(word_)
                                     f.write(word_ + ' ')                                    
                                 else: 
                                     word_ = Converter('zh-hans').convert(word_)
                                     f.write(word_ + ' ')
+
+
 
 if __name__ == "__main__":
     main()
