@@ -9,7 +9,7 @@ import sys
 import gensim
 model = gensim.models.Word2Vec.load('../word2vec_20190801.model')
 
-print (model.most_similar(sys.argv[1], topn=5))
+print (model.wv.most_similar(sys.argv[1], topn=5))
 
 
 
