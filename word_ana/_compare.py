@@ -9,16 +9,6 @@ import re
 import gensim
 import numpy
 import jieba
-import os
-import tensorflow as tf
-
-os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-
-config = tf.ConfigProto(log_device_placement=True)
-config.gpu_options.per_process_gpu_memory_fraction = 0.9 # 占用GPU90%的显存 
-session = tf.Session(config=config)
-
 
 def sort_by_value(d): 
     items=d.items() 
@@ -93,9 +83,8 @@ for i in range(0,len(input)):
         else:
             print(input[j:j+i+1])
             input_l.append(input[j:j+i+1])
-            if len(input_l) > 2:
-                del input_l[0]
-
+            if len(input_l) > 4:
+                del input_l[1]
 
 for k in range(0,45):
     with open('./class_final_t/' + str(k+1) + '.txt', 'r', encoding='utf-8') as f2 :
@@ -111,11 +100,11 @@ for k in range(0,45):
                     #print ("OOOOOOO word " + word)
                     for i in range(0, len(input_l)):
                         try:
-                            semi = model.similarity(word, input[i])
+                            semi = model.similarity(word, input_l[i])
                         except KeyError:
                             continue
                         else:
-                            tmp = model.similarity(word, input[i])
+                            tmp = model.similarity(word, input_l[i])
                             #print ("=== tmp = " + str(tmp))
                             weight_l.append(tmp)
                             for a in range(0,len(weight_l)-1): 
