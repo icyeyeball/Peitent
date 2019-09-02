@@ -20,53 +20,52 @@ def main():
             stopword_set.add(stopword.strip('\n'))
     model = gensim.models.Word2Vec.load('../word2vec_20190801.model')
     
-    print ("=================Running " + sys.argv[1] + " to "+ sys.argv[2])
-    input = sys.argv[1]
-    output = sys.argv[2]
-    class_l = [""]
-    with open(output, 'w', encoding='utf-8') as f :
-        with open(input, 'r', encoding='utf-8') as f2 :
-            for texts_num, line in enumerate(f2):
-                line = line.strip('\n')
-                line = cop.sub('', line)
-                words = jieba.cut_for_search(line)                
-                for word in words:
-                    if word not in stopword_set:   
-                        print ("**********************"+word)
-                        try:
-                            semi = model.wv.most_similar(word)
-                        except KeyError:
-                            continue
-                        else:
-                            print ("3333333333333333"+word)
-                            print (str(len(class_l)))
-                            for k in range(0,5):
-                                print ("444444444444444444"+Converter('zh-hant').convert(word))
-                                if Converter('zh-hant').convert(word) == class_l[k]:
-                                        continue
+    for i in range(5,45):
+        input = "./class/" + str(i+1) + ".txt"
+        output = "./class_final/" + str(i+1) + ".txt"
+        class_l = []
+        with open(output, 'w', encoding='utf-8') as f :
+            with open(input, 'r', encoding='utf-8') as f2 :
+                for texts_num, line in enumerate(f2):
+                    line = line.strip('\n')
+                    line = cop.sub('', line)
+                    words = jieba.cut_for_search(line)                
+                    for word in words:
+                        if word not in stopword_set:   
+                            try:
+                                semi = model.wv.most_similar(word)
+                            except KeyError:
+                                continue
+                            else:
+                                if word in class_l:
+                                    word = Converter('zh-hant').convert(word)
                                 else:
+                                    class_l.append(Converter('zh-hant').convert(word))
                                     word = Converter('zh-hant').convert(word) 
-                                    print ("+++++++++++"+word+"+++++++++")
-                                    print ("====="+word+"=====")
                                     class_l.append(word)
-                                    print ("5555555555555555555555555555555"+class_l[len(class_l)-1])
                                     f.write(word + ' ')
                                     word = Converter('zh-hans').convert(word)
                                     f.write(word + ' ')
                                     
-                                    for i in range(0,3):
-                                        word_ = model.wv.most_similar(word,topn=3)[i][0]
-                                        print ("66666666666666666666666666"+word_)
-                                        for j in range(0,len(class_l)-1):                                
-                                            if Converter('zh-hant').convert(word_) == class_l[j]:
-                                                break
+                                    try:
+                                        semi = model.wv.most_similar(Converter('zh-hant').convert(word),topn=5)[0][0]
+                                    except KeyError:
+                                        continue
+                                    else:
+                                        word_l = []
+                                        word_l.append(model.wv.most_similar(Converter('zh-hant').convert(word),topn=5)[0][0])
+                                
+                                        for word_ in word_l:
+                                            if word_ in class_l:
+                                                continue
                                             else:
-                                                class_l.append(word)
-                                                f.write(word_ + ' ')    
-                                                print (word_)                                
+                                                class_l.append(word_)
+                                                f.write(word_+ ' ')
                                                 word_ = Converter('zh-hans').convert(word_)
                                                 f.write(word_ + ' ')
-                                                print (word_)
+                                
+                #print (class_l[5])
+                                             
 
 if __name__ == "__main__":
     main()

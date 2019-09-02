@@ -67,12 +67,12 @@ line = cop.sub('', line)
 print(line)
 print("----------------------------------")
 print (line[0:len(line)])
+
 for i in range(0,len(line)):
     for j in range(0,len(line)-i):
         try:
-            model.most_similar(line[j:j+i+1])
+            semi = model.similarity(sys.argv[1], sys.argv[2])
         except KeyError:
-            print ("XXXXXXXXXXXX " + line[j:j+i+1])
             continue
         else:
             print ("OOOOOOOOO " + line[j:j+i+1])

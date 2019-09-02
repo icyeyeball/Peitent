@@ -10,4 +10,4 @@ do
 done
 
 #34365
-
+python fuzzyAddClass.py
