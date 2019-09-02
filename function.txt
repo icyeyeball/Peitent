@@ -19,3 +19,5 @@ for i in range(0,len(line)):
             continue
         else:
             print ("OOOOOOOOO " + line[j:j+i+1])
+
+

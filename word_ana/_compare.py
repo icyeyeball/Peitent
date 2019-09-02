@@ -7,6 +7,24 @@ import sys
 import re
 #demo.py must be utf-8
 import gensim
+import numpy
+import jieba
+import os
+import tensorflow as tf
+
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+
+config = tf.ConfigProto(log_device_placement=True)
+config.gpu_options.per_process_gpu_memory_fraction = 0.9 # 占用GPU90%的显存 
+session = tf.Session(config=config)
+
+
+def sort_by_value(d): 
+    items=d.items() 
+    backitems=[[v[1],v[0]] for v in items] 
+    backitems.sort()
+    return [ backitems[i][1] for i in range(len(backitems)-1, -1, -1)]
 
 class_l = {
     1:"工業、科學、照相用,以及農業、園藝、林業用之化學品;未加工人造樹脂、未加工塑膠;滅火及防火製劑;回火及焊接製劑;為鞣製獸皮及皮革用鞣劑;工業用黏著劑;油灰及其他糊狀填充劑;堆肥、動物性肥料、化學肥料;工業及科學用生物製劑。",
@@ -55,27 +73,69 @@ class_l = {
     44:"醫療服務;獸醫服務;為人類或動物之衛生及美容服務;農業、園藝及林業服務。",
     45:"法律服務;對有體財產和個人提供實體保護之安全服務;為配合個人需求由他人所提供之私人或社交服務。"
 }
-print (class_l[2])
 
+jieba.set_dictionary('../jieba_dict/dict.txt_new.big')
 
-  
 model = gensim.models.Word2Vec.load('../word2vec_20190801.model')
-cop = re.compile("[^\u4e00-\u9fa5^A-Z^a-z^ ^]")
 #with open('./class/1.txt','r', encoding='utf-8') as f:
-line = str(sys.argv[1])
-line = cop.sub('', line)
-print(line)
-print("----------------------------------")
-print (line[0:len(line)])
+tmp = 0.
+weight = 0.
+weight_d = {}
+input = sys.argv[1]
+input_l = []
 
-for i in range(0,len(line)):
-    for j in range(0,len(line)-i):
+for i in range(0,len(input)):
+    for j in range(0,len(input)-i):
         try:
-            semi = model.similarity(sys.argv[1], sys.argv[2])
+            semi = model.wv.most_similar(input[j:j+i+1])
         except KeyError:
-            continue
+             continue
         else:
-            print ("OOOOOOOOO " + line[j:j+i+1])
+            print(input[j:j+i+1])
+            input_l.append(input[j:j+i+1])
+            if len(input_l) > 2:
+                del input_l[0]
+
+
+for k in range(0,45):
+    with open('./class_final_t/' + str(k+1) + '.txt', 'r', encoding='utf-8') as f2 :
+        weight_l = []
+        for texts_num, line in enumerate(f2):
+            words = jieba.cut_for_search(line)
+            for word in words:
+                try:
+                    semi = model.wv.most_similar(word)
+                except KeyError:
+                    continue
+                else:
+                    #print ("OOOOOOO word " + word)
+                    for i in range(0, len(input_l)):
+                        try:
+                            semi = model.similarity(word, input[i])
+                        except KeyError:
+                            continue
+                        else:
+                            tmp = model.similarity(word, input[i])
+                            #print ("=== tmp = " + str(tmp))
+                            weight_l.append(tmp)
+                            for a in range(0,len(weight_l)-1): 
+                                for b in range(0,len(weight_l)-1-a): 
+                                    if weight_l[b] < weight_l[b+1]: 
+                                        tmp = weight_l[b]
+                                        weight_l[b] = weight_l[b+1]
+                                        weight_l[b+1] = tmp
+                            if len(weight_l) > 3:
+                                del weight_l[3]
+    total = 0.0
+    for a in range(0,3):
+        total += pow(weight_l[a],2.0)
+    total = pow(total, 0.5)
+    weight_d[k+1] = total
+    print ("k = " + str(k+1) + "  total = " + str(total))
+result_l = sort_by_value(weight_d)
+for i in result_l:
+    print ("第"+ str(i) +"類 : ")
+    print ("   "+class_l[i])
 
             #print (word)
             #print (model.similarity(sys.argv[1], word))
