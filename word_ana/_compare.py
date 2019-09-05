@@ -117,7 +117,7 @@ for k in range(0,45):
                                 del weight_l[3]
     total = 0.0
     for a in range(0,3):
-        total += pow(weight_l[a],2.0)
+        total += weight_l[a]
     total = pow(total, 0.5)
     weight_d[k+1] = total
     print ("k = " + str(k+1) + "  total = " + str(total))
