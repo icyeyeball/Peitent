@@ -76,12 +76,13 @@ with open('google.txt', 'w', encoding = 'utf-8') as f2:
             if res.status_code == requests.codes.ok:
                 
                 soup2 = BeautifulSoup(res.text, 'html.parser') 
+                print (soup2)
                 stories = str(soup2.find_all('p', class_=""))
                 stories = cop.sub('', stories)
                 print ("===== n ===== " + str(n))
                 if (len(stories)) >100:
                     n  = n + 1
-                    print (stories)
+                    #print (stories)
                     leng += len(stories)
                     f2.write(stories)
                     f2.write('\n')
