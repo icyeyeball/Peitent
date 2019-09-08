@@ -9,6 +9,7 @@ import sys
 from bs4 import BeautifulSoup
 import re
 
+
 # Google 搜尋 URL
 #google_url = 'https://www.google.com.tw/search?num=20&lr=lang_zh-TW&q='
 google_url = 'https://www.google.com.tw/search?num=50&q='
