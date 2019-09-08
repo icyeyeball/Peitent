@@ -9,6 +9,7 @@ import re
 import gensim
 import numpy
 import jieba
+import math
 
 def sort_by_value(d): 
     items=d.items() 
@@ -105,6 +106,8 @@ for k in range(0,45):
                             continue
                         else:
                             tmp = model.similarity(word, input_l[i])
+                            if tmp > 1:
+                                tmp = 1
                             #print ("=== tmp = " + str(tmp))
                             weight_l.append(tmp)
                             
@@ -118,7 +121,9 @@ for k in range(0,45):
                                 del weight_l[3]
     total = 0.0
     for a in range(0,3):
-        total += weight_l[a]
+        print (math.degrees(math.acos(weight_l[a])))
+        print("相似度 = " + str((math.degrees(math.acos(weight_l[a]))*(-0.55555556)) +100.) + "%")
+        total += (math.degrees(math.acos(weight_l[a]))*(-0.55555556)) +100.
     weight_d[k+1] = total
     total  = total / 3.
     print ("k = " + str(k+1) + "  total = " + str(total))

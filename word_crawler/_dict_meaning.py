@@ -9,6 +9,7 @@ import xlrd
 import re
 import jieba
 import gensim
+import math
 
 book = xlrd.open_workbook('dict.xls')
 sheet1 = book.sheets()[0]
@@ -108,6 +109,8 @@ for i in word_l1:
             continue
         else:
             tmp = model.similarity(i, j)
+            if tmp > 1:
+                tmp = 1
             print (i +"  " +j + "  "+ str(tmp))
             weight_l.append(tmp)
             for a in range(0,len(weight_l)-1): 
@@ -121,10 +124,12 @@ for i in word_l1:
 
 total = 0.0
 for a in range(0,len(weight_l)):
-    print (weight_l[a])
-    total += weight_l[a]
-total = total / len(weight_l)
-print ("  total = " + str(total))                   
+    print (math.degrees(math.acos(weight_l[a])))
+    print("相似度 = " + str((math.degrees(math.acos(weight_l[a]))*(-0.55555556)) +100.) + "%")
+    total += (math.degrees(math.acos(weight_l[a]))*(-0.55555556)) +100.
+total = total / len(weight_l) 
+print("=================")
+print (" 綜合相似度:  " + str(total)+ "%")                   
 
 
 
