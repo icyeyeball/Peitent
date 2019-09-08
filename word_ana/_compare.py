@@ -107,6 +107,7 @@ for k in range(0,45):
                             tmp = model.similarity(word, input_l[i])
                             #print ("=== tmp = " + str(tmp))
                             weight_l.append(tmp)
+                            
                             for a in range(0,len(weight_l)-1): 
                                 for b in range(0,len(weight_l)-1-a): 
                                     if weight_l[b] < weight_l[b+1]: 
@@ -118,8 +119,8 @@ for k in range(0,45):
     total = 0.0
     for a in range(0,3):
         total += weight_l[a]
-    total = pow(total, 0.5)
     weight_d[k+1] = total
+    total  = total / 3.
     print ("k = " + str(k+1) + "  total = " + str(total))
 result_l = sort_by_value(weight_d)
 for i in result_l:

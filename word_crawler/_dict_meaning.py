@@ -1,95 +1,132 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 ############################
-# Peicheng Lu 20190824
+# Peicheng Lu 20190908
 ############################
 # python _googles.py input
 
-import requests
 import sys
-from bs4 import BeautifulSoup
+import xlrd
 import re
+import jieba
+import gensim
 
-# Google 搜尋 URL
-#google_url = 'https://www.google.com.tw/search?num=20&lr=lang_zh-TW&q='
-dict_url = 'http://dict.revised.moe.edu.tw/cgi-bin/cbdic/gsweb.cgi?ccd=iDWsMi&o=e0&sec=sec1&index=1'
+book = xlrd.open_workbook('dict.xls')
+sheet1 = book.sheets()[0]
 
+cop = re.compile("[^\u4e00-\u9fa5^]")
+    # jieba custom setting.
+jieba.set_dictionary('../jieba_dict/dict.txt_new.big')
 
-# 查詢參數
+    # load stopwords set
+stopword_set = set()
+with open('../jieba_dict/stopwords.txt','r', encoding='utf-8') as stopwords:
+    for stopword in stopwords:
+        stopword_set.add(stopword.strip('\n'))
+        
+model = gensim.models.Word2Vec.load('../word2vec_20190801.model')
 
-my_params = sys.argv[1]
-k1 = google_url + my_params
-k2 = wiki_rul + my_params
-cop = re.compile("[^\u4e00-\u9fa5^ ^A-Z^a-z^]")
-#cop = re.compile("[^\u4e00-\u9fa5^]")
-# 下載 Google 搜尋結果
-r = requests.get(k1, params = my_params, allow_redirects=False)
+input1 = sys.argv[1]
+input2 = sys.argv[2]
 
-# 確認是否下載成功
-if r.status_code == requests.codes.ok:
-  # 以 BeautifulSoup 解析 HTML 原始碼
-    soup = BeautifulSoup(r.text, 'html.parser')
-    #print (soup.prettify())
-    sp = str(soup)
-    #print (sp)
-    #print (sp[sp.find('http://')-23:sp.find('http://')-18])
-    items = soup.findAll("div", {"class": sp[sp.find('http://')-23:sp.find('http://')-18]})
-    #print (sp[sp.find('http://')-23:sp.find('http://')-18])
-    #items = soup.findAll("div", {"class": sp[sp.find('https://')-23:sp.find('https://')-18]})
-leng = 0
-list_ = []
-with open('google.txt', 'w', encoding = 'utf-8') as f2:
-    n = 0
-    for item in items:
-        if leng > 50000:
-            break
-        # url
-        href = str(item)
-        #print ("******************************************* i = " + str(i))
-        if href.find('wiki') >= 0:
-            url = k2
-            #print (url)
-        elif href.find('gov.tw') >= 0:
-            url = ""
-        else:
-            url = href[href.find('http'):href.find('&amp')]
-            #print (url)
-            
-        for j in range(0,len(list_)):
-            if url is "":
-                #print ("case 1  " + url)
-                break
-                i = 1
-            elif url is list_[j]:
-                #print ("case 2  " + url)
-                url = ""
-                break
-                i = 1
+word_l = []
+meaning = []
+
+cop = re.compile("[^\u4e00-\u9fa5^]")
+
+word_l = col_values = sheet1.col_values(2)
+meaning = col_values = sheet1.col_values(10)
+
+with open('./inputs/1.txt', 'w', encoding='utf-8') as in1:
+    for i in range(0,len(word_l)):
+        if input1 == word_l[i]:
+            line = meaning[i]
+            line = cop.sub('', line)
+            #in1.write(meaning[i])
+            words = jieba.cut(line)
+            for word in words:
+                if word not in stopword_set:
+                    in1.write(word + ' ')
+            in1.write('\n')
+print ("input1 finished")
+
+with open('./inputs/2.txt', 'w', encoding='utf-8') as in2:
+    for i in range(0,len(word_l)):
+        if input2 == word_l[i]:
+            line = meaning[i]
+            line = cop.sub('', line)
+            words = jieba.cut(line)
+            for word in words:
+                if word not in stopword_set:
+                    in2.write(word + ' ')
+            in2.write('\n')
+print ("input2 finished")
+index1 = 0
+index2 = 0
+weight_l = []
+word_l1 = []
+word_l2 = []
+with open('./inputs/1.txt', 'r', encoding='utf-8') as f1:
+    print ("Read f1")
+    for texts_num1, line1 in enumerate(f1):
+        words1 = jieba.cut(line1)
+        for word1 in words1:
+            try:
+                semi = model.wv.most_similar(word1)
+            except KeyError:
+                continue
             else:
-                pass
-            
-        if url == "":
-            i = 0
+                index1 = index1 +1
+                word_l1.append(word1)
+                if index1>=20:
+                    break
+for i in word_l1:
+    print (i)
+    
+with open('./inputs/2.txt', 'r', encoding='utf-8') as f2:
+    print ("Read f2")
+    for texts_num2, line2 in enumerate(f2):
+        words2 = jieba.cut(line2)
+        for word2 in words2:
+            try:
+                semi = model.wv.most_similar(word2)
+            except KeyError:
+                continue
+            else:
+                index2 = index2 +1
+                word_l2.append(word2)
+                if index2>=20:
+                    break
+for i in word_l2:
+    print (i)
+    
+for i in word_l1:
+    for j in word_l2:
+        print(i +"  " +j)
+        try:
+            tmp = model.similarity(i, j)
+        except KeyError:
             continue
         else:
-            list_.append(url)
-            res = requests.get(url, allow_redirects=False)
-            if res.status_code == requests.codes.ok:
-                
-                soup2 = BeautifulSoup(res.text, 'html.parser') 
-                print (soup2)
-                stories = str(soup2.find_all('p', class_=""))
-                stories = cop.sub('', stories)
-                print ("===== n ===== " + str(n))
-                if (len(stories)) >100:
-                    n  = n + 1
-                    #print (stories)
-                    leng += len(stories)
-                    f2.write(stories)
-                    f2.write('\n')
-                #f2.write("--------------------------i = " + str(i))
-                #f2.write('\n')
-                #f2.write("url = " + str(url))
-                #f2.write('\n')
-        #f2.write("=================================================")
-    f2.write('\n')
-    print (str(leng))
+            tmp = model.similarity(i, j)
+            print (i +"  " +j + "  "+ str(tmp))
+            weight_l.append(tmp)
+            for a in range(0,len(weight_l)-1): 
+                for b in range(0,len(weight_l)-1-a): 
+                    if weight_l[b] < weight_l[b+1]: 
+                        tmp = weight_l[b]
+                        weight_l[b] = weight_l[b+1]
+                        weight_l[b+1] = tmp
+            if len(weight_l) > 20:
+                del weight_l[20]
+
+total = 0.0
+for a in range(0,len(weight_l)):
+    print (weight_l[a])
+    total += weight_l[a]
+total = total / len(weight_l)
+print ("  total = " + str(total))                   
+
+
+
+
+

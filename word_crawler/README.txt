@@ -6,4 +6,7 @@ anaconda show xxx/urllibxx
 conda install --channel https://conda.anaconda.org/ActivisionGameScience urllib3(?)
 pip install fake-useragent
 pip install pysocks
-
+pip install xlrd # for excel
+pip install xlwt # for excel
+pip install pygame #for word_picture
+pip install opencv-python
