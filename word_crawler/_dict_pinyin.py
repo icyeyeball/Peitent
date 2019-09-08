@@ -1,6 +1,6 @@
 ﻿# -*- coding: utf-8 -*-
 ############################
-# Peicheng Lu 20190824
+# Peicheng Lu 20190907
 ############################
 # python _googles.py input
 
@@ -8,85 +8,27 @@ import requests
 import sys
 from bs4 import BeautifulSoup
 import re
+import time
 from langconv import *
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 
 # Google 搜尋 URL
 #google_url = 'https://www.google.com.tw/search?num=20&lr=lang_zh-TW&q='
-dict_url = 'http://dict.revised.moe.edu.tw/cgi-bin/cbdic/gsweb.cgi?ccd=iDWsMi&o=e0&sec=sec1&index=1'
-
-
-# 查詢參數
-
 input = sys.argv[1]
+driver = webdriver.Chrome(r"C:\Users\lehsiao\cmder\peitent\chromedriver.exe")
+driver.get('http://dict.revised.moe.edu.tw/cbdic/search.htm')
+qs0 = driver.find_element_by_name('qs0')
+qs0.send_keys(input)
+qs0.send_keys(Keys.RETURN)
+soup = BeautifulSoup(driver.page_source, 'lxml') 
+#print (soup)
+pinyin=[]
+ele_l = []
+for ele in soup.select('#main td'):
+    ele_l.append(ele.text)
+for i in range(0, len(ele_l)):
+    print ("i = "+ str(i))
+    print (str(i))
+    
 
-r = requests.get(k1, params = my_params, allow_redirects=False)
-
-# 確認是否下載成功
-if r.status_code == requests.codes.ok:
-  # 以 BeautifulSoup 解析 HTML 原始碼
-    soup = BeautifulSoup(r.text, 'html.parser')
-    #print (soup.prettify())
-    sp = str(soup)
-    #print (sp)
-    #print (sp[sp.find('http://')-23:sp.find('http://')-18])
-    items = soup.findAll("div", {"class": sp[sp.find('http://')-23:sp.find('http://')-18]})
-    #print (sp[sp.find('http://')-23:sp.find('http://')-18])
-    #items = soup.findAll("div", {"class": sp[sp.find('https://')-23:sp.find('https://')-18]})
-leng = 0
-list_ = []
-with open('google.txt', 'w', encoding = 'utf-8') as f2:
-    n = 0
-    for item in items:
-        if leng > 50000:
-            break
-        # url
-        href = str(item)
-        #print ("******************************************* i = " + str(i))
-        if href.find('wiki') >= 0:
-            url = k2
-            #print (url)
-        elif href.find('gov.tw') >= 0:
-            url = ""
-        else:
-            url = href[href.find('http'):href.find('&amp')]
-            #print (url)
-            
-        for j in range(0,len(list_)):
-            if url is "":
-                #print ("case 1  " + url)
-                break
-                i = 1
-            elif url is list_[j]:
-                #print ("case 2  " + url)
-                url = ""
-                break
-                i = 1
-            else:
-                pass
-            
-        if url == "":
-            i = 0
-            continue
-        else:
-            list_.append(url)
-            res = requests.get(url, allow_redirects=False)
-            if res.status_code == requests.codes.ok:
-                
-                soup2 = BeautifulSoup(res.text, 'html.parser') 
-                print (soup2)
-                stories = str(soup2.find_all('p', class_=""))
-                stories = cop.sub('', stories)
-                print ("===== n ===== " + str(n))
-                if (len(stories)) >100:
-                    n  = n + 1
-                    #print (stories)
-                    leng += len(stories)
-                    f2.write(stories)
-                    f2.write('\n')
-                #f2.write("--------------------------i = " + str(i))
-                #f2.write('\n')
-                #f2.write("url = " + str(url))
-                #f2.write('\n')
-        #f2.write("=================================================")
-    f2.write('\n')
-    print (str(leng))

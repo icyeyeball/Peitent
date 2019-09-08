@@ -22,7 +22,15 @@ q = driver.find_element_by_name('q')
 q.send_keys(input)
 q.send_keys(Keys.RETURN)
 soup = BeautifulSoup(driver.page_source, 'lxml') 
-
+for ele in soup.select('#rso h3 div'):
+    print(ele.text)
+driver.find_element_by_link_text('下一頁').click()
+for p  in range(3):
+    driver.find_element_by_link_text('下一頁').click()
+    soup = BeautifulSoup(driver.page_source, 'lxml') 
+    for ele in soup.select('#rso h3 div'):
+        print(ele.text)
+        time.sleep(1)
 #driver.find_element_by_css_selector('#rso a:nth-child(1)').click()
 
 #driver.get('http://dict.revised.moe.edu.tw/cbdic/search.htm')
