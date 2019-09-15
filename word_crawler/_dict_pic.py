@@ -58,7 +58,7 @@ sampleImage=cv2.imread("./pic/1.jpg")
 queryImage=cv2.imread("./pic/2.jpg")
 comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1,queryImage,kp2,matches,None,**drawParams)
 
-print ("相似度: " + str(matchRatio))
+print ("相似度: " + str(matchRatio) + "%")
 cv2.imwrite("./pic/comp.jpg", comparisonImage)
 
 
