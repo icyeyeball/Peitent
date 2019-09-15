@@ -1,5 +1,7 @@
 Anaconda 64 bit only and python 3.6 env (for tensorflow)
 
+pip install --ignore-installed --upgrade tensorflow-gpu
+
 --> https://developer.nvidia.com/cuda-downloads
 
 https://www.tensorflow.org/install/gpu > Software requirements
@@ -8,17 +10,14 @@ https://developer.nvidia.com/cuda-downloads
 
 https://developer.nvidia.com/rdp/cudnn-download
 
-add env valuse
+pip3 install tensorflow
+
+add env values
 
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\lib\x64
 C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.15.26726\bin
-
-cuDNN v7.4.1 (Nov 8, 2018), for CUDA 10.0
-
-
-echo %PATH%
-echo %PATH%
+C:\Program Files\NVIDIA Corporation\NVSMI //to use NVIDIA-smi
 
 in new cmd:
 nvcc -V # check CUDA
