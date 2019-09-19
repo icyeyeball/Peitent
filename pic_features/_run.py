@@ -3,8 +3,7 @@
 # Peicheng Lu 20190822
 ############################
 #
-from os import listdir
-from os.path import isfile, isdir, join
+from os import *
 import cv2
 from matplotlib import pyplot as plt
 import numpy as np
@@ -37,30 +36,34 @@ ratio_l=[]
 vis_l=[]
 
 sampleImage=cv2.imread(samplePath,0)
-#sampleImage = imutils.resize(sampleImage, width = 200)
-kp1, des1 = sift.detectAndCompute(sampleImage, None) #提取样本图片的特征+
+sampleImage = imutils.resize(sampleImage, width = 300)
+kp1, des1 = sift.detectAndCompute(sampleImage, None) #detect the features of sample
 print (len(files))
 for f in files:
+    print (f)
+for f in files:
     f=queryPath+f
-    print (str(f))
+    print ("1111111111"+str(f))
     queryImage=cv2.imread(f,0)
-    #queryImage = imutils.resize(queryImage, width = 200)
-    kp2, des2 = sift.detectAndCompute(queryImage, None) #提取比对图片的特征
-    matches=flann.knnMatch(des1,des2,k=2) #匹配特征点，为了删选匹配点，指定k为2，这样对样本图的每个特征点，返回两个匹配
-    (matchNum,matchesMask)=getMatchNum(matches,0.9) #通过比率条件，计算出匹配程度
+    print ("22222222222222"+str(f))
+    queryImage = imutils.resize(queryImage, width = 300)
+    
+    kp2, des2 = sift.detectAndCompute(queryImage, None) #detect the features of img in database
+    print ("33333333333333333"+str(f))
+    matches=flann.knnMatch(des1,des2,k=2) #matched features, assign k=2 to return 2 matched features.
+    (matchNum,matchesMask)=getMatchNum(matches,0.9) #set ratio = 0.9 to calculate the matching level
     matchRatio=matchNum*100/len(matches)
     drawParams=dict(matchColor=(0,255,0),  singlePointColor=(0,0,255), matchesMask=matchesMask, flags=0)
-
+    print ("77777777777777"+str(f))
     sampleImage=cv2.imread(samplePath)
     queryImage=cv2.imread(f)
     #(hA, wA) =sampleImage.shape[:2]  
     #(hB, wB) = queryImage.shape[:2]
     comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1,queryImage,kp2,matches,None,**drawParams)
     #cv2.putText(comparisonImage,str(matchRatio) + "%",(int(wA+wB/2.),int(3.*hB/4.)),cv2.FONT_HERSHEY_PLAIN,int(1.*hB/50.),(0,0,255),4)
+    print ("999999999999999999999"+str(f))
     ratio_l.append(matchRatio)
-        
     vis_l.append(comparisonImage)
-    
     for i in range(0,len(ratio_l)-1): 
         for j in range(0,len(ratio_l)-1-i): 
             if ratio_l[j] < ratio_l[j+1]: 
@@ -70,9 +73,12 @@ for f in files:
                 tmpv = vis_l[j]
                 vis_l[j] = vis_l[j+1]
                 vis_l[j+1] = tmpv
-    if len(ratio_l) > 50:
-        del ratio_l[50]
-        del vis_l[50]
+                #print ("i = " + str(i))
+                #print ("j= " + str(j))
+    print ("len(ratio_l) =" +str(len(ratio_l)))
+    if len(ratio_l) > 20:
+        del ratio_l[20]
+        del vis_l[20]
 
 for k in range(0,len(ratio_l)):
     outpath = "./Output/" + str(k+1) + ".jpg"

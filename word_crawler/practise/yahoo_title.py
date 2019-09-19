@@ -14,6 +14,7 @@ r = requests.get('https://tw.yahoo.com/')
 if r.status_code == requests.codes.ok:
   # 以 BeautifulSoup 解析 HTML 程式碼
   soup = BeautifulSoup(r.text, 'html.parser')
+  print (soup.prettify())
 
   # 以 CSS 的 class 抓出各類頭條新聞
   stories = soup.find_all('a', class_='story-title')

@@ -29,7 +29,7 @@ r = requests.get(k1, params = my_params, allow_redirects=False)
 if r.status_code == requests.codes.ok:
   # 以 BeautifulSoup 解析 HTML 原始碼
     soup = BeautifulSoup(r.text, 'html.parser')
-    #print (soup.prettify())
+    print (soup.prettify())
     sp = str(soup)
     #print (sp)
     #print (sp[sp.find('http://')-23:sp.find('http://')-18])

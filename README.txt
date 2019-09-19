@@ -28,7 +28,8 @@ Google search API key: AIzaSyDJKq14y8VwWDhgKfreAh5JSe522ppeRiQ
 
 
 統一編號	85013961
-公司名稱	樂銷人工智慧有限公司
+公司名稱	樂銷人工智慧有限公司(Lehsiao)
+ywgvRgZ1
 ======================================
 智財局開放資料下載 -> 開放資料
 https://tiponet.tipo.gov.tw/TipoMenu/
