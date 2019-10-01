@@ -35,7 +35,7 @@ flann=cv2.FlannBasedMatcher(indexParams,searchParams)
 text1 = sys.argv[1]
 text2 = sys.argv[2]
 
-font = pygame.font.Font("Fonts/LiHei ProPC.ttf", 200)
+font = pygame.font.Font("Fonts/LiHei_ProPC.ttf", 200)
 
 ftext1 = font.render(text1, True, (0, 0, 0),(255, 255, 255))
 ftext2 = font.render(text2, True, (0, 0, 0),(255, 255, 255))

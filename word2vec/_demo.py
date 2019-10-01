@@ -4,6 +4,7 @@
 ############################
 # Usage: python demo.py words
 import sys
+sys.path.append(r'../PythonProject/langconv.py')
 #demo.py must be utf-8
 
 import gensim

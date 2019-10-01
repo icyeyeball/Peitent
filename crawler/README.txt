@@ -10,3 +10,10 @@ pip install xlrd # for excel
 pip install xlwt # for excel
 pip install pygame #for word_picture
 pip install opencv-python
+
+
+pip install pymysql
+pip install mysql-python
+pip3.6 install MySQL-connector-python
+http://www.mysql.com/
+https://cn.dll-files.com/ssleay32.dll.html
