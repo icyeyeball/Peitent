@@ -274,7 +274,7 @@ for index in range(37790,3000000):
          
     else:
         break
-        0
+        
 #tmarkclass = [t.text for t in tree.xpath("/API/tmarkrights/tmark-class")]
 #print("====="+str(type(xml_bytes)))
 
