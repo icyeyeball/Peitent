@@ -24,8 +24,12 @@ tmarkdb = mysql.connector.connect( host = "127.0.0.1", user = "root", password =
 cursor=tmarkdb.cursor()
 
 now = datetime.datetime.today()
+headers = {
+'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+'Cookie':'gr_user_id=1f9ea7ea-462a-4a6f-9d55-156631fc6d45; bid=vPYpmmD30-k; ll="118282"; ue="codin; __utmz=30149280.1499577720.27.14.utmcsr=douban.com|utmccn=(referral)|utmcmd=referral|utmcct=/doulist/240962/; __utmv=30149280.3049; _vwo_uuid_v2=F04099A9dd; viewed="27607246_26356432"; ap=1; ps=y; push_noty_num=0; push_doumail_num=0; dbcl2="30496987:gZxPfTZW4y0"; ck=13ey; _pk_ref.100001.8cb4=%5B%22%22%2C%22%22%2C1515153574%2C%22https%3A%2F%2Fbook.douban.com%2Fmine%22%5D; __utma=30149280.833870293.1473539740.1514800523.1515153574.50; __utmc=30149280; _pk_id.100001.8cb4=255d8377ad92c57e.1473520329.20.1515153606.1514628010.'
+} #替換成自己的cookie
 
-for index in range(37419,3000000):
+for index in range(37790,3000000):
     #url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=10+&skip=0&orderby=appl-no&tk=ywgvRgZ1'
     url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=1+&skip='+str(index)+'&orderby=appl-no&tk=ywgvRgZ1'
     r = requests.get(url, verify=False) 
@@ -34,7 +38,7 @@ for index in range(37419,3000000):
     tree = etree.parse(f,)
     isOK = [t.text for t in tree.xpath("/API/status")]
     
-    time.sleep(0.1)
+    #time.sleep(0.1)
     print("index = " + str(index))
     
     if isOK == ['ok']:
@@ -70,7 +74,7 @@ for index in range(37419,3000000):
         tmarkClassDesc = [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/tmark-class-desc")]
         for i in range(0, len(tmarkClassDesc)):
             if tmarkClassDesc !=[] and None not in tmarkClassDesc:
-                tmarkClassDesc[i] = tmarkClassDesc[i] .strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+                tmarkClassDesc[i] = tmarkClassDesc[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             else:
                 pass
         #print(tmarkClassDesc)
@@ -134,7 +138,7 @@ for index in range(37419,3000000):
         tmarkTypeDesc = [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/tmark-type-desc")]
         for i in range(0, len(tmarkTypeDesc)):
             if tmarkTypeDesc !=[] and None not in tmarkTypeDesc:
-                tmarkTypeDesc[i] = tmarkTypeDesc[i] .strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+                tmarkTypeDesc[i] = tmarkTypeDesc[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             else:
                 pass
         #print(tmarkTypeDesc )
@@ -144,7 +148,7 @@ for index in range(37419,3000000):
         tmarkColorDesc = [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/tmark-color-desc")]
         for i in range(0, len(tmarkColorDesc)):
             if tmarkColorDesc !=[] and None not in tmarkColorDesc:
-                tmarkColorDesc[i] = tmarkColorDesc[i] .strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+                tmarkColorDesc[i] = tmarkColorDesc[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             else:
                 pass
         #print(tmarkColorDesc)
@@ -152,7 +156,7 @@ for index in range(37419,3000000):
         tmarkDraftC= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/tmark-draft-c")]
         for i in range(0, len(tmarkDraftC)):
             if tmarkDraftC !=[] and None not in tmarkDraftC:
-                tmarkDraftC[i] = tmarkDraftC[i] .strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+                tmarkDraftC[i] = tmarkDraftC[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             else:
                 pass
         #print(tmarkDraftC)
@@ -160,7 +164,7 @@ for index in range(37419,3000000):
         tmarkDraftE= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/tmark-draft-e")]
         for i in range(0, len(tmarkDraftE)):
             if tmarkDraftE !=[] and None not in tmarkDraftE:
-                tmarkDraftE[i] = tmarkDraftE[i] .strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+                tmarkDraftE[i] = tmarkDraftE[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             else:
                 pass
         #print(tmarkDraftE)
@@ -168,7 +172,7 @@ for index in range(37419,3000000):
         tmarkDraftJ= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/tmark-draft-j")]
         for i in range(0, len(tmarkDraftJ)):
             if tmarkDraftJ !=[] and None not in tmarkDraftJ:
-                tmarkDraftJ[i] = tmarkDraftJ[i] .strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+                tmarkDraftJ[i] = tmarkDraftJ[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             else:
                 pass
         #print(tmarkDraftJ)
@@ -179,7 +183,7 @@ for index in range(37419,3000000):
         wordDescription= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/word-description")]
         for i in range(0, len(wordDescription)):
             if wordDescription !=[] and None not in wordDescription:
-                wordDescription[i] = wordDescription[i] .strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+                wordDescription[i] = wordDescription[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             else:
                 pass
         #print(wordDescription)
@@ -188,7 +192,7 @@ for index in range(37419,3000000):
         goodsName= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/goodsclasses/goodsclass/goods-name")]
         for i in range(0, len(goodsName)):
             if goodsName !=[] and None not in goodsName:
-                goodsName[i] = goodsName[i] .strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+                goodsName[i] = goodsName[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             else:
                 pass
         #print(goodsName)
@@ -201,7 +205,7 @@ for index in range(37419,3000000):
         processorName= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/processor-name")]
         for i in range(0, len(processorName)):
             if processorName !=[] and None not in processorName:
-                processorName[i] = processorName[i] .strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+                processorName[i] = processorName[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             else:
                 pass 
         #print(processorName)
@@ -216,21 +220,21 @@ for index in range(37419,3000000):
         
         for i in range(0, len(holderEnglishName)):
             if holderEnglishName !=[] and None not in holderEnglishName:
-                holderEnglishName[i] = holderEnglishName[i] .strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+                holderEnglishName[i] = holderEnglishName[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             else:
                 pass   
         #print(holderEnglishName)
         holderJapaneseName= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/parties/holders/holder/japanese-name")]
         for i in range(0, len(holderJapaneseName)):
             if holderJapaneseName !=[]  and None not in holderJapaneseName:
-                holderJapaneseName[i] = holderJapaneseName[i] .strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+                holderJapaneseName[i] = holderJapaneseName[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             else:
                 pass   
         #print(holderJapaneseName)
         holderAddress= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/parties/holders/holder/address")]
         for i in range(0, len(holderAddress)):
             if holderAddress !=[] and None not in holderAddress:
-                holderAddress[i] = holderAddress[i] .strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+                holderAddress[i] = holderAddress[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             else:
                 pass   
         #print(holderAddress)
@@ -239,14 +243,14 @@ for index in range(37419,3000000):
         chineseCountryName= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/parties/holders/holder/chinese-country-name")]
         for i in range(0, len(chineseCountryName)):
             if chineseCountryName !=[] and None not in chineseCountryName:
-                chineseCountryName[i] = chineseCountryName[i] .strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+                chineseCountryName[i] = chineseCountryName[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             else:
                 pass   
         #print(chineseCountryName)
         agentChineseName= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/parties/agents/agent/chinese-name")]
         for i in range(0, len(agentChineseName)):
             if agentChineseName !=[] and None not in agentChineseName:
-                agentChineseName[i] = agentChineseName[i] .strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+                agentChineseName[i] = agentChineseName[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             else:
                 pass
         if len(agentChineseName) == 0:
@@ -255,9 +259,9 @@ for index in range(37419,3000000):
         agentAddress= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/parties/agents/agent/address")]
         for i in range(0, len(agentAddress)):
             if agentAddress !=[] and None not in agentAddress:
-                agentAddress[i] = agentAddress[i] .strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+                agentAddress[i] = agentAddress[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             else:
-                pass   
+                pass
         if len(agentAddress) == 0:
             agentAddress = [None]
         #print(agentAddress)
@@ -267,14 +271,10 @@ for index in range(37419,3000000):
         #records = [(str(examNo[0]), str(applNo[0]), str(tmarkName[0]), str(tmarkClassDesc[0]), img1, img2, img3, img4, img5, img6, str(tmarkType[0]), str(tmarkTypeDesc[0]), str(tmarkColor[0]), str(tmarkColorDesc[0]), str(tmarkDraftC[0]), str(tmarkDraftE[0]), str(tmarkDraftJ[0]), str(tmarkSign[0]), str(wordDescription[0]), str(goodsclassCode[0]), str(goodsName[0]), str(goodsGroup[0]), deadline ,str(volNo1[0]), str(volNo2[0]), str(processorName[0]), str(holderChineseName[0]), str(holderEnglishName[0]), str(holderJapaneseName[0]), str(holderAddress[0]), str(countryCode[0]), str(chineseCountryName[0]), str(agentChineseName[0]), str(agentAddress[0])),]
         cursor.executemany(sqlStuff, records)
         tmarkdb.commit()
-                
-        
+         
     else:
         break
-        
-    
-
-
+        0
 #tmarkclass = [t.text for t in tree.xpath("/API/tmarkrights/tmark-class")]
 #print("====="+str(type(xml_bytes)))
 
