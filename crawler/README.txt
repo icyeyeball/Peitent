@@ -17,3 +17,6 @@ pip install mysql-python
 pip3.6 install MySQL-connector-python
 http://www.mysql.com/
 https://cn.dll-files.com/ssleay32.dll.html
+
+開啟MySQL
+開始---運行---輸入“services.msc”----Mysql------右鍵“啟動”
