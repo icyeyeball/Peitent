@@ -10,11 +10,9 @@ cursor=tmarkdb.cursor()
 
 
  # Read
-cursor.execute("SELECT * FROM tmarkTable WHERE examNo LIKE '%170%'")
-#cursor.execute("SELECT * FROM tmarkTable WHERE examNo = '00017029'")
-row = cursor.fetchone()
-for row in cursor:
-    print(row)
-
-tmarkdb.close()
-
+#delete_users = "DELETE FROM tmarkTable WHERE examNo = 11111"
+search_users = "SELECT *FROM tmarkTable WHERE tmarkName LIKE '%黑松%'"
+cursor.execute(search_users)
+tmark_list = cursor.fetchall()
+for i in range(0,len(tmark_list)):
+    print(tmark_list[i])  
