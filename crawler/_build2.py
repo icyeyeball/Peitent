@@ -27,37 +27,47 @@ now = datetime.datetime.today()
 headers = {
 'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
 'Cookie':'gr_user_id=1f9ea7ea-462a-4a6f-9d55-156631fc6d45; bid=vPYpmmD30-k; ll="118282"; ue="codin; __utmz=30149280.1499577720.27.14.utmcsr=douban.com|utmccn=(referral)|utmcmd=referral|utmcct=/doulist/240962/; __utmv=30149280.3049; _vwo_uuid_v2=F04099A9dd; viewed="27607246_26356432"; ap=1; ps=y; push_noty_num=0; push_doumail_num=0; dbcl2="30496987:gZxPfTZW4y0"; ck=13ey; _pk_ref.100001.8cb4=%5B%22%22%2C%22%22%2C1515153574%2C%22https%3A%2F%2Fbook.douban.com%2Fmine%22%5D; __utma=30149280.833870293.1473539740.1514800523.1515153574.50; __utmc=30149280; _pk_id.100001.8cb4=255d8377ad92c57e.1473520329.20.1515153606.1514628010.'
-} 
-#27547
-for index in range(27547,3000000):
+} #替換成自己的cookie
+
+for index in range(0,3000000, 100):
+#for index in range(0,3000000):
     #url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=10+&skip=0&orderby=appl-no&tk=ywgvRgZ1'
-    url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=1+&skip='+str(index)+'&orderby=appl-no&tk=ywgvRgZ1'
+    url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=100&skip='+str(index)+'&orderby=appl-no&tk=ywgvRgZ1'
+    print ("url = " + url)
     r = requests.get(url, verify=False) 
     xml_bytes = r.content
     f = BytesIO(xml_bytes)
     tree = etree.parse(f,)
     isOK = [t.text for t in tree.xpath("/API/status")]
     
-    time.sleep(0.2)
+    #time.sleep(0.1)
     print("index = " + str(index))
     
     if isOK == ['ok']:
         #print("===============")
-        
+        deadlineOK = []
         deadline= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/deadline")]
         #print(deadline)
-        if len(deadline) == 0 or deadline == [None]:
-            continue
-        deadline = deadline[0].replace('/', '-')
-        deadline = datetime.datetime.strptime(deadline, '%Y-%m-%d')
+        for i in range(0,len(deadline)):
+            if deadline[i] == 0 or deadline[i] == [None]:
+                dieadlineOK.append(0)
+            else:
+                deadlineOK.append(1)
+
+        deadline[i] = deadline[i].replace('/', '-')
+        deadline[i] = datetime.datetime.strptime(deadline[i], '%Y-%m-%d')
         #print("deadline =      "+str(deadline))
         delta = datetime.timedelta(days=183)
-        halfYearLater = deadline + delta
+        halfYearLater = deadline[i] + delta
         #print("halfYearLater = "+str(halfYearLater))
         #print("now =           "+str(now))
-        if halfYearLater < now :
-            continue
-      
+        for i in range(0,len(deadline)):
+            if deadlineOK[i] == 1:
+                if halfYearLater < now :
+                    deadlineOK[i] = 0
+                else:
+                    deadlineOK[i] = 1
+         
         examNo = [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/exam-no")]
         print(examNo)
         applNo = [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/appl-no")]
@@ -79,7 +89,7 @@ for index in range(27547,3000000):
                 pass
         #print(tmarkClassDesc)
         imageData1 = [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/tmark-image-url/image-data-1")]
-        path1 = ['./picBase/'+str(examNo[0])+'-1.png']
+        path1 = ['./picBase2/'+str(examNo[0])+'-1.png']
         if imageData1 != [None]:
             r = requests.get(imageData1[0])
             with open(path1[0], 'wb') as f:
@@ -88,7 +98,7 @@ for index in range(27547,3000000):
             path1 = [None]
         #print(imageData1)
         imageData2 = [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/tmark-image-url/image-data-2")]
-        path2 = ['./picBase/'+str(examNo[0])+'-2.png']
+        path2 = ['./picBase2/'+str(examNo[0])+'-2.png']
         if imageData2 != [None]:
             r = requests.get(imageData2[0])
             with open(path2[0], 'wb') as f:
@@ -97,7 +107,7 @@ for index in range(27547,3000000):
             path2 = [None]
         #print(imageData2)
         imageData3 = [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/tmark-image-url/image-data-3")]
-        path3 = ['./picBase/'+str(examNo[0])+'-3.png']
+        path3 = ['./picBase2/'+str(examNo[0])+'-3.png']
         if imageData3 != [None]:
             r = requests.get(imageData3[0])
             with open(path3[0], 'wb') as f:
@@ -106,7 +116,7 @@ for index in range(27547,3000000):
             path3 = [None]
         #print(imageData3)
         imageData4 = [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/tmark-image-url/image-data-4")]
-        path4 = ['./picBase/'+str(examNo[0])+'-4.png']
+        path4 = ['./picBase2/'+str(examNo[0])+'-4.png']
         if imageData4 != [None]:
             r = requests.get(imageData4[0])
             with open(path4[0], 'wb') as f:
@@ -115,7 +125,7 @@ for index in range(27547,3000000):
             path4 = [None]
         #print(imageData4)
         imageData5 = [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/tmark-image-url/image-data-5")]
-        path5 = ['./picBase/'+str(examNo[0])+'-5.png']
+        path5 = ['./picBase2/'+str(examNo[0])+'-5.png']
         if imageData5 != [None]:
             r = requests.get(imageData5[0])
             with open(path5[0], 'wb') as f:
@@ -124,7 +134,7 @@ for index in range(27547,3000000):
             path5 = [None]
         #print(imageData5)
         imageData6 = [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/tmark-image-url/image-data-6")]
-        path6 = ['./picBase/'+str(examNo[0])+'-6.png']
+        path6 = ['./picBase2/'+str(examNo[0])+'-6.png']
         if imageData6 != [None]:
             r = requests.get(imageData6[0])
             with open(path6[0], 'wb') as f:
@@ -188,15 +198,6 @@ for index in range(27547,3000000):
                 pass
         #print(wordDescription)
         goodsclassCode= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/goodsclasses/goodsclass/goodsclass-code")]
-        newGoodsclassCode = ""
-        if len(goodsclassCode) > 0:
-            for i in range(0, len(goodsclassCode)):
-                if goodsclassCode !=[] and None not in goodsclassCode:
-                    goodsclassCode[i] = goodsclassCode[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
-                    if i != len(goodsclassCode)-1:
-                        newGoodsclassCode = newGoodsclassCode + str(goodsclassCode[i])+", "
-                    else:
-                        newGoodsclassCode = newGoodsclassCode + str(goodsclassCode[i])
         #print(goodsclassCode)
         goodsName= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/goodsclasses/goodsclass/goods-name")]
         for i in range(0, len(goodsName)):
@@ -219,48 +220,33 @@ for index in range(27547,3000000):
                 pass 
         #print(processorName)
         holderChineseName= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/parties/holders/holder/chinese-name")]
-        newHolderChineseName = ""
-        if len(holderChineseName) > 0:
-            for i in range(0, len(holderChineseName)):
-                if holderChineseName !=[] and None not in holderChineseName:
-                    holderChineseName[i] = holderChineseName[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
-                    if i != len(holderChineseName)-1:
-                        newHolderChineseName = newHolderChineseName + str(holderChineseName[i])+", "
-                    else:
-                        newHolderChineseName = newHolderChineseName + str(holderChineseName[i])
+        for i in range(0, len(holderChineseName)):
+            if holderChineseName !=[] and None not in holderChineseName:
+                holderChineseName[i] = holderChineseName[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+            else:
+                pass 
         #print(holderChineseName)
         holderEnglishName= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/parties/holders/holder/english-name")]
-        newHolderEnglishName = ""
-        if len(holderEnglishName) > 0:
-            for i in range(0, len(holderEnglishName)):
-                if holderEnglishName !=[] and None not in holderEnglishName:
-                    holderEnglishName[i] = holderEnglishName[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
-                    if i != len(holderEnglishName)-1:
-                        newHolderEnglishName = newHolderEnglishName + str(holderEnglishName[i])+", "
-                    else:
-                        newHolderEnglishName = newHolderEnglishName + str(holderEnglishName[i])
+        
+        for i in range(0, len(holderEnglishName)):
+            if holderEnglishName !=[] and None not in holderEnglishName:
+                holderEnglishName[i] = holderEnglishName[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+            else:
+                pass   
         #print(holderEnglishName)
         holderJapaneseName= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/parties/holders/holder/japanese-name")]
-        newHolderJapaneseName = ""
-        if len(holderJapaneseName) > 0:
-            for i in range(0, len(holderJapaneseName)):
-                if holderJapaneseName !=[] and None not in holderJapaneseName:
-                    holderJapaneseName[i] = holderJapaneseName[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
-                    if i != len(holderJapaneseName)-1:
-                        newHolderJapaneseName = newHolderJapaneseName + str(holderJapaneseName[i])+", "
-                    else:
-                        newHolderJapaneseName = newHolderJapaneseName + str(holderJapaneseName[i])
+        for i in range(0, len(holderJapaneseName)):
+            if holderJapaneseName !=[]  and None not in holderJapaneseName:
+                holderJapaneseName[i] = holderJapaneseName[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+            else:
+                pass   
         #print(holderJapaneseName)
         holderAddress= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/parties/holders/holder/address")]
-        newHolderAddress = ""
-        if len(holderAddress) > 0:
-            for i in range(0, len(holderAddress)):
-                if holderAddress !=[] and None not in holderAddress:
-                    holderAddress[i] = holderAddress[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
-                    if i != len(holderAddress)-1:
-                        newHolderAddress = newHolderAddress + str(holderAddress[i])+", "
-                    else:
-                        newHolderAddress = newHolderAddress + str(holderAddress[i])
+        for i in range(0, len(holderAddress)):
+            if holderAddress !=[] and None not in holderAddress:
+                holderAddress[i] = holderAddress[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+            else:
+                pass   
         #print(holderAddress)
         countryCode= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/parties/holders/holder/country-code")]
         #print(countryCode)
@@ -272,34 +258,49 @@ for index in range(27547,3000000):
                 pass   
         #print(chineseCountryName)
         agentChineseName= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/parties/agents/agent/chinese-name")]
-        newAgentChineseName = ""
-        if len(agentChineseName) > 0:
-            for i in range(0, len(agentChineseName)):
-                if agentChineseName !=[] and None not in agentChineseName:
-                    agentChineseName[i] = agentChineseName[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
-                    if i != len(agentChineseName)-1:
-                        newAgentChineseName = newAgentChineseName + str(agentChineseName[i])+", "
-                    else:
-                        newAgentChineseName = newAgentChineseName + str(agentChineseName[i])
+        for i in range(0, len(agentChineseName)):
+            if agentChineseName !=[] and None not in agentChineseName:
+                agentChineseName[i] = agentChineseName[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+            else:
+                pass
+        if len(agentChineseName) == 0:
+            agentChineseName = [None]
         #print(agentChineseName)
         agentAddress= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/parties/agents/agent/address")]
-        newAgentAddress = ""
-        if len(agentAddress) > 0:
-            for i in range(0, len(agentAddress)):
-                if agentAddress !=[] and None not in agentAddress:
-                    agentAddress[i] = agentAddress[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
-                    if i != len(agentAddress)-1:
-                        newAgentAddress = newAgentAddress + str(agentAddress[i])+", "
-                    else:
-                        newAgentAddress = newAgentAddress + str(agentAddress[i])
+        for i in range(0, len(agentAddress)):
+            if agentAddress !=[] and None not in agentAddress:
+                agentAddress[i] = agentAddress[i].strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
+            else:
+                pass
+        if len(agentAddress) == 0:
+            agentAddress = [None]
         #print(agentAddress)
-        
-        sqlStuff = "INSERT INTO tmarkTable (examNo, applNo, tmarkName, tmarkClassDesc, imageData1, imageData2, imageData3, imageData4, imageData5, imageData6, tmarkType, tmarkTypeDesc, tmarkColor, tmarkColorDesc, tmarkDraftC, tmarkDraftE, tmarkDraftJ, tmarkSign, wordDescription, goodsclassCode, goodsName, goodsGroup, deadline,volNo1, volNo2, processorName, holderChineseName, holderEnglishName, holderJapaneseName, holderAddress, countryCode, chineseCountryName, agentChineseName, agentAddress) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-        records = [(str(examNo[0]), str(applNo[0]), str(tmarkName[0]), str(tmarkClassDesc[0]), path1[0], path2[0], path3[0], path4[0], path5[0], path6[0], str(tmarkType[0]), str(tmarkTypeDesc[0]), str(tmarkColor[0]), str(tmarkColorDesc[0]), str(tmarkDraftC[0]), str(tmarkDraftE[0]), str(tmarkDraftJ[0]), str(tmarkSign[0]), str(wordDescription[0]), newGoodsclassCode, str(goodsName[0]), str(goodsGroup[0]), deadline, str(volNo1[0]), str(volNo2[0]), str(processorName[0]), newHolderChineseName, newHolderEnglishName, newHolderJapaneseName, newHolderAddress, str(countryCode[0]), str(chineseCountryName[0]), newAgentChineseName, newAgentAddress),]
-        #records = [(str(examNo[0]), str(applNo[0]), str(tmarkName[0]), str(tmarkClassDesc[0]), img1, img2, img3, img4, img5, img6, str(tmarkType[0]), str(tmarkTypeDesc[0]), str(tmarkColor[0]), str(tmarkColorDesc[0]), str(tmarkDraftC[0]), str(tmarkDraftE[0]), str(tmarkDraftJ[0]), str(tmarkSign[0]), str(wordDescription[0]), str(goodsclassCode[0]), str(goodsName[0]), str(goodsGroup[0]), deadline ,str(volNo1[0]), str(volNo2[0]), str(processorName[0]), str(holderChineseName[0]), str(holderEnglishName[0]), str(holderJapaneseName[0]), str(holderAddress[0]), str(countryCode[0]), str(chineseCountryName[0]), str(agentChineseName[0]), str(agentAddress[0])),]
-        cursor.executemany(sqlStuff, records)
-        tmarkdb.commit()
-         
+
+        if len(goodsclassCode) == 100 and len(goodsName) == 100 and len(goodsGroup) == 100 and (holderChineseName)  == 100 and len(holderEnglishName) ==100 and len(holderJapaneseName) == 100 and len(agentChineseName) ==100 and len(agentAddress) == 100:
+            for i in range(0,100):
+                if deadlineOK[i] == 1:
+                    print (deadline[i])
+                    sqlStuff = "INSERT INTO tmarkTable (examNo, applNo, tmarkName, tmarkClassDesc, imageData1, imageData2, imageData3, imageData4, imageData5, imageData6, tmarkType, tmarkTypeDesc, tmarkColor, tmarkColorDesc, tmarkDraftC, tmarkDraftE, tmarkDraftJ, tmarkSign, wordDescription, goodsclassCode, goodsName, goodsGroup, deadline,volNo1, volNo2, processorName, holderChineseName, holderEnglishName, holderJapaneseName, holderAddress, countryCode, chineseCountryName, agentChineseName, agentAddress) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+                    records = [(str(examNo[i]), str(applNo[i]), str(tmarkName[i]), str(tmarkClassDesc[i]), path1[i], path2[i], path3[i], path4[i], path5[i], path6[i], str(tmarkType[i]), str(tmarkTypeDesc[i]), str(tmarkColor[i]), str(tmarkColorDesc[i]), str(tmarkDraftC[i]), str(tmarkDraftE[i]), str(tmarkDraftJ[i]), str(tmarkSign[i]), str(wordDescription[i]), str(goodsclassCode[i]), str(goodsName[i]), str(goodsGroup[i]), deadline[i], str(volNo1[i]), str(volNo2[i]), str(processorName[i]), str(holderChineseName[i]), str(holderEnglishName[i]), str(holderJapaneseName[i]), str(holderAddress[i]), str(countryCode[i]), str(chineseCountryName[i]), str(agentChineseName[i]), str(agentAddress[i])),]
+                    #records = [(str(examNo[0]), str(applNo[0]), str(tmarkName[0]), str(tmarkClassDesc[0]), img1, img2, img3, img4, img5, img6, str(tmarkType[0]), str(tmarkTypeDesc[0]), str(tmarkColor[0]), str(tmarkColorDesc[0]), str(tmarkDraftC[0]), str(tmarkDraftE[0]), str(tmarkDraftJ[0]), str(tmarkSign[0]), str(wordDescription[0]), str(goodsclassCode[0]), str(goodsName[0]), str(goodsGroup[0]), deadline ,str(volNo1[0]), str(volNo2[0]), str(processorName[0]), str(holderChineseName[0]), str(holderEnglishName[0]), str(holderJapaneseName[0]), str(holderAddress[0]), str(countryCode[0]), str(chineseCountryName[0]), str(agentChineseName[0]), str(agentAddress[0])),]
+                    cursor.executemany(sqlStuff, records)
+                    tmarkdb.commit()
+                else:
+                    print (deadline[i])
+                    continue
+        else:
+            for i in range(0,100):
+                if deadlineOK[i] == 1:
+                    print (deadline[i])
+                    sqlStuff = "INSERT INTO tmarkTable (examNo, applNo, tmarkName, tmarkClassDesc, imageData1, imageData2, imageData3, imageData4, imageData5, imageData6, tmarkType, tmarkTypeDesc, tmarkColor, tmarkColorDesc, tmarkDraftC, tmarkDraftE, tmarkDraftJ, tmarkSign, wordDescription, goodsclassCode, goodsName, goodsGroup, deadline,volNo1, volNo2, processorName, holderChineseName, holderEnglishName, holderJapaneseName, holderAddress, countryCode, chineseCountryName, agentChineseName, agentAddress) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+                    records = [(str(examNo[i]), str(applNo[i]), str(tmarkName[i]), str(tmarkClassDesc[i]), path1[i], path2[i], path3[i], path4[i], path5[i], path6[i], str(tmarkType[i]), str(tmarkTypeDesc[i]), str(tmarkColor[i]), str(tmarkColorDesc[i]), str(tmarkDraftC[i]), str(tmarkDraftE[i]), str(tmarkDraftJ[i]), str(tmarkSign[i]), str(wordDescription[i]), '', '', '', deadline[i], str(volNo1[i]), str(volNo2[i]), str(processorName[i]), '', '', '', '', str(countryCode[0]), str(chineseCountryName[0]), '', ''),]
+                    #records = [(str(examNo[0]), str(applNo[0]), str(tmarkName[0]), str(tmarkClassDesc[0]), img1, img2, img3, img4, img5, img6, str(tmarkType[0]), str(tmarkTypeDesc[0]), str(tmarkColor[0]), str(tmarkColorDesc[0]), str(tmarkDraftC[0]), str(tmarkDraftE[0]), str(tmarkDraftJ[0]), str(tmarkSign[0]), str(wordDescription[0]), str(goodsclassCode[0]), str(goodsName[0]), str(goodsGroup[0]), deadline ,str(volNo1[0]), str(volNo2[0]), str(processorName[0]), str(holderChineseName[0]), str(holderEnglishName[0]), str(holderJapaneseName[0]), str(holderAddress[0]), str(countryCode[0]), str(chineseCountryName[0]), str(agentChineseName[0]), str(agentAddress[0])),]
+                    cursor.executemany(sqlStuff, records)
+                    tmarkdb.commit()
+                else:
+                    print (deadline[i])
+                    continue
+               
     else:
         break
         
