@@ -42,11 +42,22 @@ for index in range(43415 ,3000000):
     print("index = " + str(index))
 
     dataNo = 1
+    
+    if each.xpath("./td[2]/text()[.!= '']"):    
+ 
+    self.positionType = each.xpath("./td[2]/text()").extract()[0]
+ 
+else:
+    self.positionType = "未知"
+
+
+    """
     for t in tree.xpath("/API/tmarkrights/tmarkcontent"):
         if t.attrib.has_key('sequence'):
             string0= cop.sub('', str(t.attrib.has_key))
-
-        if isOK == ['ok']:
+    """
+    for dataNo in range(0,50):
+        if isOK == ['0'] and str(dataNo) == str(string0):
             deadline= [t.text for t in tree.xpath("/API/tmarkrights/tmarkcontent/deadline")]
             #print(deadline)
             if len(deadline) == 0 or deadline == [None]:
