@@ -147,7 +147,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
                 f.write('\n')
         elif self.CurrentData == "image-data-2":
             print ("imageData2 = " +  self.imagedata2)
-            img_url = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
+            img_url = self.imagedata2.replace(u'jpgformatName', u'jpg&formatName')
             img_url = img_url.replace(u'jpegpath', u'jpg&path')
             if len(self.imagedata2) !=0:
                 path = './picBase2/'+str(exNo)+'-2.png'
@@ -158,7 +158,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
                 f.write('\n')
         elif self.CurrentData == "image-data-3":
             print ("imageData3 = " +  self.imagedata3)
-            img_url = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
+            img_url = self.imagedata3.replace(u'jpgformatName', u'jpg&formatName')
             img_url = img_url.replace(u'jpegpath', u'jpg&path')
             if len(self.imagedata3) !=0:
                 path = './picBase2/'+str(exNo)+'-3.png'
@@ -169,7 +169,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
                 f.write('\n')
         elif self.CurrentData == "image-data-4":
             print ("imageData4 = " +  self.imagedata4)
-            img_url = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
+            img_url = self.imagedata4.replace(u'jpgformatName', u'jpg&formatName')
             img_url = img_url.replace(u'jpegpath', u'jpg&path')
             if len(self.imagedata4) !=0:
                 path = './picBase2/'+str(exNo)+'-4.png'
@@ -180,7 +180,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
                 f.write('\n')
         elif self.CurrentData == "image-data-5":
             print ("imageData5 = " +  self.imagedata5)
-            img_url = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
+            img_url = self.imagedata5.replace(u'jpgformatName', u'jpg&formatName')
             img_url = img_url.replace(u'jpegpath', u'jpg&path')
             if len(self.imagedata5) !=0:
                 path = './picBase2/'+str(exNo)+'-5.png'
@@ -191,7 +191,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
                 f.write('\n')
         elif self.CurrentData == "image-data-6":
             print ("imageData6 = " +  self.imagedata6)
-            img_url = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
+            img_url = self.imagedata6.replace(u'jpgformatName', u'jpg&formatName')
             img_url = img_url.replace(u'jpegpath', u'jpg&path')
             if len(self.imagedata6) !=0:
                 path = './picBase2/'+str(exNo)+'-6.png'
