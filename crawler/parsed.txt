@@ -1,0 +1,534 @@
+start
+examNo = 00007701
+applNo = 000007701
+tmarkName = 森永（墨色）
+tmarkClassDesc = 商標
+imageData1 = ./picBase2/00007701-1.png
+imageData2 = ./picBase2/00007701-2.png
+imageData3 = ./picBase2/00007701-3.png
+imageData4 = ./picBase2/00007701-4.png
+imageData5 = ./picBase2/00007701-5.png
+imageData6 = ./picBase2/00007701-6.png
+tmarkType = 3
+tmarkTypeDesc = 平面
+tmarkColor = 
+tmarkColorDesc = 墨色
+tmarkDraftC = 森永
+tmarkDraftE = 
+tmarkDraftJ = 
+tmarkSign = 
+wordDescription = 
+goodsclassCode = 473
+goodsName = 奶粉、代乳粉。
+goodsGroup = 0503、0512、2901、290103
+goodsGroup = 
+
+goodsGroup = 
+
+deadline = 2028/02/29
+volNo1 = 
+volNo2 = 
+processorName = 
+holderChineseName = 森永乳業股份有限公司
+holderEnglishName = 
+holderJapaneseName = 森永乳業株式会社
+holderAddress = 日本
+chineseCountryName = 日本
+chineseCountryName = 
+
+chineseCountryName = 
+
+agentChineseName = 賴經臣　宿希成
+agentAddress = 臺北市松山區南京東路3段346號11樓
+agentAddress = 
+
+agentAddress = 
+
+agentAddress = 
+
+agentAddress = 
+
+start
+examNo = 00007702
+applNo = 000007702
+tmarkName = MORINAGA(墨色)
+tmarkClassDesc = 商標(原聯合商標)
+imageData1 = ./picBase2/00007702-1.png
+imageData2 = ./picBase2/00007702-2.png
+imageData3 = ./picBase2/00007702-3.png
+imageData4 = ./picBase2/00007702-4.png
+imageData5 = ./picBase2/00007702-5.png
+imageData6 = ./picBase2/00007702-6.png
+tmarkType = 3
+tmarkTypeDesc = 平面
+tmarkColor = 
+tmarkColorDesc = 墨色
+tmarkDraftC = 
+
+tmarkDraftE = MORINAGA
+tmarkDraftJ = 
+
+tmarkSign = 
+
+wordDescription = 
+
+goodsclassCode = 473
+goodsName = 奶粉、代乳粉。
+goodsGroup = 0503、0512、2901、290103
+goodsGroup = 
+
+goodsGroup = 
+
+deadline = 2028/02/29
+volNo1 = 
+
+volNo2 = 
+
+processorName = 
+
+holderChineseName = 森永乳業股份有限公司
+holderEnglishName = 
+
+holderJapaneseName = 森永乳業株式会社
+holderAddress = 日本
+chineseCountryName = 日本
+chineseCountryName = 
+
+chineseCountryName = 
+
+agentChineseName = 賴經臣　宿希成
+agentAddress = 臺北市松山區南京東路3段346號11樓
+agentAddress = 
+
+agentAddress = 
+
+agentAddress = 
+
+agentAddress = 
+
+start
+examNo = 00007703
+applNo = 000007703
+tmarkName = 天使牌（墨色）
+tmarkClassDesc = 商標
+imageData1 = ./picBase2/00007703-1.png
+imageData2 = ./picBase2/00007703-2.png
+imageData3 = ./picBase2/00007703-3.png
+imageData4 = ./picBase2/00007703-4.png
+imageData5 = ./picBase2/00007703-5.png
+imageData6 = ./picBase2/00007703-6.png
+tmarkType = 3
+tmarkTypeDesc = 平面
+tmarkColor = 
+tmarkColorDesc = 墨色
+tmarkDraftC = 
+
+tmarkDraftE = 
+
+tmarkDraftJ = 
+
+tmarkSign = 
+
+wordDescription = 
+
+goodsclassCode = 473
+goodsName = 奶粉、代乳粉。
+goodsGroup = 0503、0512、2901、290103
+goodsGroup = 
+
+goodsGroup = 
+
+deadline = 2018/02/28
+volNo1 = 
+
+volNo2 = 
+
+processorName = 
+
+holderChineseName = 森永乳業股份有限公司
+holderEnglishName = 
+
+holderJapaneseName = 森永乳業株式会社
+holderAddress = 日本
+chineseCountryName = 日本
+chineseCountryName = 
+
+chineseCountryName = 
+
+agentChineseName = 賴經臣　宿希成
+agentAddress = 臺北市松山區南京東路3段346號11樓
+agentAddress = 
+
+agentAddress = 
+
+agentAddress = 
+
+agentAddress = 
+
+start
+examNo = 00007704
+applNo = 000007704
+tmarkName = PARLIAMENT  DEVICE（墨色）
+tmarkClassDesc = 商標
+imageData1 = ./picBase2/00007704-1.png
+imageData2 = ./picBase2/00007704-2.png
+imageData3 = ./picBase2/00007704-3.png
+imageData4 = ./picBase2/00007704-4.png
+imageData5 = ./picBase2/00007704-5.png
+imageData6 = ./picBase2/00007704-6.png
+tmarkType = 3
+tmarkTypeDesc = 平面
+tmarkColor = 
+tmarkColorDesc = 墨色
+tmarkDraftC = 
+
+tmarkDraftE = PARLIAMENT
+tmarkDraftJ = 
+
+tmarkSign = 
+
+wordDescription = 
+
+goodsclassCode = 491
+goodsName = 各種煙絲捲煙，菸，菸草，菸葉，香煙，雪茄。
+goodsGroup = 3401、351937
+goodsGroup = 
+
+goodsGroup = 
+
+deadline = 2028/02/29
+volNo1 = 
+
+volNo2 = 
+
+processorName = 
+
+holderChineseName = 菲利普莫里斯品牌公司
+holderEnglishName = PHILIP MORRIS BRANDS SARL
+holderJapaneseName = 
+
+holderAddress = 瑞士
+chineseCountryName = 瑞士
+chineseCountryName = 
+
+chineseCountryName = 
+
+agentChineseName = 陳長文
+agentAddress = 臺北市信義區忠孝東路4段555號8樓
+agentAddress = 
+
+agentChineseName = 楊適賓
+agentAddress = 臺北市信義區忠孝東路4段555號8樓
+agentAddress = 
+
+agentAddress = 
+
+agentAddress = 
+
+agentAddress = 
+
+start
+examNo = 00007705
+applNo = 000007705
+tmarkName = 東方牌（墨色）
+tmarkClassDesc = 商標
+imageData1 = ./picBase2/00007705-1.png
+imageData2 = ./picBase2/00007705-2.png
+imageData3 = ./picBase2/00007705-3.png
+imageData4 = ./picBase2/00007705-4.png
+imageData5 = ./picBase2/00007705-5.png
+imageData6 = ./picBase2/00007705-6.png
+tmarkType = 3
+tmarkTypeDesc = 平面
+tmarkColor = 
+tmarkColorDesc = 墨色
+tmarkDraftC = 
+
+tmarkDraftE = 
+
+tmarkDraftJ = 
+
+tmarkSign = 
+
+wordDescription = 
+
+deadline = 1978/02/28
+volNo1 = 
+
+volNo2 = 
+
+processorName = 
+
+holderChineseName = 漱竹居化學工廠　洪鄭寶月
+holderEnglishName = 
+
+holderJapaneseName = 
+
+holderAddress = 臺南市民權路121號
+chineseCountryName = 中華民國
+chineseCountryName = 
+
+chineseCountryName = 
+
+agentChineseName = 蔡炳輝
+agentAddress = 
+
+agentAddress = 
+
+agentAddress = 
+
+agentAddress = 
+
+agentAddress = 
+
+start
+examNo = 00007706
+applNo = 000007706
+tmarkName = １００    （紅色）
+tmarkClassDesc = 商標(原聯合商標)
+imageData1 = ./picBase2/00007706-1.png
+imageData2 = ./picBase2/00007706-2.png
+imageData3 = ./picBase2/00007706-3.png
+imageData4 = ./picBase2/00007706-4.png
+imageData5 = ./picBase2/00007706-5.png
+imageData6 = ./picBase2/00007706-6.png
+tmarkType = 3
+tmarkTypeDesc = 平面
+tmarkColor = 
+tmarkColorDesc = 紅色
+tmarkDraftC = 
+
+tmarkDraftE = 
+
+tmarkDraftJ = 
+
+tmarkSign = 
+
+wordDescription = 
+
+goodsclassCode = 521
+goodsName = 鋼筆鉛筆原子筆商品。
+goodsGroup = 
+
+goodsGroup = 
+
+goodsGroup = 
+
+deadline = 1977/09/30
+volNo1 = 
+
+volNo2 = 
+
+processorName = 
+
+holderChineseName = 德慶貿易股份有限公司
+holderEnglishName = 
+
+holderJapaneseName = 
+
+holderAddress = 臺北市中山區中山北路2段44巷213號
+chineseCountryName = 中華民國
+chineseCountryName = 
+
+chineseCountryName = 
+
+start
+examNo = 00007707
+applNo = 000007707
+tmarkName = 俾斯麥（藍色）
+tmarkClassDesc = 商標
+imageData1 = ./picBase2/00007707-1.png
+imageData2 = ./picBase2/00007707-2.png
+imageData3 = ./picBase2/00007707-3.png
+imageData4 = ./picBase2/00007707-4.png
+imageData5 = ./picBase2/00007707-5.png
+imageData6 = ./picBase2/00007707-6.png
+tmarkType = 3
+tmarkTypeDesc = 平面
+tmarkColor = 
+tmarkColorDesc = 藍色
+tmarkDraftC = 
+
+tmarkDraftE = 
+
+tmarkDraftJ = 
+
+tmarkSign = 
+
+wordDescription = 
+
+goodsclassCode = 522
+goodsName = 墨水墨汁印水商品。
+goodsGroup = 
+
+goodsGroup = 
+
+goodsGroup = 
+
+deadline = 1978/02/28
+volNo1 = 
+
+volNo2 = 
+
+processorName = 
+
+holderChineseName = 德慶貿易股份有限公司
+holderEnglishName = 
+
+holderJapaneseName = 
+
+holderAddress = 臺北市中山區長春路70號
+chineseCountryName = 中華民國
+chineseCountryName = 
+
+chineseCountryName = 
+
+start
+examNo = 00007708
+applNo = 000007708
+tmarkName = 將軍牌（藍色）
+tmarkClassDesc = 商標
+imageData1 = ./picBase2/00007708-1.png
+imageData2 = ./picBase2/00007708-2.png
+imageData3 = ./picBase2/00007708-3.png
+imageData4 = ./picBase2/00007708-4.png
+imageData5 = ./picBase2/00007708-5.png
+imageData6 = ./picBase2/00007708-6.png
+tmarkType = 3
+tmarkTypeDesc = 平面
+tmarkColor = 
+tmarkColorDesc = 藍色
+tmarkDraftC = 將軍
+tmarkDraftE = GENERAL
+tmarkDraftJ = 
+
+tmarkSign = 
+
+wordDescription = 
+
+goodsclassCode = 522
+goodsName = 墨水， 墨汁印水
+goodsGroup = 1610、1612、161202
+goodsGroup = 
+
+goodsGroup = 
+
+deadline = 
+
+volNo1 = 
+
+volNo2 = 
+
+processorName = 
+
+holderChineseName = 德慶貿易行　王德順
+holderEnglishName = 
+
+holderJapaneseName = 
+
+holderAddress = 臺北市南西街38號
+chineseCountryName = 中華民國
+chineseCountryName = 
+
+chineseCountryName = 
+
+start
+examNo = 00007709
+applNo = 000007709
+tmarkName = 萬能（墨色）
+tmarkClassDesc = 商標
+imageData1 = ./picBase2/00007709-1.png
+imageData2 = ./picBase2/00007709-2.png
+imageData3 = ./picBase2/00007709-3.png
+imageData4 = ./picBase2/00007709-4.png
+imageData5 = ./picBase2/00007709-5.png
+imageData6 = ./picBase2/00007709-6.png
+tmarkType = 3
+tmarkTypeDesc = 平面
+tmarkColor = 
+tmarkColorDesc = 墨色
+tmarkDraftC = 萬能
+tmarkDraftE = 
+
+tmarkDraftJ = 
+
+tmarkSign = 
+
+wordDescription = 
+
+goodsclassCode = 525
+goodsName = 印泥，印台，應屬於本項之其他商品~
+goodsGroup = 1610、1612
+goodsGroup = 
+
+goodsGroup = 
+
+deadline = 1998/02/28
+volNo1 = 
+
+volNo2 = 
+
+processorName = 
+
+holderChineseName = 三星文具廠有限公司
+holderEnglishName = 
+
+holderJapaneseName = 
+
+holderAddress = 臺北市萬華區興義街5號
+chineseCountryName = 中華民國
+chineseCountryName = 
+
+chineseCountryName = 
+
+start
+examNo = 00007710
+applNo = 000007710
+tmarkName = 東方牌（墨色）
+tmarkClassDesc = 商標
+imageData1 = ./picBase2/00007710-1.png
+imageData2 = ./picBase2/00007710-2.png
+imageData3 = ./picBase2/00007710-3.png
+imageData4 = ./picBase2/00007710-4.png
+imageData5 = ./picBase2/00007710-5.png
+imageData6 = ./picBase2/00007710-6.png
+tmarkType = 3
+tmarkTypeDesc = 平面
+tmarkColor = 
+tmarkColorDesc = 墨色
+tmarkDraftC = 
+
+tmarkDraftE = 
+
+tmarkDraftJ = 
+
+tmarkSign = 
+
+wordDescription = 
+
+goodsclassCode = 525
+goodsName = 雙脚釘雞眼釘及應屬於本項之其他商品。
+goodsGroup = 
+
+goodsGroup = 
+
+goodsGroup = 
+
+deadline = 1978/02/28
+volNo1 = 
+
+volNo2 = 
+
+processorName = 
+
+holderChineseName = 文苑企業股份有限公司
+holderEnglishName = 
+
+holderJapaneseName = 
+
+holderAddress = 臺南市民權路173號
+chineseCountryName = 中華民國
+chineseCountryName = 
+
+chineseCountryName = 
+

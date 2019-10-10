@@ -110,7 +110,41 @@ class tmarkHandler( xml.sax.ContentHandler ):
 
     # 元素结束事件处理
     def endElement(self, tag):
-        global exNo
+        global examNo
+        global applNo
+        global tmarkName
+        global tmarkClassDesc
+        global imageData1
+        global imageData2
+        global imageData3
+        global imageData4
+        global imageData5
+        global imageData6
+        global tmarkType
+        global tmarkTypeDesc
+        global tmarkColor
+        global tmarkColorDesc
+        global tmarkDraftC
+        global tmarkDraftE
+        global tmarkDraftJ
+        global tmarkSign
+        global wordDescription
+        global goodsclassCode
+        global goodsName
+        global goodsGroup
+        global deadline
+        global volNo1
+        global volNo2
+        global processorName
+        global holderChineseName
+        global holderEnglishName
+        global holderJapaneseName
+        global holderAddress
+        global countryCode
+        global chineseCountryName
+        global agentChineseName
+        global agentAddress
+        
         if self.CurrentData == "exam-no":
             print ("examNo = " +  self.examno)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
@@ -118,210 +152,233 @@ class tmarkHandler( xml.sax.ContentHandler ):
                 f.write('\n')
                 f.write("examNo = " +  self.examno)
                 f.write('\n')
-                exNo = self.examno
+                examNo = self.examno
         elif self.CurrentData == "appl-no":
             print ("applNo = " +  self.applno)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("applNo = " +  self.applno)
                 f.write('\n')
+                applNo = self.applno
         elif self.CurrentData == "tmark-name":
             print ("tmarkName = " +  self.tmarkname)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("tmarkName = " +  self.tmarkname)
                 f.write('\n')
+                tmarkName = self.tmarkname
         elif self.CurrentData == "tmark-class-desc":
             print ("tmarkClassDesc = " +  self.tmarkClassDesc)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("tmarkClassDesc = " +  self.tmarkClassDesc)
                 f.write('\n')
+                tmarkClassDesc = self.tmarkClassDesc
         elif self.CurrentData == "image-data-1":
+            print (examNo)
             print ("imageData1 = " +  self.imagedata1)
             img_url = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
             img_url = img_url.replace(u'jpegpath', u'jpg&path')
-            if len(self.imagedata1) !=0:
-                path = './picBase2/'+str(exNo)+'-1.png'
-            else:
-                path = ""
+            path1 = ['./picBase2/'+examNo+'-1.png']
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
-                f.write("imageData1 = " +  path)
+                f.write("imageData1 = " +  img_url)
                 f.write('\n')
+                imageData1 = path1
         elif self.CurrentData == "image-data-2":
             print ("imageData2 = " +  self.imagedata2)
             img_url = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
             img_url = img_url.replace(u'jpegpath', u'jpg&path')
-            if len(self.imagedata1) !=0:
-                path = './picBase2/'+str(exNo)+'-2.png'
-            else:
-                path = ""
+            path2 = ['./picBase2/'+examNo+'-2.png']
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
-                f.write("imageData2 = " +  path)
+                f.write("imageData2 = " +  img_url)
                 f.write('\n')
+                imageData2 = path2
         elif self.CurrentData == "image-data-3":
             print ("imageData3 = " +  self.imagedata3)
             img_url = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
             img_url = img_url.replace(u'jpegpath', u'jpg&path')
-            if len(self.imagedata1) !=0:
-                path = './picBase2/'+str(exNo)+'-3.png'
-            else:
-                path = ""
+            path3 = ['./picBase2/'+examNo+'-3.png']
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
-                f.write("imageData3 = " +  path)
+                f.write("imageData3 = " +  img_url)
                 f.write('\n')
+                imageData3 = path3
         elif self.CurrentData == "image-data-4":
             print ("imageData4 = " +  self.imagedata4)
             img_url = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
             img_url = img_url.replace(u'jpegpath', u'jpg&path')
-            if len(self.imagedata1) !=0:
-                path = './picBase2/'+str(exNo)+'-4.png'
-            else:
-                path = ""
+            path4 = ['./picBase2/'+examNo+'-4.png']
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
-                f.write("imageData4 = " +  path)
+                f.write("imageData4 = " +  img_url)
                 f.write('\n')
+                imageData4 = path4
         elif self.CurrentData == "image-data-5":
             print ("imageData5 = " +  self.imagedata5)
             img_url = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
             img_url = img_url.replace(u'jpegpath', u'jpg&path')
-            if len(self.imagedata1) !=0:
-                path = './picBase2/'+str(exNo)+'-5.png'
-            else:
-                path = ""
+            path5 = ['./picBase2/'+examNo+'-5png']
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
-                f.write("imageData5 = " +  path)
+                f.write("imageData5 = " +  img_url)
                 f.write('\n')
+                imageData5= path5
         elif self.CurrentData == "image-data-6":
             print ("imageData6 = " +  self.imagedata6)
             img_url = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
             img_url = img_url.replace(u'jpegpath', u'jpg&path')
-            if len(self.imagedata1) !=0:
-                path = './picBase2/'+str(exNo)+'-6.png'
-            else:
-                path = ""
+            path6 = ['./picBase2/'+examNo+'-6.png']
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
-                f.write("imageData6 = " +  path)
+                f.write("imageData6 = " +  img_url)
                 f.write('\n')
+                imageData6= path6
         elif self.CurrentData == "tmark-type":
             print ("tmarkType = " +  self.tmarktype)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("tmarkType = " +  self.tmarktype)
                 f.write('\n')
+                tmarkType= self.tmarktype
         elif self.CurrentData == "tmark-type-desc":
             print ("tmarkTypeDesc = " +  self.tmarktypedesc)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("tmarkTypeDesc = " +  self.tmarktypedesc)
                 f.write('\n')
+                tmarkTypeDesc= self.tmarktypedesc
         elif self.CurrentData == "tmark-color":
             print ("tmarkColor = " +  self.tmarkcolor)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("tmarkColor = " +  self.tmarkcolor)
                 f.write('\n')
+                tmarkColor= self.tmarkcolor
         elif self.CurrentData == "tmark-color-desc":
             print ("tmarkColorDesc = " +  self.tmarkcolordesc)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("tmarkColorDesc = " +  self.tmarkcolordesc)
                 f.write('\n')
+                tmarkColorDesc= self.tmarkcolordesc
         elif self.CurrentData == "tmark-draft-c":
             print ("tmarkDraftC = " +  self.tmarkdraftc)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("tmarkDraftC = " +  self.tmarkdraftc)
                 f.write('\n')
+                tmarkDraftC= self.tmarkdraftc
         elif self.CurrentData == "tmark-draft-e":
             print ("tmarkDraftE = " +  self.tmarkdrafte)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("tmarkDraftE = " +  self.tmarkdrafte)
                 f.write('\n')
+                tmarkDraftE= self.tmarkdrafte
         elif self.CurrentData == "tmark-draft-j":
             print ("tmarkDraftJ = " +  self.tmarkdraftj)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("tmarkDraftJ = " +  self.tmarkdraftj)
                 f.write('\n')
+                tmarkDraftJ= self.tmarkdraftj
         elif self.CurrentData == "tmark-sign":
             print ("tmarkSign = " +  self.tmarksign)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("tmarkSign = " +  self.tmarksign)
                 f.write('\n')
+                tmarkSign= self.tmarksign
         elif self.CurrentData == "word-description":
             print ("wordDescription = " +  self.worddescription)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("wordDescription = " +  self.worddescription)
                 f.write('\n')
+                wordDescription= self.worddescription
         elif self.CurrentData == "goodsclass-code":
             print ("goodsclassCode = " +  self.goodsclasscode)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("goodsclassCode = " +  self.goodsclasscode)
                 f.write('\n')
+                goodsclassCode= self.goodsclasscode
         elif self.CurrentData == "goods-name":
             print ("goodsName = " +  self.goodsname)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("goodsName = " +  self.goodsname)
                 f.write('\n')
+                goodsName= self.goodsname
         elif self.CurrentData == "goods-group":
             print ("goodsGroup = " +  self.goodsgroup)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("goodsGroup = " +  self.goodsgroup)
                 f.write('\n')
+                goodsGroup= self.goodsgroup
+                
         elif self.CurrentData == "deadline":
             print ("deadline = " +  self.deadline)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("deadline = " +  self.deadline)
                 f.write('\n')
+                deadline = self.deadline
         elif self.CurrentData == "vol-no1":
             print ("volNo1 = " +  self.volno1)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("volNo1 = " +  self.volno1)
                 f.write('\n')
+                volNo1 = self.volno1
         elif self.CurrentData == "vol-no2":
             print ("volNo2 = " +  self.volno2)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("volNo2 = " +  self.volno2)
                 f.write('\n')
+                volNo2 = self.volno2
         elif self.CurrentData == "processor-name":
             print ("processorName = " + self.processorname)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("processorName = " + self.processorname)
                 f.write('\n')
+                processorName = self.processorname
         elif self.CurrentData == "chinese-name":
             print ("holderChineseName = " + self.chinesename)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("holderChineseName = " + self.chinesename)
                 f.write('\n')
+                holderChineseName = self.chinesename
         elif self.CurrentData == "english-name":
             print ("holderEnglishName = " + self.englishname)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("holderEnglishName = " + self.englishname)
                 f.write('\n')
+                holderEnglishName = self.englishname
         elif self.CurrentData == "japanese-name":
             print ("holderJapaneseName = " + self.japanesename)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("holderJapaneseName = " + self.japanesename)
                 f.write('\n')
+                holderJapaneseName = self.japanesename
         elif self.CurrentData == "address":
             print ("holderAddress = " + self.address)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("holderAddress = " + self.address)
                 f.write('\n')
+                holderAddress = self.address
         elif self.CurrentData == "country-code ":
             print ("countryCode = " + self.countrycode)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("countryCode = " + self.countrycode)
                 f.write('\n')
+                countryCode = self.countrycode
         elif self.CurrentData == "chinese-country-name":
             print ("chineseCountryName = " + self.chinesecountryname)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("chineseCountryName = " + self.chinesecountryname)
                 f.write('\n')
+                chineseCountryName = self.chinesecountryname
         elif self.CurrentData == "agent-chinese-name":
             print ("agentChineseName = " + self.agentchinesename)
             self.agentchinesename.replace(u'\u3000', u' ')
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("agentChineseName = " + self.agentchinesename)
                 f.write('\n')
+                agentChineseName = self.agentchinesename
         elif self.CurrentData == "agent-address":
             print ("agentAddress = " + self.agentaddress)
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("agentAddress = " + self.agentaddress)
                 f.write('\n')
-           
+                agentAddress = self.agentaddress
+                
+
+            sqlStuff = "INSERT INTO ttable (indexNo, examNo, applNo, tmarkName, tmarkClassDesc, imageData1, imageData2, imageData3, imageData4, imageData5, imageData6, tmarkType, tmarkTypeDesc, tmarkColor, tmarkColorDesc, tmarkDraftC, tmarkDraftE, tmarkDraftJ, tmarkSign, wordDescription, goodsclassCode, goodsName, goodsGroup, deadline,volNo1, volNo2, processorName, holderChineseName, holderEnglishName, holderJapaneseName, holderAddress, countryCode, chineseCountryName, agentChineseName, agentAddress) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            records = [(str(0), examNo, applNo, tmarkName, tmarkClassDesc, imageData1, imageData2, imageData3, imageData4, imageData5, imageData6, tmarkType, tmarkTypeDesc, tmarkColor, tmarkColorDesc, tmarkDraftC, tmarkDraftE, tmarkDraftJ, tmarkSign, wordDescription, goodsclassCode, goodsName, goodsGroup, deadline, volNo1, volNo2, processorName, holderChineseName, holderEnglishName, holderJapaneseName, holderAddress, "0", chineseCountryName, agentChineseName, agentAddress),]
+            #records = [(str(examNo[0]), str(applNo[0]), str(tmarkName[0]), str(tmarkClassDesc[0]), img1, img2, img3, img4, img5, img6, str(tmarkType[0]), str(tmarkTypeDesc[0]), str(tmarkColor[0]), str(tmarkColorDesc[0]), str(tmarkDraftC[0]), str(tmarkDraftE[0]), str(tmarkDraftJ[0]), str(tmarkSign[0]), str(wordDescription[0]), str(goodsclassCode[0]), str(goodsName[0]), str(goodsGroup[0]), deadline ,str(volNo1[0]), str(volNo2[0]), str(processorName[0]), str(holderChineseName[0]), str(holderEnglishName[0]), str(holderJapaneseName[0]), str(holderAddress[0]), str(countryCode[0]), str(chineseCountryName[0]), str(agentChineseName[0]), str(agentAddress[0])),]
+            cursor.executemany(sqlStuff, records)
+            tmarkdb.commit()
 
     # 内容事件处理
     def characters(self, content):
@@ -453,10 +510,4 @@ if ( __name__ == "__main__"):
     Handler = tmarkHandler()
     parser.setContentHandler( Handler )
     parser.parse("./tmark2.xml")
-    """
-    sqlStuff = "INSERT INTO ttable (indexNo, examNo, applNo, tmarkName, tmarkClassDesc, imageData1, imageData2, imageData3, imageData4, imageData5, imageData6, tmarkType, tmarkTypeDesc, tmarkColor, tmarkColorDesc, tmarkDraftC, tmarkDraftE, tmarkDraftJ, tmarkSign, wordDescription, goodsclassCode, goodsName, goodsGroup, deadline,volNo1, volNo2, processorName, holderChineseName, holderEnglishName, holderJapaneseName, holderAddress, countryCode, chineseCountryName, agentChineseName, agentAddress) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-    records = [(str(index), str(examNo[0]), str(applNo[0]), str(tmarkName[0]), str(tmarkClassDesc[0]), path1[0], path2[0], path3[0], path4[0], path5[0], path6[0], str(tmarkType[0]), str(tmarkTypeDesc[0]), str(tmarkColor[0]), str(tmarkColorDesc[0]), str(tmarkDraftC[0]), str(tmarkDraftE[0]), str(tmarkDraftJ[0]), str(tmarkSign[0]), str(wordDescription[0]), newGoodsClassCode, str(goodsName[0]), str(goodsGroup[0]), deadline, str(volNo1[0]), str(volNo2[0]), str(processorName[0]), newHolderChineseName, newHolderEnglishName, newHolderJapaneseName, newHolderAddress, str(countryCode[0]), str(chineseCountryName[0]), newAgentChineseName, newAgentAddress),]
-    #records = [(str(examNo[0]), str(applNo[0]), str(tmarkName[0]), str(tmarkClassDesc[0]), img1, img2, img3, img4, img5, img6, str(tmarkType[0]), str(tmarkTypeDesc[0]), str(tmarkColor[0]), str(tmarkColorDesc[0]), str(tmarkDraftC[0]), str(tmarkDraftE[0]), str(tmarkDraftJ[0]), str(tmarkSign[0]), str(wordDescription[0]), str(goodsclassCode[0]), str(goodsName[0]), str(goodsGroup[0]), deadline ,str(volNo1[0]), str(volNo2[0]), str(processorName[0]), str(holderChineseName[0]), str(holderEnglishName[0]), str(holderJapaneseName[0]), str(holderAddress[0]), str(countryCode[0]), str(chineseCountryName[0]), str(agentChineseName[0]), str(agentAddress[0])),]
-    cursor.executemany(sqlStuff, records)
-    tmarkdb.commit()
-   """
+
