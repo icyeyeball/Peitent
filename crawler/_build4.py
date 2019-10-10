@@ -149,7 +149,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
             print ("imageData2 = " +  self.imagedata2)
             img_url = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
             img_url = img_url.replace(u'jpegpath', u'jpg&path')
-            if len(self.imagedata1) !=0:
+            if len(self.imagedata2) !=0:
                 path = './picBase2/'+str(exNo)+'-2.png'
             else:
                 path = ""
@@ -160,7 +160,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
             print ("imageData3 = " +  self.imagedata3)
             img_url = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
             img_url = img_url.replace(u'jpegpath', u'jpg&path')
-            if len(self.imagedata1) !=0:
+            if len(self.imagedata3) !=0:
                 path = './picBase2/'+str(exNo)+'-3.png'
             else:
                 path = ""
@@ -171,7 +171,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
             print ("imageData4 = " +  self.imagedata4)
             img_url = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
             img_url = img_url.replace(u'jpegpath', u'jpg&path')
-            if len(self.imagedata1) !=0:
+            if len(self.imagedata4) !=0:
                 path = './picBase2/'+str(exNo)+'-4.png'
             else:
                 path = ""
@@ -182,7 +182,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
             print ("imageData5 = " +  self.imagedata5)
             img_url = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
             img_url = img_url.replace(u'jpegpath', u'jpg&path')
-            if len(self.imagedata1) !=0:
+            if len(self.imagedata5) !=0:
                 path = './picBase2/'+str(exNo)+'-5.png'
             else:
                 path = ""
@@ -193,7 +193,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
             print ("imageData6 = " +  self.imagedata6)
             img_url = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
             img_url = img_url.replace(u'jpegpath', u'jpg&path')
-            if len(self.imagedata1) !=0:
+            if len(self.imagedata6) !=0:
                 path = './picBase2/'+str(exNo)+'-6.png'
             else:
                 path = ""
