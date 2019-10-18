@@ -25,6 +25,7 @@ from bs4 import BeautifulSoup
 
 tmarkdb = mysql.connector.connect( host = "127.0.0.1", user = "root", password = "lehsiao", database = "tmarkdb",  )
 cursor=tmarkdb.cursor()
+deadlindIndex=0
 
 class tmarkHandler( xml.sax.ContentHandler ):
     def __init__(self):
@@ -52,6 +53,15 @@ class tmarkHandler( xml.sax.ContentHandler ):
         self.goodsname = ""
         self.goodsgroup = ""
         self.deadline = ""
+        self.deadline2 = ""
+        self.deadline3 = ""
+        self.deadline4 = ""
+        self.deadline5 = ""
+        self.deadline6 = ""
+        self.deadline7 = ""
+        self.deadline8 = ""
+        self.deadline9 = ""
+        self.deadline10 = ""
         self.volno1 = ""
         self.volno2 = ""
         self.processorname = ""
@@ -94,6 +104,15 @@ class tmarkHandler( xml.sax.ContentHandler ):
             self.goodsname = ""
             self.goodsgroup = ""
             self.deadline = ""
+            self.deadline2 = ""
+            self.deadline3 = ""
+            self.deadline4 = ""
+            self.deadline5 = ""
+            self.deadline6 = ""
+            self.deadline7 = ""
+            self.deadline8 = ""
+            self.deadline9 = ""
+            self.deadline10 = ""
             self.volno1 = ""
             self.volno2 = ""
             self.processorname = ""
@@ -137,23 +156,31 @@ class tmarkHandler( xml.sax.ContentHandler ):
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                     f.write("imageData1 =" +  "")
                     f.write('\n')
+                    f.write("img_url1 =" +  "")
+                    f.write('\n')
             else:
                 img_url1 = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
-                img_url1 = img_url.replace(u'jpegpath', u'jpg&path')
+                img_url1 = img_url1.replace(u'jpegpath', u'jpg&path')
                 path = './picBase/'+str(exNo)+'-1.png'
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                     f.write("imageData1 =" +  path)
+                    f.write('\n')
+                    f.write("img_url1 =" +  img_url1)
                     f.write('\n')
         elif self.CurrentData == "image-data-2":
             if self.imagedata2.startswith('http') == False:
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                     f.write("imageData2 =" +  "")
                     f.write('\n')
+                    f.write("img_url2 =" +  "")
+                    f.write('\n')
             else:
                 img_url2 = self.imagedata2.replace(u'jpgformatName', u'jpg&formatName')
-                img_url2 = img_url.replace(u'jpegpath', u'jpg&path')
+                img_url2 = img_url2.replace(u'jpegpath', u'jpg&path')
                 path = './picBase/'+str(exNo)+'-2.png'
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                    f.write("imageData2 =" +  path)
+                    f.write('\n')
                     f.write("imageData2 =" +  path)
                     f.write('\n')
         elif self.CurrentData == "image-data-3":
@@ -161,48 +188,64 @@ class tmarkHandler( xml.sax.ContentHandler ):
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                     f.write("imageData3 =" +  "")
                     f.write('\n')
+                    f.write("img_url3 =" +  "")
+                    f.write('\n')
             else:
                 img_url3 = self.imagedata3.replace(u'jpgformatName', u'jpg&formatName')
-                img_url3 = img_url.replace(u'jpegpath', u'jpg&path')
+                img_url3 = img_url3.replace(u'jpegpath', u'jpg&path')
                 path = './picBase/'+str(exNo)+'-3.png'
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                     f.write("imageData3 =" +  path)
+                    f.write('\n')
+                    f.write("img_url3 =" +  path)
                     f.write('\n')
         elif self.CurrentData == "image-data-4":
             if self.imagedata4.startswith('http') == False:
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                     f.write("imageData4 =" +  "")
                     f.write('\n')
+                    f.write("img_url4 =" +  "")
+                    f.write('\n')
             else:
                 img_url4 = self.imagedata4.replace(u'jpgformatName', u'jpg&formatName')
-                img_url4 = img_url.replace(u'jpegpath', u'jpg&path')
+                img_url4 = img_url4.replace(u'jpegpath', u'jpg&path')
                 path = './picBase/'+str(exNo)+'-4.png'
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                     f.write("imageData4 =" +  path)
+                    f.write('\n')
+                    f.write("img_url4 =" +  path)
                     f.write('\n')
         elif self.CurrentData == "image-data-5":
             if self.imagedata5.startswith('http') == False:
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                     f.write("imageData5 =" +  "")
                     f.write('\n')
+                    f.write("img_url5 =" +  "")
+                    f.write('\n')
             else:
                 img_url5 = self.imagedata5.replace(u'jpgformatName', u'jpg&formatName')
-                img_url5 = img_url.replace(u'jpegpath', u'jpg&path')
+                img_url5 = img_url5.replace(u'jpegpath', u'jpg&path')
                 path = './picBase/'+str(exNo)+'-5.png'
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                     f.write("imageData5 =" +  path)
+                    f.write('\n')
+                    f.write("img_url5 =" +  path)
                     f.write('\n')
         elif self.CurrentData == "image-data-6":
             if self.imagedata6.startswith('http') == False:
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                     f.write("imageData6 =" +  "")
                     f.write('\n')
+                    f.write("img_url6 =" +  "")
+                    f.write('\n')
             else:
                 img_url6 = self.imagedata6.replace(u'jpgformatName', u'jpg&formatName')
-                img_url6 = img_url.replace(u'jpegpath', u'jpg&path')
+                img_url6 = img_url6.replace(u'jpegpath', u'jpg&path')
                 path = './picBase/'+str(exNo)+'-6.png'
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                     f.write("imageData6 =" +  path)
+                    f.write('\n')
+                    f.write("img_url6 =" +  path)
                     f.write('\n')
         elif self.CurrentData == "tmark-type":
             self.tmarktype.strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
@@ -263,6 +306,42 @@ class tmarkHandler( xml.sax.ContentHandler ):
         elif self.CurrentData == "deadline":
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("deadline =" +  self.deadline)
+                f.write('\n')
+        elif self.CurrentData == "dead2line":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("dead2line =" +  self.deadline2)
+                f.write('\n')
+        elif self.CurrentData == "dead3line":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("dead3line =" +  self.deadline3)
+                f.write('\n')
+        elif self.CurrentData == "dead4line":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("dead4line =" +  self.deadline4)
+                f.write('\n')
+        elif self.CurrentData == "dead5line":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("dead5line =" +  self.deadline5)
+                f.write('\n')
+        elif self.CurrentData == "dead6line":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("dead6line =" +  self.deadline6)
+                f.write('\n')
+        elif self.CurrentData == "dead7line":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("dead7line =" +  self.deadline7)
+                f.write('\n')
+        elif self.CurrentData == "dead8line":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("dead8line =" +  self.deadline8)
+                f.write('\n')
+        elif self.CurrentData == "dead9line":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("dead9line =" +  self.deadline9)
+                f.write('\n')
+        elif self.CurrentData == "dead10line":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("dead10line =" +  self.deadline10)
                 f.write('\n')
         elif self.CurrentData == "vol-no1":
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
@@ -362,6 +441,24 @@ class tmarkHandler( xml.sax.ContentHandler ):
            self.goodsgroup = content
         elif self.CurrentData == "deadline":
            self.deadline = content
+        elif self.CurrentData == "dead2line":
+           self.deadline2 = content
+        elif self.CurrentData == "dead3line":
+           self.deadline3 = content
+        elif self.CurrentData == "dead4line":
+           self.deadline4 = content
+        elif self.CurrentData == "dead5line":
+           self.deadline5 = content
+        elif self.CurrentData == "dead6line":
+           self.deadline6 = content
+        elif self.CurrentData == "dead7line":
+           self.deadline7 = content
+        elif self.CurrentData == "dead8line":
+           self.deadline8 = content
+        elif self.CurrentData == "dead9line":
+           self.deadline9 = content
+        elif self.CurrentData == "dead10line":
+           self.deadline10 = content
         elif self.CurrentData == "vol-no1":
            self.volno1 = content
         elif self.CurrentData == "vol-no2":
@@ -386,9 +483,9 @@ class tmarkHandler( xml.sax.ContentHandler ):
            self.agentaddress = content
            
 
-for index in range(61512, 3000000,300):
+for index in range(552210, 3000000,400):
     #url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=100&skip=7485&orderby=appl-no&tk=ywgvRgZ1'
-    url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=300&skip='+str(index)+'&orderby=appl-no&tk=ywgvRgZ1'
+    url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=400&skip='+str(index)+'&orderby=appl-no&tk=ywgvRgZ1'
     r = requests.get(url, verify=False)
     soup = BeautifulSoup(r.text, 'html.parser')
     f = open("./tmark.xml",'w',encoding="utf-8")
@@ -423,6 +520,36 @@ for index in range(61512, 3000000,300):
             line=re.sub('address','agent-address',line)
             wopen=open("./tmark2.xml",'a',encoding="utf-8")
             wopen.write(line)
+        elif re.search('deadline',line):
+            wopen=open("./tmark2.xml",'a',encoding="utf-8")
+            wopen.write(line)
+            wopen.write('\n')
+            line=re.sub('deadline','dead2line',line)
+            wopen.write(line)
+            wopen.write('\n')
+            line=re.sub('dead2line','dead3line',line)
+            wopen.write(line)
+            wopen.write('\n')
+            line=re.sub('dead3line','dead4line',line)
+            wopen.write(line)
+            wopen.write('\n')
+            line=re.sub('dead4line','dead5line',line)
+            wopen.write(line)
+            wopen.write('\n')
+            line=re.sub('dead5line','dead6line',line)
+            wopen.write(line)
+            wopen.write('\n')
+            line=re.sub('dead6line','dead7line',line)
+            wopen.write(line)
+            wopen.write('\n')
+            line=re.sub('dead7line','dead8line',line)
+            wopen.write(line)
+            wopen.write('\n')
+            line=re.sub('dead8line','dead9line',line)
+            wopen.write(line)
+            wopen.write('\n')
+            line=re.sub('dead9line','dead10line',line)
+            wopen.write(line)
         elif re.search('&amp;',line):
             line=re.sub('&amp;','',line)
             wopen=open("./tmark2.xml",'a',encoding="utf-8")
@@ -444,9 +571,9 @@ for index in range(61512, 3000000,300):
         parser.parse("./tmark2.xml")
         
         indexNo1 = [index]
-        for z in range(1,300):
+        for z in range(1,400):
             indexNo1.append(index + z)
-       
+        deadlindIndex=0
         eleNo = 0
         examNo_l = []
         applNo_l = []
@@ -458,6 +585,14 @@ for index in range(61512, 3000000,300):
         imageData4_l = []
         imageData5_l = []
         imageData6_l = []
+        
+        img_url1_l = []
+        img_url2_l = []
+        img_url3_l = []
+        img_url4_l = []
+        img_url5_l = []
+        img_url6_l = []
+        
         tmarkType_l = []
         tmarkTypeDesc_l = []
         tmarkColor_l = []
@@ -483,6 +618,7 @@ for index in range(61512, 3000000,300):
         agentChineseName_l = []
         agentAddress_l = []
         eleNo = 0
+        deadlindIndex=0
         with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
             f.write('end')
             f.write('\n')
@@ -491,6 +627,7 @@ for index in range(61512, 3000000,300):
             for line in lines:
 
                 if line.startswith('start') == True:
+                    deadlindIndex=0
                     eleNo = 1
                     goodsclassCodel = ""
                     goodsNamel = ""
@@ -516,16 +653,28 @@ for index in range(61512, 3000000,300):
                     tmarkClassDesc_l.append(str(line.strip().replace(u'tmarkClassDesc =', u'')) + "")
                 elif line.startswith('imageData1') == True and eleNo == 1:
                     imageData1_l.append(str(line.strip().replace(u'imageData1 =', u'')) + "")
+                elif line.startswith('img_url1') == True and eleNo == 1:
+                    img_url1_l.append(str(line.strip().replace(u'img_url1 =', u'')) + "")
                 elif line.startswith('imageData2') == True and eleNo == 1:
                     imageData2_l.append(str(line.strip().replace(u'imageData2 =', u'')) + "")
+                elif line.startswith('img_url2') == True and eleNo == 1:
+                    img_url2_l.append(str(line.strip().replace(u'img_url2 =', u'')) + "")
                 elif line.startswith('imageData3') == True and eleNo == 1:
                     imageData3_l.append(str(line.strip().replace(u'imageData3 =', u'')) + "")
+                elif line.startswith('img_url3') == True and eleNo == 1:
+                    img_url3_l.append(str(line.strip().replace(u'img_url3 =', u'')) + "")
                 elif line.startswith('imageData4') == True and eleNo == 1:
                     imageData4_l.append(str(line.strip().replace(u'imageData4 =', u'')) + "")
+                elif line.startswith('img_url4') == True and eleNo == 1:
+                    img_url4_l.append(str(line.strip().replace(u'img_url4 =', u'')) + "")
                 elif line.startswith('imageData5') == True and eleNo == 1:
                     imageData5_l.append(str(line.strip().replace(u'imageData5 =', u'')) + "")
+                elif line.startswith('img_url5') == True and eleNo == 1:
+                    img_url5_l.append(str(line.strip().replace(u'img_url5 =', u'')) + "")
                 elif line.startswith('imageData6') == True and eleNo == 1:
                     imageData6_l.append(str(line.strip().replace(u'imageData6 =', u'')) + "")
+                elif line.startswith('img_url6') == True and eleNo == 1:
+                    img_url6_l.append(str(line.strip().replace(u'img_url6 =', u'')) + "")
                 elif line.startswith('tmarkType') == True and eleNo == 1:
                     tmarkTypel = tmarkTypel + str(line.strip().replace(u'tmarkType =', u'')) + " "
                 elif line.startswith('ttmarkTypeDesc') == True and eleNo == 1:
@@ -550,9 +699,62 @@ for index in range(61512, 3000000,300):
                     goodsNamel = goodsNamel + str(line.strip().replace(u'goodsName =', u'')) + " "
                 elif line.startswith('goodsGroup') == True and eleNo == 1:
                     goodsGroupl = goodsGroupl + str(line.strip().replace(u'goodsGroup =', u'')) + " "
-                elif line.startswith('deadline') == True and eleNo == 1:
-                    if len(line.strip().replace(u'deadline =', u'')) > 0:
-                        deadline_l.append(str(line.strip().replace(u'deadline =', u'')) + "")
+                elif line.startswith('deadline') == True and eleNo == 1 and len(line.strip().replace(u'deadline =', u'')) == 10:
+                    deadline_l.append(str(line.strip().replace(u'deadline =', u'')) + "")
+                    deadlindIndex = 1
+                elif line.startswith('dead2line') == True and eleNo == 1 and deadlindIndex==0 and len(line.strip().replace(u'dead2line =', u'')) == 10:
+                    deadline_l.append(str(line.strip().replace(u'dead2line =', u'')) + "")
+                    with open ("./deadline.txt",'a',encoding = 'utf-8') as f:
+                        f.write("======2======")
+                        f.write('\n')
+                    deadlindIndex = 1
+                elif line.startswith('dead3line') == True and eleNo == 1 and deadlindIndex==0 and len(line.strip().replace(u'dead3line =', u'')) == 10:
+                    deadline_l.append(str(line.strip().replace(u'dead3line =', u'')) + "")
+                    with open ("./deadline.txt",'a',encoding = 'utf-8') as f:
+                        f.write("======3======")
+                        f.write('\n')
+                    deadlindIndex = 1
+                elif line.startswith('dead4line') == True and eleNo == 1 and deadlindIndex==0 and len(line.strip().replace(u'dead4line =', u'')) == 10:
+                    deadline_l.append(str(line.strip().replace(u'dead4line =', u'')) + "")
+                    with open ("./deadline.txt",'a',encoding = 'utf-8') as f:
+                        f.write("======4======")
+                        f.write('\n')
+                    deadlindIndex = 1
+                elif line.startswith('dead5line') == True and eleNo == 1 and deadlindIndex==0 and len(line.strip().replace(u'dead5line =', u'')) == 10:
+                    deadline_l.append(str(line.strip().replace(u'dead5line =', u'')) + "")
+                    with open ("./deadline.txt",'a',encoding = 'utf-8') as f:
+                        f.write("======5======")
+                        f.write('\n')
+                    deadlindIndex = 1
+                elif line.startswith('dead6line') == True and eleNo == 1 and deadlindIndex==0 and len(line.strip().replace(u'dead6line =', u'')) == 10:
+                    deadline_l.append(str(line.strip().replace(u'dead6line =', u'')) + "")
+                    with open ("./deadline.txt",'a',encoding = 'utf-8') as f:
+                        f.write("======6======")
+                        f.write('\n')
+                    deadlindIndex = 1
+                elif line.startswith('dead7line') == True and eleNo == 1 and deadlindIndex==0 and len(line.strip().replace(u'dead7line =', u'')) == 10:
+                    deadline_l.append(str(line.strip().replace(u'dead7line =', u'')) + "")
+                    with open ("./deadline.txt",'a',encoding = 'utf-8') as f:
+                        f.write("======7======")
+                        f.write('\n')
+                    deadlindIndex = 1
+                elif line.startswith('dead8line') == True and eleNo == 1 and deadlindIndex==0 and len(line.strip().replace(u'dead8line =', u'')) == 10:
+                    deadline_l.append(str(line.strip().replace(u'dead8line =', u'')) + "")
+                    with open ("./deadline.txt",'a',encoding = 'utf-8') as f:
+                        f.write("======8======")
+                        f.write('\n')
+                    deadlindIndex = 1
+                elif line.startswith('dead9line') == True and eleNo == 1 and deadlindIndex==0 and len(line.strip().replace(u'dead9line =', u'')) == 10:
+                    deadline_l.append(str(line.strip().replace(u'dead9line =', u'')) + "")
+                    with open ("./deadline.txt",'a',encoding = 'utf-8') as f:
+                        f.write("======9======")
+                        f.write('\n')
+                    deadlindIndex = 1
+                elif line.startswith('dead10line') == True and eleNo == 1 and deadlindIndex==0:
+                    if len(str(line.strip().replace(u'dead9line =', u'')) + "") != 10:
+                        deadline_l.append(str(line.strip().replace(u'dead10line =', u'')) + "")
+                        with open ("./deadline.txt",'a',encoding = 'utf-8') as f:
+                            f.write('\n')
                     else:
                         deadline_l.append("1960/01/01")
                 elif line.startswith('volNo1') == True and eleNo == 1:
@@ -653,12 +855,20 @@ for index in range(61512, 3000000,300):
         print(str(len(countryCode_l))+str(len(chineseCountryName_l)))
         print(str(len(agentChineseName_l))+str(len(agentAddress_l)))
         """
-        for k in range(0,300):
+        for k in range(0,400):
+            print(len(deadline_l))
+            if len(deadline_l) != 400:
+                break
+                break
+                break
+                break
             now = datetime.datetime.today()
             deadline = deadline_l[k]
             if len(deadline) == 0 or deadline == [None]:
                 continue
-            print(indexNo1[k])
+            print("===================")
+            print(str(indexNo1[k]) + '-' + str(examNo_l[k]))
+            print(deadline)
             deadline = deadline.replace('/', '-')
             """
             try:
@@ -680,5 +890,28 @@ for index in range(61512, 3000000,300):
                 records = [(str(indexNo1[k]), str(examNo_l[k]), str(applNo_l[k]), str(tmarkName_l[k]), str(tmarkClassDesc_l[k]), imageData1_l[k], imageData2_l[k], imageData3_l[k], imageData4_l[k], imageData5_l[k], imageData6_l[k], str(tmarkType_l[k]), str(tmarkTypeDesc_l[k]), str(tmarkColor_l[k]), str(tmarkColorDesc_l[k]), str(tmarkDraftC_l[k]), str(tmarkDraftE_l[k]), str(tmarkDraftJ_l[k]), str(tmarkSign_l[k]), str(wordDescription_l[k]), str(goodsclassCode_l[k]), str(goodsName_l[k]), str(goodsGroup_l[k]), deadline_l[k], str(volNo1_l[k]), str(volNo2_l[k]), str(processorName_l[k]), str(holderChineseName_l[k]), str(holderEnglishName_l[k]), str(holderJapaneseName_l[k]), str(holderAddress_l[k]), str(countryCode_l[k]), str(chineseCountryName_l[k]), str(agentChineseName_l[k]), str(agentAddress_l[k])),]
                 cursor.executemany(sqlStuff, records)
                 tmarkdb.commit()
-                if
-    time.sleep(30)
+                if len(img_url1_l[k]) > 0:
+                    r = requests.get(img_url1_l[k])
+                    with open('./picBase/'+str(examNo_l[k])+'-1.png', 'wb') as f:
+                        f.write(r.content)
+                if len(img_url2_l[k]) > 0:
+                    r = requests.get(img_url2_l[k])
+                    with open('./picBase/'+str(examNo_l[k])+'-2.png', 'wb') as f:
+                        f.write(r.content)
+                if len(img_url3_l[k]) > 0:
+                    r = requests.get(img_url3_l[k])
+                    with open('./picBase/'+str(examNo_l[k])+'-3.png', 'wb') as f:
+                        f.write(r.content)
+                if len(img_url4_l[k]) > 0:
+                    r = requests.get(img_url4_l[k])
+                    with open('./picBase/'+str(examNo_l[k])+'-4.png', 'wb') as f:
+                        f.write(r.content)
+                if len(img_url5_l[k]) > 0:
+                    r = requests.get(img_url5_l[k])
+                    with open('./picBase/'+str(examNo_l[k])+'-5.png', 'wb') as f:
+                        f.write(r.content)
+                if len(img_url6_l[k]) > 0:
+                    r = requests.get(img_url6_l[k])
+                    with open('./picBase/'+str(examNo_l[k])+'-6.png', 'wb') as f:
+                        f.write(r.content)
+    time.sleep(6)
