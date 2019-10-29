@@ -75,7 +75,7 @@ with open('google.txt', 'w', encoding = 'utf-8') as f2:
             list_.append(url)
             res = requests.get(url, allow_redirects=False)
             if res.status_code == requests.codes.ok:
-                
+                    
                 soup2 = BeautifulSoup(res.text, 'html.parser') 
                 print (soup2)
                 stories = str(soup2.find_all('p', class_=""))

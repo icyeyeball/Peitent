@@ -13,7 +13,7 @@ class MovieHandler( xml.sax.ContentHandler ):
       self.stars = ""
       self.description = ""
  
-   # 元素开始事件处理
+   # Element start
    def startElement(self, tag, attributes):
       self.CurrentData = tag
       if tag == "movie":
@@ -28,7 +28,7 @@ class MovieHandler( xml.sax.ContentHandler ):
          self.stars = ""
          self.description = ""
  
-   # 元素结束事件处理
+   # Element end
    def endElement(self, tag):
       if self.CurrentData == "type":
          print ("Type:", self.type)
@@ -44,7 +44,7 @@ class MovieHandler( xml.sax.ContentHandler ):
          print ("Description:", self.description)
       self.CurrentData = ""
  
-   # 内容事件处理
+   # content of element
    def characters(self, content):
       if self.CurrentData == "type":
          self.type = content
@@ -61,12 +61,12 @@ class MovieHandler( xml.sax.ContentHandler ):
   
 if ( __name__ == "__main__"):
    
-   # 创建一个 XMLReader
+   # Create a XMLReader
    parser = xml.sax.make_parser()
    # turn off namepsaces
    parser.setFeature(xml.sax.handler.feature_namespaces, 0)
  
-   # 重写 ContextHandler
+   # Rewrite ContextHandler
    Handler = MovieHandler()
    parser.setContentHandler( Handler )
    

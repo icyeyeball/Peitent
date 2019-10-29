@@ -14,7 +14,7 @@ cursor=tmarkdb.cursor()
 print ("=========================")
 print ("column: examNo, applNo, tmarkName, tmarkClassDesc, imageData1, imageData2, imageData3, imageData4, imageData5, imageData6, tmarkType, tmarkTypeDesc, tmarkColor, tmarkColorDesc, tmarkDraftC, tmarkDraftE, tmarkDraftJ, tmarkSign, wordDescription, goodsclassCode, goodsName, goodsGroup, deadline,volNo1, volNo2, processorName, holderChineseName, holderEnglishName, holderJapaneseName, holderAddress, countryCode, chineseCountryName, agentChineseName, agentAddress")
 print ("=========================")
-if len(sys.argv) < 5:
+if len(sys.argv) < 5:   
     print ("Usage: python 要搜索的欄位 條件欄位 條件型態 條件設定")
     print ("e.g.")
     print ("python _search.py tmarkName agentChineseName  LIKE '%長文%'")

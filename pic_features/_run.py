@@ -40,28 +40,20 @@ sampleImage = imutils.resize(sampleImage, width = 300)
 kp1, des1 = sift.detectAndCompute(sampleImage, None) #detect the features of sample
 print (len(files))
 for f in files:
-    print (f)
-for f in files:
     f=queryPath+f
-    print ("1111111111"+str(f))
     queryImage=cv2.imread(f,0)
-    print ("22222222222222"+str(f))
     queryImage = imutils.resize(queryImage, width = 300)
-    
     kp2, des2 = sift.detectAndCompute(queryImage, None) #detect the features of img in database
-    print ("33333333333333333"+str(f))
     matches=flann.knnMatch(des1,des2,k=2) #matched features, assign k=2 to return 2 matched features.
     (matchNum,matchesMask)=getMatchNum(matches,0.9) #set ratio = 0.9 to calculate the matching level
     matchRatio=matchNum*100/len(matches)
     drawParams=dict(matchColor=(0,255,0),  singlePointColor=(0,0,255), matchesMask=matchesMask, flags=0)
-    print ("77777777777777"+str(f))
     sampleImage=cv2.imread(samplePath)
     queryImage=cv2.imread(f)
     #(hA, wA) =sampleImage.shape[:2]  
     #(hB, wB) = queryImage.shape[:2]
     comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1,queryImage,kp2,matches,None,**drawParams)
     #cv2.putText(comparisonImage,str(matchRatio) + "%",(int(wA+wB/2.),int(3.*hB/4.)),cv2.FONT_HERSHEY_PLAIN,int(1.*hB/50.),(0,0,255),4)
-    print ("999999999999999999999"+str(f))
     ratio_l.append(matchRatio)
     vis_l.append(comparisonImage)
     for i in range(0,len(ratio_l)-1): 
@@ -75,7 +67,7 @@ for f in files:
                 vis_l[j+1] = tmpv
                 #print ("i = " + str(i))
                 #print ("j= " + str(j))
-    print ("len(ratio_l) =" +str(len(ratio_l)))
+    #print ("len(ratio_l) =" +str(len(ratio_l)))
     if len(ratio_l) > 20:
         del ratio_l[20]
         del vis_l[20]
@@ -93,7 +85,6 @@ column=4
 row=5
 #绘图显示
 figure,ax=plt.subplots(row,column)
-
 for index in range(0,20):
     ax[int(index/column)][index%column].set_title('Similiarity %.2f%%' % ratio_l[index])
     ax[int(index/column)][index%column].imshow(vis_l[index])
