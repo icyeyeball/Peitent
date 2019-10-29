@@ -73,8 +73,26 @@ class tmarkHandler( xml.sax.ContentHandler ):
         self.chinesecountryname = ""
         self.agentchinesename = ""
         self.agentaddress = ""
-      
-    # 元素开始事件处理
+        self.appldate = ""
+        self.regdate = ""
+        self.regnoticedate = ""
+        self.examnoticedate = ""
+        self.delreason = ""
+        self.examstatus = ""
+        self.extendedstatus = ""
+        
+        self.oppositionstatus = ""
+        self.nullityactstatus = ""
+        self.appldelstatus = ""
+        self.autstatus = ""
+        self.agaautstatus = ""
+        self.amedmentstatus = ""
+        self.transferstatus = ""
+        self.issueoppstatus = ""
+        self.issuedelstatus = ""
+        self.quotastatus = ""
+        self.unableusestatus = ""
+    # Element start
     def startElement(self, tag, attributes):
         self.CurrentData = tag
         if tag == "tmarkcontent ":
@@ -124,10 +142,27 @@ class tmarkHandler( xml.sax.ContentHandler ):
             self.chinesecountryname = ""
             self.agentchinesename = ""
             self.agentaddress = ""
+            self.appldate = ""
+            self.regdate = ""
+            self.regnoticedate = ""
+            self.examnoticedate = ""
+            self.delreason = ""
+            self.examstatus = ""
+            self.extendedstatus = ""
             
-            
+            self.oppositionstatus = ""
+            self.nullityactstatus = ""
+            self.appldelstatus = ""
+            self.autstatus = ""
+            self.agaautstatus = ""
+            self.amedmentstatus = ""
+            self.transferstatus = ""
+            self.issueoppstatus = ""
+            self.issuedelstatus = ""
+            self.quotastatus = ""
+            self.unableusestatus = ""
 
-    # 元素结束事件处理
+    # Element end
     def endElement(self, tag):
         global exNo
         if self.CurrentData == "exam-no":
@@ -181,7 +216,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                     f.write("imageData2 =" +  path)
                     f.write('\n')
-                    f.write("imageData2 =" +  path)
+                    f.write("img_url2 =" +  img_url2)
                     f.write('\n')
         elif self.CurrentData == "image-data-3":
             if self.imagedata3.startswith('http') == False:
@@ -197,7 +232,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                     f.write("imageData3 =" +  path)
                     f.write('\n')
-                    f.write("img_url3 =" +  path)
+                    f.write("img_url3 =" +  img_url3)
                     f.write('\n')
         elif self.CurrentData == "image-data-4":
             if self.imagedata4.startswith('http') == False:
@@ -213,7 +248,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                     f.write("imageData4 =" +  path)
                     f.write('\n')
-                    f.write("img_url4 =" +  path)
+                    f.write("img_url4 =" +  img_url4)
                     f.write('\n')
         elif self.CurrentData == "image-data-5":
             if self.imagedata5.startswith('http') == False:
@@ -229,7 +264,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                     f.write("imageData5 =" +  path)
                     f.write('\n')
-                    f.write("img_url5 =" +  path)
+                    f.write("img_url5 =" +  img_url5)
                     f.write('\n')
         elif self.CurrentData == "image-data-6":
             if self.imagedata6.startswith('http') == False:
@@ -245,31 +280,27 @@ class tmarkHandler( xml.sax.ContentHandler ):
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                     f.write("imageData6 =" +  path)
                     f.write('\n')
-                    f.write("img_url6 =" +  path)
+                    f.write("img_url6 =" +  img_url6)
                     f.write('\n')
         elif self.CurrentData == "tmark-type":
             self.tmarktype.strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("tmarkType =" +  self.tmarktype)
                 f.write('\n')
-                f.write('\n')
         elif self.CurrentData == "tmark-type-desc":
             self.tmarktypedesc.strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("ttmarkTypeDesc =" +  self.tmarktypedesc)
-                f.write('\n')
                 f.write('\n')
         elif self.CurrentData == "tmark-color":
             self.tmarkcolor.strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("tmarkColor =" +  self.tmarkcolor)
                 f.write('\n')
-                f.write('\n')
         elif self.CurrentData == "tmark-color-desc":
             self.tmarkcolordesc.strip().replace(u'\u3000', u' ').replace(u'\xa0', u'  ').replace(u'\ufeff', u'  ')
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("ttmarkColorDesc =" +  self.tmarkcolordesc)
-                f.write('\n')
                 f.write('\n')
         elif self.CurrentData == "tmark-draft-c":
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
@@ -389,9 +420,79 @@ class tmarkHandler( xml.sax.ContentHandler ):
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("agentAddress =" + self.agentaddress)
                 f.write('\n')
-        
+        elif self.CurrentData == "appl-date":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("applDate =" + self.appldate)
+                f.write('\n')
+        elif self.CurrentData == "reg-date":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("regDate =" + self.regdate)
+                f.write('\n')   
+        elif self.CurrentData == "reg-notice-date":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("regNoticeDate =" + self.regnoticedate)
+                f.write('\n')
+        elif self.CurrentData == "exam-notice-date":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("_examNoticeDate =" + self.examnoticedate)
+                f.write('\n')
+        elif self.CurrentData == "del-reason":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("delReason =" + self.delreason)
+                f.write('\n')
+        elif self.CurrentData == "exam-status":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("examStatus =" + self.examstatus)
+                f.write('\n')
+        elif self.CurrentData == "extended-status":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("extendedStatus =" + self.extendedstatus)
+                f.write('\n')
+        elif self.CurrentData == "opposition-status":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("oppositionStatus =" + self.oppositionstatus)
+                f.write('\n')
+        elif self.CurrentData == "nullity-act-status":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("nullityActStatus =" + self.nullityactstatus)
+                f.write('\n')
+        elif self.CurrentData == "appl-del-status":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("applDelStatus =" + self.appldelstatus)
+                f.write('\n')
+        elif self.CurrentData == "aut-status":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("autStatus =" + self.autstatus)
+                f.write('\n')
+        elif self.CurrentData == "aga-aut-status":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("agaAutStatus =" + self.agaautstatus)
+                f.write('\n')
+        elif self.CurrentData == "amedment-status":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("amedmentStatus =" + self.amedmentstatus)
+                f.write('\n')
+        elif self.CurrentData == "transfer-status":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("transferStatus =" + self.transferstatus)
+                f.write('\n')
+        elif self.CurrentData == "issue-opp-status":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("issueOppStatus =" + self.issueoppstatus)
+                f.write('\n')
+        elif self.CurrentData == "issue-del-status":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("issueDelStatus =" + self.issuedelstatus)
+                f.write('\n')
+        elif self.CurrentData == "quota-status":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("quotaStatus =" + self.quotastatus)
+                f.write('\n')
+        elif self.CurrentData == "unable-use-status":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("unableUseStatus =" + self.unableusestatus)
+                f.write('\n')
 
-           
 
     # 内容事件处理
     def characters(self, content):
@@ -473,7 +574,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
            self.japanesename = content
         elif self.CurrentData == "address":
            self.address = content
-        elif self.CurrentData == "country-code ":
+        elif self.CurrentData == "country-code":
            self.countrycode  = content
         elif self.CurrentData == "chinese-country-name":
            self.chinesecountryname = content
@@ -481,9 +582,44 @@ class tmarkHandler( xml.sax.ContentHandler ):
            self.agentchinesename = content
         elif self.CurrentData == "agent-address":
            self.agentaddress = content
+        elif self.CurrentData == "appl-date":
+           self.appldate = content
+        elif self.CurrentData == "reg-date":
+           self.regdate = content
+        elif self.CurrentData == "reg-notice-date":
+           self.regnoticedate = content
+        elif self.CurrentData == "exam-notice-date":
+           self.examnoticedate = content
+        elif self.CurrentData == "del-reason":
+           self.delreason = content
+        elif self.CurrentData == "exam-status":
+           self.examstatus = content
+        elif self.CurrentData == "extended-status":
+           self.extendedstatus = content
+        elif self.CurrentData == "opposition-status":
+           self.oppositionstatus = content
+        elif self.CurrentData == "nullity-act-status":
+           self.nullityactstatus = content
+        elif self.CurrentData == "appl-del-status":
+           self.appldelstatus = content
+        elif self.CurrentData == "aut-status":
+           self.autstatus = content
+        elif self.CurrentData == "aga-aut-status":
+           self.agaautstatus = content
+        elif self.CurrentData == "amedment-status":
+           self.amedmentstatus = content
+        elif self.CurrentData == "transfer-status":
+           self.transferstatus = content
+        elif self.CurrentData == "issue-opp-status":
+           self.issueoppstatus = content
+        elif self.CurrentData == "issue-del-status":
+           self.issuedelstatus = content
+        elif self.CurrentData == "quota-status":
+           self.quotastatus = content
+        elif self.CurrentData == "unable-use-status":
+           self.unableusestatus = content
            
-
-for index in range(552210, 3000000,400):
+for index in range(1585023, 2200000,400):
     #url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=100&skip=7485&orderby=appl-no&tk=ywgvRgZ1'
     url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=400&skip='+str(index)+'&orderby=appl-no&tk=ywgvRgZ1'
     r = requests.get(url, verify=False)
@@ -561,18 +697,15 @@ for index in range(552210, 3000000,400):
     wopen.close()   
 
     if ( __name__ == "__main__"):
-       # 创建一个 XMLReader
+       # Create a XMLReader
         parser = xml.sax.make_parser()
         # turn off namepsaces
         parser.setFeature(xml.sax.handler.feature_namespaces, 0)
-        # 重写 ContextHandler
+        # rewrite ContextHandler
         Handler = tmarkHandler()
         parser.setContentHandler( Handler )
         parser.parse("./tmark2.xml")
         
-        indexNo1 = [index]
-        for z in range(1,400):
-            indexNo1.append(index + z)
         deadlindIndex=0
         eleNo = 0
         examNo_l = []
@@ -617,6 +750,27 @@ for index in range(552210, 3000000,400):
         chineseCountryName_l = []
         agentChineseName_l = []
         agentAddress_l = []
+        applDate_l = []
+        regDate_l = []
+        regNoticeDate_l = []
+        examNoticeDate_l = []
+        delReason_l = []
+        examStatus_l = []
+        extendedStatus_l = []
+        oppositionStatus_l = []
+        nullityActStatus_l = []
+        applDelStatus_l = []
+        autStatus_l = []
+        agaAutStatus_l = []
+        amedmentStatus_l = []
+        transferStatus_l = []
+        issueOppStatus_l = []
+        issueDelStatus_l = []
+        quotaStatus_l = []
+        unableUseStatus_l = []
+        
+
+        
         eleNo = 0
         deadlindIndex=0
         with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
@@ -642,6 +796,7 @@ for index in range(552210, 3000000,400):
                     tmarkTypeDescl = ""
                     tmarkColorl = ""
                     tmarkColorDescl = ""
+                    countryCodel  =""
                     chineseCountryNamel = ""
                 elif line.startswith('examNo') == True and eleNo == 1:
                     examNo_l.append(str(line.strip().replace(u'examNo =', u'')) + "")
@@ -658,7 +813,7 @@ for index in range(552210, 3000000,400):
                 elif line.startswith('imageData2') == True and eleNo == 1:
                     imageData2_l.append(str(line.strip().replace(u'imageData2 =', u'')) + "")
                 elif line.startswith('img_url2') == True and eleNo == 1:
-                    img_url2_l.append(str(line.strip().replace(u'img_url2 =', u'')) + "")
+                        img_url2_l.append(str(line.strip().replace(u'img_url2 =', u'')) + "")
                 elif line.startswith('imageData3') == True and eleNo == 1:
                     imageData3_l.append(str(line.strip().replace(u'imageData3 =', u'')) + "")
                 elif line.startswith('img_url3') == True and eleNo == 1:
@@ -756,15 +911,17 @@ for index in range(552210, 3000000,400):
                         with open ("./deadline.txt",'a',encoding = 'utf-8') as f:
                             f.write('\n')
                     else:
-                        deadline_l.append("1960/01/01")
+                        deadline_l.append("1900/01/01")
                 elif line.startswith('volNo1') == True and eleNo == 1:
                     volNo1_l.append(str(line.strip().replace(u'volNo1 =', u'')) + "")
                 elif line.startswith('volNo2') == True and eleNo == 1:
                     volNo2_l.append(str(line.strip().replace(u'volNo2 =', u'')) + "")
                 elif line.startswith('processorName') == True and eleNo == 1:
                     processorName_l.append(str(line.strip().replace(u'processorName =', u'')) + "")
+                elif line.startswith('imageData2l') == True and eleNo == 1:
+                    processorName_l.append(str(line.strip().replace(u'processorName =', u'')) + "")
                 elif line.startswith('holderChineseName') == True and eleNo == 1:
-                    holderChineseNamel = holderChineseNamel + str(line.strip().replace(u'holderChineseName =', u'')) + " "
+                    imageData2l = holderChineseNamel + str(line.strip().replace(u'holderChineseName =', u'')) + " "
                 elif line.startswith('holderEnglishName') == True and eleNo == 1:
                     holderEnglishNamel = holderEnglishNamel + str(line.strip().replace(u'holderEnglishName =', u'')) + " "
                 elif line.startswith('holderJapaneseName') == True and eleNo == 1:
@@ -772,13 +929,61 @@ for index in range(552210, 3000000,400):
                 elif line.startswith('holderAddress') == True and eleNo == 1:
                     holderAddressl = holderAddressl + str(line.strip().replace(u'holderAddress =', u'')) + " "
                 elif line.startswith('countryCode') == True and eleNo == 1:
-                    countryCode_l.append(str(line.strip().replace(u'countryCode =', u'')) + "")
+                    countryCodel = countryCodel + str(line.strip().replace(u'countryCode =', u'')) + " "
                 elif line.startswith('chineseCountryName') == True and eleNo == 1:
                     chineseCountryNamel = chineseCountryNamel + str(line.strip().replace(u'chineseCountryName =', u'')) + " "
                 elif line.startswith('agentChineseName') == True and eleNo == 1:
                     agentChineseNamel = agentChineseNamel + str(line.strip().replace(u'agentChineseName =', u'')) + " "
                 elif line.startswith('agentAddress') == True and eleNo == 1:
                     agentAddressl = agentAddressl + str(line.strip().replace(u'agentAddress =', u'')) + " "
+                elif line.startswith('applDate') == True and eleNo == 1:
+                    if len(line.strip().replace(u'applDate =', u'')) == 10:
+                        applDate_l.append(str(line.strip().replace(u'applDate =', u'')) + "")
+                    else:
+                        applDate_l.append("1900/01/01")
+                elif line.startswith('regDate') == True and eleNo == 1:
+                    if len(line.strip().replace(u'regDate =', u'')) == 10:
+                        regDate_l.append(str(line.strip().replace(u'regDate =', u'')) + "")
+                    else:
+                        regDate_l.append("1900/01/01")
+                elif line.startswith('regNoticeDate') == True and eleNo == 1:
+                    if len(line.strip().replace(u'regNoticeDate =', u'')) == 10:
+                        regNoticeDate_l.append(str(line.strip().replace(u'regNoticeDate =', u'')) + "")
+                    else:
+                        regNoticeDate_l.append("1900/01/01")
+                elif line.startswith('_examNoticeDate') == True and eleNo == 1:
+                    if len(line.strip().replace(u'_examNoticeDate =', u'')) == 10:
+                        examNoticeDate_l.append(str(line.strip().replace(u'_examNoticeDate =', u'')) + "")
+                    else:
+                        examNoticeDate_l.append("1900/01/01")
+                elif line.startswith('delReason') == True and eleNo == 1:
+                    delReason_l.append(str(line.strip().replace(u'delReason =', u'')) + "")
+                elif line.startswith('examStatus') == True and eleNo == 1:
+                    examStatus_l.append(str(line.strip().replace(u'examStatus =', u'')) + "")
+                elif line.startswith('extendedStatus') == True and eleNo == 1:
+                    extendedStatus_l.append(str(line.strip().replace(u'extendedStatus =', u'')) + "")
+                elif line.startswith('oppositionStatus') == True and eleNo == 1:
+                    oppositionStatus_l.append(str(line.strip().replace(u'oppositionStatus =', u'')) + "")
+                elif line.startswith('nullityActStatus') == True and eleNo == 1:
+                    nullityActStatus_l.append(str(line.strip().replace(u'nullityActStatus =', u'')) + "")
+                elif line.startswith('applDelStatus') == True and eleNo == 1:
+                    applDelStatus_l.append(str(line.strip().replace(u'applDelStatus =', u'')) + "")
+                elif line.startswith('autStatus') == True and eleNo == 1:
+                    autStatus_l.append(str(line.strip().replace(u'autStatus =', u'')) + "")
+                elif line.startswith('agaAutStatus') == True and eleNo == 1:
+                    agaAutStatus_l.append(str(line.strip().replace(u'agaAutStatus =', u'')) + "")
+                elif line.startswith('amedmentStatus') == True and eleNo == 1:
+                    amedmentStatus_l.append(str(line.strip().replace(u'amedmentStatus =', u'')) + "")
+                elif line.startswith('transferStatus') == True and eleNo == 1:
+                    transferStatus_l.append(str(line.strip().replace(u'transferStatus =', u'')) + "")
+                elif line.startswith('issueOppStatus') == True and eleNo == 1:
+                    issueOppStatus_l.append(str(line.strip().replace(u'issueOppStatus =', u'')) + "")
+                elif line.startswith('issueDelStatus') == True and eleNo == 1:
+                    issueDelStatus_l.append(str(line.strip().replace(u'issueDelStatus =', u'')) + "")
+                elif line.startswith('quotaStatus') == True and eleNo == 1:
+                    quotaStatus_l.append(str(line.strip().replace(u'quotaStatus =', u'')) + "")
+                elif line.startswith('unableUseStatus') == True and eleNo == 1:
+                    unableUseStatus_l.append(str(line.strip().replace(u'unableUseStatus =', u'')) + "")
                 elif line.startswith('end') == True and eleNo == 1:
                     eleNo == 0
                     tmarkType_l.append(tmarkTypel)
@@ -793,9 +998,10 @@ for index in range(552210, 3000000,400):
                     holderJapaneseName_l.append(holderJapaneseNamel)
                     holderAddress_l.append(holderAddressl)
                     chineseCountryName_l.append(chineseCountryNamel)
+                    countryCode_l.append(countryCodel)
                     agentChineseName_l.append(agentChineseNamel)
                     agentAddress_l.append(agentAddressl)
-        """            
+        """
         print (str(indexNo1))
         print (str(examNo_l))
         print (str(applNo_l))
@@ -855,13 +1061,22 @@ for index in range(552210, 3000000,400):
         print(str(len(countryCode_l))+str(len(chineseCountryName_l)))
         print(str(len(agentChineseName_l))+str(len(agentAddress_l)))
         """
-        for k in range(0,400):
-            print(len(deadline_l))
-            if len(deadline_l) != 400:
-                break
-                break
-                break
-                break
+        if len(examNo_l)>0:
+            indexNo1 = [index]
+            for z in range(1,len(examNo_l)):
+                indexNo1.append(index + z)
+        else:
+            print("No element")
+            break
+            break
+            break
+        if not (len(examNo_l) == len(indexNo1) and len(applNo_l) == len(indexNo1) and len(tmarkName_l)  == len(indexNo1) and len(tmarkClassDesc_l) == len(indexNo1) and len(imageData1_l) == len(indexNo1) and len(imageData2_l) == len(indexNo1) and len(imageData3_l) == len(indexNo1) and len(imageData4_l) == len(indexNo1) and len(imageData5_l) == len(indexNo1) and len(imageData6_l) == len(indexNo1) and len(tmarkType_l) == len(indexNo1) and len(tmarkTypeDesc_l) == len(indexNo1) and  len(tmarkColor_l) == len(indexNo1) and len(tmarkColorDesc_l) == len(indexNo1) and len(tmarkDraftC_l) == len(indexNo1) and len(tmarkDraftE_l) == len(indexNo1) and len(tmarkDraftJ_l) == len(indexNo1) and len(tmarkSign_l) == len(indexNo1) and len(wordDescription_l) == len(indexNo1) and len(goodsclassCode_l) == len(indexNo1) and len(goodsName_l) == len(indexNo1) and len(goodsGroup_l) == len(indexNo1) and len(deadline_l) == len(indexNo1) and len(volNo1_l) == len(indexNo1) and len(volNo2_l) == len(indexNo1) and len(processorName_l) == len(indexNo1) and len(holderChineseName_l) == len(indexNo1) and len(holderEnglishName_l) == len(indexNo1) and len(holderJapaneseName_l) == len(indexNo1) and len(holderAddress_l) == len(indexNo1) and len(countryCode_l) == len(indexNo1) and len(chineseCountryName_l) == len(indexNo1) and len(agentChineseName_l) == len(indexNo1) and len(agentAddress_l) == len(indexNo1) and len(applDate_l) == len(indexNo1) and len(regDate_l) == len(indexNo1) and len(regNoticeDate_l) == len(indexNo1) and len(examNoticeDate_l) == len(indexNo1) and len(delReason_l) == len(indexNo1) and len(examStatus_l) == len(indexNo1) and len(extendedStatus_l) == len(indexNo1) and len(oppositionStatus_l)  == len(indexNo1) and len(nullityActStatus_l) == len(indexNo1) and len(applDelStatus_l) == len(indexNo1) and len(autStatus_l) == len(indexNo1) and len(agaAutStatus_l) == len(indexNo1) and len(amedmentStatus_l) == len(indexNo1) and len(transferStatus_l) == len(indexNo1) and len(issueOppStatus_l) == len(indexNo1) and len(issueDelStatus_l) == len(indexNo1) and len(quotaStatus_l) == len(indexNo1) and len(unableUseStatus_l) == len(indexNo1)):
+            print(str(len(indexNo1))+"-"+str(len(examNo_l))+"-"+str(len(applNo_l))+"-"+str(len(tmarkName_l))+"-"+str(len(tmarkClassDesc_l))+"-"+str(len(imageData1_l))+"-"+str(len(imageData2_l))+"-"+str(len(imageData3_l))+"-"+str(len(imageData4_l))+"-"+str(len(imageData5_l))+"-"+str(len(imageData6_l))+"-"+str(len(tmarkType_l))+"-"+str(len(tmarkTypeDesc_l))+"-"+str(len(tmarkColor_l))+"-"+str(len(tmarkColorDesc_l))+"-"+str(len(tmarkDraftC_l))+"-"+str(len(tmarkDraftE_l))+"-"+str(len(tmarkDraftJ_l))+"-"+str(len(tmarkSign_l))+"-"+str(len(wordDescription_l))+"-"+str(len(goodsclassCode_l))+"-"+str(len(goodsName_l))+"-"+str(len(goodsGroup_l))+"-"+str(len(deadline_l))+"-"+str(len(volNo1_l))+"-"+str(len(volNo2_l))+"-"+str(len(processorName_l))+"-"+str(len(holderChineseName_l))+"-"+str(len(holderEnglishName_l))+"-"+str(len(holderJapaneseName_l))+"-"+str(len(holderAddress_l))+"-"+str(len(countryCode_l))+"-"+str(len(chineseCountryName_l))+"-"+str(len(agentChineseName_l))+"-"+str(len(agentAddress_l))+"-"+str(len(applDate_l))+"-"+str(len(regDate_l))+"-"+str(len(regNoticeDate_l))+"-"+str(len(examNoticeDate_l))+"-"+str(len(delReason_l))+"-"+str(len(examStatus_l))+"-"+str(len(extendedStatus_l))+"-"+str(len(oppositionStatus_l))+"-"+str(len(nullityActStatus_l))+"-"+str(len(applDelStatus_l))+"-"+str(len(autStatus_l))+"-"+str(len(agaAutStatus_l))+"-"+str(len(amedmentStatus_l))+"-"+str(len(transferStatus_l))+"-"+str(len(issueOppStatus_l))+"-"+str(len(issueDelStatus_l))+"-"+str(len(quotaStatus_l))+"-"+str(len(unableUseStatus_l)))
+            print("Length not matched")                                                                                     
+            break
+            break    
+            break
+        for k in range(len(examNo_l)):
             now = datetime.datetime.today()
             deadline = deadline_l[k]
             if len(deadline) == 0 or deadline == [None]:
@@ -870,14 +1085,14 @@ for index in range(552210, 3000000,400):
             print(str(indexNo1[k]) + '-' + str(examNo_l[k]))
             print(deadline)
             deadline = deadline.replace('/', '-')
-            """
-            try:
-                deadline = datetime.datetime.strptime(deadline, '%Y-%m-%d')
-            except:
-                print(deadline)
-                continue
-            else:
-            """
+           
+            #try:
+                #deadline = datetime.datetime.strptime(deadline, '%Y-%m-%d')
+            #except:
+                #print(deadline)
+                #continue
+            #else:
+           
             deadline = datetime.datetime.strptime(deadline, '%Y-%m-%d')
             delta = datetime.timedelta(days=183)
             halfYearLater = deadline + delta
@@ -885,33 +1100,35 @@ for index in range(552210, 3000000,400):
                 print(deadline)
                 continue
             else:
+                print(len(indexNo1))
                 print("==="+str(deadline)+"===")
-                sqlStuff = "INSERT INTO tmarkTable (indexNo, examNo, applNo, tmarkName, tmarkClassDesc, imageData1, imageData2, imageData3, imageData4, imageData5, imageData6, tmarkType, tmarkTypeDesc, tmarkColor, tmarkColorDesc, tmarkDraftC, tmarkDraftE, tmarkDraftJ, tmarkSign, wordDescription, goodsclassCode, goodsName, goodsGroup, deadline,volNo1, volNo2, processorName, holderChineseName, holderEnglishName, holderJapaneseName, holderAddress, countryCode, chineseCountryName, agentChineseName, agentAddress) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-                records = [(str(indexNo1[k]), str(examNo_l[k]), str(applNo_l[k]), str(tmarkName_l[k]), str(tmarkClassDesc_l[k]), imageData1_l[k], imageData2_l[k], imageData3_l[k], imageData4_l[k], imageData5_l[k], imageData6_l[k], str(tmarkType_l[k]), str(tmarkTypeDesc_l[k]), str(tmarkColor_l[k]), str(tmarkColorDesc_l[k]), str(tmarkDraftC_l[k]), str(tmarkDraftE_l[k]), str(tmarkDraftJ_l[k]), str(tmarkSign_l[k]), str(wordDescription_l[k]), str(goodsclassCode_l[k]), str(goodsName_l[k]), str(goodsGroup_l[k]), deadline_l[k], str(volNo1_l[k]), str(volNo2_l[k]), str(processorName_l[k]), str(holderChineseName_l[k]), str(holderEnglishName_l[k]), str(holderJapaneseName_l[k]), str(holderAddress_l[k]), str(countryCode_l[k]), str(chineseCountryName_l[k]), str(agentChineseName_l[k]), str(agentAddress_l[k])),]
+
+                sqlStuff = "INSERT INTO tmarkTable2 (indexNo, examNo, applNo, tmarkName, tmarkClassDesc, imageData1, imageData2, imageData3, imageData4, imageData5, imageData6, tmarkType, tmarkTypeDesc, tmarkColor, tmarkColorDesc, tmarkDraftC, tmarkDraftE, tmarkDraftJ, tmarkSign, wordDescription, goodsclassCode, goodsName, goodsGroup, deadline,volNo1, volNo2, processorName, holderChineseName, holderEnglishName, holderJapaneseName, holderAddress, countryCode, chineseCountryName, agentChineseName, agentAddress, applDate, regDate, regNoticeDate, examNoticeDate, delReason, examStatus, extendedStatus,oppositionStatus, nullityActStatus, applDelStatus, autStatus, agaAutStatus, amedmentStatus, transferStatus, issueOppStatus, issueDelStatus, quotaStatus, unableUseStatus) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+                records = [(str(indexNo1[k]), str(examNo_l[k]), str(applNo_l[k]), str(tmarkName_l[k]), str(tmarkClassDesc_l[k]), imageData1_l[k], imageData2_l[k], imageData3_l[k], imageData4_l[k], imageData5_l[k], imageData6_l[k], str(tmarkType_l[k]), str(tmarkTypeDesc_l[k]), str(tmarkColor_l[k]), str(tmarkColorDesc_l[k]), str(tmarkDraftC_l[k]), str(tmarkDraftE_l[k]), str(tmarkDraftJ_l[k]), str(tmarkSign_l[k]), str(wordDescription_l[k]), str(goodsclassCode_l[k]), str(goodsName_l[k]), str(goodsGroup_l[k]), deadline_l[k], str(volNo1_l[k]), str(volNo2_l[k]), str(processorName_l[k]), str(holderChineseName_l[k]), str(holderEnglishName_l[k]), str(holderJapaneseName_l[k]), str(holderAddress_l[k]), str(countryCode_l[k]), str(chineseCountryName_l[k]), str(agentChineseName_l[k]), str(agentAddress_l[k]),str(applDate_l[k]),str(regDate_l[k]),str(regNoticeDate_l[k]),str(examNoticeDate_l[k]),str(delReason_l[k]),str(examStatus_l[k]),str(extendedStatus_l[k]), str(oppositionStatus_l[k]), str(nullityActStatus_l[k]),str(applDelStatus_l[k]),str(autStatus_l[k]),str(agaAutStatus_l[k]),str(amedmentStatus_l[k]),str(transferStatus_l[k]),str(issueOppStatus_l[k]),str(issueDelStatus_l[k]),str(quotaStatus_l[k]),str(unableUseStatus_l[k])),]
                 cursor.executemany(sqlStuff, records)
                 tmarkdb.commit()
                 if len(img_url1_l[k]) > 0:
                     r = requests.get(img_url1_l[k])
-                    with open('./picBase/'+str(examNo_l[k])+'-1.png', 'wb') as f:
+                    with open('../../picBase/'+str(examNo_l[k])+'-1.png', 'wb') as f:
                         f.write(r.content)
                 if len(img_url2_l[k]) > 0:
                     r = requests.get(img_url2_l[k])
-                    with open('./picBase/'+str(examNo_l[k])+'-2.png', 'wb') as f:
+                    with open('../../picBase/'+str(examNo_l[k])+'-2.png', 'wb') as f:
                         f.write(r.content)
                 if len(img_url3_l[k]) > 0:
                     r = requests.get(img_url3_l[k])
-                    with open('./picBase/'+str(examNo_l[k])+'-3.png', 'wb') as f:
+                    with open('../../picBase/'+str(examNo_l[k])+'-3.png', 'wb') as f:
                         f.write(r.content)
                 if len(img_url4_l[k]) > 0:
-                    r = requests.get(img_url4_l[k])
-                    with open('./picBase/'+str(examNo_l[k])+'-4.png', 'wb') as f:
+                    r = requests.get(img_url4_l[k]) 
+                    with open('../../picBase/'+str(examNo_l[k])+'-4.png', 'wb') as f:
                         f.write(r.content)
                 if len(img_url5_l[k]) > 0:
                     r = requests.get(img_url5_l[k])
-                    with open('./picBase/'+str(examNo_l[k])+'-5.png', 'wb') as f:
+                    with open('../../picBase/'+str(examNo_l[k])+'-5.png', 'wb') as f:
                         f.write(r.content)
                 if len(img_url6_l[k]) > 0:
                     r = requests.get(img_url6_l[k])
-                    with open('./picBase/'+str(examNo_l[k])+'-6.png', 'wb') as f:
+                    with open('../../picBase/'+str(examNo_l[k])+'-6.png', 'wb') as f:
                         f.write(r.content)
     time.sleep(6)
