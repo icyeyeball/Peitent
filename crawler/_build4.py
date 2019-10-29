@@ -619,7 +619,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
         elif self.CurrentData == "unable-use-status":
            self.unableusestatus = content
            
-for index in range(1585023, 2200000,400):
+for index in range(0, 2200000,400):
     #url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=100&skip=7485&orderby=appl-no&tk=ywgvRgZ1'
     url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=400&skip='+str(index)+'&orderby=appl-no&tk=ywgvRgZ1'
     r = requests.get(url, verify=False)
@@ -1109,26 +1109,26 @@ for index in range(1585023, 2200000,400):
                 tmarkdb.commit()
                 if len(img_url1_l[k]) > 0:
                     r = requests.get(img_url1_l[k])
-                    with open('../../picBase/'+str(examNo_l[k])+'-1.png', 'wb') as f:
+                    with open('./picBase/'+str(examNo_l[k])+'-1.png', 'wb') as f:
                         f.write(r.content)
                 if len(img_url2_l[k]) > 0:
                     r = requests.get(img_url2_l[k])
-                    with open('../../picBase/'+str(examNo_l[k])+'-2.png', 'wb') as f:
+                    with open('./picBase/'+str(examNo_l[k])+'-2.png', 'wb') as f:
                         f.write(r.content)
                 if len(img_url3_l[k]) > 0:
                     r = requests.get(img_url3_l[k])
-                    with open('../../picBase/'+str(examNo_l[k])+'-3.png', 'wb') as f:
+                    with open('./picBase/'+str(examNo_l[k])+'-3.png', 'wb') as f:
                         f.write(r.content)
                 if len(img_url4_l[k]) > 0:
                     r = requests.get(img_url4_l[k]) 
-                    with open('../../picBase/'+str(examNo_l[k])+'-4.png', 'wb') as f:
+                    with open('./picBase/'+str(examNo_l[k])+'-4.png', 'wb') as f:
                         f.write(r.content)
                 if len(img_url5_l[k]) > 0:
                     r = requests.get(img_url5_l[k])
-                    with open('../../picBase/'+str(examNo_l[k])+'-5.png', 'wb') as f:
+                    with open('./picBase/'+str(examNo_l[k])+'-5.png', 'wb') as f:
                         f.write(r.content)
                 if len(img_url6_l[k]) > 0:
                     r = requests.get(img_url6_l[k])
-                    with open('../../picBase/'+str(examNo_l[k])+'-6.png', 'wb') as f:
+                    with open('./picBase/'+str(examNo_l[k])+'-6.png', 'wb') as f:
                         f.write(r.content)
     time.sleep(6)
