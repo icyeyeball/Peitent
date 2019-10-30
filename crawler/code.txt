@@ -1,0 +1,14 @@
+                """
+                elif line.startswith('image2Data1') == True and eleNo == 1 and imgindex == 0 and len(line.strip().replace(u'image2Data1 =', u'')) == 24:
+                    imageData1_l.append(str(line.strip().replace(u'image2Data1 =', u'')) + "")
+                    imgindex=1
+                elif line.startswith('image3Data1') == True and eleNo == 1 and imgindex == 0:
+                    imageData1_l.append(str(line.strip().replace(u'image3Data1 =', u'')) + "")
+                """
+                """
+                elif line.startswith('img2_url1') == True and eleNo == 1 and urlindex == 0  and len(line.strip().replace(u'img2_url1 =', u'')) == 135:
+                    img_url1_l.append(str(line.strip().replace(u'img2_url1 =', u'')) + "")
+                    urlindex=1
+                elif line.startswith('img3_url1') == True and eleNo == 1 and imgindex == 0:
+                    img_url1_l.append(str(line.strip().replace(u'img3_url1 =', u'')) + "")
+                """

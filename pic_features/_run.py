@@ -41,6 +41,7 @@ kp1, des1 = sift.detectAndCompute(sampleImage, None) #detect the features of sam
 print (len(files))
 for f in files:
     f=queryPath+f
+    print(f)
     queryImage=cv2.imread(f,0)
     queryImage = imutils.resize(queryImage, width = 300)
     kp2, des2 = sift.detectAndCompute(queryImage, None) #detect the features of img in database
@@ -68,9 +69,9 @@ for f in files:
                 #print ("i = " + str(i))
                 #print ("j= " + str(j))
     #print ("len(ratio_l) =" +str(len(ratio_l)))
-    if len(ratio_l) > 20:
-        del ratio_l[20]
-        del vis_l[20]
+    if len(ratio_l) > 30:
+        del ratio_l[30]
+        del vis_l[30]
 
 for k in range(0,len(ratio_l)):
     outpath = "./Output/" + str(k+1) + ".jpg"

@@ -28,16 +28,15 @@ def getMatchNum(matches,ratio):
             matchNum+=1
     return (matchNum,matchesMask)
     
-search_users = "SELECT imageData1 FROM tmarkTable WHERE goodsclassCode = " + sys.argv[1]
+search_users = "SELECT imageData1 FROM tmarkTable WHERE goodsclassCode = " + sys.argv[2]
 cursor.execute(search_users)
 tmark_list = cursor.fetchall()
 
-files = []    
+files = []
 for i in range(len(tmark_list)):
     files.append(cop.sub('', str(tmark_list[i])))
 
-files = listdir(file_dir)
-samplePath=sys.argv[1] #input sample
+samplePath = sys.argv[1] #input sample
 #sift extractpr
 sift = cv2.xfeatures2d.SIFT_create() 
 #FLANN matching
@@ -53,10 +52,9 @@ sampleImage=cv2.imread(samplePath,0)
 sampleImage = imutils.resize(sampleImage, width = 300)
 kp1, des1 = sift.detectAndCompute(sampleImage, None) #detect the features of sample
 for f in files:
-    f=queryPath+f
+    print("========="+str(f))
     queryImage=cv2.imread(f,0)
     queryImage = imutils.resize(queryImage, width = 300)
-    
     kp2, des2 = sift.detectAndCompute(queryImage, None) #detect the features of img in database
     matches=flann.knnMatch(des1,des2,k=2) #matched features, assign k=2 to return 2 matched features.
     (matchNum,matchesMask)=getMatchNum(matches,0.9) #set ratio = 0.9 to calculate the matching level
@@ -82,9 +80,9 @@ for f in files:
                 #print ("i = " + str(i))
                 #print ("j= " + str(j))
     print ("len(ratio_l) =" +str(len(ratio_l)))
-    if len(ratio_l) > 20:
-        del ratio_l[20]
-        del vis_l[20]
+    if len(ratio_l) > 30:
+        del ratio_l[30]
+        del vis_l[30]
 
 for k in range(0,len(ratio_l)):
     outpath = "./Output/" + str(k+1) + ".jpg"

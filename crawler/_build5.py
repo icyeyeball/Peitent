@@ -523,7 +523,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
                 f.write('\n')
 
 
-    # 內容事件處理
+    # 内容事件处理
     def characters(self, content):
         if self.CurrentData == "exam-no":
              self.examno = content
@@ -881,16 +881,9 @@ for index in range(5000, 2200000,400):
                     
                     
                 elif line.startswith('imageData1') == True and eleNo == 1:
-                    if len(str(line.strip().replace(u'imageData1 =', u'')) + "") == 24 :
-                        imageData1_l.append(str(line.strip().replace(u'imageData1 =', u'')) + "")
-                    else:
-                        imageData1_l.append("")
-                        
+                    imageData1_l.append(str(line.strip().replace(u'imageData1 =', u'')) + "")
                 elif line.startswith('img_url1') == True and eleNo == 1:
-                    if len(str(line.strip().replace(u'img_url1 =', u'')) + "") >130 :
-                        img_url1_l.append(str(line.strip().replace(u'img_url1 =', u'')) + "")
-                    else:
-                        img_url_l.append("")
+                    img_url1_l.append(str(line.strip().replace(u'img_url1 =', u'')) + "")
                     
                     
                 elif line.startswith('imageData2') == True and eleNo == 1:
@@ -1185,15 +1178,11 @@ for index in range(5000, 2200000,400):
             else:
                 print(len(indexNo1))
                 print("==="+str(deadline)+"===")
-                
-            if (imageData1_l[k]) == 0 or (img_url_l[k])
-                continue
+
                 sqlStuff = "INSERT INTO tmarkTable (indexNo, examNo, applNo, tmarkName, tmarkClassDesc, imageData1, imageData2, imageData3, imageData4, imageData5, imageData6, tmarkType, tmarkTypeDesc, tmarkColor, tmarkColorDesc, tmarkDraftC, tmarkDraftE, tmarkDraftJ, tmarkSign, wordDescription, goodsclassCode, goodsName, goodsGroup, deadline,volNo1, volNo2, processorName, holderChineseName, holderEnglishName, holderJapaneseName, holderAddress, countryCode, chineseCountryName, agentChineseName, agentAddress, applDate, regDate, regNoticeDate, examNoticeDate, delReason, examStatus, extendedStatus,oppositionStatus, nullityActStatus, applDelStatus, autStatus, agaAutStatus, amedmentStatus, transferStatus, issueOppStatus, issueDelStatus, quotaStatus, unableUseStatus, url1) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                 records = [(str(indexNo1[k]), str(examNo_l[k]), str(applNo_l[k]), str(tmarkName_l[k]), str(tmarkClassDesc_l[k]), imageData1_l[k], imageData2_l[k], imageData3_l[k], imageData4_l[k], imageData5_l[k], imageData6_l[k], str(tmarkType_l[k]), str(tmarkTypeDesc_l[k]), str(tmarkColor_l[k]), str(tmarkColorDesc_l[k]), str(tmarkDraftC_l[k]), str(tmarkDraftE_l[k]), str(tmarkDraftJ_l[k]), str(tmarkSign_l[k]), str(wordDescription_l[k]), str(goodsclassCode_l[k]), str(goodsName_l[k]), str(goodsGroup_l[k]), deadline_l[k], str(volNo1_l[k]), str(volNo2_l[k]), str(processorName_l[k]), str(holderChineseName_l[k]), str(holderEnglishName_l[k]), str(holderJapaneseName_l[k]), str(holderAddress_l[k]), str(countryCode_l[k]), str(chineseCountryName_l[k]), str(agentChineseName_l[k]), str(agentAddress_l[k]),str(applDate_l[k]),str(regDate_l[k]),str(regNoticeDate_l[k]),str(examNoticeDate_l[k]),str(delReason_l[k]),str(examStatus_l[k]),str(extendedStatus_l[k]), str(oppositionStatus_l[k]), str(nullityActStatus_l[k]),str(applDelStatus_l[k]),str(autStatus_l[k]),str(agaAutStatus_l[k]),str(amedmentStatus_l[k]),str(transferStatus_l[k]),str(issueOppStatus_l[k]),str(issueDelStatus_l[k]),str(quotaStatus_l[k]),str(unableUseStatus_l[k]),str(img_url1_l[k])),]
                 cursor.executemany(sqlStuff, records)
                 tmarkdb.commit()
-                print("len(imageData1_l[k]) = "+ str(len(imageData1_l[k])))
-                print("len(img_url1_l[k]) = "+ str(len(img_url1_l[k])))
                 if len(img_url1_l[k]) > 0:
                     r = requests.get(img_url1_l[k])
                     with open('./picBase/'+str(examNo_l[k])+'-1.png', 'wb') as f:
