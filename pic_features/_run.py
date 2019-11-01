@@ -50,7 +50,9 @@ for f in files:
     matchRatio=matchNum*100/len(matches)
     drawParams=dict(matchColor=(0,255,0),  singlePointColor=(0,0,255), matchesMask=matchesMask, flags=0)
     sampleImage=cv2.imread(samplePath)
+    sampleImage = imutils.resize(sampleImage, width = 300)
     queryImage=cv2.imread(f)
+    queryImage = imutils.resize(queryImage, width = 300)
     #(hA, wA) =sampleImage.shape[:2]  
     #(hB, wB) = queryImage.shape[:2]
     comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1,queryImage,kp2,matches,None,**drawParams)

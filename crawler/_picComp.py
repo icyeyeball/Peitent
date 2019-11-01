@@ -82,9 +82,9 @@ for f in files:
             sampleImage=cv2.imread(samplePath)
             queryImage=cv2.imread(f)
             sampleImage=cv2.imread(samplePath)
-            sampleImage = imutils.resize(sampleImage, width = 300)
+            sampleImage = imutils.resize(sampleImage, width = 500)
             queryImage=cv2.imread(f)
-            queryImage = imutils.resize(queryImage, width = 300)
+            queryImage = imutils.resize(queryImage, width = 500)
             #(hA, wA) =sampleImage.shape[:2]  
             #(hB, wB) = queryImage.shape[:2]
             comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1,queryImage,kp2,matches,None,**drawParams)

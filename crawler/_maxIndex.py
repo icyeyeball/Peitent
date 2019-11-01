@@ -7,6 +7,8 @@
 import sys
 import re
 import mysql.connector
+import time
+import datetime
 tmarkdb = mysql.connector.connect( host = "127.0.0.1", user = "root", password = "lehsiao", database = "tmarkdb",  )
 cursor=tmarkdb.cursor()
 cop = re.compile("[^0-9^]")
@@ -21,4 +23,5 @@ for i in tmark_list:
     tmp = cop.sub('', string1)
     if int(tmp) > num:
         num = int(tmp)
+print(datetime.datetime.today())    
 print(num)
