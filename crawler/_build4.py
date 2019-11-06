@@ -32,6 +32,8 @@ class tmarkHandler( xml.sax.ContentHandler ):
         self.CurrentData = ""
         self.examno = ""
         self.applno = ""
+        self.examno2 = ""
+        self.applno2 = ""
         self.tmarkname = ""
         self.tmarkClassDesc = ""
         self.imagedata1 = ""
@@ -101,6 +103,8 @@ class tmarkHandler( xml.sax.ContentHandler ):
             #print ("sequence:", sequence)
             self.examno = ""
             self.applno = ""
+            self.examno2 = ""
+            self.applno2 = ""
             self.tmarkname = ""
             self.tmarkClassDesc = ""
             self.imagedata1 = ""
@@ -165,6 +169,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
     # Element end
     def endElement(self, tag):
         global exNo
+        global appNo
         if self.CurrentData == "exam-no":
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write('end')
@@ -173,14 +178,30 @@ class tmarkHandler( xml.sax.ContentHandler ):
                 f.write('\n')
                 f.write("examNo =" +  self.examno)
                 f.write('\n')
-                if len(self.examno) == 8:
-                    exNo = self.examno
+                if len(self.examno2) == 8:
+                    exNo = self.examno2
+        elif self.CurrentData == "exam2-no":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("exam2No =" +  self.examno2)
+                f.write('\n')
+                if len(self.examno2) == 8:
+                    exNo = self.examno2
                 else:
                     exNo = '00000000'
         elif self.CurrentData == "appl-no":
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("applNo =" +  self.applno)
                 f.write('\n')
+                if len(self.applno) == 9:
+                    appNo = self.applno
+        elif self.CurrentData == "appl2-no":
+            with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
+                f.write("appl2No =" +  self.applno2)
+                f.write('\n')
+                if len(self.applno2) == 9:
+                    appNo = self.applno2
+                else:
+                    appNo = '000000000'
         elif self.CurrentData == "tmark-name":
             with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                 f.write("tmarkName =" +  self.tmarkname)
@@ -199,7 +220,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
             else:
                 img_url1 = self.imagedata1.replace(u'jpgformatName', u'jpg&formatName')
                 img_url1 = img_url1.replace(u'jpegpath', u'jpg&path')
-                path = './picBase/'+str(exNo)+'-1.png'
+                path = './picBase/'+str(appNo)+'-1.png'
                 with open ("./parsed.txt",'a',encoding = 'utf-8') as f:
                     f.write("imageData1 =" +  path)
                     f.write('\n')
@@ -501,8 +522,12 @@ class tmarkHandler( xml.sax.ContentHandler ):
     def characters(self, content):
         if self.CurrentData == "exam-no":
              self.examno = content
+        elif self.CurrentData == "exam2-no":
+             self.examno2 = content
         elif self.CurrentData == "appl-no":
              self.applno = content
+        elif self.CurrentData == "appl2-no":
+             self.applno2 = content
         elif self.CurrentData == "tmark-name":
             self.tmarkname = content            
         elif self.CurrentData == "tmark-class-desc":
@@ -622,7 +647,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
         elif self.CurrentData == "unable-use-status":
            self.unableusestatus = content
            
-for index in range(608246, 2200000,400):
+for index in range(469107, 1500000,400):
     #url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=100&skip=7485&orderby=appl-no&tk=ywgvRgZ1'
     url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=400&skip='+str(index)+'&orderby=appl-no&tk=ywgvRgZ1'
     r = requests.get(url, verify=False)
@@ -663,8 +688,14 @@ for index in range(608246, 2200000,400):
             wopen=open("./tmark2.xml",'a',encoding="utf-8")
             wopen.write(line)
             wopen.write('\n')
+            line=re.sub('exam-no','exam2-no',line)
+            wopen.write(line)
+            wopen.write('\n')
         elif re.search('appl-no',line)  and changeNo == 0:
             wopen=open("./tmark2.xml",'a',encoding="utf-8")
+            wopen.write(line)
+            wopen.write('\n')
+            line=re.sub('appl-no','appl2-no',line)
             wopen.write(line)
             wopen.write('\n')
         elif re.search('deadline',line):
@@ -810,31 +841,46 @@ for index in range(608246, 2200000,400):
                     tmarkColorDescl = ""
                     countryCodel  =""
                     chineseCountryNamel = ""
-                elif line.startswith('examNo') == True and eleNo == 1 and len(line.strip().replace(u'examNo =', u'')) == 8:
-                    examNo_l.append(str(line.strip().replace(u'examNo =', u'')) + "")
-                elif line.startswith('examNo') == True and eleNo == 1 and len(line.strip().replace(u'examNo =', u'')) != 8:
-                    examNo_l.append("")
+                    
+                    
+                elif line.startswith('examNo') == True and eleNo == 1:
+                    if len(line.strip().replace(u'examNo =', u'')) == 8:
+                        examNo_l.append(str(line.strip().replace(u'examNo =', u'')) + "")
+                        examindex = 1
+                    else:
+                        examindex = 0
+                elif line.startswith('exam2No') == True and eleNo == 1 and examindex ==0:
+                    if len(line.strip().replace(u'exam2No =', u'')) == 8:
+                        examNo_l.append(str(line.strip().replace(u'exam2No =', u'')) + "")
+                    else:
+                        examNo_l.append("00000000")
 
                     
-                elif line.startswith('applNo') == True and eleNo == 1 and len(line.strip().replace(u'applNo =', u'')) == 9:
-                    applNo_l.append(str(line.strip().replace(u'applNo =', u'')) + "")
-                elif line.startswith('applNo') == True and eleNo == 1 and len(line.strip().replace(u'applNo =', u'')) != 9:
-                    applNo_l.append("")
+                elif line.startswith('applNo') == True and eleNo == 1:
+                    if len(line.strip().replace(u'applNo =', u'')) == 9:
+                        applNo_l.append(str(line.strip().replace(u'applNo =', u'')) + "")
+                        applindex = 1
+                    else:
+                        applindex = 0
+                elif line.startswith('appl2No') == True and eleNo == 1 and applindex ==0:
+                    if len(line.strip().replace(u'appl2No =', u'')) == 9:
+                        applNo_l.append(str(line.strip().replace(u'appl2No =', u'')) + "")
+                    else:
+                        applNo_l.append("000000000")
+
+   
                     
                 elif line.startswith('tmarkName') == True and eleNo == 1:
                     tmarkName_l.append(str(line.strip().replace(u'tmarkName =', u'')) + "")
                 elif line.startswith('tmarkClassDesc') == True and eleNo == 1:
                     tmarkClassDesc_l.append(str(line.strip().replace(u'tmarkClassDesc =', u'')) + "")
                     
-                    
                 elif line.startswith('imageData1') == True and eleNo == 1:
                     imageData1_l.append(str(line.strip().replace(u'imageData1 =', u'')) + "")
-
-                        
+       
                 elif line.startswith('img_url1') == True and eleNo == 1:
                     img_url1_l.append(str(line.strip().replace(u'img_url1 =', u'')) + "")
                         
-                    
                 elif line.startswith('imageData2') == True and eleNo == 1:
                     imageData2_l.append(str(line.strip().replace(u'imageData2 =', u'')) + "")
                 elif line.startswith('img_url2') == True and eleNo == 1:
@@ -931,7 +977,7 @@ for index in range(608246, 2200000,400):
                         f.write('\n')
                     deadlindIndex = 1
                 elif line.startswith('dead10line') == True and eleNo == 1 and deadlindIndex==0:
-                    if len(str(line.strip().replace(u'dead9line =', u'')) + "") != 10:
+                    if len(str(line.strip().replace(u'dead10line =', u'')) + "") == 10:
                         deadline_l.append(str(line.strip().replace(u'dead10line =', u'')) + "")
                         with open ("./deadline.txt",'a',encoding = 'utf-8') as f:
                             f.write('\n')
@@ -946,7 +992,7 @@ for index in range(608246, 2200000,400):
                 elif line.startswith('imageData2l') == True and eleNo == 1:
                     processorName_l.append(str(line.strip().replace(u'processorName =', u'')) + "")
                 elif line.startswith('holderChineseName') == True and eleNo == 1:
-                    imageData2l = holderChineseNamel + str(line.strip().replace(u'holderChineseName =', u'')) + " "
+                    holderChineseNamel = holderChineseNamel + str(line.strip().replace(u'holderChineseName =', u'')) + " "
                 elif line.startswith('holderEnglishName') == True and eleNo == 1:
                     holderEnglishNamel = holderEnglishNamel + str(line.strip().replace(u'holderEnglishName =', u'')) + " "
                 elif line.startswith('holderJapaneseName') == True and eleNo == 1:
@@ -1098,11 +1144,11 @@ for index in range(608246, 2200000,400):
         if not (len(examNo_l) == len(indexNo1) and len(applNo_l) == len(indexNo1) and len(tmarkName_l)  == len(indexNo1) and len(tmarkClassDesc_l) == len(indexNo1) and len(imageData1_l) == len(indexNo1) and len(imageData2_l) == len(indexNo1) and len(imageData3_l) == len(indexNo1) and len(imageData4_l) == len(indexNo1) and len(imageData5_l) == len(indexNo1) and len(imageData6_l) == len(indexNo1) and len(tmarkType_l) == len(indexNo1) and len(tmarkTypeDesc_l) == len(indexNo1) and  len(tmarkColor_l) == len(indexNo1) and len(tmarkColorDesc_l) == len(indexNo1) and len(tmarkDraftC_l) == len(indexNo1) and len(tmarkDraftE_l) == len(indexNo1) and len(tmarkDraftJ_l) == len(indexNo1) and len(tmarkSign_l) == len(indexNo1) and len(wordDescription_l) == len(indexNo1) and len(goodsclassCode_l) == len(indexNo1) and len(goodsName_l) == len(indexNo1) and len(goodsGroup_l) == len(indexNo1) and len(deadline_l) == len(indexNo1) and len(volNo1_l) == len(indexNo1) and len(volNo2_l) == len(indexNo1) and len(processorName_l) == len(indexNo1) and len(holderChineseName_l) == len(indexNo1) and len(holderEnglishName_l) == len(indexNo1) and len(holderJapaneseName_l) == len(indexNo1) and len(holderAddress_l) == len(indexNo1) and len(countryCode_l) == len(indexNo1) and len(chineseCountryName_l) == len(indexNo1) and len(agentChineseName_l) == len(indexNo1) and len(agentAddress_l) == len(indexNo1) and len(applDate_l) == len(indexNo1) and len(regDate_l) == len(indexNo1) and len(regNoticeDate_l) == len(indexNo1) and len(examNoticeDate_l) == len(indexNo1) and len(delReason_l) == len(indexNo1) and len(examStatus_l) == len(indexNo1) and len(extendedStatus_l) == len(indexNo1) and len(oppositionStatus_l)  == len(indexNo1) and len(nullityActStatus_l) == len(indexNo1) and len(applDelStatus_l) == len(indexNo1) and len(autStatus_l) == len(indexNo1) and len(agaAutStatus_l) == len(indexNo1) and len(amedmentStatus_l) == len(indexNo1) and len(transferStatus_l) == len(indexNo1) and len(issueOppStatus_l) == len(indexNo1) and len(issueDelStatus_l) == len(indexNo1) and len(quotaStatus_l) == len(indexNo1) and len(img_url1_l) == len(indexNo1)):
             print(str(len(indexNo1))+"-"+str(len(examNo_l))+"-"+str(len(applNo_l))+"-"+str(len(tmarkName_l))+"-"+str(len(tmarkClassDesc_l))+"-"+str(len(imageData1_l))+"-"+str(len(imageData2_l))+"-"+str(len(imageData3_l))+"-"+str(len(imageData4_l))+"-"+str(len(imageData5_l))+"-"+str(len(imageData6_l))+"-"+str(len(tmarkType_l))+"-"+str(len(tmarkTypeDesc_l))+"-"+str(len(tmarkColor_l))+"-"+str(len(tmarkColorDesc_l))+"-"+str(len(tmarkDraftC_l))+"-"+str(len(tmarkDraftE_l))+"-"+str(len(tmarkDraftJ_l))+"-"+str(len(tmarkSign_l))+"-"+str(len(wordDescription_l))+"-"+str(len(goodsclassCode_l))+"-"+str(len(goodsName_l))+"-"+str(len(goodsGroup_l))+"-"+str(len(deadline_l))+"-"+str(len(volNo1_l))+"-"+str(len(volNo2_l))+"-"+str(len(processorName_l))+"-"+str(len(holderChineseName_l))+"-"+str(len(holderEnglishName_l))+"-"+str(len(holderJapaneseName_l))+"-"+str(len(holderAddress_l))+"-"+str(len(countryCode_l))+"-"+str(len(chineseCountryName_l))+"-"+str(len(agentChineseName_l))+"-"+str(len(agentAddress_l))+"-"+str(len(applDate_l))+"-"+str(len(regDate_l))+"-"+str(len(regNoticeDate_l))+"-"+str(len(examNoticeDate_l))+"-"+str(len(delReason_l))+"-"+str(len(examStatus_l))+"-"+str(len(extendedStatus_l))+"-"+str(len(oppositionStatus_l))+"-"+str(len(nullityActStatus_l))+"-"+str(len(applDelStatus_l))+"-"+str(len(autStatus_l))+"-"+str(len(agaAutStatus_l))+"-"+str(len(amedmentStatus_l))+"-"+str(len(transferStatus_l))+"-"+str(len(issueOppStatus_l))+"-"+str(len(issueDelStatus_l))+"-"+str(len(quotaStatus_l))+"-"+str(len(img_url1_l)))
             print("Length not matched")                                                                                     
-            break
+            break 
             break    
             break
         for k in range(len(examNo_l)):
-            if len(imageData1_l[k]) < 24  or len(examNo_l[k]) !=8 or len(applNo_l[k]) !=9:
+            if len(imageData1_l[k]) < 25  or len(examNo_l[k]) !=8 or len(applNo_l[k]) !=9:
                 continue
                 
             now = datetime.datetime.today()
@@ -1131,8 +1177,6 @@ for index in range(608246, 2200000,400):
                 print(len(indexNo1))
                 print("==="+str(deadline)+"===")
                 
-
-                
             #if len(imageData1_l[k]) < 24 or len(img_url1_l[k]) < 134:
                 #continue
                 sqlStuff = "INSERT INTO tmarkTable (indexNo, examNo, applNo, tmarkName, tmarkClassDesc, imageData1, imageData2, imageData3, imageData4, imageData5, imageData6, tmarkType, tmarkTypeDesc, tmarkColor, tmarkColorDesc, tmarkDraftC, tmarkDraftE, tmarkDraftJ, tmarkSign, wordDescription, goodsclassCode, goodsName, goodsGroup, deadline,volNo1, volNo2, processorName, holderChineseName, holderEnglishName, holderJapaneseName, holderAddress, countryCode, chineseCountryName, agentChineseName, agentAddress, applDate, regDate, regNoticeDate, examNoticeDate, delReason, examStatus, extendedStatus,oppositionStatus, nullityActStatus, applDelStatus, autStatus, agaAutStatus, amedmentStatus, transferStatus, issueOppStatus, issueDelStatus, quotaStatus, unableUseStatus, url1) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
@@ -1143,26 +1187,26 @@ for index in range(608246, 2200000,400):
                 #print("len(img_url1_l[k]) = "+ str(len(img_url1_l[k])))
                 if len(img_url1_l[k]) > 0:
                     r = requests.get(img_url1_l[k])
-                    with open('./picBase/'+str(examNo_l[k])+'-1.png', 'wb') as f:
+                    with open('./picBase/'+str(applNo_l[k])+'-1.png', 'wb') as f:
                         f.write(r.content)
                 if len(img_url2_l[k]) > 0:
                     r = requests.get(img_url2_l[k])
-                    with open('./picBase/'+str(examNo_l[k])+'-2.png', 'wb') as f:
+                    with open('./picBase/'+str(applNo_l[k])+'-2.png', 'wb') as f:
                         f.write(r.content)
                 if len(img_url3_l[k]) > 0:
                     r = requests.get(img_url3_l[k])
-                    with open('./picBase/'+str(examNo_l[k])+'-3.png', 'wb') as f:
+                    with open('./picBase/'+str(applNo_l[k])+'-3.png', 'wb') as f:
                         f.write(r.content)
                 if len(img_url4_l[k]) > 0:
                     r = requests.get(img_url4_l[k]) 
-                    with open('./picBase/'+str(examNo_l[k])+'-4.png', 'wb') as f:
+                    with open('./picBase/'+str(applNo_l[k])+'-4.png', 'wb') as f:
                         f.write(r.content)
                 if len(img_url5_l[k]) > 0:
                     r = requests.get(img_url5_l[k])
-                    with open('./picBase/'+str(examNo_l[k])+'-5.png', 'wb') as f:
+                    with open('./picBase/'+str(applNo_l[k])+'-5.png', 'wb') as f:
                         f.write(r.content)
                 if len(img_url6_l[k]) > 0:
                     r = requests.get(img_url6_l[k])
-                    with open('./picBase/'+str(examNo_l[k])+'-6.png', 'wb') as f:
+                    with open('./picBase/'+str(applNo_l[k])+'-6.png', 'wb') as f:
                         f.write(r.content)
-    time.sleep(5)
+    time.sleep(40)
