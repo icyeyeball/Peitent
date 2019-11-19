@@ -23,14 +23,42 @@ def getMatchNum(matches,ratio):
             matchesMask[i]=[1,0]
             matchNum+=1
     return (matchNum,matchesMask)
-
+#connect to database
 tmarkdb = mysql.connector.connect( host = "127.0.0.1", user = "root", password = "lehsiao", database = "tmarkdb",  )
 cursor=tmarkdb.cursor()
 cop = re.compile("[^.^/^A-Z^a-z^0-9^-]")
-    
-cmd_users = "SELECT imageData1 FROM tmarkTable WHERE goodsclassCode = " + sys.argv[2]
+
+# for instance: (1)"LIKE '45%'"  (2)"LIKE '%、45%'" (3)"LIKE '3919%'" (4)"LIKE '%、3519%'"
+cmd_users = "SELECT imageData1, tmarkName FROM tmarkTable WHERE goodsGroup " + sys.argv[2]
 cursor.execute(cmd_users)
-tmark_list = cursor.fetchall()
+tmark_list1 = cursor.fetchall()
+cmd_users = "SELECT imageData1, tmarkName FROM tmarkTable WHERE goodsGroup " + sys.argv[3]
+cursor.execute(cmd_users)
+tmark_list2 = cursor.fetchall()
+#combine these two lists
+tmark_list1.extend(tmark_list2)
+tmark_list1 = list(set(tmark_list1))
+print(len(tmark_list1))
+print(len(tmark_list2))
+#標章圖 標章 及圖 圖 及少女圖 及圖案 設計圖
+tmark_list = []
+for i in range(len(tmark_list1)):
+    try:
+        nPos = tmark_list1[i][1].index("圖")
+    except ValueError:
+        continue
+    else:
+        tmark_list.append(tmark_list1[i][0])
+        continue
+    try:
+        nPos = tmark_list1[i][1].index("標章")
+    except ValueError:
+        continue
+    else:
+        tmark_list.append(tmark_list1[i][0])
+
+print(len(tmark_list))
+
 
 files = []
 for i in range(0, len(tmark_list)):
@@ -56,8 +84,8 @@ for f in tmpfiles:
 
 sampleImage=cv2.imread(samplePath,0)
 sampleImage = imutils.resize(sampleImage, width = 500)
-sampleImage = cv2.GaussianBlur(sampleImage, (5, 5), 0)
-sampleImage = cv2.Canny(sampleImage, 30, 150)
+#sampleImage = cv2.GaussianBlur(sampleImage, (5, 5), 0)
+#sampleImage = cv2.Canny(sampleImage, 30, 150)
 kp1, des1 = sift.detectAndCompute(sampleImage, None) #detect the features of sample
 for f in files:
     print(str(f))
@@ -68,8 +96,8 @@ for f in files:
     except AttributeError:
         continue
     else:
-        queryImage = cv2.GaussianBlur(queryImage, (5, 5), 0)
-        queryImage = cv2.Canny(queryImage, 30, 150)
+        #queryImage = cv2.GaussianBlur(queryImage, (5, 5), 0)
+        #queryImage = cv2.Canny(queryImage, 30, 150)
         kp2, des2 = sift.detectAndCompute(queryImage, None) #detect the features of img in database
         try:
             matches=flann.knnMatch(des1,des2,k=2) #matched features, assign k=2 to return 2 matched features.
@@ -103,9 +131,9 @@ for f in files:
                         #print ("i = " + str(i))
                         #print ("j= " + str(j))
             #print ("len(ratio_l) =" +str(len(ratio_l)))
-            if len(ratio_l) > 30:
-                del ratio_l[30]
-                del vis_l[30]
+            if len(ratio_l) > 50:
+                del ratio_l[50]
+                del vis_l[50]
 
 for k in range(0,len(ratio_l)):
     outpath = "./Output/" + str(k+1) + "-" +"("+str(round(ratio_l[k],3)) + ").jpg"
@@ -113,12 +141,11 @@ for k in range(0,len(ratio_l)):
     print (str(ratio_l[k]) + "% 相似度" )
     print (outpath)
     cv2.imwrite(outpath, vis_l[k])
-   
 
 """
 column=4
 row=5
-#绘图显示
+#Draw the plots
 figure,ax=plt.subplots(row,column)
 for index in range(0,20):
     ax[int(index/column)][index%column].set_title('Similiarity %.2f%%' % ratio_l[index])
