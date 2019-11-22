@@ -42,8 +42,6 @@ for i in range(len(word2)):
 mean = meaning(word1[0] ,word2[0])
 print(mean)
 
-mean = meaning(word1[0] ,word2[0])
-print(mean)
 """
 for i in range(0,len(word_l1)):
     print(word_l1[i])
