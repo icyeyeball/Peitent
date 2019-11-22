@@ -22,41 +22,44 @@ def getMatchNum(matches,ratio):
             matchesMask[i]=[1,0]
             matchNum+=1
     return (matchNum,matchesMask)
-    
-pygame.init()
 
-sift = cv2.xfeatures2d.SIFT_create() 
-#Create FLANN matched object
-FLANN_INDEX_KDTREE=0
-indexParams=dict(algorithm=FLANN_INDEX_KDTREE,trees=5)
-searchParams=dict(checks=50)
-flann=cv2.FlannBasedMatcher(indexParams,searchParams)
 
-text1 = sys.argv[1]
-text2 = sys.argv[2]
+def pic(word1, word2):
+    pygame.init()
 
-font = pygame.font.Font("Fonts/LiHei_ProPC.ttf", 200)
+    sift = cv2.xfeatures2d.SIFT_create() 
+    #Create FLANN matched object
+    FLANN_INDEX_KDTREE=0
+    indexParams=dict(algorithm=FLANN_INDEX_KDTREE,trees=5)
+    searchParams=dict(checks=50)
+    flann=cv2.FlannBasedMatcher(indexParams,searchParams)
 
-ftext1 = font.render(text1, True, (0, 0, 0),(255, 255, 255))
-ftext2 = font.render(text2, True, (0, 0, 0),(255, 255, 255))
+    text1 = sys.argv[1]
+    text2 = sys.argv[2]
 
-pygame.image.save(ftext1, "./pic/1.jpg")#圖片儲存地址
-pygame.image.save(ftext2, "./pic/2.jpg")#圖片儲存地址
+    font = pygame.font.Font("Fonts/LiHei_ProPC.ttf", 50)
 
-sampleImage=cv2.imread("./pic/1.jpg",0)
-queryImage=cv2.imread("./pic/2.jpg",0)
-kp1, des1 = sift.detectAndCompute(sampleImage, None) #Extract the features of this picture
-kp2, des2 = sift.detectAndCompute(queryImage, None) #Extract the features of another picture
-matches=flann.knnMatch(des1,des2,k=2) #matched points，to select them，assign k = 2，that will return 2 matched points for each feature of this picture
-(matchNum,matchesMask)=getMatchNum(matches,0.9) #zdepends on ratio to caculate how match
-matchRatio=matchNum*100/len(matches)
-drawParams=dict(matchColor=(0,255,0),  singlePointColor=(0,0,255), matchesMask=matchesMask, flags=0)
+    ftext1 = font.render(text1, True, (0, 0, 0),(255, 255, 255))
+    ftext2 = font.render(text2, True, (0, 0, 0),(255, 255, 255))
 
-sampleImage=cv2.imread("./pic/1.jpg")
-queryImage=cv2.imread("./pic/2.jpg")
-comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1,queryImage,kp2,matches,None,**drawParams)
+    pygame.image.save(ftext1, "./pic/1.jpg")#圖片儲存地址
+    pygame.image.save(ftext2, "./pic/2.jpg")#圖片儲存地址
 
-print ("相似度: " + str(matchRatio) + "%")
-cv2.imwrite("./pic/comp.jpg", comparisonImage)
+    sampleImage=cv2.imread("./pic/1.jpg",0)
+    queryImage=cv2.imread("./pic/2.jpg",0)
+    kp1, des1 = sift.detectAndCompute(sampleImage, None) #Extract the features of this picture
+    kp2, des2 = sift.detectAndCompute(queryImage, None) #Extract the features of another picture
+    matches=flann.knnMatch(des1,des2,k=2) #matched points，to select them，assign k = 2，that will return 2 matched points for each feature of this picture
+    (matchNum,matchesMask)=getMatchNum(matches,0.9) #zdepends on ratio to caculate how match
+    matchRatio=matchNum*100/len(matches)
+    drawParams=dict(matchColor=(0,255,0),  singlePointColor=(0,0,255), matchesMask=matchesMask, flags=0)
+
+    sampleImage=cv2.imread("./pic/1.jpg")
+    queryImage=cv2.imread("./pic/2.jpg")
+    comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1,queryImage,kp2,matches,None,**drawParams)
+
+    print ("相似度: " + str(matchRatio) + "%")
+    cv2.imwrite("./pic/comp.jpg", comparisonImage)
+    return str(matchRatio)
 
 
