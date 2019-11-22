@@ -11,7 +11,7 @@ import jieba
 import gensim
 import math
 
-def meaning(word1, word2):
+def wordmeaning(word1, word2):
     book = xlrd.open_workbook('dict.xls')
     sheet1 = book.sheets()[0]
 
@@ -35,8 +35,8 @@ def meaning(word1, word2):
 
     cop = re.compile("[^\u4e00-\u9fa5^]")
 
-    word_l = col_values = sheet1.col_values(2)
-    meaning = col_values = sheet1.col_values(10)
+    word_l = sheet1.col_values(2)
+    meaning = sheet1.col_values(10)
     #find out the position of first word
     with open('./inputs/1.txt', 'w', encoding='utf-8') as in1:
         for i in range(0,len(word_l)):
