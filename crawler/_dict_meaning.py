@@ -12,6 +12,9 @@ import gensim
 import math
 
 def wordmeaning(word1, word2):
+    print("0000"+word1)
+    print("0000"+word2)    
+
     book = xlrd.open_workbook('dict.xls')
     sheet1 = book.sheets()[0]
 
@@ -27,9 +30,11 @@ def wordmeaning(word1, word2):
 
     model = gensim.models.Word2Vec.load('../word2vec_20190801.model')
 
-    input1 = sys.argv[1]
-    input2 = sys.argv[2]
+    word1 = sys.argv[1]
+    word2 = sys.argv[2]
 
+    print("===="+word1)
+    print("===="+word2)
     word_l = []
     meaning = []
 
@@ -40,7 +45,7 @@ def wordmeaning(word1, word2):
     #find out the position of first word
     with open('./inputs/1.txt', 'w', encoding='utf-8') as in1:
         for i in range(0,len(word_l)):
-            if input1 == word_l[i]:
+            if word1 == word_l[i]:
                 line = meaning[i]
                 line = cop.sub('', line)
                 words = jieba.cut(line)
@@ -52,7 +57,7 @@ def wordmeaning(word1, word2):
     #find out the position of second word
     with open('./inputs/2.txt', 'w', encoding='utf-8') as in2:
         for i in range(0,len(word_l)):
-            if input2 == word_l[i]:
+            if word2 == word_l[i]:
                 line = meaning[i]
                 line = cop.sub('', line)
                 words = jieba.cut(line)
@@ -115,8 +120,8 @@ def wordmeaning(word1, word2):
                 #print (i +"  " +j + "  "+ str(tmp))
                 weight_l.append(tmp)
                 # Sort the similarity
-                for a in range(0,len(weight_l)-1): 
-                    for b in range(0,len(weight_l)-1-a): 
+                for a in range(0,len(weight_l)-1):
+                    for b in range(0,len(weight_l)-1-a):
                         if weight_l[b] < weight_l[b+1]: 
                             tmp = weight_l[b]
                             weight_l[b] = weight_l[b+1]
@@ -129,8 +134,12 @@ def wordmeaning(word1, word2):
         #print (math.degrees(math.acos(weight_l[a])))
         #print("相似度 = " + str((math.degrees(math.acos(weight_l[a]))*(-0.55555556)) +100.) + "%")
         total += (math.degrees(math.acos(weight_l[a]))*(-0.55555556)) +100.
-    total = total / len(weight_l) 
+    total = total / len(weight_l)
     print("=================")
     print (" 綜合相似度:  " + str(total)+ "%")
     return str(total)
 
+if __name__=="__main__":
+    print ("11111"+str(sys.argv[1]))
+    print ("11111"+str(sys.argv[2]))
+    wordmeaning(sys.argv[1],sys.argv[2])
