@@ -13,7 +13,7 @@ import sys
 import mysql.connector
 import re
 import shutil
-from  _dict_meaning import wordmeaning
+from _dict_meaning import wordmeaning
 from _dict_pic import *
 from _dict_pinyin_offline import pinyin
 
@@ -24,30 +24,75 @@ cursor=tmarkdb.cursor()
 """
 
 
-"""
-pinying = pinyin(word1)
-for i in sound:
-    print(i)
-"""    
-"""
-picsim= pic(word1,word2)
-print("===="+picsim)
-"""
-"""
-for i in range(len(word1)):
-    print(word1[i])
-for i in range(len(word2)):
-    print(word2[i])
-"""
-#mean = wordmeaning(word1[0] ,word2[0])
 
-if __name__=="__main__":
-    word1 = sys.argv[1]
-    word2 = sys.argv[2]
-    print ("22222"+word1)
-    print ("22222"+word2)
-    wordmean = wordmeaning('金',"銀")
-    #print(wordmean)
+#字型
+picsim= pic(sys.argv[1],sys.argv[2])
+#語意
+meaning_l = []
+word1 = sys.argv[1]
+word2 = sys.argv[2]
+print (word1)
+print (word2)
+for i in range(len(word1)):
+    for j in range(len(word2)):
+        wordmean = wordmeaning(word1[i],word2[j])
+        meaning_l.append(wordmean)
+meaning_l.sort(reverse=True)
+if len(meaning_l)>1:
+    avg_meaning = (float(meaning_l[0]) + float(meaning_l[1]))*0.5
+else:
+    avg_meaning = meaning_l[0]
+#拼音
+word1 = sys.argv[1]
+word2 = sys.argv[2]
+wordpinyin_l1 = []
+wordpinyin_l2 = []
+for i in range(len(word1)):
+    wordpinyin = pinyin(word1[i])
+    wordpinyin_l1.append(wordpinyin)
+for i in range(len(word2)):
+    wordpinyin= pinyin(word2[i])
+    wordpinyin_l2.append(wordpinyin)
+pinyin_l = []
+
+for i in range(len(wordpinyin_l1)):
+    if i > 0:
+        wordpinyin_l1[0] = wordpinyin_l1[0] + wordpinyin_l1[i]
+for i in range(len(wordpinyin_l2)):
+    if i > 0:
+        wordpinyin_l2[0] = wordpinyin_l2[0] + wordpinyin_l2[i]
+        
+for i in wordpinyin_l1[0]:
+    for j in wordpinyin_l2[0]:
+        index = 0
+        if i == j and index == 0:
+            pinyin_l.append(80)
+            index = index + 1
+        elif i == j and index == 1:
+            pinyin_l.append(60)
+            index = index + 1
+        elif i == j and index == 2:
+            pinyin_l.append(40)
+            index = index + 1
+        elif i == j and index == 3:
+            pinyin_l.append(20)
+            index = index + 1
+        elif i == j and index > 3:
+            pinyin_l.append(0)
+            index = index + 1
+pinyin_l.sort(reverse=True)
+if len(pinyin_l)>1:
+    avg_pinyin = (float(pinyin_l[0])+float(pinyin_l[1]))*0.5
+elif len(pinyin_l)==1:
+    avg_pinyin = pinyin_l[0]
+else:
+    avg_pinyin = 0
+
+print("字型相似度 = " + str(picsim))
+print("語意相似度 = " + str(avg_meaning))
+print("拼音相似度 = " + str(avg_pinyin))
+
+
 
 """
 for i in range(0,len(word_l1)):

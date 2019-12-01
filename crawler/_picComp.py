@@ -13,6 +13,7 @@ import sys
 import mysql.connector
 import re
 import shutil
+import json
 
 def getMatchNum(matches,ratio):
     '''number of matched features and relation'''
@@ -29,10 +30,10 @@ cursor=tmarkdb.cursor()
 cop = re.compile("[^.^/^A-Z^a-z^0-9^-]")
 
 # for instance: (1)"LIKE '45%'"  (2)"LIKE '%、45%'" (3)"LIKE '3919%'" (4)"LIKE '%、3519%'"
-cmd_users = "SELECT imageData1, tmarkName FROM tmarkTable WHERE goodsGroup " + sys.argv[2]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable WHERE goodsGroup " + sys.argv[2]
 cursor.execute(cmd_users)
 tmark_list1 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName FROM tmarkTable WHERE goodsGroup " + sys.argv[3]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable WHERE goodsGroup " + sys.argv[3]
 cursor.execute(cmd_users)
 tmark_list2 = cursor.fetchall()
 #combine these two lists
@@ -48,22 +49,23 @@ for i in range(len(tmark_list1)):
     except ValueError:
         continue
     else:
-        tmark_list.append(tmark_list1[i][0])
+        tmark_list.append(tmark_list1[i])
         continue
     try:
         nPos = tmark_list1[i][1].index("標章")
     except ValueError:
         continue
     else:
-        tmark_list.append(tmark_list1[i][0])
+        tmark_list.append(tmark_list1[i])
 
 print(len(tmark_list))
 
+tmark_l = []
 
-files = []
 for i in range(0, len(tmark_list)):
     #if len(cop.sub('', str(tmark_list[i]))) == 24:
-    files.append(cop.sub('', str(tmark_list[i])))
+    tmark = {'applno': tmark_list[i][2],'file':cop.sub('', str(tmark_list[i][0]))}
+    tmark_l.append(tmark)
     
 samplePath = sys.argv[1] #input sample
 #sift extractpr
@@ -76,20 +78,23 @@ flann=cv2.FlannBasedMatcher(indexParams,searchParams)
 
 ratio_l=[]
 vis_l=[]
+applno_l=[]
+result = []
+
 
 outputPath='./Output/' #path of database
 tmpfiles = os.listdir(outputPath)
 for f in tmpfiles:
     os.remove('./Output/'+str(f))
 
-sampleImage=cv2.imread(samplePath,0)
+sampleImage = cv2.imread(samplePath,0)
 sampleImage = imutils.resize(sampleImage, width = 500)
 #sampleImage = cv2.GaussianBlur(sampleImage, (5, 5), 0)
 #sampleImage = cv2.Canny(sampleImage, 30, 150)
 kp1, des1 = sift.detectAndCompute(sampleImage, None) #detect the features of sample
-for f in files:
-    print(str(f))
-    
+for t in tmark_l:
+    f = t['file']
+    print(f)
     queryImage=cv2.imread(f,0)
     try:
         queryImage = imutils.resize(queryImage, width = 500)
@@ -117,30 +122,34 @@ for f in files:
             #(hB, wB) = queryImage.shape[:2]
             comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1,queryImage,kp2,matches,None,**drawParams)
             #cv2.putText(comparisonImage,str(matchRatio) + "%",(int(wA+wB/2.),int(3.*hB/4.)),cv2.FONT_HERSHEY_PLAIN,int(1.*hB/50.),(0,0,255),4)
-            ratio_l.append(matchRatio)
-            vis_l.append(comparisonImage)
-            for i in range(0,len(ratio_l)-1): 
-                for j in range(0,len(ratio_l)-1-i): 
-                    if ratio_l[j] < ratio_l[j+1]: 
-                        tmp = ratio_l[j]
-                        ratio_l[j] = ratio_l[j+1]
-                        ratio_l[j+1] = tmp
-                        tmpv = vis_l[j]
-                        vis_l[j] = vis_l[j+1]
-                        vis_l[j+1] = tmpv
+            subtotal = {"applno":t["applno"],"ratio":matchRatio, "picture":comparisonImage}
+            result.append(subtotal)
+            for i in range(0,len(result)-1): 
+                for j in range(0,len(result)-1-i): 
+                    if result[j]["ratio"] < result[j+1]["ratio"]:
+                        tmp = result[j]
+                        result[j]= result[j+1]
+                        result[j+1] = tmp
                         #print ("i = " + str(i))
                         #print ("j= " + str(j))
             #print ("len(ratio_l) =" +str(len(ratio_l)))
-            if len(ratio_l) > 50:
-                del ratio_l[50]
-                del vis_l[50]
+            if len(result) > 50:
+                del result[50]
+data = []
 
-for k in range(0,len(ratio_l)):
-    outpath = "./Output/" + str(k+1) + "-" +"("+str(round(ratio_l[k],3)) + ").jpg"
+
+for i in result:
+    print (str(i["applno"])+","+str(i["ratio"]))
+    data.append({"applno":i["applno"], "ratio":i["ratio"]})
+   
+app_json = json.dumps(data)
+print(app_json)
+for k in range(0,len(result)):
+    outpath = "./Output/" + str(k+1) + "-" +"("+str(round(result[k]["ratio"],3)) + ").jpg"
     print ("===========================")
-    print (str(ratio_l[k]) + "% 相似度" )
     print (outpath)
-    cv2.imwrite(outpath, vis_l[k])
+    cv2.imwrite(outpath, result[k]["picture"])
+
 
 """
 column=4
