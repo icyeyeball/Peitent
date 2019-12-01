@@ -13,7 +13,7 @@ import math
 
 def wordmeaning(word1, word2):
     print("0000"+word1)
-    print("0000"+word2)    
+    print("0000"+word2)
 
     book = xlrd.open_workbook('dict.xls')
     sheet1 = book.sheets()[0]
@@ -30,11 +30,6 @@ def wordmeaning(word1, word2):
 
     model = gensim.models.Word2Vec.load('../word2vec_20190801.model')
 
-    word1 = sys.argv[1]
-    word2 = sys.argv[2]
-
-    print("===="+word1)
-    print("===="+word2)
     word_l = []
     meaning = []
 
@@ -140,6 +135,4 @@ def wordmeaning(word1, word2):
     return str(total)
 
 if __name__=="__main__":
-    print ("11111"+str(sys.argv[1]))
-    print ("11111"+str(sys.argv[2]))
     wordmeaning(sys.argv[1],sys.argv[2])

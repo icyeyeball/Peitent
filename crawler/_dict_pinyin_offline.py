@@ -12,7 +12,6 @@ def pinyin(word):
     book = xlrd.open_workbook('dict.xls')
     sheet1 = book.sheets()[0]
 
-    input = sys.argv[1]
 
     word_l = []
     pinyin_t=[]
@@ -24,7 +23,7 @@ def pinyin(word):
     pinyin_t=col_values = sheet1.col_values(6)
 
     for i in range(0,len(word_l)):
-        if input == word_l[i]:
+        if word == word_l[i]:
             pinyin_l.append(pinyin_t[i])
        
     temp_l = ["","","","","","",""]
@@ -53,6 +52,9 @@ def pinyin(word):
 
     for i in range(0,len(pinyin_l)):
          return pinyin_l
+
+if __name__=="__main__":
+    pinyin(sys.argv[1],sys.argv[2])
 
 
 
