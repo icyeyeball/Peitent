@@ -656,7 +656,7 @@ class tmarkHandler( xml.sax.ContentHandler ):
         elif self.CurrentData == "unable-use-status":
            self.unableusestatus = content
            
-for index in range(1983909 , 2200000,400):
+for index in range(2004538 , 2200000,400):
     #url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=100&skip=7485&orderby=appl-no&tk=ywgvRgZ1'
     url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=400&skip='+str(index)+'&orderby=appl-no&tk=ywgvRgZ1'
     r = requests.get(url, verify=False)

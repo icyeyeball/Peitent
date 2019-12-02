@@ -51,7 +51,8 @@ def pinyin(word):
             pinyin_l.append(cop.sub('',temp_l[i]))
 
     for i in range(0,len(pinyin_l)):
-         return pinyin_l
+        print(pinyin_l)
+        return pinyin_l
 
 if __name__=="__main__":
     pinyin(sys.argv[1],sys.argv[2])

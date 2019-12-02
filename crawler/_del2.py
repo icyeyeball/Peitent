@@ -11,6 +11,6 @@ cursor=tmarkdb.cursor()
 
  # Read
 #delete_users = "DELETE FROM tmarkTable WHERE examNo = 11111"
-delete_users = "DELETE FROM tmarkTable2 WHERE examNo LIKE 'A%'"
+delete_users = "DELETE FROM tmarkTable WHERE examNo = 'A%'"
 cursor.execute(delete_users)
 tmarkdb.commit()

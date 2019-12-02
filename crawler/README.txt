@@ -20,3 +20,6 @@ https://cn.dll-files.com/ssleay32.dll.html
 
 開啟MySQL
 開始---運行---輸入“services.msc”----Mysql------右鍵“啟動”
+
+
+python _wordComp.py 立新 王無 壞掉?
