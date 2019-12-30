@@ -12,7 +12,7 @@ tmarkdb = mysql.connector.connect( host = "127.0.0.1", user = "root", password =
 cursor=tmarkdb.cursor()
 
 
-search_users = "SELECT COUNT(examNo) FROM tmarkTable3"
+search_users = "SELECT COUNT(examNo) FROM tmarkTable4"
 cursor.execute(search_users)
 tmark_list = cursor.fetchall()
 #for i in range(0,len(tmark_list)):

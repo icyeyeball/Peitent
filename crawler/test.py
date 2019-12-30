@@ -4,13 +4,8 @@
 ############################
 #
 # Connect MySQL
-
-import json
-test_l = []
-
-ratio_l = [0.3, 0.1,0.2,0.3,0.15]
-for i in range(0,5):
-    appDict = {'applNo': '012120000','ratio': ratio_l[i]}
-    test_l.append(appDict)
-app_json = json.dumps(test_l)
-print(test_l[4]['ratio'])
+import sys
+test_l = ["吃東西","我們","東西","大飯店","電子","吃東","吃"]
+print(test_l)
+test_l.sort(key=len, reverse=True)
+print(test_l)

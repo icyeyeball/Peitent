@@ -16,7 +16,7 @@ print ("column: examNo, applNo, tmarkName, tmarkClassDesc, imageData1, imageData
 print ("=========================")
 
 #delete_users = "DELETE FROM tmarkTable WHERE examNo = 11111"
-search_users = "SELECT tmarkName FROM tmarkTable WHERE tmarkName LIKE '%力新%'"
+search_users = "SELECT tmarkName FROM tmarkTable3 WHERE tmarkName LIKE '%精釀%'"
 cursor.execute(search_users)
 tmark_list = cursor.fetchall()
 for i in range(0,len(tmark_list)):

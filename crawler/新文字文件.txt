@@ -1,0 +1,10 @@
+python  _picComp.py inputs/h1.jpg "LIKE '3519%'"  "LIKE '%、3519%'"
+
+python  _picComp_t.py inputs/h1.jpg "LIKE '1301%'"  "LIKE '%、1301%'"
+
+python  _wordComp.py 母 媽
+
+python  _wordComp.py 土 士
+
+
+python _wordComp.py 好快樂樓火力強阿門 快樂無邊際樓 013

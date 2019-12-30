@@ -42,9 +42,9 @@ for f in tmpfiles:
     os.remove('./Output/'+str(f))
     
 sampleImage=cv2.imread(samplePath,0)
-sampleImage = imutils.resize(sampleImage, width = 500)
+sampleImage = imutils.resize(sampleImage, width = 300)
 sampleImage = cv2.GaussianBlur(sampleImage, (5, 5), 0)
-sampleImage = cv2.Canny(sampleImage, 30, 150)
+#sampleImage = cv2.Canny(sampleImage, 30, 150)
 kp1, des1 = sift.detectAndCompute(sampleImage, None) #detect the features of sample
 print (len(files))
 for f in files:
@@ -53,12 +53,12 @@ for f in files:
     
     queryImage=cv2.imread(f,0)
     try:
-        queryImage = imutils.resize(queryImage, width = 500)
+        queryImage = imutils.resize(queryImage, width = 300)
     except AttributeError:
         continue
     else:
         queryImage = cv2.GaussianBlur(queryImage, (5, 5), 0)
-        queryImage = cv2.Canny(queryImage, 30, 150)
+        #queryImage = cv2.Canny(queryImage, 30, 150)
         kp2, des2 = sift.detectAndCompute(queryImage, None) #detect the features of img in database
  
         matches=flann.knnMatch(des1,des2,k=2) #matched features, assign k=2 to return 2 matched features.
@@ -69,9 +69,9 @@ for f in files:
         sampleImage=cv2.imread(samplePath)
         queryImage=cv2.imread(f)
         sampleImage=cv2.imread(samplePath)
-        sampleImage = imutils.resize(sampleImage, width = 500)
+        sampleImage = imutils.resize(sampleImage, width = 300)
         queryImage=cv2.imread(f)
-        queryImage = imutils.resize(queryImage, width = 500)
+        queryImage = imutils.resize(queryImage, width = 300)
         #(hA, wA) =sampleImage.shape[:2]  
         #(hB, wB) = queryImage.shape[:2]
         comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1,queryImage,kp2,matches,None,**drawParams)
@@ -90,9 +90,9 @@ for f in files:
                     #print ("i = " + str(i))
                     #print ("j= " + str(j))
         #print ("len(ratio_l) =" +str(len(ratio_l)))
-        if len(ratio_l) > 30:
-            del ratio_l[30]
-            del vis_l[30]
+        if len(ratio_l) > 50:
+            del ratio_l[50]
+            del vis_l[50]
 
 for k in range(0,len(ratio_l)):
     outpath = "./Output/" + str(k+1) + "-" +"("+str(round(ratio_l[k],3)) + ").jpg"

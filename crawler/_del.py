@@ -11,6 +11,6 @@ cursor=tmarkdb.cursor()
 
  # Read
 #delete_users = "DELETE FROM tmarkTable WHERE indexNo = 1175961"
-delete_users = "DELETE FROM tmarkTable3 WHERE imageData1 = './picBase/000000000-1.png'"
+delete_users = "DELETE FROM tmarkTable4 WHERE imageData1 = './picBase/000000000-1.png'"
 cursor.execute(delete_users)
 tmarkdb.commit()
