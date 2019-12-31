@@ -34,8 +34,8 @@ def pic(word1, word2):
     searchParams=dict(checks=50)
     flann=cv2.FlannBasedMatcher(indexParams,searchParams)
 
-    text1 = sys.argv[1]
-    text2 = sys.argv[2]
+    text1 = word1
+    text2 = word2
 
     font = pygame.font.Font("Fonts/LiHei_ProPC.ttf", 50)
 
@@ -60,6 +60,6 @@ def pic(word1, word2):
 
     print ("相似度: " + str(matchRatio) + "%")
     cv2.imwrite("./pic/comp.jpg", comparisonImage)
-    return str(matchRatio)
+    return matchRatio
 
 
