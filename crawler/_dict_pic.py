@@ -62,4 +62,5 @@ def pic(word1, word2):
     cv2.imwrite("./pic/comp.jpg", comparisonImage)
     return matchRatio
 
-
+if __name__=="__main__":
+    pic(sys.argv[1],sys.argv[2])

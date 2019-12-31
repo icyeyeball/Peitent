@@ -199,14 +199,42 @@ if (len(word1) == 1 and len(word2) == 1 and word1 == word2) or (len(word1) == 2 
     print("與前案相同!!!")
 elif (len(word1) == 1 and len(word2) == 1 and word1 != word2):
     picsim= pic(word1,word2)
-    print("picsim="+str(picsim))
+    print("相似度 = "+str(picsim))
 elif (len(word1) == 2 and len(word2) == 2 and word1 != word2):
-    picsim1 = pic(word1[0:1],word2[0:1])
-    picsim2 = pic(word1[1:2],word2[0:1])
-    picsim3 = pic(word1[0:1],word2[1:2])
-    picsim4 = pic(word1[1:2],word2[1:2])
-    picsim = (picsim1+picsim2+picsim3+picsim4)/4.0
-    print("picsim="+str(picsim))
+    word1_l = []
+    word2_l = []
+    #decide how many characters
+    if (word1[0:1] != word2[0:1] and word1[1:2] != word2[1:2]) and (word1[0:1] != word2[1:2] and word1[1:2] != word2[0:1]):
+        print("不相似")
+    else:
+        for i in range(0,2):
+            word1_l.append(word1[i:i+1])
+        print(word1_l)
+        for i in range(0,2):
+            word2_l.append(word2[i:i+1])
+        print(word2_l)
+        for i in word1_l:
+            for j in word2_l:
+                if i == j:
+                    subword = i
+                    print("相同詞組: "+subword)
+                    flag = False
+                    npos1 = word1.find(subword)
+                    npos2 = word2.find(subword)
+                    print("申請案相同詞組位置: "+str(npos1))
+                    print("前案相同詞組位置: "+str(npos2))
+                    if npos1 == npos2:
+                        if npos1 == 0:
+                            picsim= pic(word1[1:2],word2[1:2])
+                            print("相似度 = "+str(picsim))
+                        else:
+                            picsim= pic(word1[0:1],word2[0:1])
+                            print("相似度 = "+str(picsim))
+                    else:
+                        print("不相似")
+                    break
+            if not flag:
+                break
 elif ((len(word1) >= 2 and len(word2) == 2) or (len(word1) == 2 and len(word2) >= 2) or (len(word1) > 2 and len(word2) > 2)) and word1 != word2:
     #decision logic
     if len(word1)<=len(word2):
@@ -245,30 +273,59 @@ elif ((len(word1) >= 2 and len(word2) == 2) or (len(word1) == 2 and len(word2) >
                 leng_subword = len(subword)
                 # Compare the total the same words
                 if npos1 == npos2:
-                    sim = 0
+                    a = 0
                     for i in range(leng_subword):
-                        sim = sim + weight_l[num-2][i]
-                    sim = 1. * sim * 1.
-                    print("相同字 sim="+str(sim))
+                        a = a + weight_l[num-2][i]
+                    a = 1. * a * 1.
+                    print("相同字 a = "+str(a))
                 else:
-                    sim = 0
+                    a = 0
                     for i in range(leng_subword):
-                        sim = sim + weight_l[num-2][i]
-                    sim = 1. * sim * (1.-abs(npos1*0.1-npos2*0.1))
-                    print("相同字 sim="+str(sim))
+                        a = a + weight_l[num-2][i]
+                    a = 1. * a * (1.-abs(npos1*0.1-npos2*0.1))
+                    print("相同字 a = "+str(a))
                 # y words list
-                for i in range(len(word1)):
-                    if i < npos1:
-                        words_y1["l"+str(i)] = word1[i:i+1]
-                    elif i >= npos1+leng_subword:
-                        words_y1["r"+str(i)] = word1[i:i+1]
-                print(words_y1)
-                for i in range(len(word2)):
-                    if i < npos2:
-                        words_y2["l"+str(i)] = word2[i:i+1]
-                    elif i >= npos2+leng_subword:
-                        words_y2["r"+str(i)] = word2[i:i+1]
-                print(words_y2)
+                # left hand side
+                nb = 0
+
+                if npos1>=npos2:
+                    head = npos2
+                else:
+                    head = npos1
+                b = 0.
+                index = 0
+                print("左側相似字數: "+ str(head))
+                for i in range(head,0,-1):
+                    print(word1[npos1-1-index:npos1-index] + ":" + word2[npos2-1-index:npos2-index])
+                    tmp = pic(word1[npos1-1-index:npos1-index],word2[npos2-1-index:npos2-index])
+                    index = index + 1
+                    if tmp > 70:
+                        b = b + tmp
+                        nb = nb + 1
+                #right hand side
+                if (len(word1)-npos1-leng_subword)>=(len(word2)-npos2-leng_subword):
+                    remains = len(word2)-npos2-leng_subword
+                else:
+                    remains = len(word1)-npos1-leng_subword
+                index = 0
+                print("右側相似字數: " + str(remains))
+                for i in range(0,remains):
+                    print(word1[npos1+leng_subword+index:npos1+leng_subword+index+1] + ":" + word2[npos2+leng_subword+index:npos2+leng_subword+index+1])
+                    tmp = pic(word1[npos1+leng_subword+index:npos1+leng_subword+index+1],word2[npos2+leng_subword+index:npos2+leng_subword+index+1])
+                    index = index + 1
+                    if tmp > 70:
+                        b = b + tmp
+                        nb = nb + 1
+                print("相似字 b = "+str(b/100.))
+                # total number of character of the longer word
+                if len(word1)>=len(word2):
+                    leng_word = len(word1)
+                else:
+                    leng_word = len(word2)
+                # calculate the similarity
+                print("nb: "+str(nb))
+                result = (a + (0.45*b))*(leng_subword+nb)*1.3/leng_word
+                print("總相似度為: "+str(result))
                 break
         if not flag:
             break
