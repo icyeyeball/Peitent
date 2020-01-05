@@ -437,8 +437,9 @@ for word in tmark_list:
         if same == False:
             result = 0. 
             print("無相同詞組!")
-            if leng_word<=6:
+            if num<=7:
                 print("最大商標字數: "+ str(leng_word))
+                print("最小商標字數: "+ str(num))
                 for i in range(0,num):
                     print(word1[i:i+1]+" : " +word2[i:i+1])
                     result = result + (pic(word1[i:i+1],word2[i:i+1]) * weight_l[num-2][i])
@@ -447,18 +448,19 @@ for word in tmark_list:
                 print("總相似度為: "+str(result))
             else:
                 print("最大商標字數: "+ str(leng_word))
-                for i in range(0,6):
+                print("最小商標字數: "+ str(num))
+                for i in range(0,7):
                     print(word1[i:i+1]+" : " +word2[i:i+1])
                     result = result + (pic(word1[i:i+1],word2[i:i+1]) * weight_l[num-2][i])
                 result = result * num *1./leng_word
                 print("總相似度為: "+str(result))
         # 
     else:
-        print("不比對")
         print(word1)
         print(len(word1))
         print(word2)
         print(len(word2))
+        print("不比對!")
 localtime_end = time.asctime( time.localtime(time.time()) )
 print("開始時間: "+ localtime_init)     
 print("開始時間: "+ localtime_end)            
