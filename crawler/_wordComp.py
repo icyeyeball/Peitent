@@ -210,19 +210,14 @@ for word in tmark_list:
     num_word2 = num_word2 + 1
     print(num_word2)
     if word.find("及圖") > 0:
-        print("1111111111")
         word2 = word[0:word.find("及")]
     elif word.find("及") > 0 and word.find("標章") > 0:
-        print("22222222222")
         word2 = word[0:word.find("及")]
     elif word.find("及") > 0 and word.find("標章圖") > 0:
-        print("3333333333")
         word2 = word[0:str(word).find("及")]
     elif word.find("及") == -1 and (word.find("圖") ==-1 and word.find("標章") == -1 and word.find("標章圖")==-1):
-        print("444444444")
         word2 = word
     elif word.find("及") == -1 and (word.find("圖") > 0 or word.find("標章") > 0 or word.find("標章圖") > 0):
-        print("55555555")
         word2 = "-"
     #to remove the descriptive words
     for i in string0:
@@ -263,7 +258,7 @@ for word in tmark_list:
         word2_l = []
         #decide how many characters
         if (word1[0:1] != word2[0:1] and word1[1:2] != word2[1:2]) and (word1[0:1] != word2[1:2] and word1[1:2] != word2[0:1]):
-            print("000相似度 = 0%")
+            print("相似度 = 0%")
         else:
             for i in range(0,2):
                 word1_l.append(word1[i:i+1])
@@ -291,7 +286,7 @@ for word in tmark_list:
                                     picsim = picsim * 0.01 * 40
                                     picsim = picsim + 60
                                     print("picsim = "+str(picsim))
-                                    print("111相似度 = "+str(picsim))
+                                    print("相似度 = "+str(picsim))
                                     if picsim > 70:
                                         print("與前案: " + word2 + " 相似度過高")
                                         #localtime = time.asctime( time.localtime(time.time()) )
@@ -302,7 +297,7 @@ for word in tmark_list:
                                     picsim = (picsim-60) * 2.5
                                     picsim = picsim + 60
                                     print("picsim = "+str(picsim))
-                                    print("222相似度 = "+str(picsim))
+                                    print("相似度 = "+str(picsim))
                                     if picsim > 70:
                                         print("與前案: " + word2 + " 相似度過高")
                                         #localtime = time.asctime( time.localtime(time.time()) )
@@ -315,7 +310,7 @@ for word in tmark_list:
                                     picsim = picsim * 0.01 * 60
                                     picsim = picsim + 40
                                     print("picsim = "+str(picsim))
-                                    print("333相似度 = "+str(picsim))
+                                    print("相似度 = "+str(picsim))
                                     if picsim > 70:
                                         print("與前案: " + word2 + " 相似度過高")
                                         #break
@@ -324,7 +319,7 @@ for word in tmark_list:
                                     picsim = (picsim-40) * 1.667
                                     picsim = picsim + 40
                                     print("picsim = "+str(picsim))
-                                    print("444相似度 = "+str(picsim))
+                                    print("相似度 = "+str(picsim))
                                     if picsim > 70:
                                         print("與前案: " + word2 + " 相似度過高")
                                         #break
