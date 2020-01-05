@@ -49,18 +49,22 @@ def pic(word1, word2):
     queryImage=cv2.imread("./pic/2.jpg",0)
     kp1, des1 = sift.detectAndCompute(sampleImage, None) #Extract the features of this picture
     kp2, des2 = sift.detectAndCompute(queryImage, None) #Extract the features of another picture
-    matches=flann.knnMatch(des1,des2,k=2) #matched points，to select them，assign k = 2，that will return 2 matched points for each feature of this picture
-    (matchNum,matchesMask)=getMatchNum(matches,0.9) #zdepends on ratio to caculate how match
-    matchRatio=matchNum*100/len(matches)
-    drawParams=dict(matchColor=(0,255,0),  singlePointColor=(0,0,255), matchesMask=matchesMask, flags=0)
+    try:
+        matches=flann.knnMatch(des1,des2,k=2) #matched points，to select them，assign k = 2，that will return 2 matched points for each feature of this picture
+    except:
+        return 0.
+    else:        
+        (matchNum,matchesMask)=getMatchNum(matches,0.9) #zdepends on ratio to caculate how match
+        matchRatio=matchNum*100/len(matches)
+        drawParams=dict(matchColor=(0,255,0),  singlePointColor=(0,0,255), matchesMask=matchesMask, flags=0)
 
-    sampleImage=cv2.imread("./pic/1.jpg")
-    queryImage=cv2.imread("./pic/2.jpg")
-    comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1,queryImage,kp2,matches,None,**drawParams)
+        sampleImage=cv2.imread("./pic/1.jpg")
+        queryImage=cv2.imread("./pic/2.jpg")
+        comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1,queryImage,kp2,matches,None,**drawParams)
 
-    print ("相似度: " + str(matchRatio) + "%")
-    cv2.imwrite("./pic/comp.jpg", comparisonImage)
-    return matchRatio
+        print ("相似度: " + str(matchRatio) + "%")
+        cv2.imwrite("./pic/comp.jpg", comparisonImage)
+        return matchRatio
 
 if __name__=="__main__":
     pic(sys.argv[1],sys.argv[2])

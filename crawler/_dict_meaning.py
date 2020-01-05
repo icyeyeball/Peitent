@@ -33,8 +33,6 @@ def wordmeaning(word1, word2):
     word_l = []
     meaning = []
 
-    cop = re.compile("[^\u4e00-\u9fa5^]")
-
     word_l = sheet1.col_values(2)
     meaning = sheet1.col_values(10)
     #find out the position of first word
