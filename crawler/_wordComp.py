@@ -469,7 +469,7 @@ for i in range(0,len(result)-1):
             result[j]= result[j+1]
             result[j+1] = tmp
 data = []
-for i in range(0,3):
+for i in range(0,30):
     if i < len(result):
         data.append(result[i])
     else:
