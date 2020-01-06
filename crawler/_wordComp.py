@@ -28,28 +28,28 @@ cursor=tmarkdb.cursor()
 #cop = re.compile("[^\u4e00-\u9fa5^A-Z^a-z^ ^]")
 cop = re.compile("[^\u4e00-\u9fa5^]")
 # for instance: (1)"LIKE '45%'"  (2)"LIKE '%、45%'" (3)"LIKE '3519%'" (4)"LIKE '%、3519%'"
-cmd_users = "SELECT tmarkName FROM tmarkTable WHERE goodsGroup " + sys.argv[2]
+cmd_users = "SELECT tmarkName, applno FROM tmarkTable WHERE goodsGroup " + sys.argv[2]
 cursor.execute(cmd_users)
 tmark_list11 = cursor.fetchall()
-cmd_users = "SELECT tmarkName FROM tmarkTable WHERE goodsGroup " + sys.argv[3]
+cmd_users = "SELECT tmarkName, applno FROM tmarkTable WHERE goodsGroup " + sys.argv[3]
 cursor.execute(cmd_users)
 tmark_list12 = cursor.fetchall()
-cmd_users = "SELECT tmarkName FROM tmarkTable2 WHERE goodsGroup " + sys.argv[2]
+cmd_users = "SELECT tmarkName, applno FROM tmarkTable2 WHERE goodsGroup " + sys.argv[2]
 cursor.execute(cmd_users)
 tmark_list21 = cursor.fetchall()
-cmd_users = "SELECT tmarkName FROM tmarkTable2 WHERE goodsGroup " + sys.argv[3]
+cmd_users = "SELECT tmarkName, applno FROM tmarkTable2 WHERE goodsGroup " + sys.argv[3]
 cursor.execute(cmd_users)
 tmark_list22 = cursor.fetchall()
-cmd_users = "SELECT tmarkName FROM tmarkTable3 WHERE goodsGroup " + sys.argv[2]
+cmd_users = "SELECT tmarkName, applno FROM tmarkTable3 WHERE goodsGroup " + sys.argv[2]
 cursor.execute(cmd_users)
 tmark_list31 = cursor.fetchall()
-cmd_users = "SELECT tmarkName FROM tmarkTable3 WHERE goodsGroup " + sys.argv[3]
+cmd_users = "SELECT tmarkName, applno FROM tmarkTable3 WHERE goodsGroup " + sys.argv[3]
 cursor.execute(cmd_users)
 tmark_list32 = cursor.fetchall()
-cmd_users = "SELECT tmarkName FROM tmarkTable4 WHERE goodsGroup " + sys.argv[2]
+cmd_users = "SELECT tmarkName, applno FROM tmarkTable4 WHERE goodsGroup " + sys.argv[2]
 cursor.execute(cmd_users)
 tmark_list41 = cursor.fetchall()
-cmd_users = "SELECT tmarkName FROM tmarkTable4 WHERE goodsGroup " + sys.argv[3]
+cmd_users = "SELECT tmarkName, applno FROM tmarkTable4 WHERE goodsGroup " + sys.argv[3]
 cursor.execute(cmd_users)
 tmark_list42 = cursor.fetchall()
 #combine these two lists
@@ -61,6 +61,7 @@ tmark_list11.extend(tmark_list32)
 tmark_list11.extend(tmark_list41)
 tmark_list11.extend(tmark_list42)
 tmark_list11 = list(set(tmark_list11))
+print(tmark_list11)
 #文字
 tmark_list = []
 word1 = sys.argv[1]
@@ -198,13 +199,17 @@ for i in range(len(tmark_list11)):
     print(tmark_list11[i])
 print("------------")
 """
+"""
 for i in range(len(tmark_list11)):
-    word = cop.sub('', str(tmark_list11[i]))
+    word = cop.sub('', str(tmark_list11[i][0]))
     tmark_list.append(word)
-#print(tmark_list)
-for word in tmark_list:
+print(tmark_list)
+"""
+result = []
+for tmark in tmark_list11:
     flag = True
     word2 = ""
+    word = cop.sub('', str(tmark[0]))
     print("-------------")
     print("前案: "+ word)
     num_word2 = num_word2 + 1
@@ -226,8 +231,8 @@ for word in tmark_list:
             word2 = word2[0:word2.find(i)]
         else:
             continue
-    print("word1 = " + word1) 
-    print("word2 = " + word2)
+    print("申請案 = " + word1) 
+    print("前案   = " + word2)
     #print("前案: "+word2)
     # compare two words first
     num = 0
@@ -243,13 +248,17 @@ for word in tmark_list:
         leng_word = len(word1)
     else:
         leng_word = len(word2)
-        
+
     if (len(word1) == 1 and len(word2) == 1 and word1 == word2) or (len(word1) == 2 and len(word2) == 2 and word1 == word2):
         print("與前案相同!!!")
+        subresult = {"applno":tmark[1],"ratio":100}
+        result.append(subresult)
         #break
     elif (len(word1) == 1 and len(word2) == 1 and word1 != word2):
         picsim= pic(word1,word2)
         print("相似度 = "+str(picsim))
+        subresult = {"applno":tmark[1],"ratio":picsim}
+        result.append(subresult)
         if picsim > 70:
             print("與前案:" + word2 + "相似度過高")
             #break
@@ -258,6 +267,8 @@ for word in tmark_list:
         word2_l = []
         #decide how many characters
         if (word1[0:1] != word2[0:1] and word1[1:2] != word2[1:2]) and (word1[0:1] != word2[1:2] and word1[1:2] != word2[0:1]):
+            subresult = {"applno":tmark[1],"ratio":0}
+            result.append(subresult)
             print("相似度 = 0%")
         else:
             for i in range(0,2):
@@ -285,19 +296,18 @@ for word in tmark_list:
                                     print("picsim = "+str(picsim))
                                     picsim = picsim * 0.01 * 40
                                     picsim = picsim + 60
-                                    print("picsim = "+str(picsim))
                                     print("相似度 = "+str(picsim))
+                                    subresult = {"applno":tmark[1],"ratio":picsim}
+                                    result.append(subresult)
                                     if picsim > 70:
                                         print("與前案: " + word2 + " 相似度過高")
-                                        #localtime = time.asctime( time.localtime(time.time()) )
-                                        #print("結束時間: "+ localtime)
-                                        #break
                                 else:
                                     print("picsim = "+str(picsim))
                                     picsim = (picsim-60) * 2.5
                                     picsim = picsim + 60
-                                    print("picsim = "+str(picsim))
                                     print("相似度 = "+str(picsim))
+                                    subresult = {"applno":tmark[1],"ratio":picsim}
+                                    result.append(subresult)
                                     if picsim > 70:
                                         print("與前案: " + word2 + " 相似度過高")
                                         #localtime = time.asctime( time.localtime(time.time()) )
@@ -309,8 +319,9 @@ for word in tmark_list:
                                     print("picsim = "+str(picsim))
                                     picsim = picsim * 0.01 * 60
                                     picsim = picsim + 40
-                                    print("picsim = "+str(picsim))
                                     print("相似度 = "+str(picsim))
+                                    subresult = {"applno":tmark[1],"ratio":picsim}
+                                    result.append(subresult)
                                     if picsim > 70:
                                         print("與前案: " + word2 + " 相似度過高")
                                         #break
@@ -318,7 +329,8 @@ for word in tmark_list:
                                     print("picsim = "+str(picsim))
                                     picsim = (picsim-40) * 1.667
                                     picsim = picsim + 40
-                                    print("picsim = "+str(picsim))
+                                    subresult = {"applno":tmark[1],"ratio":picsim}
+                                    result.append(subresult)
                                     print("相似度 = "+str(picsim))
                                     if picsim > 70:
                                         print("與前案: " + word2 + " 相似度過高")
@@ -344,8 +356,6 @@ for word in tmark_list:
                 word2_l.append(word2[j:j+i])
         #print(word2_l)
         #to find out the word
-        words_y1 = {}
-        words_y2 = {}
         same = False
         for i in word1_l:
             for j in word2_l:
@@ -377,13 +387,13 @@ for word in tmark_list:
                     # left hand side
                     nb = 0
 
-                    if npos1>=npos2:
+                    if npos1 >= npos2:
                         head = npos2
                     else:
                         head = npos1
                     b = 0.
                     index = 0
-                    print("左側相似字數: "+ str(head))
+                    print("左側相似字數: " + str(head))
                     for i in range(head,0,-1):
                         print(word1[npos1-1-index:npos1-index] + ":" + word2[npos2-1-index:npos2-index])
                         tmp = pic(word1[npos1-1-index:npos1-index],word2[npos2-1-index:npos2-index]) 
@@ -408,47 +418,42 @@ for word in tmark_list:
                         b = b + (tmp * weight_l[num-2][i+leng_subword])
                         nb = nb + 1
                     print("相似字 b = "+str(b))
-                    # total number of character of the longer word
-                    if len(word1)>=len(word2):
-                        leng_word = len(word1)
-                    else:
-                        leng_word = len(word2)
                     # calculate the similarity
                     print("Nb: "+str(nb))
                     print("相同詞組長度: "+ str(leng_subword))
                     print("最大商標字數: "+ str(leng_word))
-                    result = (a*100. + b)*(leng_subword+nb)*1./leng_word
-                    print("總相似度為: "+str(result))
-                    """
-                    if result > 70:
-                        print("與前案:" + word2 + "相似度過高")
-                        localtime = time.asctime( time.localtime(time.time()) )
-                        print("結束時間: "+ localtime)
-                    """
+                    score = (a*100. + b)*(leng_subword+nb)*1./leng_word
+                    subresult = {"applno":tmark[1],"ratio":score}
+                    result.append(subresult)
+                    print("總相似度為: "+str(score))
+
                     break
                     
             if not flag:
                 break
         if same == False:
-            result = 0. 
-            print("無相同詞組!")
+            score = 0. 
+            print("無兩字以上相同詞組!")
             if num<=7:
                 print("最大商標字數: "+ str(leng_word))
                 print("最小商標字數: "+ str(num))
                 for i in range(0,num):
                     print(word1[i:i+1]+" : " +word2[i:i+1])
-                    result = result + (pic(word1[i:i+1],word2[i:i+1]) * weight_l[num-2][i])
-                result = result * num *1./leng_word
-
-                print("總相似度為: "+str(result))
+                    score = score + (pic(word1[i:i+1],word2[i:i+1]) * weight_l[num-2][i])
+                score = score * num *1./leng_word
+                subresult = {"applno":tmark[1],"ratio":score}
+                result.append(subresult)
+                print("總相似度為: "+str(score))
             else:
                 print("最大商標字數: "+ str(leng_word))
                 print("最小商標字數: "+ str(num))
                 for i in range(0,7):
                     print(word1[i:i+1]+" : " +word2[i:i+1])
-                    result = result + (pic(word1[i:i+1],word2[i:i+1]) * weight_l[num-2][i])
-                result = result * num *1./leng_word
-                print("總相似度為: "+str(result))
+                    score = score + (pic(word1[i:i+1],word2[i:i+1]) * weight_l[num-2][i])
+                score = score * num *1./leng_word
+                subresult = {"applno":tmark[1],"ratio":score}
+                result.append(subresult)
+                print("總相似度為: "+str(score))
         # 
     else:
         print(word1)
@@ -456,9 +461,26 @@ for word in tmark_list:
         print(word2)
         print(len(word2))
         print("不比對!")
+# sort the elements of list
+for i in range(0,len(result)-1): 
+    for j in range(0,len(result)-1-i): 
+        if result[j]["ratio"] < result[j+1]["ratio"]:
+            tmp = result[j]
+            result[j]= result[j+1]
+            result[j+1] = tmp
+data = []
+for i in range(0,3):
+    if i < len(result):
+        data.append(result[i])
+    else:
+        break
+app_json = json.dumps(data)
+print(data)
+    
+# initial time and end time
 localtime_end = time.asctime( time.localtime(time.time()) )
 print("開始時間: "+ localtime_init)     
-print("開始時間: "+ localtime_end)            
-        
+print("結束時間: "+ localtime_end)
+     
     #字型
     #picsim= pic(sys.argv[1],sys.argv[2])
