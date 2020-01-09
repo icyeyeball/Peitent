@@ -173,7 +173,7 @@ for t in tmark_l:
             comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1,queryImage,kp2,matches,None,**drawParams)
             #cv2.putText(comparisonImage,str(matchRatio) + "%",(int(wA+wB/2.),int(3.*hB/4.)),cv2.FONT_HERSHEY_PLAIN,int(1.*hB/50.),(0,0,255),4)
             subtotal = {"applno":t["applno"],"ratio":matchRatio, "picture":comparisonImage}
-            print(f + " = " + str(matchRatio))
+            #print(f + " = " + str(matchRatio))
             result.append(subtotal)
             for i in range(0,len(result)-1): 
                 for j in range(0,len(result)-1-i): 
