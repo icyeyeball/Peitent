@@ -55,7 +55,18 @@ def pic(word1, word2):
         return 0.
     else:        
         (matchNum,matchesMask)=getMatchNum(matches,0.9) #zdepends on ratio to caculate how match
-        matchRatio=matchNum*100/len(matches)
+        matchRatio1=matchNum*100/len(matches)
+        
+    try:
+        matches=flann.knnMatch(des2,des1,k=2) #matched points，to select them，assign k = 2，that will return 2 matched points for each feature of this picture
+    except:
+        return 0.
+    else:        
+        (matchNum,matchesMask)=getMatchNum(matches,0.9) #zdepends on ratio to caculate how match
+        matchRatio2=matchNum*100/len(matches)
+
+        matchRatio = (matchRatio1 + matchRatio2)/2.
+
         drawParams=dict(matchColor=(0,255,0),  singlePointColor=(0,0,255), matchesMask=matchesMask, flags=0)
 
         sampleImage=cv2.imread("./pic/1.jpg")

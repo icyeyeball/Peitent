@@ -200,6 +200,9 @@ print("前案: "+word2)
 weight_l = [[0.6,0.4,0,0,0,0],[0.45,0.3,0.25,0,0,0],[0.35,0.25,0.2,0.2,0,0],[0.35,0.25,0.14,0.13,0.12,0.11],[0.35,0.25,0.1,0.1,0.1,0.1],[0.35,0.25,0.1,0.1,0.1,0.05,0.05]]
 num = 0
 subword = ""
+# compare two words first
+num = 0
+subword = ""
 flag = True
 #decision logic
 if len(word1)<=len(word2):
@@ -212,12 +215,18 @@ if len(word1)>=len(word2):
     leng_word = len(word1)
 else:
     leng_word = len(word2)
-    
+
 if (len(word1) == 1 and len(word2) == 1 and word1 == word2) or (len(word1) == 2 and len(word2) == 2 and word1 == word2):
     print("與前案相同!!!")
+    #break
 elif (len(word1) == 1 and len(word2) == 1 and word1 != word2):
-    picsim= pic(word1,word2)
+    picsim1= pic(word1,word2)
+    picsim2= pic(word2,word1)
+    picsim = (picsim1 + picsim2) / 2.
     print("相似度 = "+str(picsim))
+    if picsim > 70:
+       print("與前案:" + word2 + "相似度過高")
+        #break
 elif (len(word1) == 2 and len(word2) == 2 and word1 != word2):
     word1_l = []
     word2_l = []
@@ -231,6 +240,7 @@ elif (len(word1) == 2 and len(word2) == 2 and word1 != word2):
         for i in range(0,2):
             word2_l.append(word2[i:i+1])
         #print(word2_l)
+        same = False
         for i in word1_l:
             for j in word2_l:
                 if i == j:
@@ -242,31 +252,55 @@ elif (len(word1) == 2 and len(word2) == 2 and word1 != word2):
                     print("申請案相同詞組位置: "+str(npos1))
                     print("前案相同詞組位置: "+str(npos2))
                     if npos1 == npos2:
+                        same = True
                         if npos1 == 0:
+                            print(word1[1:2] + ":" + word2[1:2])
                             picsim= pic(word1[1:2],word2[1:2])
-                            if picsim < 70:
-                                picsim = picsim * 0.1 * 40
-                                picsim = picsim + 60
-                                print("相似度 = "+str(picsim))
+                            if picsim < 60:
+                                print("case: 2:2 ax <60")
+                                a = 100. * 0.6 * 1.
+                                print("a = " + str(a))
+                                picsim= picsim * 0.1 * 0.4 * 1.
+                                print("b = "+ str(picsim))
+                                print("總相似度為: "+str(a+picsim))
+                                if a + picsim > 70:
+                                    print("與前案: " + word2 + " 相似度過高")
+                                
                             else:
-                                picsim = (picsim-60) * 2.5
-                                picsim = picsim + 60
-                                print("相似度 = "+str(picsim))
+                                print("case: 2:2 ax >=60")
+                                a = 100. * 0.6 * 1.
+                                print("a = " + str(a))
+                                picsim= (picsim - 50) * 2.5 * 0.4 * 1.
+                                print("b = "+ str(picsim))
+                                print("總相似度為: "+str(a+picsim))
+                                if a + picsim > 70:
+                                    print("與前案: " + word2 + " 相似度過高")
                         else:
+                            print(word1[0:1] + ":" + word2[0:1])
                             picsim= pic(word1[0:1],word2[0:1])
-                            if picsim < 70:
-                                picsim = picsim * 0.1 * 60
-                                picsim = picsim + 40
-                                print("相似度 = "+str(picsim))
+                            if picsim < 60:
+                                print("case: 2:2 xa <60")
+                                a = 100. * 0.4 * 1.
+                                print("a = " + str(a))
+                                picsim= picsim * 0.1 * 0.6 * 1.
+                                print("b = "+ str(picsim))
+                                print("總相似度為: "+str(a+picsim))
+                                if a + picsim > 70:
+                                    print("與前案: " + word2 + " 相似度過高")
                             else:
-                                picsim = (picsim-60) * 1.667
-                                picsim = picsim + 40
-                                print("相似度 = "+str(picsim))
-                    else:
-                        print("相似度 = 0%")
-                    break
+                                print("case: 2:2 xa >60")
+                                a = 100. * 0.4 * 1.
+                                print("a = " + str(a))
+                                picsim= (picsim - 50) * 2.5 * 0.6 * 1.
+                                print("b = "+ str(picsim))
+                                print("總相似度為: "+str(a+picsim))
+                                if a + picsim > 70:
+                                    print("與前案: " + word2 + " 相似度過高")
+                    break               
             if not flag:
                 break
+        if same == False:
+            print("相似度 = 0%")
 elif ((len(word1) >= 2 and len(word2) == 2) or (len(word1) == 2 and len(word2) >= 2) or (len(word1) > 2 and len(word2) > 2)) and word1 != word2:
 
     #seperate word to lists
@@ -285,12 +319,11 @@ elif ((len(word1) >= 2 and len(word2) == 2) or (len(word1) == 2 and len(word2) >
             word2_l.append(word2[j:j+i])
     #print(word2_l)
     #to find out the word
-    words_y1 = {}
-    words_y2 = {}
     same = False
     for i in word1_l:
         for j in word2_l:
             if i == j:
+                print("case: 2+:2+ ==")
                 subword = i
                 print("相同詞組: "+subword)
                 flag = False
@@ -304,6 +337,7 @@ elif ((len(word1) >= 2 and len(word2) == 2) or (len(word1) == 2 and len(word2) >
                 if npos1 == npos2:
                     a = 0
                     for i in range(leng_subword):
+                        print("weight a = "+str(weight_l[num-2][i]))
                         a = a + weight_l[num-2][i]
                     a = 1. * a * 1.
                     print("相同字 a = "+str(a))
@@ -317,17 +351,16 @@ elif ((len(word1) >= 2 and len(word2) == 2) or (len(word1) == 2 and len(word2) >
                 # left hand side
                 nb = 0
 
-                if npos1>=npos2:
+                if npos1 >= npos2:
                     head = npos2
                 else:
                     head = npos1
                 b = 0.
                 index = 0
-                print("左側相似字數: "+ str(head))
+                print("左側相似字數: " + str(head))
                 for i in range(head,0,-1):
-                    print("-------------")
                     print(word1[npos1-1-index:npos1-index] + ":" + word2[npos2-1-index:npos2-index])
-                    tmp = pic(word1[npos1-1-index:npos1-index],word2[npos2-1-index:npos2-index]) 
+                    tmp = pic(word1[npos1-1-index:npos1-index],word2[npos2-1-index:npos2-index])
                     index = index + 1
                     #if tmp > 50:
                     print("weight: " + str(weight_l[num-2][i-1]))
@@ -339,12 +372,8 @@ elif ((len(word1) >= 2 and len(word2) == 2) or (len(word1) == 2 and len(word2) >
                 else:
                     remains = len(word1)-npos1-leng_subword
                 index = 0
-                print(len(word1))
-                print(npos1)
-                print(leng_subword)
                 print("右側相似字數: " + str(remains))
                 for i in range(0,remains):
-                    print("-------------")
                     print(word1[npos1+leng_subword+index:npos1+leng_subword+index+1] + ":" + word2[npos2+leng_subword+index:npos2+leng_subword+index+1])
                     tmp = pic(word1[npos1+leng_subword+index:npos1+leng_subword+index+1],word2[npos2+leng_subword+index:npos2+leng_subword+index+1])
                     index = index + 1
@@ -352,39 +381,39 @@ elif ((len(word1) >= 2 and len(word2) == 2) or (len(word1) == 2 and len(word2) >
                     print("weight: "+str(weight_l[num-2][i+leng_subword]))
                     b = b + (tmp * weight_l[num-2][i+leng_subword])
                     nb = nb + 1
-                print("-------------")
                 print("相似字 b = "+str(b))
                 # calculate the similarity
                 print("Nb: "+str(nb))
                 print("相同詞組長度: "+ str(leng_subword))
                 print("最大商標字數: "+ str(leng_word))
-                result = (a*100. + b)*(leng_subword+nb)*1./leng_word
-                print("總相似度為: "+str(result))
+                score = (a*100. + b)*(leng_subword+nb)*1.3/leng_word
+                print("總相似度為: "+str(score))
                 break
         if not flag:
             break
     if same == False:
-        result = 0. 
-        print("無相同詞組!")
-        if leng_word<=7:
+        print("case: 2+:2+ !=")
+        score = 0. 
+        print("無兩字以上相同詞組!")
+        if num<=7:
+            print("最大商標字數: "+ str(leng_word))
+            print("最小商標字數: "+ str(num))
             for i in range(0,num):
                 print(word1[i:i+1]+" : " +word2[i:i+1])
-                result = result + (pic(word1[i:i+1],word2[i:i+1]) * weight_l[num-2][i])
-            result = result * num *1./leng_word
-            print("最大商標字數: "+ str(leng_word))
-            print("總相似度為: "+str(result))
+                score = score + (pic(word1[i:i+1],word2[i:i+1]) * weight_l[num-2][i])
+            score = score * num *1.3/leng_word
+            print("總相似度為: "+str(score))
         else:
+            print("最大商標字數: "+ str(leng_word))
+            print("最小商標字數: "+ str(num))
             for i in range(0,7):
                 print(word1[i:i+1]+" : " +word2[i:i+1])
-                result = result + (pic(word1[i:i+1],word2[i:i+1]) * weight_l[num-2][i])
-            result = result * num *1./leng_word
-            print("最大商標字數: "+ str(leng_word))
-            print("總相似度為: "+str(result))
-        
-    # 
+                score = score + (pic(word1[i:i+1],word2[i:i+1]) * weight_l[num-2][i])
+            score = score * num *1.3/leng_word
+            print("總相似度為: "+str(score))
 else:
-    print("不比對")
-                
-        
-#字型
-#picsim= pic(sys.argv[1],sys.argv[2])
+    print(word1)
+    print(len(word1))
+    print(word2)
+    print(len(word2))
+    print("不比對!")

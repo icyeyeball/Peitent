@@ -122,7 +122,10 @@ sampleImage = imutils.resize(sampleImage, width = 300)
 ret,sampleImage = cv2.threshold(sampleImage,120,255,cv2.THRESH_BINARY)
 #sampleImage = cv2.Canny(sampleImage, 30, 150)
 kp1, des1 = sift.detectAndCompute(sampleImage, None) #detect the features of sample
+index = 0
 for t in tmark_l:
+    index = index + 1
+    print("index = " + str(index))
     f = t['file']
     queryImage=cv2.imread(f,0)
     try:
@@ -133,13 +136,31 @@ for t in tmark_l:
         ret,queryImage = cv2.threshold(queryImage,120,255,cv2.THRESH_BINARY)
         #queryImage = cv2.Canny(queryImage, 30, 150)
         kp2, des2 = sift.detectAndCompute(queryImage, None) #detect the features of img in database
+        
+        try:
+            matches=flann.knnMatch(des2,des1,k=2) #matched features, assign k=2 to return 2 matched features.
+        except:
+            continue
+        else:
+            (matchNum,matchesMask)=getMatchNum(matches,0.9) #set ratio = 0.9 to calculate the matching level
+            if len(matches) != 0:
+                matchRatio2=matchNum*100/len(matches)
+            else:
+                matchRatio2=0.
+            
         try:
             matches=flann.knnMatch(des1,des2,k=2) #matched features, assign k=2 to return 2 matched features.
         except:
             continue
         else:
             (matchNum,matchesMask)=getMatchNum(matches,0.9) #set ratio = 0.9 to calculate the matching level
-            matchRatio=matchNum*100/len(matches)
+            if len(matches) != 0:
+                matchRatio1=matchNum*100/len(matches)
+            else:
+                matchRatio1=0.
+            
+            matchRatio = (matchRatio1 + matchRatio2)/2.
+            
             drawParams=dict(matchColor=(0,255,0),  singlePointColor=(0,0,255), matchesMask=matchesMask, flags=0)
             sampleImage=cv2.imread(samplePath)
             queryImage=cv2.imread(f)
