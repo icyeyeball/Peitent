@@ -200,10 +200,10 @@ for t in tmark_l:
             queryImage = imutils.resize(queryImage, width = 300)
             #(hA, wA) =sampleImage.shape[:2]  
             #(hB, wB) = queryImage.shape[:2]
-            comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1_1,queryImage,kp2_1,matches1,None,**drawParams)
+            #comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1_1,queryImage,kp2_1,matches1,None,**drawParams)
             #cv2.putText(comparisonImage,str(matchRatio) + "%",(int(wA+wB/2.),int(3.*hB/4.)),cv2.FONT_HERSHEY_PLAIN,int(1.*hB/50.),(0,0,255),4)
-            subtotal_1 = {"applno":t["applno"],"ratio":matchRatio1, "picture":comparisonImage}
-            subtotal_2 = {"applno":t["applno"],"ratio":matchRatio2, "picture":comparisonImage}
+            subtotal_1 = {"applno":t["applno"],"ratio":matchRatio1, "picture":queryImage}
+            subtotal_2 = {"applno":t["applno"],"ratio":matchRatio2, "picture":queryImage}
             #print(f + " = " + str(matchRatio))
             if subtotal_1["ratio"] > subtotal_2["ratio"]:
                 subtotal = subtotal_1

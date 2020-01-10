@@ -119,7 +119,7 @@ for f in tmpfiles:
 
 sampleImage = cv2.imread(samplePath,0)
 sampleImage = imutils.resize(sampleImage, width = 300)
-ret,sampleImage = cv2.threshold(sampleImage,120,255,cv2.THRESH_BINARY)
+sampleImage = cv2.GaussianBlur(sampleImage, (5, 5), 0)
 #sampleImage = cv2.Canny(sampleImage, 30, 150)
 kp1, des1 = sift.detectAndCompute(sampleImage, None) #detect the features of sample
 index = 0
@@ -130,10 +130,10 @@ for t in tmark_l:
     queryImage=cv2.imread(f,0)
     try:
         queryImage = imutils.resize(queryImage, width = 300)
-    except AttributeError:
+    except:
         continue
     else:
-        ret,queryImage = cv2.threshold(queryImage,120,255,cv2.THRESH_BINARY)
+        queryImage = cv2.GaussianBlur(queryImage, (5, 5), 0)
         #queryImage = cv2.Canny(queryImage, 30, 150)
         kp2, des2 = sift.detectAndCompute(queryImage, None) #detect the features of img in database
         

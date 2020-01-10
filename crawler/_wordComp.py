@@ -27,6 +27,7 @@ cursor=tmarkdb.cursor()
 #cop = re.compile("[^.^/^A-Z^a-z^0-9^-]")
 #cop = re.compile("[^\u4e00-\u9fa5^A-Z^a-z^ ^]")
 cop = re.compile("[^\u4e00-\u9fa5^]")
+copNo = re.compile("[^0-9^]")
 # for instance: (1)"LIKE '45%'"  (2)"LIKE '%、45%'" (3)"LIKE '3519%'" (4)"LIKE '%、3519%'"
 cmd_users = "SELECT tmarkName, applno FROM tmarkTable WHERE goodsGroup " + sys.argv[2]
 cursor.execute(cmd_users)
@@ -61,11 +62,13 @@ tmark_list11.extend(tmark_list32)
 tmark_list11.extend(tmark_list41)
 tmark_list11.extend(tmark_list42)
 tmark_list11 = list(set(tmark_list11))
-print(tmark_list11)
+#print(tmark_list11)
 #文字
 tmark_list = []
 word1 = sys.argv[1]
-codeClass= sys.argv[3]
+codeClass = "0" + copNo.sub('', str(sys.argv[2]))[0:2]
+#print(codeClass)
+info = 0
 
 string = ""
 if codeClass == "001":
@@ -192,6 +195,7 @@ for i in string0:
 num_word2 = 0
 word2=""
 result = []
+
 for tmark in tmark_list11:
     print("-------------")
     print("前案: " + str(tmark[0]))
@@ -328,9 +332,9 @@ for tmark in tmark_list11:
                 if not flag:
                     break
             if same == False:
-                subresult = {"applno":tmark[1],"ratio":0.0}
+                subresult = {"applno":tmark[1],"ratio":54.0}
                 result.append(subresult)
-                print("相似度 = 0%")
+                print("相似度 = 54%")
     elif ((len(word1) >= 2 and len(word2) == 2) or (len(word1) == 2 and len(word2) >= 2) or (len(word1) > 2 and len(word2) > 2)) and word1 != word2:
 
         #seperate word to lists
@@ -474,6 +478,6 @@ print(app_json)
 localtime_end = time.asctime( time.localtime(time.time()) )
 print("開始時間: "+ localtime_init)     
 print("結束時間: "+ localtime_end)
-     
+
     #字型
     #picsim= pic(sys.argv[1],sys.argv[2])

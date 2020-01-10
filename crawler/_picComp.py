@@ -124,7 +124,7 @@ for t in tmark_l:
     queryImage=cv2.imread(f,0)
     try:
         queryImage = imutils.resize(queryImage, width = 300)
-    except AttributeError:
+    except:
         continue
     else:
         queryImage = cv2.GaussianBlur(queryImage, (5, 5), 0)
