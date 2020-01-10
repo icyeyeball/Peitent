@@ -33,8 +33,8 @@ copNo = re.compile("[^0-9^]")
 
 judge1 = "LIKE '" + str(sys.argv[2]) + "%'"
 judge2 = "LIKE '%、" + str(sys.argv[2]) + "%'"
-print(judge1)
-print(judge2)
+#print(judge1)
+#print(judge2)
 
 # for instance: (1)"LIKE '45%'"  (2)"LIKE '%、45%'" (3)"LIKE '3519%'" (4)"LIKE '%、3519%'"
 cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable WHERE goodsGroup " + judge1
