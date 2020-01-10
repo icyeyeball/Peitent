@@ -84,8 +84,6 @@ for i in range(len(tmark_list11)):
 tmark_l = []
 otherpath = './data/' #path of database
 others = listdir(otherpath)
-print(otherpath)
-print(others)
 for i in range(0,10):
     otherpic = "./data/" + others[i]
     tmark = {'applno': "000000000",'file':otherpic}
@@ -225,7 +223,7 @@ for t in tmark_l:
                 del result[50]
 
                 
-print("tmark_l = " + str(len(tmark_l)))
+#print("tmark_l = " + str(len(tmark_l)))
 
 data = []
 
