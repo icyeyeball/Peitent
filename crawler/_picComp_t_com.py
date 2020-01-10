@@ -215,14 +215,14 @@ for t in tmark_l:
                         #print ("i = " + str(i))
                         #print ("j= " + str(j))
             #print ("len(ratio_l) =" +str(len(ratio_l)))
-            if len(result) > 50:
-                del result[50]
+            if len(result) > 500:
+                del result[500]
 
                 
 #print("tmark_l = " + str(len(tmark_l)))
 
 data = []
-
+print(len(result))
 for i in result:
     #print (str(i["applno"])+","+str(i["ratio"]))
     data.append({"applno":i["applno"], "ratio":i["ratio"]})
