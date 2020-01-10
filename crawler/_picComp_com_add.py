@@ -29,30 +29,36 @@ def getMatchNum(matches,ratio):
 tmarkdb = mysql.connector.connect( host = "127.0.0.1", user = "root", password = "lehsiao", database = "tmarkdb",  )
 cursor=tmarkdb.cursor()
 cop = re.compile("[^.^/^A-Z^a-z^0-9^-]")
+copNo = re.compile("[^0-9^]")
+
+judge1 = "LIKE '" + str(sys.argv[2]) + "%'"
+judge2 = "LIKE '%、" + str(sys.argv[2]) + "%'"
+print(judge1)
+print(judge2)
 
 # for instance: (1)"LIKE '45%'"  (2)"LIKE '%、45%'" (3)"LIKE '3519%'" (4)"LIKE '%、3519%'"
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable WHERE goodsGroup " + sys.argv[2]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable WHERE goodsGroup " + judge1
 cursor.execute(cmd_users)
 tmark_list11 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable WHERE goodsGroup " + sys.argv[3]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable WHERE goodsGroup " + judge2
 cursor.execute(cmd_users)
 tmark_list12 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable2 WHERE goodsGroup " + sys.argv[2]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable2 WHERE goodsGroup " + judge1
 cursor.execute(cmd_users)
 tmark_list21 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable2 WHERE goodsGroup " + sys.argv[3]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable2 WHERE goodsGroup " + judge2
 cursor.execute(cmd_users)
 tmark_list22 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable3 WHERE goodsGroup " + sys.argv[2]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable3 WHERE goodsGroup " + judge1
 cursor.execute(cmd_users)
 tmark_list31 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable3 WHERE goodsGroup " + sys.argv[3]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable3 WHERE goodsGroup " + judge2
 cursor.execute(cmd_users)
 tmark_list32 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable4 WHERE goodsGroup " + sys.argv[2]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable4 WHERE goodsGroup " + judge1
 cursor.execute(cmd_users)
 tmark_list41 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable4 WHERE goodsGroup " + sys.argv[3]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable4 WHERE goodsGroup " + judge2
 cursor.execute(cmd_users)
 tmark_list42 = cursor.fetchall()
 #combine these two lists
@@ -84,8 +90,6 @@ for i in range(len(tmark_list11)):
 tmark_l = []
 otherpath = './data/' #path of database
 others = listdir(otherpath)
-print(otherpath)
-print(others)
 for i in range(0,10):
     otherpic = "./data/" + others[i]
     tmark = {'applno': "000000000",'file':otherpic}
@@ -118,14 +122,17 @@ for f in tmpfiles:
     os.remove('./Output/'+str(f))
 
 sampleImage = cv2.imread(samplePath,0)
-sampleImage = imutils.resize(sampleImage, width = 300)
-sampleImage = cv2.GaussianBlur(sampleImage, (5, 5), 0)
+sampleImage1 = imutils.resize(sampleImage, width = 300)
+sampleImage1 = cv2.GaussianBlur(sampleImage1, (5, 5), 0)
+kp1_1, des1_1 = sift.detectAndCompute(sampleImage1, None) #detect the features of sample
+
+sampleImage = cv2.imread(samplePath,0)
+sampleImage2 = imutils.resize(sampleImage, width = 300)
+sampleImage2 = cv2.GaussianBlur(sampleImage2, (1, 1), 0)
+ret,sampleImage2 = cv2.threshold(sampleImage2,220,255,cv2.THRESH_BINARY)
 #sampleImage = cv2.Canny(sampleImage, 30, 150)
-kp1, des1 = sift.detectAndCompute(sampleImage, None) #detect the features of sample
-index = 0
+kp1_2, des1_2 = sift.detectAndCompute(sampleImage2, None) #detect the features of sample
 for t in tmark_l:
-    index = index + 1
-    print("index = " + str(index))
     f = t['file']
     queryImage=cv2.imread(f,0)
     try:
@@ -133,35 +140,59 @@ for t in tmark_l:
     except:
         continue
     else:
-        queryImage = cv2.GaussianBlur(queryImage, (5, 5), 0)
-        #queryImage = cv2.Canny(queryImage, 30, 150)
-        kp2, des2 = sift.detectAndCompute(queryImage, None) #detect the features of img in database
+        queryImage1 = cv2.GaussianBlur(queryImage, (5, 5), 0)
+        kp2_1, des2_1 = sift.detectAndCompute(queryImage1, None) #detect the features of img in database
+
+        queryImage2 = cv2.GaussianBlur(queryImage, (1, 1), 0)
+        ret,queryImage2 = cv2.threshold(queryImage2,220,255,cv2.THRESH_BINARY)
+        kp2_2, des2_2 = sift.detectAndCompute(queryImage2, None) #detect the features of img in database
         
         try:
-            matches=flann.knnMatch(des2,des1,k=2) #matched features, assign k=2 to return 2 matched features.
+            matches2=flann.knnMatch(des2_2,des1_2,k=2) #matched features, assign k=2 to return 2 matched features.
         except:
             continue
         else:
-            (matchNum,matchesMask)=getMatchNum(matches,0.9) #set ratio = 0.9 to calculate the matching level
-            if len(matches) != 0:
-                matchRatio2=matchNum*100/len(matches)
+            (matchNum2,matchesMask2)=getMatchNum(matches2,0.9) #set ratio = 0.9 to calculate the matching level
+            if len(matches2) != 0:
+                matchRatio2_2=matchNum2*100/len(matches2)
             else:
-                matchRatio2=0.
+                matchRatio2_2=0.
+        try:
+            matches2=flann.knnMatch(des1_2,des2_2,k=2) #matched features, assign k=2 to return 2 matched features.
+        except:
+            continue
+        else:
+            (matchNum2,matchesMask2)=getMatchNum(matches2,0.9) #set ratio = 0.9 to calculate the matching level
+            if len(matches2) != 0:
+                matchRatio1_2=matchNum2*100/len(matches2)
+            else:
+                matchRatio1_2=0.           
+            matchRatio2 = (matchRatio1_2 + matchRatio2_2)/2.
             
         try:
-            matches=flann.knnMatch(des1,des2,k=2) #matched features, assign k=2 to return 2 matched features.
+            matches1=flann.knnMatch(des2_1,des1_1,k=2) #matched features, assign k=2 to return 2 matched features.
         except:
             continue
         else:
-            (matchNum,matchesMask)=getMatchNum(matches,0.9) #set ratio = 0.9 to calculate the matching level
-            if len(matches) != 0:
-                matchRatio1=matchNum*100/len(matches)
+            (matchNum1,matchesMask1)=getMatchNum(matches1,0.9) #set ratio = 0.9 to calculate the matching level
+            if len(matches1) != 0:
+                matchRatio2_1=matchNum1*100/len(matches1)
             else:
-                matchRatio1=0.
+                matchRatio2_1=0.
+        try:
+            matches1=flann.knnMatch(des1_1,des2_1,k=2) #matched features, assign k=2 to return 2 matched features.
+        except:
+            continue
+        else:
+            (matchNum1,matchesMask1)=getMatchNum(matches1,0.9) #set ratio = 0.9 to calculate the matching level
+            if len(matches1) != 0:
+                matchRatio1_1=matchNum1*100/len(matches1)
+            else:
+                matchRatio1_1=0.           
+            matchRatio1 = (matchRatio1_1 + matchRatio2_1)/2.
             
-            matchRatio = (matchRatio1 + matchRatio2)/2.
-            
-            drawParams=dict(matchColor=(0,255,0),  singlePointColor=(0,0,255), matchesMask=matchesMask, flags=0)
+           
+            drawParams=dict(matchColor=(0,255,0),  singlePointColor=(0,0,255), matchesMask=matchesMask1, flags=0)
             sampleImage=cv2.imread(samplePath)
             queryImage=cv2.imread(f)
             sampleImage=cv2.imread(samplePath)
@@ -170,10 +201,17 @@ for t in tmark_l:
             queryImage = imutils.resize(queryImage, width = 300)
             #(hA, wA) =sampleImage.shape[:2]  
             #(hB, wB) = queryImage.shape[:2]
-            comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1,queryImage,kp2,matches,None,**drawParams)
+            #comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1_1,queryImage,kp2_1,matches1,None,**drawParams)
             #cv2.putText(comparisonImage,str(matchRatio) + "%",(int(wA+wB/2.),int(3.*hB/4.)),cv2.FONT_HERSHEY_PLAIN,int(1.*hB/50.),(0,0,255),4)
-            subtotal = {"applno":t["applno"],"ratio":matchRatio, "picture":comparisonImage}
+            subtotal_1 = {"applno":t["applno"],"ratio":matchRatio1, "picture":queryImage}
+            subtotal_2 = {"applno":t["applno"],"ratio":matchRatio2, "picture":queryImage}
             #print(f + " = " + str(matchRatio))
+            if subtotal_1["ratio"] > subtotal_2["ratio"]:
+                subtotal = subtotal_1
+            else:
+                subtotal = subtotal_2
+            
+            
             result.append(subtotal)
             for i in range(0,len(result)-1): 
                 for j in range(0,len(result)-1-i): 
@@ -186,21 +224,22 @@ for t in tmark_l:
             #print ("len(ratio_l) =" +str(len(ratio_l)))
             if len(result) > 50:
                 del result[50]
+
                 
-print("tmark_l = " + str(len(tmark_l)))
+#print("tmark_l = " + str(len(tmark_l)))
 
 data = []
 
 for i in result:
-    print (str(i["applno"])+","+str(i["ratio"]))
+    #print (str(i["applno"])+","+str(i["ratio"]))
     data.append({"applno":i["applno"], "ratio":i["ratio"]})
    
 app_json = json.dumps(data)
 print(app_json)
 for k in range(0,len(result)):
     outpath = "./Output/" + str(k+1) + "-" +"("+str(round(result[k]["ratio"],3)) + "-" + str(result[k]["applno"]) +").jpg"
-    print ("===========================")
-    print (outpath)
+    #print ("===========================")
+    #print (outpath)
     cv2.imwrite(outpath, result[k]["picture"])
 
 

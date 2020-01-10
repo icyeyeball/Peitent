@@ -88,13 +88,6 @@ for i in range(len(tmark_list11)):
         tmark_list.append(tmark_list11[i])
 
 tmark_l = []
-otherpath = './data/' #path of database
-others = listdir(otherpath)
-for i in range(0,10):
-    otherpic = "./data/" + others[i]
-    tmark = {'applno': "000000000",'file':otherpic}
-    tmark_l.append(tmark)
-
 
 for i in range(0, len(tmark_list)):
     #if len(cop.sub('', str(tmark_list[i]))) == 24:
