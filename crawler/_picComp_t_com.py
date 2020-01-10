@@ -29,30 +29,36 @@ def getMatchNum(matches,ratio):
 tmarkdb = mysql.connector.connect( host = "127.0.0.1", user = "root", password = "lehsiao", database = "tmarkdb",  )
 cursor=tmarkdb.cursor()
 cop = re.compile("[^.^/^A-Z^a-z^0-9^-]")
+copNo = re.compile("[^0-9^]")
+
+judge1 = "LIKE '" + str(sys.argv[2]) + "%'"
+judge2 = "LIKE '%、" + str(sys.argv[2]) + "%'"
+print(judge1)
+print(judge2)
 
 # for instance: (1)"LIKE '45%'"  (2)"LIKE '%、45%'" (3)"LIKE '3519%'" (4)"LIKE '%、3519%'"
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable WHERE goodsGroup " + sys.argv[2]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable WHERE goodsGroup " + judge1
 cursor.execute(cmd_users)
 tmark_list11 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable WHERE goodsGroup " + sys.argv[3]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable WHERE goodsGroup " + judge2
 cursor.execute(cmd_users)
 tmark_list12 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable2 WHERE goodsGroup " + sys.argv[2]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable2 WHERE goodsGroup " + judge1
 cursor.execute(cmd_users)
 tmark_list21 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable2 WHERE goodsGroup " + sys.argv[3]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable2 WHERE goodsGroup " + judge2
 cursor.execute(cmd_users)
 tmark_list22 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable3 WHERE goodsGroup " + sys.argv[2]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable3 WHERE goodsGroup " + judge1
 cursor.execute(cmd_users)
 tmark_list31 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable3 WHERE goodsGroup " + sys.argv[3]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable3 WHERE goodsGroup " + judge2
 cursor.execute(cmd_users)
 tmark_list32 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable4 WHERE goodsGroup " + sys.argv[2]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable4 WHERE goodsGroup " + judge1
 cursor.execute(cmd_users)
 tmark_list41 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable4 WHERE goodsGroup " + sys.argv[3]
+cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable4 WHERE goodsGroup " + judge2
 cursor.execute(cmd_users)
 tmark_list42 = cursor.fetchall()
 #combine these two lists
