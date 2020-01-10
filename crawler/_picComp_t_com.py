@@ -132,10 +132,7 @@ sampleImage2 = cv2.GaussianBlur(sampleImage2, (1, 1), 0)
 ret,sampleImage2 = cv2.threshold(sampleImage2,220,255,cv2.THRESH_BINARY)
 #sampleImage = cv2.Canny(sampleImage, 30, 150)
 kp1_2, des1_2 = sift.detectAndCompute(sampleImage2, None) #detect the features of sample
-index = 0
 for t in tmark_l:
-    index = index + 1
-    print("index = " + str(index))
     f = t['file']
     queryImage=cv2.imread(f,0)
     try:
@@ -234,15 +231,15 @@ for t in tmark_l:
 data = []
 
 for i in result:
-    print (str(i["applno"])+","+str(i["ratio"]))
+    #print (str(i["applno"])+","+str(i["ratio"]))
     data.append({"applno":i["applno"], "ratio":i["ratio"]})
    
 app_json = json.dumps(data)
 print(app_json)
 for k in range(0,len(result)):
     outpath = "./Output/" + str(k+1) + "-" +"("+str(round(result[k]["ratio"],3)) + "-" + str(result[k]["applno"]) +").jpg"
-    print ("===========================")
-    print (outpath)
+    #print ("===========================")
+    #print (outpath)
     cv2.imwrite(outpath, result[k]["picture"])
 
 
