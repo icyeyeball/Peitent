@@ -114,7 +114,7 @@ for i in range(len(tmark_list11)):
             tmark_list.append(tmark_list11[i])
             continue       
 
-print(tmark_list)
+#print(tmark_list)
 
 tmark_l = []
 
