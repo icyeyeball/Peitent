@@ -78,14 +78,43 @@ for i in range(len(tmark_list11)):
     except ValueError:
         continue
     else:
-        tmark_list.append(tmark_list11[i])
-        continue
+        if nPos > 1:
+            tmark_list.append(tmark_list11[i])
+            continue
     try:
         nPos = tmark_list11[i][1].index("標章")
     except ValueError:
         continue
     else:
-        tmark_list.append(tmark_list11[i])
+        if nPos > 1:
+            tmark_list.append(tmark_list11[i])
+            continue
+    try:
+        nPos = tmark_list11[i][1].index("設計字")
+    except ValueError:
+        continue
+    else:
+        if nPos > 1:
+            tmark_list.append(tmark_list11[i])
+            continue
+    try:
+        nPos = tmark_list11[i][1].index("Logo")
+    except ValueError:
+        continue
+    else:
+        if nPos > 1:
+            tmark_list.append(tmark_list11[i])
+            continue
+    try:
+        nPos = tmark_list11[i][1].index("LOGO")
+    except ValueError:
+        continue
+    else:
+        if nPos > 1:
+            tmark_list.append(tmark_list11[i])
+            continue       
+
+print(tmark_list)
 
 tmark_l = []
 
