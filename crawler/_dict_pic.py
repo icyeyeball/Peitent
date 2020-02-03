@@ -24,7 +24,7 @@ def getMatchNum(matches,ratio):
     return (matchNum,matchesMask)
 
 
-def pic(word1, word2):
+def pic(word1, word2, indx):
     pygame.init()
 
     sift = cv2.xfeatures2d.SIFT_create() 
@@ -42,11 +42,12 @@ def pic(word1, word2):
     ftext1 = font.render(text1, True, (0, 0, 0),(255, 255, 255))
     ftext2 = font.render(text2, True, (0, 0, 0),(255, 255, 255))
 
-    pygame.image.save(ftext1, "./pic/1.jpg")#圖片儲存地址
-    pygame.image.save(ftext2, "./pic/2.jpg")#圖片儲存地址
+    pygame.image.save(ftext1, "./pic/" + str(indx) + ".1.jpg")#圖片儲存地址
+    pygame.image.save(ftext2, "./pic/" + str(indx) + ".2.jpg")#圖片儲存地址
 
-    sampleImage=cv2.imread("./pic/1.jpg",0)
-    queryImage=cv2.imread("./pic/2.jpg",0)
+    sampleImage=cv2.imread("./pic/" + str(indx) + ".1.jpg",0)
+    queryImage=cv2.imread("./pic/" + str(indx) + ".2.jpg",0)
+
     kp1, des1 = sift.detectAndCompute(sampleImage, None) #Extract the features of this picture
     kp2, des2 = sift.detectAndCompute(queryImage, None) #Extract the features of another picture
     try:
@@ -69,13 +70,13 @@ def pic(word1, word2):
 
         drawParams=dict(matchColor=(0,255,0),  singlePointColor=(0,0,255), matchesMask=matchesMask, flags=0)
 
-        sampleImage=cv2.imread("./pic/1.jpg")
-        queryImage=cv2.imread("./pic/2.jpg")
-        comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1,queryImage,kp2,matches,None,**drawParams)
+        #sampleImage=cv2.imread("./pic/1.jpg")
+        #queryImage=cv2.imread("./pic/2.jpg")
+        #comparisonImage=cv2.drawMatchesKnn(sampleImage,kp1,queryImage,kp2,matches,None,**drawParams)
 
         #print ("相似度: " + str(matchRatio) + "%")
-        cv2.imwrite("./pic/comp.jpg", comparisonImage)
+        #cv2.imwrite("./pic/comp.jpg", comparisonImage)
         return matchRatio
 
 if __name__=="__main__":
-    pic(sys.argv[1],sys.argv[2])
+    pic(sys.argv[1],sys.argv[2],sys.argv[3])

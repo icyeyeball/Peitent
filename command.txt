@@ -1,0 +1,11 @@
+cd cmder
+cd peitent
+cd crawler
+activate python36gpu
+python _build.py
+
+
+cd cmder
+cd peitent
+cd c
+activate python36gpu

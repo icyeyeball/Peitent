@@ -15,6 +15,9 @@ import mysql.connector
 import re
 import shutil
 import json
+import time
+
+localtime_init = time.asctime( time.localtime(time.time()) )
 
 def getMatchNum(matches,ratio):
     '''number of matched features and relation'''
@@ -119,6 +122,7 @@ for i in range(len(tmark_list11)):
 tmark_l = []
 
 for i in range(0, len(tmark_list)):
+
     #if len(cop.sub('', str(tmark_list[i]))) == 24:
     tmark = {'applno': tmark_list[i][2],'file':tmark_list[i][0]}
     tmark_l.append(tmark)
@@ -154,7 +158,10 @@ sampleImage2 = cv2.GaussianBlur(sampleImage2, (1, 1), 0)
 ret,sampleImage2 = cv2.threshold(sampleImage2,220,255,cv2.THRESH_BINARY)
 #sampleImage = cv2.Canny(sampleImage, 30, 150)
 kp1_2, des1_2 = sift.detectAndCompute(sampleImage2, None) #detect the features of sample
+index = 0
 for t in tmark_l:
+    index = index + 1 
+    print(index)
     f = t['file']
     queryImage=cv2.imread(f,0)
     try:
@@ -232,21 +239,25 @@ for t in tmark_l:
                 subtotal = subtotal_1
             else:
                 subtotal = subtotal_2
-            
-            
             result.append(subtotal)
-            for i in range(0,len(result)-1): 
-                for j in range(0,len(result)-1-i): 
-                    if result[j]["ratio"] < result[j+1]["ratio"]:
-                        tmp = result[j]
-                        result[j]= result[j+1]
-                        result[j+1] = tmp
-                        #print ("i = " + str(i))
-                        #print ("j= " + str(j))
-            #print ("len(ratio_l) =" +str(len(ratio_l)))
-            if len(result) > 500:
+            
+            if leng(result) < 500:
+                for i in range(0,len(result)-1): 
+                    for j in range(0,len(result)-1-i): 
+                        if result[j]["ratio"] < result[j+1]["ratio"]:
+                            tmp = result[j]
+                            result[j]= result[j+1]
+                            result[j+1] = tmp
+            elif subtotal["ratio"] > result[499]["ratio"] and leng(result)==500:
+                for i in range(0,len(result)-1): 
+                    for j in range(0,len(result)-1-i): 
+                        if result[j]["ratio"] < result[j+1]["ratio"]:
+                            tmp = result[j]
+                            result[j]= result[j+1]
+                            result[j+1] = tmp
                 del result[500]
-
+            else:
+                pass
                 
 #print("tmark_l = " + str(len(tmark_l)))
 
@@ -264,7 +275,10 @@ for k in range(0,len(result)):
     #print (outpath)
     cv2.imwrite(outpath, result[k]["picture"])
 
-
+# initial time and end time
+localtime_end = time.asctime( time.localtime(time.time()) )
+print("開始時間: "+ localtime_init)     
+print("結束時間: "+ localtime_end)
 """
 column=4
 row=5

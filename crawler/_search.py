@@ -10,14 +10,43 @@ tmarkdb = mysql.connector.connect( host = "127.0.0.1", user = "root", password =
 cursor=tmarkdb.cursor()
 
 
- # Read
-print ("=========================")
-print ("column: examNo, applNo, tmarkName, tmarkClassDesc, imageData1, imageData2, imageData3, imageData4, imageData5, imageData6, tmarkType, tmarkTypeDesc, tmarkColor, tmarkColorDesc, tmarkDraftC, tmarkDraftE, tmarkDraftJ, tmarkSign, wordDescription, goodsclassCode, goodsName, goodsGroup, deadline,volNo1, volNo2, processorName, holderChineseName, holderEnglishName, holderJapaneseName, holderAddress, countryCode, chineseCountryName, agentChineseName, agentAddress")
-print ("=========================")
+# Read
 
 #delete_users = "DELETE FROM tmarkTable WHERE examNo = 11111"
-search_users = "SELECT tmarkName FROM tmarkTable3 WHERE tmarkName LIKE '%精釀%'"
-cursor.execute(search_users)
-tmark_list = cursor.fetchall()
-for i in range(0,len(tmark_list)):
-    print(tmark_list[i])
+judge1 = "LIKE '" + str(sys.argv[1]) + "%'"
+judge2 = "LIKE '%、" + str(sys.argv[1]) + "%'"
+cmd_users = "SELECT tmarkName FROM tmarkTable WHERE applNo " + judge1
+cursor.execute(cmd_users)
+tmark_list11 = cursor.fetchall()
+cmd_users = "SELECT tmarkName FROM tmarkTable WHERE applNo " + judge2
+cursor.execute(cmd_users)
+tmark_list12 = cursor.fetchall()
+cmd_users = "SELECT tmarkName FROM tmarkTable2 WHERE applNo " + judge1
+cursor.execute(cmd_users)
+tmark_list21 = cursor.fetchall()
+cmd_users = "SELECT tmarkName FROM tmarkTable2 WHERE applNo " + judge2
+cursor.execute(cmd_users)
+tmark_list22 = cursor.fetchall()
+cmd_users = "SELECT tmarkName FROM tmarkTable3 WHERE applNo " + judge1
+cursor.execute(cmd_users)
+tmark_list31 = cursor.fetchall()
+cmd_users = "SELECT tmarkName FROM tmarkTable3 WHERE applNo " + judge2
+cursor.execute(cmd_users)
+tmark_list32 = cursor.fetchall()
+cmd_users = "SELECT tmarkName FROM tmarkTable4 WHERE applNo " + judge1
+cursor.execute(cmd_users)
+tmark_list41 = cursor.fetchall()
+cmd_users = "SELECT tmarkName FROM tmarkTable4 WHERE applNo " + judge2
+cursor.execute(cmd_users)
+tmark_list42 = cursor.fetchall()
+#combine these two lists
+tmark_list11.extend(tmark_list12)
+tmark_list11.extend(tmark_list21)
+tmark_list11.extend(tmark_list22)
+tmark_list11.extend(tmark_list31)
+tmark_list11.extend(tmark_list32)
+tmark_list11.extend(tmark_list41)
+tmark_list11.extend(tmark_list42)
+tmark_list11 = list(set(tmark_list11))
+
+print(tmark_list11)

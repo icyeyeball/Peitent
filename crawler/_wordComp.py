@@ -28,29 +28,34 @@ cursor=tmarkdb.cursor()
 #cop = re.compile("[^\u4e00-\u9fa5^A-Z^a-z^ ^]")
 cop = re.compile("[^\u4e00-\u9fa5^]")
 copNo = re.compile("[^0-9^]")
+
+judge1 = "LIKE '" + str(sys.argv[2]) + "%'"
+judge2 = "LIKE '%、" + str(sys.argv[2]) + "%'"
+#print(judge1)
+#print(judge2)
 # for instance: (1)"LIKE '45%'"  (2)"LIKE '%、45%'" (3)"LIKE '3519%'" (4)"LIKE '%、3519%'"
-cmd_users = "SELECT tmarkName, applno FROM tmarkTable WHERE goodsGroup " + sys.argv[2]
+cmd_users = "SELECT tmarkName, applno FROM tmarkTable WHERE goodsGroup " + judge1
 cursor.execute(cmd_users)
 tmark_list11 = cursor.fetchall()
-cmd_users = "SELECT tmarkName, applno FROM tmarkTable WHERE goodsGroup " + sys.argv[3]
+cmd_users = "SELECT tmarkName, applno FROM tmarkTable WHERE goodsGroup " + judge2
 cursor.execute(cmd_users)
 tmark_list12 = cursor.fetchall()
-cmd_users = "SELECT tmarkName, applno FROM tmarkTable2 WHERE goodsGroup " + sys.argv[2]
+cmd_users = "SELECT tmarkName, applno FROM tmarkTable2 WHERE goodsGroup " + judge1
 cursor.execute(cmd_users)
 tmark_list21 = cursor.fetchall()
-cmd_users = "SELECT tmarkName, applno FROM tmarkTable2 WHERE goodsGroup " + sys.argv[3]
+cmd_users = "SELECT tmarkName, applno FROM tmarkTable2 WHERE goodsGroup " + judge2
 cursor.execute(cmd_users)
 tmark_list22 = cursor.fetchall()
-cmd_users = "SELECT tmarkName, applno FROM tmarkTable3 WHERE goodsGroup " + sys.argv[2]
+cmd_users = "SELECT tmarkName, applno FROM tmarkTable3 WHERE goodsGroup " + judge1
 cursor.execute(cmd_users)
 tmark_list31 = cursor.fetchall()
-cmd_users = "SELECT tmarkName, applno FROM tmarkTable3 WHERE goodsGroup " + sys.argv[3]
+cmd_users = "SELECT tmarkName, applno FROM tmarkTable3 WHERE goodsGroup " + judge2
 cursor.execute(cmd_users)
 tmark_list32 = cursor.fetchall()
-cmd_users = "SELECT tmarkName, applno FROM tmarkTable4 WHERE goodsGroup " + sys.argv[2]
+cmd_users = "SELECT tmarkName, applno FROM tmarkTable4 WHERE goodsGroup " + judge1
 cursor.execute(cmd_users)
 tmark_list41 = cursor.fetchall()
-cmd_users = "SELECT tmarkName, applno FROM tmarkTable4 WHERE goodsGroup " + sys.argv[3]
+cmd_users = "SELECT tmarkName, applno FROM tmarkTable4 WHERE goodsGroup " + judge2
 cursor.execute(cmd_users)
 tmark_list42 = cursor.fetchall()
 #combine these two lists
@@ -67,8 +72,8 @@ tmark_list11 = list(set(tmark_list11))
 tmark_list = []
 word1 = sys.argv[1]
 codeClass = "0" + copNo.sub('', str(sys.argv[2]))[0:2]
-#print(codeClass)
-info = 0
+#print("cldeclass: " + codeClass)
+indx = sys.argv[3]
 
 string = ""
 if codeClass == "001":
@@ -169,7 +174,7 @@ string03 = "共購、在線、宅配、行銷、直播、連鎖、視訊、視�
 string04 = "工程、工業、五金、文化、文教、文創、生技、生醫、企業、光電、光學、全球、印刷、百貨、技研、投資、投顧、沙龍、事業、協會、房產、牧業、物流、物產、物業、金控、建設、建築、科技、食品、娛樂、展業、旅遊、書店、租車、租賃、紙業、能源、茶業、商旅、商務、商貿、商業、商辦、國際、控股、產業、通信、通訊、通運、創投、媒體、棉業、貿易、開發、集團、傳媒、傳播、會社、資訊、資產、農產、電子、電信、電訊、電商、電腦、電機、電競、團隊、實業、精機、銀行、影視、影業、影像、鞋業、機械、機電、機構、興業、餐飲、營建、營造、環球、聯合、聯盟、禮儀、不動產、多媒體、房地產、基金會、生命禮儀、生物科技、物流開發、能源科技、集團控股、管理顧問、數位通訊、應用科技、.COM、AEROSPACE、ALLIANCE、ARCHITECTURE、ASSET、ASSOCIATION、BANK、BIOTECH、BIOTECHNOLOGY、BUSINESS、CAPITAL、COMMUNICATION、CONSTRUCTION、CONSULTING、CULTRUAL CREATIVE、CULTURE、DEVELOPMENT、ELECTRIC、ENGINEERING、ENTERPRISE、ENTERTAINMENT、eSports、ESTATE、EXPRESS、EXPRESS & LOGISTICS、FACTORY、FLORIST、FOUNDATION、FREIGHT、GLOBAL、GROUP、HOLDING、INDUSTRIAL、INDUSTRY、INFORMATION、INSTITUTE、INSTITUTION、INSURANCE、INTERNATIONAL、INTERNATIONAL TRADE、INVESTMENT、LAND DEVELOPMENT、LAW OFFICE、LEASE、LOGISTIC PROPERTY、LOGISTICS、MACHINE、MANUFACTURING、MATERIAL TECHNOLOGY、METAL INDUSTRY、NEWS、OPTO、OPTOELECTRONIC、ORGANIZATION、PARTNERSHIP、PHOTOGRAPHY、PROPERTY、REAL ESTATE、RENTAL、SALON、TEAM、TECHNIC、TECHNOLOGY、TECH、TEK、TELECOMMUNICATION、TOUR、TOURISM、TRAVEL、TRIP"
 string05 = "庄、行、坊、局、店、房、社、舍、亭、室、屋、苑、家、記、軒、院、堂、庵、莊、堡、場、園、號、網、樓、館、齋、小棧、小廚、小舖、小館、山莊、工坊、工房、工場、工廠、中心、天地、市集、本舖、冰城、冰站、冰舖、老店、老街、老舖、店舖、果園、果舖、牧場 、花坊、花園、客棧、洋行、食坊、食府、食堂、香舖、料亭、旅店、旅棧、書坊、書房、書城、書屋、書院、書齋、茶行、茶坊、茶社、茶屋、茶站、茶軒、茶堂、茶莊、茶棧、茶園、茶鋪、茶舖、茶館、草堂、酒坊、酒店、酒莊、酒棧、酒館、酒舖、酒樓、商行、商城、商場、商號、莊園、貨舖、魚舖、漁舖、園區、會館、當鋪、農莊、農場、農園、道院、道場、精舍、餅店、餅家、餅舖、劇場、廚坊、廚房、廣場、影城、學苑、學園、餐館、館子、講堂、藝坊、藝廊、藥局、麵屋、麵館、麵攤、工作坊、工作室、工務所、工程行、工藝坊、中藥行、手作坊、手作屋、文化館、水果店、生活館、事務所、便利店、風味館、娛樂城、娛樂場、宴會館、時尚館、桑拿屋、烘焙坊、商店街、專門店、專賣店、御膳坊、甜品屋、創始店、創藝坊、渡假莊、飲品館、實驗室、旗艦店、演藝坊、精品店、精品館、製香舖、製麵所、廚藝坊、碾米廠、養生坊、養生舖、養蜂場、親子館、錄音室、餐酒館、點心坊、麵飯館、露營社、體驗館、手作食坊、文化廣場、主題公園、生活商場、生態茶場、生態農場、行動商城、料理食堂、烘焙教室、訓練中心、商務中心、國際商城、婚宴會館、甜點工坊、都會旅店、創始本舖、森林農場、渡假山莊、渡假酒店、渡假會館、結婚會舘、農產小舖、暢貨中心、精選酒店、網路商城、養生世界、養身會館、購物廣場、藝術工坊、藝術中心、露天農場、顧問中心、觀光酒店、手作文創店、手烘咖啡坊、茶飲專賣店、健康生活館、造型工作室、飲品專賣店、數位生活館、趣味生活館、ACADEMY、BAR、BEAUTY HOUSE、BISTRO、BOUTIQUE、BUTCHER'S SHOP、CANTEEN、CENTER、CINEMA、CLINIC、CLUB、COLLEGE、COMPOUND RESTAURANT、DELI、DELICATESSEN、DEVELOPMENT CENTER、EDUCATIONAL CENTER、ESHOP、FARM、FOOD COURT、FRUIT GARDEN、FUSION RESTAURANT、GALLERY、GARDEN、GOURMET STORE、GROCERY、GYM、HAIR STUDIO、HOME、HOTEL、HOUSE、HUB、INDUSTRIAL PARK、INN、IZAKAYA、KIDS MALL、KITCHEN、LAB、LABORATORY、LAW FIRM、LIFE HOUSE、LIFE MALL、LIVING CENTER、LIVING MALL、MALL、MARKET、MART、MUSEUM OF ART、NATIONAL MALL、NIGHT MARKET、ORCHARD、OUTLET、PHARMACY、PIZZERIA、PLAZA、PUB、RANCH 、RESORT、RESORT HOTEL、RESTAURANT、SCHOOL、SERVICE AREA、SHOP、SHOPPING CENTER、SHOPPING MALL、SQUARE、STATION、STEAKHOUSE、STORAGE、STORE、STUDIO、SUPER MARKET、TEA FACTORY、TEA GARDEN、TEA HOUSE、TEA SHOP、TEAROOM、TOAST SHOP、VILLAGE、WEDDING STUDIO 、WORK SHOP、WORLD、ZONE"
 string06 = "阿門、哈利路亞、南無阿彌陀佛、NAMO AMITABHA"
-string07 = "設計 設計字 設計圖 圖 標章 墨色 圖型 圖形 股份有限公司 有限公司 集團 logo Logo LOGO"
+string07 = "設計 設計字 設計圖 標章 墨色 圖型 圖形 股份有限公司 有限公司 集團 logo Logo LOGO"
 
 str0 = string.split("、")
 string00 = string00.split("、")
@@ -196,15 +201,17 @@ num_word2 = 0
 word2=""
 result = []
 
+
+    
 for tmark in tmark_list11:
-    print("-------------")
-    print("前案: " + str(tmark[0]))
+    time.sleep(0.01)
+    
     flag = True
     word2 = ""
     word = cop.sub('', str(tmark[0]))
 
     num_word2 = num_word2 + 1
-    print(num_word2)
+    #print(num_word2)
     if word.find("及圖") > 0:
         word2 = word[0:word.find("及")]
     elif word.find("及") > 0 and word.find("標章") > 0:
@@ -222,8 +229,9 @@ for tmark in tmark_list11:
             word2 = word2[0:word2.find(i)]
         else:
             continue
-    print("申請案文字 = " + word1) 
-    print("前案文字   = " + word2)
+    if word2 == "":
+        continue
+    #print("前案: " + word2)
     # compare two words first
     num = 0
     subword = ""
@@ -232,7 +240,6 @@ for tmark in tmark_list11:
         num = len(word1)
     else:
         num = len(word2)
-    print("兩案取最小字數: "+str(num))
     # total number of character of the longer word
     if len(word1)>=len(word2):
         leng_word = len(word1)
@@ -240,20 +247,13 @@ for tmark in tmark_list11:
         leng_word = len(word2)
 
     if (len(word1) == 1 and len(word2) == 1 and word1 == word2) or (len(word1) == 2 and len(word2) == 2 and word1 == word2):
-        print("與前案相同!!!")
         subresult = {"applno":tmark[1],"ratio":100.00}
         result.append(subresult)
         #break
     elif (len(word1) == 1 and len(word2) == 1 and word1 != word2):
-        picsim1= pic(word1,word2)
-        picsim2= pic(word2,word1)
-        picsim = (picsim1 + picsim2) / 2.
-        print("相似度 = "+str(picsim))
+        picsim= pic(word1,word2,indx)
         subresult = {"applno":tmark[1],"ratio":round(picsim,2)}
         result.append(subresult)
-        if picsim > 70:
-            print("與前案:" + word2 + "相似度過高")
-            #break
     elif (len(word1) == 2 and len(word2) == 2 and word1 != word2):
         word1_l = []
         word2_l = []
@@ -261,125 +261,87 @@ for tmark in tmark_list11:
         if (word1[0:1] != word2[0:1] and word1[1:2] != word2[1:2]) and (word1[0:1] != word2[1:2] and word1[1:2] != word2[0:1]):
             subresult = {"applno":tmark[1],"ratio":0.00}
             result.append(subresult)
-            print("相似度 = 0%")
         else:
             for i in range(0,2):
                 word1_l.append(word1[i:i+1])
-            #print(word1_l)
             for i in range(0,2):
                 word2_l.append(word2[i:i+1])
-            #print(word2_l)
             same = False
             for i in word1_l:
                 for j in word2_l:
                     if i == j:
                         subword = i
-                        print("相同詞組: "+subword)
                         flag = False
                         npos1 = word1.find(subword)
                         npos2 = word2.find(subword)
-                        print("申請案相同詞組位置: "+str(npos1))
-                        print("前案相同詞組位置: "+str(npos2))
                         if npos1 == npos2:
                             same = True
                             if npos1 == 0:
-                                print(word1[1:2] + ":" + word2[1:2])
-                                picsim = pic(word1[1:2],word2[1:2])
+                                picsim = pic(word1[1:2],word2[1:2],indx)
                                 if picsim < 60:
                                     a = 100. * 0.6 * 1.
-                                    print("a = " + str(a))
                                     picsim= picsim * 0.1 * 0.4 * 1.
-                                    print("b = "+ str(picsim))
                                     subresult = {"applno":tmark[1],"ratio":round(a+picsim,2)}
                                     result.append(subresult)
-                                    print("總相似度為: "+str(a + picsim))
-                                    if picsim > 70:
-                                        print("與前案: " + word2 + " 相似度過高")
                                 else:
                                     a = 100. * 0.6 * 1.
-                                    print("a = " + str(a))
                                     picsim= (picsim - 50) * 2.5 * 0.4 * 1.
-                                    print("b = "+ str(picsim))
                                     subresult = {"applno":tmark[1],"ratio":round(a+picsim,2)}
                                     result.append(subresult)
-                                    print("總相似度為: "+str(a + picsim))
-                                    if picsim > 70:
-                                        print("與前案: " + word2 + " 相似度過高")
                             else:
-                                print(word1[0:1] + ":" + word2[0:1])
-                                picsim = pic(word1[0:1],word2[0:1])
+                                #print(word1[0:1] + ":" + word2[0:1])
+                                picsim = pic(word1[0:1],word2[0:1],indx)
                                 if picsim < 60:
                                     a = 100. * 0.4 * 1.
-                                    print("a = " + str(a))
                                     picsim= picsim * 0.1 * 0.6 * 1.
-                                    print("b = "+ str(picsim))
                                     subresult = {"applno":tmark[1],"ratio":round(a+picsim,2)}
                                     result.append(subresult)
-                                    print("總相似度為: "+str(a + picsim))
-                                    if picsim > 70:
-                                        print("與前案: " + word2 + " 相似度過高")
                                 else:
                                     a = 100. * 0.4 * 1.
-                                    print("a = " + str(a))
                                     picsim= (picsim - 50) * 2.5 * 0.6 * 1.
-                                    print("b = "+ str(picsim))
                                     subresult = {"applno":tmark[1],"ratio":round(a+picsim,2)}
                                     result.append(subresult)
-                                    print("總相似度為: "+str(a + picsim))
-                                    if picsim > 70:
-                                        print("與前案: " + word2 + " 相似度過高")
                         break               
                 if not flag:
                     break
             if same == False:
                 subresult = {"applno":tmark[1],"ratio":54.0}
                 result.append(subresult)
-                print("相似度 = 54%")
     elif ((len(word1) >= 2 and len(word2) == 2) or (len(word1) == 2 and len(word2) >= 2) or (len(word1) > 2 and len(word2) > 2)) and word1 != word2:
 
         #seperate word to lists
         word1_l = []
         word2_l = []
-        #print("word1="+word1)
         #decide how many characters
         for i in range(len(word1),1,-1):
         #decide the first position
             for j in range(0,len(word1)-i+1):
                 word1_l.append(word1[j:j+i])
-        #print(word1_l)
-        #print("word2="+word2)
         for i in range(len(word2),1,-1):
             for j in range(0,len(word2)-i+1):
                 word2_l.append(word2[j:j+i])
-        #print(word2_l)
         #to find out the word
         same = False
         for i in word1_l:
             for j in word2_l:
                 if i == j:
                     subword = i
-                    print("相同詞組: "+subword)
                     flag = False
                     same = True
                     npos1 = word1.find(subword)
                     npos2 = word2.find(subword)
-                    print("申請案相同詞組位置: "+str(npos1))
-                    print("前案相同詞組位置: "+str(npos2))
                     leng_subword = len(subword)
                     # Compare the total the same words
                     if npos1 == npos2:
                         a = 0
                         for i in range(leng_subword):
-                            print("weight a = "+str(weight_l[num-2][i]))
                             a = a + weight_l[num-2][i]
                         a = 1. * a * 1.
-                        print("相同字 a = "+str(a))
                     else:
                         a = 0
                         for i in range(leng_subword):
                             a = a + weight_l[num-2][i]
                         a = 1. * a * 0.9
-                        print("相同字 a = "+str(a))
                     # y words list
                     # left hand side
                     nb = 0
@@ -390,13 +352,9 @@ for tmark in tmark_list11:
                         head = npos1
                     b = 0.
                     index = 0
-                    print("左側相似字數: " + str(head))
                     for i in range(head,0,-1):
-                        print(word1[npos1-1-index:npos1-index] + ":" + word2[npos2-1-index:npos2-index])
-                        tmp = pic(word1[npos1-1-index:npos1-index],word2[npos2-1-index:npos2-index])
+                        tmp = pic(word1[npos1-1-index:npos1-index],word2[npos2-1-index:npos2-index],indx)
                         index = index + 1
-                        #if tmp > 50:
-                        print("weight: " + str(weight_l[num-2][i-1]))
                         b = b + (tmp * weight_l[num-2][i-1])
                         nb = nb + 1
                     #right hand side
@@ -405,59 +363,39 @@ for tmark in tmark_list11:
                     else:
                         remains = len(word1)-npos1-leng_subword
                     index = 0
-                    print("右側相似字數: " + str(remains))
                     for i in range(0,remains):
-                        print(word1[npos1+leng_subword+index:npos1+leng_subword+index+1] + ":" + word2[npos2+leng_subword+index:npos2+leng_subword+index+1])
-                        tmp = pic(word1[npos1+leng_subword+index:npos1+leng_subword+index+1],word2[npos2+leng_subword+index:npos2+leng_subword+index+1])
+                        tmp = pic(word1[npos1+leng_subword+index:npos1+leng_subword+index+1],word2[npos2+leng_subword+index:npos2+leng_subword+index+1],indx)
                         index = index + 1
-                        #if tmp > 50:
-                        print("weight: "+str(weight_l[num-2][i+leng_subword]))
                         b = b + (tmp * weight_l[num-2][i+leng_subword])
                         nb = nb + 1
-                    print("相似字 b = "+str(b))
                     # calculate the similarity
-                    print("Nb: "+str(nb))
-                    print("相同詞組長度: "+ str(leng_subword))
-                    print("最大商標字數: "+ str(leng_word))
                     score = (a*100. + b)*(leng_subword+nb)*1.3/leng_word
                     subresult = {"applno":tmark[1],"ratio":round(score,2)}
                     result.append(subresult)
-                    print("總相似度為: "+str(score))
-
                     break
-                    
             if not flag:
                 break
         if same == False:
             score = 0. 
-            print("無兩字以上相同詞組!")
             if num<=7:
-                print("最大商標字數: "+ str(leng_word))
-                print("最小商標字數: "+ str(num))
                 for i in range(0,num):
-                    print(word1[i:i+1]+" : " +word2[i:i+1])
-                    score = score + (pic(word1[i:i+1],word2[i:i+1]) * weight_l[num-2][i])
-                score = score * num *1.3/leng_word
-                subresult = {"applno":tmark[1],"ratio":round(score,2)}
-                result.append(subresult)
-                print("總相似度為: "+str(score))
+                    try:
+                        score = score + (pic(word1[i:i+1], word2[i:i+1], indx) * weight_l[num-2][i])
+                    except:
+                        continue
+                    else:
+                        score = score * num *1.3/leng_word
+                        subresult = {"applno":tmark[1],"ratio":round(score,2)}
+                        result.append(subresult)
             else:
-                print("最大商標字數: "+ str(leng_word))
-                print("最小商標字數: "+ str(num))
                 for i in range(0,7):
-                    print(word1[i:i+1]+" : " +word2[i:i+1])
-                    score = score + (pic(word1[i:i+1],word2[i:i+1]) * weight_l[num-2][i])
+                    score = score + (pic(word1[i:i+1], word2[i:i+1], indx) * weight_l[num-2][i])
                 score = score * num *1.3/leng_word
                 subresult = {"applno":tmark[1],"ratio":round(score,2)}
                 result.append(subresult)
-                print("總相似度為: "+str(score))
-        # 
     else:
-        print(word1)
-        print(len(word1))
-        print(word2)
-        print(len(word2))
-        print("不比對!")
+        subresult = {"applno":tmark[1],"ratio":0.0}
+        result.append(subresult)
 # sort the elements of list
 for i in range(0,len(result)-1): 
     for j in range(0,len(result)-1-i): 
@@ -466,7 +404,8 @@ for i in range(0,len(result)-1):
             result[j]= result[j+1]
             result[j+1] = tmp
 data = []
-for i in range(0,30):
+#print(len(result))
+for i in range(0,500):
     if i < len(result):
         data.append(result[i])
     else:
@@ -476,6 +415,7 @@ print(app_json)
     
 # initial time and end time
 localtime_end = time.asctime( time.localtime(time.time()) )
+print("num_word2 = " + str(num_word2))
 print("開始時間: "+ localtime_init)     
 print("結束時間: "+ localtime_end)
 
