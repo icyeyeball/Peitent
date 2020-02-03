@@ -241,14 +241,14 @@ for t in tmark_l:
                 subtotal = subtotal_2
             result.append(subtotal)
             
-            if leng(result) < 500:
+            if len(result) < 500:
                 for i in range(0,len(result)-1): 
                     for j in range(0,len(result)-1-i): 
                         if result[j]["ratio"] < result[j+1]["ratio"]:
                             tmp = result[j]
                             result[j]= result[j+1]
                             result[j+1] = tmp
-            elif subtotal["ratio"] > result[499]["ratio"] and leng(result)==500:
+            elif subtotal["ratio"] > result[499]["ratio"] and len(result)==500:
                 for i in range(0,len(result)-1): 
                     for j in range(0,len(result)-1-i): 
                         if result[j]["ratio"] < result[j+1]["ratio"]:
