@@ -161,7 +161,7 @@ kp1_2, des1_2 = sift.detectAndCompute(sampleImage2, None) #detect the features o
 index = 0
 for t in tmark_l:
     index = index + 1 
-    print(index)
+    #print(index)
     f = t['file']
     queryImage=cv2.imread(f,0)
     try:
@@ -277,6 +277,7 @@ for k in range(0,len(result)):
 
 # initial time and end time
 localtime_end = time.asctime( time.localtime(time.time()) )
+print(index)
 print("開始時間: "+ localtime_init)     
 print("結束時間: "+ localtime_end)
 """
