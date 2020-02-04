@@ -84,13 +84,12 @@ for i in range(len(tmark_list11)):
 tmark_l = []
 otherpath = './data/' #path of database
 others = listdir(otherpath)
-print(otherpath)
-print(others)
+#print(otherpath)
+#print(others)
 for i in range(0,10):
     otherpic = "./data/" + others[i]
     tmark = {'applno': "000000000",'file':otherpic}
     tmark_l.append(tmark)
-
 
 for i in range(0, len(tmark_list)):
     #if len(cop.sub('', str(tmark_list[i]))) == 24:
@@ -143,7 +142,7 @@ for t in tmark_l:
         except:
             continue
         else:
-            (matchNum,matchesMask)=getMatchNum(matches,0.9) #set ratio = 0.9 to calculate the matching level
+            (matchNum,matchesMask)=getMatchNum(matches,0.8) #set ratio = 0.9 to calculate the matching level
             if len(matches) != 0:
                 matchRatio2=matchNum*100/len(matches)
             else:

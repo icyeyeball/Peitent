@@ -160,7 +160,7 @@ ret,sampleImage2 = cv2.threshold(sampleImage2,220,255,cv2.THRESH_BINARY)
 kp1_2, des1_2 = sift.detectAndCompute(sampleImage2, None) #detect the features of sample
 index = 0
 for t in tmark_l:
-    index = index + 1 
+    index = index + 1
     #print(index)
     f = t['file']
     queryImage=cv2.imread(f,0)
@@ -239,25 +239,20 @@ for t in tmark_l:
                 subtotal = subtotal_1
             else:
                 subtotal = subtotal_2
-            result.append(subtotal)
-            
-            if len(result) < 500:
+                
+            if subtotal["ratio"] > 30.0:
+                result.append(subtotal)
                 for i in range(0,len(result)-1): 
                     for j in range(0,len(result)-1-i): 
                         if result[j]["ratio"] < result[j+1]["ratio"]:
                             tmp = result[j]
                             result[j]= result[j+1]
                             result[j+1] = tmp
-            elif subtotal["ratio"] > result[499]["ratio"] and len(result)==500:
-                for i in range(0,len(result)-1): 
-                    for j in range(0,len(result)-1-i): 
-                        if result[j]["ratio"] < result[j+1]["ratio"]:
-                            tmp = result[j]
-                            result[j]= result[j+1]
-                            result[j+1] = tmp
-                del result[500]
+                if len(result) > 500:
+                    del result[500]
             else:
-                pass
+                continue
+
                 
 #print("tmark_l = " + str(len(tmark_l)))
 

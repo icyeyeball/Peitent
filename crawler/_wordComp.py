@@ -259,8 +259,9 @@ for tmark in tmark_list11:
         word2_l = []
         #decide how many characters
         if (word1[0:1] != word2[0:1] and word1[1:2] != word2[1:2]) and (word1[0:1] != word2[1:2] and word1[1:2] != word2[0:1]):
-            subresult = {"applno":tmark[1],"ratio":0.00}
-            result.append(subresult)
+            pass
+            #subresult = {"applno":tmark[1],"ratio":0.00}
+            #result.append(subresult)
         else:
             for i in range(0,2):
                 word1_l.append(word1[i:i+1])
@@ -282,12 +283,14 @@ for tmark in tmark_list11:
                                     a = 100. * 0.6 * 1.
                                     picsim= picsim * 0.1 * 0.4 * 1.
                                     subresult = {"applno":tmark[1],"ratio":round(a+picsim,2)}
-                                    result.append(subresult)
+                                    if subresult["ratio"]>60:
+                                        result.append(subresult)
                                 else:
                                     a = 100. * 0.6 * 1.
                                     picsim= (picsim - 50) * 2.5 * 0.4 * 1.
                                     subresult = {"applno":tmark[1],"ratio":round(a+picsim,2)}
-                                    result.append(subresult)
+                                    if subresult["ratio"]>60:
+                                        result.append(subresult)
                             else:
                                 #print(word1[0:1] + ":" + word2[0:1])
                                 picsim = pic(word1[0:1],word2[0:1],indx)
@@ -295,18 +298,21 @@ for tmark in tmark_list11:
                                     a = 100. * 0.4 * 1.
                                     picsim= picsim * 0.1 * 0.6 * 1.
                                     subresult = {"applno":tmark[1],"ratio":round(a+picsim,2)}
-                                    result.append(subresult)
+                                    if subresult["ratio"]>60:
+                                        result.append(subresult)
                                 else:
                                     a = 100. * 0.4 * 1.
                                     picsim= (picsim - 50) * 2.5 * 0.6 * 1.
                                     subresult = {"applno":tmark[1],"ratio":round(a+picsim,2)}
-                                    result.append(subresult)
+                                    if subresult["ratio"]>60:
+                                        result.append(subresult)
                         break               
                 if not flag:
                     break
             if same == False:
-                subresult = {"applno":tmark[1],"ratio":54.0}
-                result.append(subresult)
+                pass
+                #subresult = {"applno":tmark[1],"ratio":54.0}
+                #result.append(subresult)
     elif ((len(word1) >= 2 and len(word2) == 2) or (len(word1) == 2 and len(word2) >= 2) or (len(word1) > 2 and len(word2) > 2)) and word1 != word2:
 
         #seperate word to lists
@@ -371,7 +377,8 @@ for tmark in tmark_list11:
                     # calculate the similarity
                     score = (a*100. + b)*(leng_subword+nb)*1.3/leng_word
                     subresult = {"applno":tmark[1],"ratio":round(score,2)}
-                    result.append(subresult)
+                    if subresult["ratio"]>60:
+                        result.append(subresult)
                     break
             if not flag:
                 break
@@ -386,16 +393,19 @@ for tmark in tmark_list11:
                     else:
                         score = score * num *1.3/leng_word
                         subresult = {"applno":tmark[1],"ratio":round(score,2)}
-                        result.append(subresult)
+                        if subresult["ratio"]>60:
+                            result.append(subresult)
             else:
                 for i in range(0,7):
                     score = score + (pic(word1[i:i+1], word2[i:i+1], indx) * weight_l[num-2][i])
                 score = score * num *1.3/leng_word
                 subresult = {"applno":tmark[1],"ratio":round(score,2)}
-                result.append(subresult)
+                if subresult["ratio"]>60:
+                    result.append(subresult)
     else:
-        subresult = {"applno":tmark[1],"ratio":0.0}
-        result.append(subresult)
+        pass
+        #subresult = {"applno":tmark[1],"ratio":0.0}
+        #result.append(subresult)
 # sort the elements of list
 for i in range(0,len(result)-1): 
     for j in range(0,len(result)-1-i): 
