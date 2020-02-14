@@ -19,7 +19,8 @@ from _dict_pinyin_offline import pinyin
 import json
 import time
 
-localtime_init = time.asctime( time.localtime(time.time()) )
+localtime_init = time.asctime( time.localtime(time.time()))
+print("開始時間: "+ localtime_init) 
 
 #connect to database
 tmarkdb = mysql.connector.connect( host = "127.0.0.1", user = "root", password = "lehsiao", database = "tmarkdb",  )
@@ -436,8 +437,8 @@ app_json = json.dumps(data)
 print(app_json)
     
 # initial time and end time
-localtime_end = time.asctime( time.localtime(time.time()) )
-print("num_word2 = " + str(num_word2))
+print("總筆數 = " + str(len(tmark_list11)))
+localtime_end = time.asctime( time.localtime(time.time()))
 print("開始時間: "+ localtime_init)     
 print("結束時間: "+ localtime_end)
 

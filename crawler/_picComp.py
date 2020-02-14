@@ -17,7 +17,8 @@ import shutil
 import json
 import time
 
-localtime_init = time.asctime( time.localtime(time.time()) )
+localtime_init = time.asctime( time.localtime(time.time()))
+print("開始時間: "+ localtime_init) 
 
 def getMatchNum(matches,ratio):
     '''number of matched features and relation'''
@@ -257,7 +258,7 @@ for t in tmark_l:
 #print("tmark_l = " + str(len(tmark_l)))
 
 data = []
-print(len(result))
+#print(len(result))
 for i in result:
     #print (str(i["applno"])+","+str(i["ratio"]))
     data.append({"applno":i["applno"], "ratio":i["ratio"]})
@@ -271,17 +272,7 @@ for k in range(0,len(result)):
     cv2.imwrite(outpath, result[k]["picture"])
 
 # initial time and end time
-localtime_end = time.asctime( time.localtime(time.time()) )
-print(index)
+print("總筆數 = " + str(len(tmark_list11)))
+localtime_end = time.asctime( time.localtime(time.time()))
 print("開始時間: "+ localtime_init)     
 print("結束時間: "+ localtime_end)
-"""
-column=4
-row=5
-#Draw the plots
-figure,ax=plt.subplots(row,column)
-for index in range(0,20):
-    ax[int(index/column)][index%column].set_title('Similiarity %.2f%%' % ratio_l[index])
-    ax[int(index/column)][index%column].imshow(vis_l[index])
-plt.show()
-""" 
