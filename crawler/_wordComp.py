@@ -202,6 +202,12 @@ num_word2 = 0
 word2=""
 result = []
 
+word1 = cop.sub('', word1)
+
+if word1 == "":
+    print("輸入文字去除說明字以外空白，請重新輸入商標文字")
+    sys.exit()
+
 
     
 for tmark in tmark_list11:
