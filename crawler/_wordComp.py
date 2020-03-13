@@ -260,7 +260,7 @@ for tmark in tmark_list11:
         #break
     elif (len(word1) == 1 and len(word2) == 1 and word1 != word2):
         picsim= pic(word1,word2,indx)
-        subresult = {"applno":tmark[1],"ratio":round(picsim,2)}
+        subresult = {"applno":tmark[1],"ratio":0}
         result.append(subresult)
         continue
     elif (len(word1) == 2 and len(word2) == 2 and word1 != word2):
