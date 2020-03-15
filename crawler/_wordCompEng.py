@@ -377,437 +377,885 @@ for tmark in tmark_list11:
     elif (len(word1_l) > 1 and len(word2_l) == 1) or (len(word1_l) == 1 and len(word2_l) > 1) or (len(word1_l) > 1 and len(word2_l) > 1):
         if len(word1_l) > len(word2_l):
             depends = word1_l
+            depends2 = word2_l
         else:
             depends = word2_l
+            depends2 = word1_l
 
         #decide how many characters
         if len(depends) == 2:
-            order_l = []
-            word1_order_la = []
-            word1_order_lb = []
-            word2_order_la = []
-            word2_order_lb = []  
-            for i in range(len(word1_l[0]),1,-1):
-            #decide the first position
-                for j in range(0,len(word1_l[0])-i+1):
-                    word1_order_la.append(word1_l[0][j:j+i])
-            for i in range(len(word1_l[1]),1,-1):
-            #decide the first position
-                for j in range(0,len(word1_l[1])-i+1):
-                   word1_order_lb.append(word1_l[1][j:j+i])
+            if len(depends2) == 2:
+                order_l = []
+                word1_order_la = []
+                word1_order_lb = []
+                word2_order_la = []
+                word2_order_lb = []
+                for i in range(len(depends[0]),1,-1):
+                #decide the first position
+                    for j in range(0,len(depends[0])-i+1):
+                        word1_order_la.append(depends[0][j:j+i])
+                for i in range(len(depends[1]),1,-1):
+                #decide the first position
+                    for j in range(0,len(depends[1])-i+1):
+                       word1_order_lb.append(depends[1][j:j+i])
                 
-            for i in range(len(word2_l[0]),1,-1):
-            #decide the first position
-                for j in range(0,len(word2_l[0])-i+1):
-                    word2_order_la.append(word2_l[0][j:j+i])
-            for i in range(len(word2_l[1]),1,-1):
-            #decide the first position
-                for j in range(0,len(word2_l[1])-i+1):
-                   word2_order_lb.append(word2_l[1][j:j+i])
+                for i in range(len(depends2[0]),1,-1):
+                #decide the first position
+                    for j in range(0,len(depends2[0])-i+1):
+                        word2_order_la.append(depends2[0][j:j+i])
+                for i in range(len(depends2[1]),1,-1):
+                #decide the first position
+                    for j in range(0,len(depends2[1])-i+1):
+                       word2_order_lb.append(depends2[1][j:j+i])
 
-            for i in word1_order_la:
-                for j in word2_order_la:
-                    if i == j:
-                        subword = i
-                        flag = False
-                        same = True
-                        npos1 = i.find(subword)
-                        npos2 = j.find(subword)
-                        leng_subword = len(subword)
-                        if npos1>npos2:
-                            pos = npos1
-                        else:
-                            pos = npos2
-                        a = 0
-                        for i in range(pos,8):
-                            a = a + weight_l[num-2][i]
-                        a = a * leng_subword/long_word*1.8
-                        subresult = {"applno":tmark[1],"ratio":a}
-                        order_l.append(subresult)
-
-                    
-            for i in word1_order_la:
-                for j in word2_order_lb:
-                    if i == j:
-                        subword = i
-                        flag = False
-                        same = True
-                        npos1 = i.find(subword)
-                        npos2 = j.find(subword)
-                        if npos1>npos2:
-                            pos = npos1
-                        else:
-                            pos = npos2
-                        a = 0
-                        for i in range(pos,8):
-                            a = a + weight_l[num-2][i]
-                        a = a * leng_subword/long_word*1.8
-                        subresult = {"applno":tmark[1],"ratio":a}
-                        order_l.append(subresult)
-                        if order_l[0]["ratio"] < order_l[1]["ratio"]:
-                            tmp = order_l[1]
-                            order_l[0]= order_l[1]
-                            order_l[1] = tmp
+                for i in word1_order_la:
+                    for j in word2_order_la:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            leng_subword = len(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
 
                     
+                for i in word1_order_la:
+                    for j in word2_order_lb:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                            pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            if order_l[0]["ratio"] < order_l[1]["ratio"]:
+                                tmp = order_l[1]
+                                order_l[0]= order_l[1]
+                                order_l[1] = tmp
+
+                    
                 
                     
-            for i in word1_order_lb:
-                for j in word2_order_la:
-                    if i == j:
-                        subword = i
-                        flag = False
-                        same = True
-                        npos1 = i.find(subword)
-                        npos2 = j.find(subword)
-                        if npos1>npos2:
-                            pos = npos1
-                        else:
-                            pos = npos2
-                        a = 0
-                        for i in range(pos,8):
-                            a = a + weight_l[num-2][i]
-                        a = a * leng_subword/long_word*1.8
-                        subresult = {"applno":tmark[1],"ratio":a}
-                        order_l.append(subresult)
-                        for e in range(0,len(order_l)-1):
-                            for r in range(0,len(order_l)-1-e): 
-                                if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
-                                    tmp = order_l[r]
-                                    order_l[r]= order_l[r+1]
-                                    order_l[r+1] = tmp
-                        del result[2]
+                for i in word1_order_lb:
+                    for j in word2_order_la:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            for e in range(0,len(order_l)-1):
+                                for r in range(0,len(order_l)-1-e): 
+                                    if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
+                                        tmp = order_l[r]
+                                        order_l[r]= order_l[r+1]
+                                        order_l[r+1] = tmp
+                            del result[2]
                     
                     
                     
-            for i in word1_order_lb:
-                for j in word2_order_lb:
-                    if i == j:
-                        subword = i
-                        flag = False
-                        same = True
-                        npos1 = i.find(subword)
-                        npos2 = j.find(subword)
-                        if npos1>npos2:
-                            pos = npos1
-                        else:
-                            pos = npos2
-                        a = 0
-                        for i in range(pos,8):
-                            a = a + weight_l[num-2][i]
-                        a = a * leng_subword/long_word*1.8
-                        subresult = {"applno":tmark[1],"ratio":a}
-                        order_l.append(subresult)
-                        for e in range(0,len(order_l)-1):
-                            for r in range(0,len(order_l)-1-e): 
-                                if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
-                                    tmp = order_l[r]
-                                    order_l[r]= order_l[r+1]
-                                    order_l[r+1] = tmp
-                        del result[2]
+                for i in word1_order_lb:
+                    for j in word2_order_lb:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            for e in range(0,len(order_l)-1):
+                                for r in range(0,len(order_l)-1-e): 
+                                    if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
+                                        tmp = order_l[r]
+                                        order_l[r]= order_l[r+1]
+                                        order_l[r+1] = tmp
+                            del result[2]
                     
-            if order_l[0]["ratio"] == 100 or order_l[1]["ratio"] == 100:
-                score = (order_l[0]["ratio"]+order_l[1]["ratio"])*0.2+60
-            elif order_l[0]["ratio"] >=80 or order_l[1]["ratio"] >= 80:
-                score = (order_l[0]["ratio"]+order_l[1]["ratio"])*0.2+45
-            elif order_l[0]["ratio"] < 80 or order_l[1]["ratio"] < 80:
-                score = (order_l[0]["ratio"]+order_l[1]["ratio"])*0.3
+                if order_l[0]["ratio"] == 100 or order_l[1]["ratio"] == 100:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"])*0.2+60
+                elif order_l[0]["ratio"] >=80 or order_l[1]["ratio"] >= 80:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"])*0.2+45
+                elif order_l[0]["ratio"] < 80 or order_l[1]["ratio"] < 80:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"])*0.3
                 
-            subresult = {"applno":tmark[1],"ratio":score}
-            result.append(subresult)
-            print("相似度:" + str(subresult["ratio"]))
+                subresult = {"applno":tmark[1],"ratio":score}
+                result.append(subresult)
+                print("相似度:" + str(subresult["ratio"]))
+##################################
+        if len(depends) == 2:
+            if len(depends2) == 1:
+                order_l = []
+                word1_order_la = []
+                word1_order_lb = []
+                word2_order_la = []
+                for i in range(len(depends[0]),1,-1):
+                #decide the first position
+                    for j in range(0,len(depends[0])-i+1):
+                        word1_order_la.append(depends[0][j:j+i])
+                for i in range(len(depends[1]),1,-1):
+                #decide the first position
+                    for j in range(0,len(depends[1])-i+1):
+                       word1_order_lb.append(depends[1][j:j+i])
+                       
+                
+                for i in range(len(depends2[0]),1,-1):
+                #decide the first position
+                    for j in range(0,len(depends2[0])-i+1):
+                        word2_order_la.append(depends2[0][j:j+i])
+
+
+                for i in word1_order_la:
+                    for j in word2_order_la:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            leng_subword = len(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+
+                    
+                for i in word1_order_la:
+                    for j in word2_order_lb:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                            pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            if order_l[0]["ratio"] < order_l[1]["ratio"]:
+                                tmp = order_l[1]
+                                order_l[0]= order_l[1]
+                                order_l[1] = tmp
+
+                    
+                
+                    
+                for i in word1_order_lb:
+                    for j in word2_order_la:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            for e in range(0,len(order_l)-1):
+                                for r in range(0,len(order_l)-1-e): 
+                                    if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
+                                        tmp = order_l[r]
+                                        order_l[r]= order_l[r+1]
+                                        order_l[r+1] = tmp
+                            del result[2]
+                    
+                if order_l[0]["ratio"] == 100 or order_l[1]["ratio"] == 100:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"])*0.2+60
+                elif order_l[0]["ratio"] >=80 or order_l[1]["ratio"] >= 80:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"])*0.2+45
+                elif order_l[0]["ratio"] < 80 or order_l[1]["ratio"] < 80:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"])*0.3
+                
+                subresult = {"applno":tmark[1],"ratio":score}
+                result.append(subresult)
+                print("相似度:" + str(subresult["ratio"]))
 ##################################
         if len(depends) == 3:
-            order_l = []
-            word1_order_la = []
-            word1_order_lb = []
-            word1_order_lc = []
-            word2_order_la = []
-            word2_order_lb = []  
-            word2_order_lc = []  
-            for i in range(len(word1_l[0]),1,-1):
-            #decide the first position
-                for j in range(0,len(word1_l[0])-i+1):
-                    word1_order_la.append(word1_l[0][j:j+i])
-            for i in range(len(word1_l[1]),1,-1):
-            #decide the first position
-                for j in range(0,len(word1_l[1])-i+1):
-                   word1_order_lb.append(word1_l[1][j:j+i])
-            for i in range(len(word1_l[2]),1,-1):
-            #decide the first position
-                for j in range(0,len(word1_l[2])-i+1):
-                   word1_order_lc.append(word1_l[2][j:j+i])
+            if len(depends) == 3:
+                order_l = []
+                word1_order_la = []
+                word1_order_lb = []
+                word1_order_lc = []
+                word2_order_la = []
+                word2_order_lb = []  
+                word2_order_lc = []  
+                for i in range(len(word1_l[0]),1,-1):
+                #decide the first position
+                    for j in range(0,len(word1_l[0])-i+1):
+                        word1_order_la.append(word1_l[0][j:j+i])
+                for i in range(len(word1_l[1]),1,-1):
+                #decide the first position
+                    for j in range(0,len(word1_l[1])-i+1):
+                       word1_order_lb.append(word1_l[1][j:j+i])
+                for i in range(len(word1_l[2]),1,-1):
+                #decide the first position
+                    for j in range(0,len(word1_l[2])-i+1):
+                       word1_order_lc.append(word1_l[2][j:j+i])
         
                 
-            for i in range(len(word2_l[0]),1,-1):
-            #decide the first position
-                for j in range(0,len(word2_l[0])-i+1):
-                    word2_order_la.append(word2_l[0][j:j+i])
-            for i in range(len(word2_l[1]),1,-1):
-            #decide the first position
-                for j in range(0,len(word2_l[1])-i+1):
-                   word2_order_lb.append(word2_l[1][j:j+i])
-            for i in range(len(word2_l[2]),1,-1):
-            #decide the first position
-                for j in range(0,len(word2_l[2])-i+1):
-                   word2_order_lc.append(word2_l[2][j:j+i])
+                for i in range(len(word2_l[0]),1,-1):
+                #decide the first position
+                    for j in range(0,len(word2_l[0])-i+1):
+                        word2_order_la.append(word2_l[0][j:j+i])
+                for i in range(len(word2_l[1]),1,-1):
+                #decide the first position
+                    for j in range(0,len(word2_l[1])-i+1):
+                       word2_order_lb.append(word2_l[1][j:j+i])
+                for i in range(len(word2_l[2]),1,-1):
+                #decide the first position
+                    for j in range(0,len(word2_l[2])-i+1):
+                       word2_order_lc.append(word2_l[2][j:j+i])
                    
-            for i in word1_order_la:
-                for j in word2_order_la:
-                    if i == j:
-                        subword = i
-                        flag = False
-                        same = True
-                        npos1 = i.find(subword)
-                        npos2 = j.find(subword)
-                        leng_subword = len(subword)
-                        if npos1>npos2:
-                            pos = npos1
-                        else:
-                            pos = npos2
-                        a = 0
-                        for i in range(pos,8):
-                            a = a + weight_l[num-2][i]
-                        a = a * leng_subword/long_word*1.8
-                        subresult = {"applno":tmark[1],"ratio":a}
-                        order_l.append(subresult)
+                for i in word1_order_la:
+                    for j in word2_order_la:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            leng_subword = len(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
 
                     
-            for i in word1_order_la:
-                for j in word2_order_lb:
-                    if i == j:
-                        subword = i
-                        flag = False
-                        same = True
-                        npos1 = i.find(subword)
-                        npos2 = j.find(subword)
-                        if npos1>npos2:
-                            pos = npos1
-                        else:
-                            pos = npos2
-                        a = 0
-                        for i in range(pos,8):
-                            a = a + weight_l[num-2][i]
-                        a = a * leng_subword/long_word*1.8
-                        subresult = {"applno":tmark[1],"ratio":a}
-                        order_l.append(subresult)
-                        if order_l[0]["ratio"] < order_l[1]["ratio"]:
-                            tmp = order_l[1]
-                            order_l[0]= order_l[1]
-                            order_l[1] = tmp
+                for i in word1_order_la:
+                    for j in word2_order_lb:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            if order_l[0]["ratio"] < order_l[1]["ratio"]:
+                                tmp = order_l[1]
+                                order_l[0]= order_l[1]
+                                order_l[1] = tmp
 
                     
                 
                     
-            for i in word1_order_la:
-                for j in word2_order_lc:
-                    if i == j:
-                        subword = i
-                        flag = False
-                        same = True
-                        npos1 = i.find(subword)
-                        npos2 = j.find(subword)
-                        if npos1>npos2:
-                            pos = npos1
-                        else:
-                            pos = npos2
-                        a = 0
-                        for i in range(pos,8):
-                            a = a + weight_l[num-2][i]
-                        a = a * leng_subword/long_word*1.8
-                        subresult = {"applno":tmark[1],"ratio":a}
-                        order_l.append(subresult)
-                        for e in range(0,len(order_l)-1):
-                            for r in range(0,len(order_l)-1-e): 
-                                if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
-                                    tmp = order_l[r]
-                                    order_l[r]= order_l[r+1]
-                                    order_l[r+1] = tmp
+                for i in word1_order_la:
+                    for j in word2_order_lc:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            for e in range(0,len(order_l)-1):
+                                for r in range(0,len(order_l)-1-e): 
+                                    if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
+                                        tmp = order_l[r]
+                                        order_l[r]= order_l[r+1]
+                                        order_l[r+1] = tmp
                     
                     
-            for i in word1_order_lb:
-                for j in word2_order_la:
-                    if i == j:
-                        subword = i
-                        flag = False
-                        same = True
-                        npos1 = i.find(subword)
-                        npos2 = j.find(subword)
-                        if npos1>npos2:
-                            pos = npos1
-                        else:
-                            pos = npos2
-                        a = 0
-                        for i in range(pos,8):
-                            a = a + weight_l[num-2][i]
-                        a = a * leng_subword/long_word*1.8
-                        subresult = {"applno":tmark[1],"ratio":a}
-                        order_l.append(subresult)
-                        for e in range(0,len(order_l)-1):
-                            for r in range(0,len(order_l)-1-e): 
-                                if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
-                                    tmp = order_l[r]
-                                    order_l[r]= order_l[r+1]
-                                    order_l[r+1] = tmp
-                        del result[3]
+                for i in word1_order_lb:
+                    for j in word2_order_la:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            for e in range(0,len(order_l)-1):
+                                for r in range(0,len(order_l)-1-e): 
+                                    if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
+                                        tmp = order_l[r]
+                                        order_l[r]= order_l[r+1]
+                                        order_l[r+1] = tmp
+                            del result[3]
                         
                         
                         
-            for i in word1_order_lb:
-                for j in word2_order_lb:
-                    if i == j:
-                        subword = i
-                        flag = False
-                        same = True
-                        npos1 = i.find(subword)
-                        npos2 = j.find(subword)
-                        if npos1>npos2:
-                            pos = npos1
-                        else:
-                            pos = npos2
-                        a = 0
-                        for i in range(pos,8):
-                            a = a + weight_l[num-2][i]
-                        a = a * leng_subword/long_word*1.8
-                        subresult = {"applno":tmark[1],"ratio":a}
-                        order_l.append(subresult)
-                        for e in range(0,len(order_l)-1):
-                            for r in range(0,len(order_l)-1-e): 
-                                if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
-                                    tmp = order_l[r]
-                                    order_l[r]= order_l[r+1]
-                                    order_l[r+1] = tmp
-                        del result[3]
+                for i in word1_order_lb:
+                    for j in word2_order_lb:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            for e in range(0,len(order_l)-1):
+                                for r in range(0,len(order_l)-1-e): 
+                                    if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
+                                        tmp = order_l[r]
+                                        order_l[r]= order_l[r+1]
+                                        order_l[r+1] = tmp
+                            del result[3]
                         
                         
                         
-            for i in word1_order_lb:
-                for j in word2_order_lc:
-                    if i == j:
-                        subword = i
-                        flag = False
-                        same = True
-                        npos1 = i.find(subword)
-                        npos2 = j.find(subword)
-                        if npos1>npos2:
-                            pos = npos1
-                        else:
-                            pos = npos2
-                        a = 0
-                        for i in range(pos,8):
-                            a = a + weight_l[num-2][i]
-                        a = a * leng_subword/long_word*1.8
-                        subresult = {"applno":tmark[1],"ratio":a}
-                        order_l.append(subresult)
-                        for e in range(0,len(order_l)-1):
-                            for r in range(0,len(order_l)-1-e): 
-                                if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
-                                    tmp = order_l[r]
-                                    order_l[r]= order_l[r+1]
-                                    order_l[r+1] = tmp
-                        del result[3]
+                for i in word1_order_lb:
+                    for j in word2_order_lc:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            for e in range(0,len(order_l)-1):
+                                for r in range(0,len(order_l)-1-e): 
+                                    if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
+                                        tmp = order_l[r]
+                                        order_l[r]= order_l[r+1]
+                                        order_l[r+1] = tmp
+                            del result[3]
                         
                         
                         
-            for i in word1_order_lc:
-                for j in word2_order_la:
-                    if i == j:
-                        subword = i
-                        flag = False
-                        same = True
-                        npos1 = i.find(subword)
-                        npos2 = j.find(subword)
-                        if npos1>npos2:
-                            pos = npos1
-                        else:
-                            pos = npos2
-                        a = 0
-                        for i in range(pos,8):
-                            a = a + weight_l[num-2][i]
-                        a = a * leng_subword/long_word*1.8
-                        subresult = {"applno":tmark[1],"ratio":a}
-                        order_l.append(subresult)
-                        for e in range(0,len(order_l)-1):
-                            for r in range(0,len(order_l)-1-e): 
-                                if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
-                                    tmp = order_l[r]
-                                    order_l[r]= order_l[r+1]
-                                    order_l[r+1] = tmp
-                        del result[3]
+                for i in word1_order_lc:
+                    for j in word2_order_la:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            for e in range(0,len(order_l)-1):
+                                for r in range(0,len(order_l)-1-e): 
+                                    if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
+                                        tmp = order_l[r]
+                                        order_l[r]= order_l[r+1]
+                                        order_l[r+1] = tmp
+                            del result[3]
                         
                         
-            for i in word1_order_lc:
-                for j in word2_order_lb:
-                    if i == j:
-                        subword = i
-                        flag = False
-                        same = True
-                        npos1 = i.find(subword)
-                        npos2 = j.find(subword)
-                        if npos1>npos2:
-                            pos = npos1
-                        else:
-                            pos = npos2
-                        a = 0
-                        for i in range(pos,8):
-                            a = a + weight_l[num-2][i]
-                        a = a * leng_subword/long_word*1.8
-                        subresult = {"applno":tmark[1],"ratio":a}
-                        order_l.append(subresult)
-                        for e in range(0,len(order_l)-1):
-                            for r in range(0,len(order_l)-1-e): 
-                                if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
-                                    tmp = order_l[r]
-                                    order_l[r]= order_l[r+1]
-                                    order_l[r+1] = tmp
-                        del result[3]
+                for i in word1_order_lc:
+                    for j in word2_order_lb:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            for e in range(0,len(order_l)-1):
+                                for r in range(0,len(order_l)-1-e): 
+                                    if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
+                                        tmp = order_l[r]
+                                        order_l[r]= order_l[r+1]
+                                        order_l[r+1] = tmp
+                            del result[3]
                         
-            for i in word1_order_lc:
-                for j in word2_order_lc:
-                    if i == j:
-                        subword = i
-                        flag = False
-                        same = True
-                        npos1 = i.find(subword)
-                        npos2 = j.find(subword)
-                        if npos1>npos2:
-                            pos = npos1
-                        else:
-                            pos = npos2
-                        a = 0
-                        for i in range(pos,8):
-                            a = a + weight_l[num-2][i]
-                        a = a * leng_subword/long_word*1.8
-                        subresult = {"applno":tmark[1],"ratio":a}
-                        order_l.append(subresult)
-                        for e in range(0,len(order_l)-1):
-                            for r in range(0,len(order_l)-1-e): 
-                                if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
-                                    tmp = order_l[r]
-                                    order_l[r]= order_l[r+1]
-                                    order_l[r+1] = tmp
-                        del result[3]
+                for i in word1_order_lc:
+                    for j in word2_order_lc:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            for e in range(0,len(order_l)-1):
+                                for r in range(0,len(order_l)-1-e): 
+                                    if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
+                                        tmp = order_l[r]
+                                        order_l[r]= order_l[r+1]
+                                        order_l[r+1] = tmp
+                            del result[3]
                         
                     
-            if (order_l[0]["ratio"] == 100 and order_l[1]["ratio"] == 100) or (order_l[0]["ratio"] == 100 and order_l[2]["ratio"] == 100) or (order_l[1]["ratio"] == 100 and order_l[2]["ratio"] == 100):
-                score = 100
-            elif order_l[0]["ratio"] == 100 or order_l[1]["ratio"] == 100 or order_l[2]["ratio"] == 100 or (order_l[0]["ratio"] >= 80 and order_l[1]["ratio"] >= 80) or (order_l[0]["ratio"] >= 80 and order_l[2]["ratio"] >= 80) or (order_l[1]["ratio"] >= 80 and order_l[2]["ratio"] >= 80):
-                score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.2+50
-            elif order_l[0]["ratio"] >= 80 and order_l[1]["ratio"] < 80 or order_l[2]["ratio"] < 80:
-                score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.2+10
-            elif order_l[0]["ratio"] < 80 and order_l[1]["ratio"] >= 80 or order_l[2]["ratio"] < 80:
-                score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.2+10
-            elif order_l[0]["ratio"] < 80 and order_l[1]["ratio"] < 80 or order_l[2]["ratio"] >= 80:
-                score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.2+10
-            elif order_l[0]["ratio"] < 80 and order_l[1]["ratio"] < 80 and order_l[2]["ratio"] < 80:
-                score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.25
-            else:
-                pass
+                if (order_l[0]["ratio"] == 100 and order_l[1]["ratio"] == 100) or (order_l[0]["ratio"] == 100 and order_l[2]["ratio"] == 100) or (order_l[1]["ratio"] == 100 and order_l[2]["ratio"] == 100):
+                    score = 100
+                elif order_l[0]["ratio"] == 100 or order_l[1]["ratio"] == 100 or order_l[2]["ratio"] == 100 or (order_l[0]["ratio"] >= 80 and order_l[1]["ratio"] >= 80) or (order_l[0]["ratio"] >= 80 and order_l[2]["ratio"] >= 80) or (order_l[1]["ratio"] >= 80 and order_l[2]["ratio"] >= 80):
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.2+50
+                elif order_l[0]["ratio"] >= 80 and order_l[1]["ratio"] < 80 or order_l[2]["ratio"] < 80:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.2+10
+                elif order_l[0]["ratio"] < 80 and order_l[1]["ratio"] >= 80 or order_l[2]["ratio"] < 80:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.2+10
+                elif order_l[0]["ratio"] < 80 and order_l[1]["ratio"] < 80 or order_l[2]["ratio"] >= 80:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.2+10
+                elif order_l[0]["ratio"] < 80 and order_l[1]["ratio"] < 80 and order_l[2]["ratio"] < 80:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.25
+                else:
+                    pass
                  
-            subresult = {"applno":tmark[1],"ratio":score}
-            result.append(subresult)
-            print("相似度:" + str(subresult["ratio"]))
+                subresult = {"applno":tmark[1],"ratio":score}
+                result.append(subresult)
+                print("相似度:" + str(subresult["ratio"]))
 
+
+##################################
+        if len(depends) == 3:
+            if len(depends) == 2:
+                order_l = []
+                word1_order_la = []
+                word1_order_lb = []
+                word1_order_lc = []
+                word2_order_la = []
+                word2_order_lb = []  
+                for i in range(len(word1_l[0]),1,-1):
+                #decide the first position
+                    for j in range(0,len(word1_l[0])-i+1):
+                        word1_order_la.append(word1_l[0][j:j+i])
+                for i in range(len(word1_l[1]),1,-1):
+                #decide the first position
+                    for j in range(0,len(word1_l[1])-i+1):
+                       word1_order_lb.append(word1_l[1][j:j+i])
+                for i in range(len(word1_l[2]),1,-1):
+                #decide the first position
+                    for j in range(0,len(word1_l[2])-i+1):
+                       word1_order_lc.append(word1_l[2][j:j+i])
+        
+                
+                for i in range(len(word2_l[0]),1,-1):
+                #decide the first position
+                    for j in range(0,len(word2_l[0])-i+1):
+                        word2_order_la.append(word2_l[0][j:j+i])
+                for i in range(len(word2_l[1]),1,-1):
+                #decide the first position
+                    for j in range(0,len(word2_l[1])-i+1):
+                       word2_order_lb.append(word2_l[1][j:j+i])
+
+                   
+                for i in word1_order_la:
+                    for j in word2_order_la:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            leng_subword = len(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+
+                    
+                for i in word1_order_la:
+                    for j in word2_order_lb:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            if order_l[0]["ratio"] < order_l[1]["ratio"]:
+                                tmp = order_l[1]
+                                order_l[0]= order_l[1]
+                                order_l[1] = tmp
+
+                    
+                
+                    
+                for i in word1_order_lb:
+                    for j in word2_order_la:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            for e in range(0,len(order_l)-1):
+                                for r in range(0,len(order_l)-1-e): 
+                                    if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
+                                        tmp = order_l[r]
+                                        order_l[r]= order_l[r+1]
+                                        order_l[r+1] = tmp
+                    
+                    
+                for i in word1_order_lb:
+                    for j in word2_order_lb:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            for e in range(0,len(order_l)-1):
+                                for r in range(0,len(order_l)-1-e): 
+                                    if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
+                                        tmp = order_l[r]
+                                        order_l[r]= order_l[r+1]
+                                        order_l[r+1] = tmp
+                            del result[3]
+                        
+                        
+                        
+                for i in word1_order_lc:
+                    for j in word2_order_la:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            for e in range(0,len(order_l)-1):
+                                for r in range(0,len(order_l)-1-e): 
+                                    if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
+                                        tmp = order_l[r]
+                                        order_l[r]= order_l[r+1]
+                                        order_l[r+1] = tmp
+                            del result[3]
+                        
+                        
+                        
+                for i in word1_order_lc:
+                    for j in word2_order_lb:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            for e in range(0,len(order_l)-1):
+                                for r in range(0,len(order_l)-1-e): 
+                                    if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
+                                        tmp = order_l[r]
+                                        order_l[r]= order_l[r+1]
+                                        order_l[r+1] = tmp
+                            del result[3]
+                        
+ 
+                        
+                    
+                if (order_l[0]["ratio"] == 100 and order_l[1]["ratio"] == 100) or (order_l[0]["ratio"] == 100 and order_l[2]["ratio"] == 100) or (order_l[1]["ratio"] == 100 and order_l[2]["ratio"] == 100):
+                    score = 100
+                elif order_l[0]["ratio"] == 100 or order_l[1]["ratio"] == 100 or order_l[2]["ratio"] == 100 or (order_l[0]["ratio"] >= 80 and order_l[1]["ratio"] >= 80) or (order_l[0]["ratio"] >= 80 and order_l[2]["ratio"] >= 80) or (order_l[1]["ratio"] >= 80 and order_l[2]["ratio"] >= 80):
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.2+50
+                elif order_l[0]["ratio"] >= 80 and order_l[1]["ratio"] < 80 or order_l[2]["ratio"] < 80:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.2+10
+                elif order_l[0]["ratio"] < 80 and order_l[1]["ratio"] >= 80 or order_l[2]["ratio"] < 80:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.2+10
+                elif order_l[0]["ratio"] < 80 and order_l[1]["ratio"] < 80 or order_l[2]["ratio"] >= 80:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.2+10
+                elif order_l[0]["ratio"] < 80 and order_l[1]["ratio"] < 80 and order_l[2]["ratio"] < 80:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.25
+                else:
+                    pass
+                 
+                subresult = {"applno":tmark[1],"ratio":score}
+                result.append(subresult)
+                print("相似度:" + str(subresult["ratio"]))
+##################################
+        if len(depends) == 3:
+            if len(depends) == 1:
+                order_l = []
+                word1_order_la = []
+                word1_order_lb = []
+                word1_order_lc = []
+                word2_order_la = []
+
+                for i in range(len(word1_l[0]),1,-1):
+                #decide the first position
+                    for j in range(0,len(word1_l[0])-i+1):
+                        word1_order_la.append(word1_l[0][j:j+i])
+                for i in range(len(word1_l[1]),1,-1):
+                #decide the first position
+                    for j in range(0,len(word1_l[1])-i+1):
+                       word1_order_lb.append(word1_l[1][j:j+i])
+                for i in range(len(word1_l[2]),1,-1):
+                #decide the first position
+                    for j in range(0,len(word1_l[2])-i+1):
+                       word1_order_lc.append(word1_l[2][j:j+i])
+        
+                
+                for i in range(len(word2_l[0]),1,-1):
+                #decide the first position
+                    for j in range(0,len(word2_l[0])-i+1):
+                        word2_order_la.append(word2_l[0][j:j+i])
+
+
+                   
+                for i in word1_order_la:
+                    for j in word2_order_la:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            leng_subword = len(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+
+                    
+                for i in word1_order_lb:
+                    for j in word2_order_la:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            if order_l[0]["ratio"] < order_l[1]["ratio"]:
+                                tmp = order_l[1]
+                                order_l[0]= order_l[1]
+                                order_l[1] = tmp
+
+                    
+                
+                    
+                for i in word1_order_lc:
+                    for j in word2_order_la:
+                        if i == j:
+                            subword = i
+                            flag = False
+                            same = True
+                            npos1 = i.find(subword)
+                            npos2 = j.find(subword)
+                            if npos1>npos2:
+                                pos = npos1
+                            else:
+                                pos = npos2
+                            a = 0
+                            for i in range(pos,8):
+                                a = a + weight_l[num-2][i]
+                            a = a * leng_subword/long_word*1.8
+                            subresult = {"applno":tmark[1],"ratio":a}
+                            order_l.append(subresult)
+                            for e in range(0,len(order_l)-1):
+                                for r in range(0,len(order_l)-1-e): 
+                                    if order_l[r]["ratio"] < order_l[r+1]["ratio"]:
+                                        tmp = order_l[r]
+                                        order_l[r]= order_l[r+1]
+                                        order_l[r+1] = tmp
+
+                        
+                    
+                if (order_l[0]["ratio"] == 100 and order_l[1]["ratio"] == 100) or (order_l[0]["ratio"] == 100 and order_l[2]["ratio"] == 100) or (order_l[1]["ratio"] == 100 and order_l[2]["ratio"] == 100):
+                    score = 100
+                elif order_l[0]["ratio"] == 100 or order_l[1]["ratio"] == 100 or order_l[2]["ratio"] == 100 or (order_l[0]["ratio"] >= 80 and order_l[1]["ratio"] >= 80) or (order_l[0]["ratio"] >= 80 and order_l[2]["ratio"] >= 80) or (order_l[1]["ratio"] >= 80 and order_l[2]["ratio"] >= 80):
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.2+50
+                elif order_l[0]["ratio"] >= 80 and order_l[1]["ratio"] < 80 or order_l[2]["ratio"] < 80:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.2+10
+                elif order_l[0]["ratio"] < 80 and order_l[1]["ratio"] >= 80 or order_l[2]["ratio"] < 80:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.2+10
+                elif order_l[0]["ratio"] < 80 and order_l[1]["ratio"] < 80 or order_l[2]["ratio"] >= 80:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.2+10
+                elif order_l[0]["ratio"] < 80 and order_l[1]["ratio"] < 80 and order_l[2]["ratio"] < 80:
+                    score = (order_l[0]["ratio"]+order_l[1]["ratio"]+order_l[2]["ratio"])*0.25
+                else:
+                    pass
+                 
+                subresult = {"applno":tmark[1],"ratio":score}
+                result.append(subresult)
+                print("相似度:" + str(subresult["ratio"]))
+                
+                
+                
+                
+                
+                
         #subresult = {"applno":tmark[1],"ratio":0.0}
         #result.append(subresult)
 # sort the elements of list
