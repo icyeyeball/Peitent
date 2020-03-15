@@ -254,7 +254,7 @@ for tmark in tmark_list11:
         leng_word = len(word2)
 
     if (len(word1) == 1 and len(word2) == 1 and word1 == word2) or (len(word1) == 2 and len(word2) == 2 and word1 == word2):
-        subresult = {"applno":tmark[1],"ratio":100.00}
+        subresult = {"applno":tmark[1],"ratio":300.00}
         result.append(subresult)
         continue
         #break
@@ -327,7 +327,7 @@ for tmark in tmark_list11:
                 #subresult = {"applno":tmark[1],"ratio":54.0}
                 #result.append(subresult)
     elif (len(word1) > 2 and len(word2) > 2) and word1 == word2:
-        subresult = {"applno":tmark[1],"ratio":100.00}
+        subresult = {"applno":tmark[1],"ratio":300.00}
         result.append(subresult)
         continue
     elif ((len(word1) >= 2 and len(word2) == 2) or (len(word1) == 2 and len(word2) >= 2) or (len(word1) > 2 and len(word2) > 2)) and word1 != word2:

@@ -251,7 +251,7 @@ for t in tmark_l:
                 
             if subtotal["ratio"] > 30.0:
                 result.append(subtotal)
-                for i in range(0,len(result)-1): 
+                for i in range(0,len(result)-1):
                     for j in range(0,len(result)-1-i): 
                         if result[j]["ratio"] < result[j+1]["ratio"]:
                             tmp = result[j]
