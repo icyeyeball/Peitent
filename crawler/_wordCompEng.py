@@ -219,7 +219,7 @@ result = []
 
 #=================
 word1_l = word1.split(" ")
-print("申請案: " + word1)
+#print("申請案: " + word1)
 for tmark in tmark_list11:
 
     time.sleep(0.01)
