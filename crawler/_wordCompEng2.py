@@ -269,6 +269,7 @@ for tmark in tmark_list11:
     #=====================
     word2_l = word2.split(" ")        
 
+    print("前案: " + word2)
     # compare two words first
     num = 0
     subword = ""
@@ -286,21 +287,26 @@ for tmark in tmark_list11:
     if (len(word1_l[0]) == 1 and len(word2_l[0]) == 1 and word1_l[0] == word2_l[0]) or (len(word1_l[0]) == 2 and len(word2_l[0]) == 2 and word1_l[0] == word2_l[0]) and len(word1_l) == 1 and len(word2_l) == 1:
         subresult = {"applno":tmark[1],"ratio":300}
         result.append(subresult)
+        print("相似度:" + str(subresult["ratio"]))
         continue
     elif (len(word1_l[0]) == 1 and len(word2_l[0]) == 1 and word1_l[0] != word2_l[0]) and len(word1_l) == 1 and len(word2_l) == 1:
         subresult = {"applno":tmark[1],"ratio":50}
         result.append(subresult)
+        print("相似度:" + str(subresult["ratio"]))
         continue
     elif (len(word1_l[0]) == 1 and len(word2_l[0]) == 2) or (len(word1_l[0]) == 2 and len(word2_l[0]) == 1) and len(word1_l) == 1 and len(word2_l) == 1:
         subresult = {"applno":tmark[1],"ratio":0}
         result.append(subresult)
+        print("相似度:" + str(subresult["ratio"]))
         continue
     elif (len(word1_l[0]) == 2 and len(word2_l[0]) == 2 and word1 != word2) and len(word1_l) == 1 and len(word2_l) == 1:
         word1_la = []
         word2_la = []
         if (word1_l[0][0:1] != word2_l[0][0:1] and word1_l[0][1:2] != word2_l[0][1:2]) and (word1_l[0][0:1] != word2_l[0][1:2] and word1_l[0][1:2] != word2_l[0][0:1]):
+            #print(word2)
             subresult = {"applno":tmark[1],"ratio":0.00}
             result.append(subresult)
+            print("相似度:" + str(subresult["ratio"]))
             continue
         else:
             for i in range(0,2):
@@ -320,14 +326,17 @@ for tmark in tmark_list11:
                             if npos1 == 0:
                                 subresult = {"applno":tmark[1],"ratio":35}
                                 result.append(subresult)
+                                print("相似度:" + str(subresult["ratio"]))
                                 continue
                             else:
                                 subresult = {"applno":tmark[1],"ratio":30}
                                 result.append(subresult)
+                                print("相似度:" + str(subresult["ratio"]))
                                 continue
     elif (len(word1_l[0]) > 2 or len(word2_l[0]) > 2) and word1_l[0] == word2_l[0] and len(word1_l) == 1 and len(word2_l) == 1:
         subresult = {"applno":tmark[1],"ratio":300.00}
         result.append(subresult)
+        print("相似度:" + str(subresult["ratio"]))
         continue
     elif ((len(word1_l[0]) >= 2 and len(word2_l[0]) == 2) or (len(word1_l[0]) == 2 and len(word2_l[0]) >= 2) or (len(word1_l[0]) > 2 and len(word2_l[0]) > 2)) and word1_l[0] != word2_l[0] and len(word1_l) == 1 and len(word2_l) == 1:
         #seperate word to lists
@@ -362,6 +371,7 @@ for tmark in tmark_list11:
                     a = a * leng_subword/long_word*1.8
                     subresult = {"applno":tmark[1],"ratio":a}
                     result.append(subresult)
+                    print("相似度:" + str(subresult["ratio"]))
                     
                     
     elif (len(word1_l) > 1 and len(word2_l) == 1) or (len(word1_l) == 1 and len(word2_l) > 1) or (len(word1_l) > 1 and len(word2_l) > 1):
@@ -458,6 +468,7 @@ for tmark in tmark_list11:
                                         order_l[r]= order_l[r+1]
                                         order_l[r+1] = tmp
 
+                    
                 
                     
                 for i in word1_order_lb:
@@ -532,6 +543,7 @@ for tmark in tmark_list11:
                 
                 subresult = {"applno":tmark[1],"ratio":score}
                 result.append(subresult)
+                print("相似度:" + str(subresult["ratio"]))
 ##################################
         if len(depends) == 2:
             if len(depends2) == 1:
@@ -626,6 +638,7 @@ for tmark in tmark_list11:
                 
                 subresult = {"applno":tmark[1],"ratio":score}
                 result.append(subresult)
+                print("相似度:" + str(subresult["ratio"]))
 ##################################
         if len(depends) == 3:
             if len(depends2) == 3:
@@ -957,6 +970,9 @@ for tmark in tmark_list11:
                  
                 subresult = {"applno":tmark[1],"ratio":score}
                 result.append(subresult)
+                print("相似度:" + str(subresult["ratio"]))
+
+
 ##################################
         if len(depends) == 3:
             if len(depends2) == 2:
@@ -1192,6 +1208,7 @@ for tmark in tmark_list11:
                  
                 subresult = {"applno":tmark[1],"ratio":score}
                 result.append(subresult)
+                print("相似度:" + str(subresult["ratio"]))
 ##################################
         if len(depends) == 3:
             if len(depends2) == 1:
@@ -1334,7 +1351,11 @@ for tmark in tmark_list11:
                  
                 subresult = {"applno":tmark[1],"ratio":score}
                 result.append(subresult)
-
+                print("相似度:" + str(subresult["ratio"]))
+                
+                
+                
+                
                 
                 
         #subresult = {"applno":tmark[1],"ratio":0.0}
