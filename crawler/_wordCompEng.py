@@ -240,6 +240,10 @@ for tmark in tmark_list11:
         word2 = word[0:word.find("及")]
     elif word.find("及") > 0 and word.find("設計圖") > 0:
         word2 = word[0:word.find("及")]
+    elif word.find("and") > 0 and word.find("Design") > 0:
+        word2 = word[0:word.find("and")]
+    elif word.find("plus") > 0 and word.find("Design") > 0:
+        word2 = word[0:word.find("plus")]
     elif word.find("及") == -1 and (word.find("圖") ==-1 and word.find("標章") == -1 and word.find("標章圖")==-1):
         word2 = word
     elif word.find("及") == -1 and (word.find("圖") > 0 or word.find("標章") > 0 or word.find("標章圖") > 0):
