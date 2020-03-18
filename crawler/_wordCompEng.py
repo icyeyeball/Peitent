@@ -75,7 +75,6 @@ tmark_list = []
 word1 = sys.argv[1]
 codeClass = "0" + copNo.sub('', str(sys.argv[2]))[0:2]
 #print("cldeclass: " + codeClass)
-indx = sys.argv[3]
 
 string = ""
 if codeClass == "001":
@@ -418,7 +417,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -447,7 +446,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -478,7 +477,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -509,7 +508,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -575,7 +574,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -605,7 +604,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -684,7 +683,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -713,7 +712,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -745,7 +744,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -775,7 +774,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -806,7 +805,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -837,7 +836,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -868,7 +867,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -898,7 +897,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -927,7 +926,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -1011,7 +1010,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -1040,7 +1039,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -1071,7 +1070,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -1101,7 +1100,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -1132,7 +1131,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -1163,7 +1162,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -1243,7 +1242,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -1272,7 +1271,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
@@ -1304,7 +1303,7 @@ for tmark in tmark_list11:
                             if ends >7:
                                 ends = 7
                             for i in range(pos,ends):
-                                a = a + weight_l[num-2][i]
+                                a = a + weight_l[pos][i]
                             a = a * leng_subword/long_word*1.8
                             subresult = {"applno":tmark[1],"ratio":a}
                             order_l.append(subresult)
