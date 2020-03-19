@@ -441,8 +441,26 @@ for i in range(0,500):
         break
 app_json = json.dumps(data)
 print(app_json)
+
+file1 = r"./pic/" + str(indx) + ".1.jpg"
+file2 = r"./pic/" + str(indx) + ".2.jpg"
+try:
+    os.remove(file1)
+except OSError as e:
+    print(e)
+else:
+    pass
+    
+try:
+    os.remove(file2)
+except OSError as e:
+    print(e)
+else:
+    pass
     
 # initial time and end time
+
+    
 print("總筆數 = " + str(len(tmark_list11)))
 localtime_end = time.asctime( time.localtime(time.time()))
 print("開始時間: "+ localtime_init)     
