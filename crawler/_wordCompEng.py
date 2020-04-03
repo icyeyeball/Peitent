@@ -199,8 +199,8 @@ for i in string0:
         continue
         
 word1_n = copAB.sub('', word1)
-word1_min = math.ceil(math.ceil(len(word1_n))*0.66)
-word1_max = math.ceil(math.ceil(len(word1_n))*1.50)
+word1_min = math.ceil(len(word1_n)*0.66)
+word1_max = math.ceil(len(word1_n)*1.50)
 
 #==================
 word1 = word1.strip()

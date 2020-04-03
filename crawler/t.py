@@ -1,3 +1,6 @@
-sStr1 = 'abcdefg'
-sStr2 = 'cde'
-print (sStr1.find(sStr2))
+import math
+a = 3
+
+b = math.log(3)
+
+print(b)
