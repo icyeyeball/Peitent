@@ -55,7 +55,7 @@ def wordsEng(word1, word2):
     #print(depends)
     #print(depends2)
     if depends == [] or depends2 == []:
-        return 0.0
+        return -1
         
     p1_l = []
     p2_l = []

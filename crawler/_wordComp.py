@@ -203,6 +203,8 @@ word2=""
 result = []
 
 word1 = cop.sub('', word1)
+if word1 = "":
+    return -1.0
 
 if word1 == "":
     print("輸入文字去除說明字以後空白，請更動並輸入商標文字")
