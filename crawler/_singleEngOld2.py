@@ -38,7 +38,6 @@ def wordsEng(word1, word2):
         word2_l.append(word2[i:i+1])
     
     n_char = 0
-    others = 0
     same = False
     for i in word1_l:
         for j in word2_l:
@@ -76,7 +75,6 @@ def wordsEng(word1, word2):
         else:
             long = len(word2)
             # Compare the total the same words
-        others = long-n_char
         if npos1>npos2:
             pos = npos1
         else:
