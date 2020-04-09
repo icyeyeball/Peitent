@@ -13,9 +13,9 @@ import os
 import math
 import imutils
 
-def wordsEng(word1, word2):
+def wordsEng2(word1, word2):
     a = 0
-    weight_l = [[60,40,0,0,0,0,0,0,0,0,0,0],[45,30,25,0,0,0,0,0,0,0,0,0,0],[40,28,22,10,0,0,0,0,0,0,0,0],[37,30,24,5,4,0,0,0,0,0,0,0],[35,29,23,13,10,3,0,0,0,0,0,0],[33,26,20,10,6,4,1,0,0,0,0,0],[30,24,18,9,7,5,4,3,0,0,0,0],[30,24,18,9,7,5,4,2,1,0,0,0],[30,24,18,9,7,5,4,1,1,1,0,0],[30,24,18,9,7,5,3,1,1,1,1,0],[30,24,18,9,6,5,3,1,1,1,1,1],[30,24,18,9,6,5,3,1,1,1,1,1],[30,24,18,9,6,5,3,1,1,1,1,1],[30,24,18,9,6,5,3,1,1,1,1,1],[30,24,18,9,6,5,3,1,1,1,1,1],[30,24,18,9,6,5,3,1,1,1,1,1],[30,24,18,9,6,5,3,1,1,1,1,1]]
+    weight_l = [[60,40,0,0,0,0,0,0,0,0,0,0],[43,37,20,0,0,0,0,0,0,0,0,0,0],[30,28,26,21,0,0,0,0,0,0,0,0],[33,25,17,14,11,0,0,0,0,0,0,0],[30,25,19,13,11,7,0,0,0,0,0,0],[28,23,17,14,10,6,4,0,0,0,0,0],[27,22,16,13,9,6,5,3,0,0,0,0],[26,21,15,12,8,7,5,4,2,0,0,0],[25,20,14,12,8,7,5,4,3,2,0,0],[24,19,13,11,8,7,6,5,4,2,1,0],[23,19,13,11,8,7,6,5,4,2,1,1],[23,19,13,11,8,7,6,5,4,2,1,1],[23,19,13,11,8,7,6,5,4,2,1,1],[23,19,13,11,8,7,6,5,4,2,1,1],[23,19,13,11,8,7,6,5,4,2,1,1],[23,19,13,11,8,7,6,5,4,2,1,1],[23,19,13,11,8,7,6,5,4,2,1,1]]
     #seperate word to lists
     if len(word1) == 0 or len(word2) == 0:
         return -1.0
@@ -185,24 +185,56 @@ def wordsEng(word1, word2):
                 g_i = 0.522 - (0.241*m_i) + (0.031*math.pow(m_i,2))
                 q_i = h_i + f_i - g_i*math.log(len(depends2t))
                 y_total = y_total + q_i
+                """
+                print("m_i = " + str(m_i))
+                print("f_i = " + str(f_i))
+                print("g_i = " + str(g_i))
+                print("len(depends2t) = " + str(len(depends2t)))
+                print("q_i = " + str(q_i))
+                print("y_total = " + str(y_total*100))
+                """
             elif m_i >= 1 and m_i <=3:
                 h_i = -0.05
                 f_i = 0.927 - (0.184 * m_i)
                 g_i = 0.522 - (0.241*m_i) + (0.031*math.pow(m_i,2))
                 q_i = h_i + f_i - g_i*math.log(len(depends2t))
                 y_total = y_total + q_i
+                """
+                print("m_i = " + str(m_i))
+                print("f_i = " + str(f_i))
+                print("g_i = " + str(g_i))
+                print("len(depends2t) = " + str(len(depends2t)))
+                print("q_i = " + str(q_i))
+                print("y_total = " + str(y_total*100))
+                """
             elif m_i > 4 and m_i <=5:
                 h_i = 0.0
                 f_i = 0.927 - (0.184 * m_i)
                 g_i = 0.522 - (0.241*m_i) + (0.031*math.pow(m_i,2))
                 q_i = h_i + f_i - g_i*math.log(len(depends2t))
                 y_total = y_total + q_i
+                """
+                print("m_i = " + str(m_i))
+                print("f_i = " + str(f_i))
+                print("g_i = " + str(g_i))
+                print("len(depends2t) = " + str(len(depends2t)))
+                print("q_i = " + str(q_i))
+                print("y_total = " + str(y_total*100))
+                """
             elif m_i > 5 and m_i <=6:
                 q_i = 0.11
                 y_total = y_total + q_i
+                """
+                print("q_i = " + str(q_i))
+                print("y_total = " + str(y_total*100))
+                """
             elif m_i > 6:
                 q_i = 0.22/(len(depends2t)-4)
                 y_total = y_total + q_i
+                """
+                print("q_i = " + str(q_i))
+                print("y_total = " + str(y_total*100))
+                """
             else:
                 pass
     
@@ -210,7 +242,7 @@ def wordsEng(word1, word2):
             r = n_char/(len(depends2t)+abs(p1-p2))
         else:
             r = 1
-        a = y_total * d_noise * r * 1.25
+        a = y_total * d_noise * r * 2.0
         return a*100
     else:
         for ii in range(0,len(dependsii)):
@@ -234,6 +266,8 @@ def wordsEng(word1, word2):
                             depends[x] = ""
                         for y in range(0,j+1):
                             depends2[y] = ""
+                        #print(depends)
+                        #print(depends2)
             if same == True and p1_l == [] and p2_l == []:
                 p1_l = p1_lt.copy()
                 p2_l = p2_lt.copy()
@@ -318,15 +352,13 @@ def wordsEng(word1, word2):
         if len(p1_l) == 0:
             return 0.0
         #print("word1 : word2 = " + word1+ ":" + word2)
-        others = 0
+
         if len(word1) > len(word2):
             long = len(word1)
-            others = len(word1) - len(p1_l)
             #print("p1_l:")
             #print(p1_l)
         else:
             long = len(word2)
-            others = len(word2) - len(p1_l)
 
         #print("others = " + str(others))
             # Compare the total the same words
@@ -338,18 +370,26 @@ def wordsEng(word1, word2):
         if ends >10:
             ends = 10
         a = 0
+        others = 0
+        for i in range(0,len(p1_l)):
+            if (i+1) < len(p1_l):
+                others = others + (p1_l[i+1]-p1_l[i]-1)
+        for i in range(0,len(p2_l)):
+            if (i+1) < len(p2_l):
+                others = others + (p2_l[i+1]-p2_l[i]-1)
+        others = others/2.0
+        #print("others = " + str(others))
         #print("n_char = " + str(n_char))
         for i in range(pos,ends):
             a = a + weight_l[long-2][i]
-            #print("pa="+str(a))
+            print("pa="+str(a))
         #print("long="+str(long))
 
-        a = a * n_char*1.5936/(long+others)
+        a = a * n_char*1.5/(long+others)
         #print("n_char = " + str(n_char))
         #print("long = " + str(long))
         #a = a * n_char*2./long
         return a
-
 
 if __name__=="__main__":
     wordsEng(sys.argv[1],sys.argv[2],sys.argv[3])
