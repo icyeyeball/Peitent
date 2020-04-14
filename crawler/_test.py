@@ -5,7 +5,7 @@
 #
 # Connect MySQL
 import sys
-from _singleEng2 import *
+from _singleEng import *
 
 word1_l = []
 word2_l = []
@@ -24,6 +24,6 @@ print(len(word2_l))
 print(word1_l)
 print(word2_l)
 for i in range(0,len(word1_l)):
-    print(wordsEng2(word1_l[i],word2_l[i]))
+    print(wordsEng(word1_l[i],word2_l[i]))
     
 

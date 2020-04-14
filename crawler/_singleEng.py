@@ -26,9 +26,12 @@ def wordsEng(word1, word2):
         wordMax = word2
         wordmin = word1
     wordmin_min = math.ceil(len(wordmin)*0.66)
-    wordmin_max = math.ceil(len(wordmin)*1.00)
+    wordmin_max = math.ceil(len(wordmin)*1.50)
     if wordmin_min < 1:
         wordmin_min = 1
+    if len(wordMax)<wordmin_min or len(wordMax)>wordmin_max:
+        return -1.0
+
     
     #decide how many characters
     word1_l = []
@@ -71,76 +74,79 @@ def wordsEng(word1, word2):
     same = False
     p1 = 0
     p2 = 0
-    if len(dependst)<50 or len(depends2t)<50:
-        for ii in range(0,len(dependsii)):
-            depends = dependst.copy()
-            depends2 = depends2t.copy()
-            n_char_t = 0
-            p1_lt = []
-            p2_lt = []
-            for i in range(ii,len(depends)):
-                for j in range(0,len(depends2)):
- 
-                    if depends[-1].strip() == "" or depends2[-1].strip() == "":
-                        break
-                        break
-                    if depends[i] == depends2[j] and depends[i].strip() != "" :
-                        same = True
-                        n_char_t = n_char_t + 1
-                        p1_lt.append(i)
-                        p2_lt.append(j)
-                        for x in range(0,i+1):
-                            depends[x] = ""
-                        for y in range(0,j+1):
-                            depends2[y] = ""
-            if same == True and p1_l == [] and p2_l == []:
+    for ii in range(0,len(dependsii)):
+        depends = dependst.copy()
+        depends2 = depends2t.copy()
+        n_char_t = 0
+        p1_lt = []
+        p2_lt = []
+        for i in range(ii,len(depends)):
+            for j in range(0,len(depends2)):
+                if depends[-1].strip() == "" or depends2[-1].strip() == "":
+                    break
+                    break
+                if depends[i] == depends2[j] and depends[i].strip() != "" :
+                    same = True
+                    n_char_t = n_char_t + 1
+                    p1_lt.append(i)
+                    p2_lt.append(j)
+                    for x in range(0,i+1):
+                        depends[x] = ""
+                    for y in range(0,j+1):
+                        depends2[y] = ""
+                    #print(depends)
+                    #print(depends2)
+        if same == True and p1_l == [] and p2_l == []:
+            p1_l = p1_lt.copy()
+            p2_l = p2_lt.copy()
+            #print("p1_l & p2_l")
+            #print(p1_l)
+            #print(p2_l)
+            #print(p1_l)
+            #print(p2_l)
+            p1_total = 0
+            p2_total = 0
+            for p in p1_l:
+                p1_total = p1_total + p
+            p1_total = (p1_total/n_char_t) - 0.5*(n_char-1)
+            for p in p2_l:
+                p2_total = p2_total + p
+            p2_total = (p2_total/n_char_t) - 0.5*(n_char-1)
+            n_char = n_char_t
+        #elif same == True and n_char_t > 0:
+        elif n_char_t > 0:
+            p1_total = 0
+            p2_total = 0
+            p1_totalt = 0
+            p2_totalt = 0
+            for p in p1_l:
+                p1_total = p1_total + p
+            p1_total = (p1_total/n_char) - 0.5*(n_char-1)
+            for p in p2_l:
+                p2_total = p2_total + p
+            p2_total = (p2_total/n_char) - 0.5*(n_char-1)
+            
+            for p in p1_lt:    
+                p1_totalt = p1_totalt + p
+            p1_totalt = (p1_totalt/n_char_t) - 0.5*(n_char_t-1)
+            for p in p2_lt:    
+                p2_totalt = p2_totalt + p
+            p2_totalt = (p2_totalt/n_char_t) - 0.5*(n_char_t-1)
+            
+            if (p1_totalt+p2_totalt)<(p1_total+p2_total):
                 p1_l = p1_lt.copy()
                 p2_l = p2_lt.copy()
+                p1_total = p1_totalt
+                p2_total = p2_totalt
+                n_char = n_char_t
                 #print("p1_l & p2_l")
                 #print(p1_l)
                 #print(p2_l)
-                #print(p1_l)
-                #print(p2_l)
-                p1_total = 0
-                p2_total = 0
-                for p in p1_l:
-                    p1_total = p1_total + p
-                p1_total = (p1_total/n_char_t) - 0.5*(n_char-1)
-                for p in p2_l:
-                    p2_total = p2_total + p
-                p2_total = (p2_total/n_char_t) - 0.5*(n_char-1)
-                n_char = n_char_t
-            #elif same == True and n_char_t > 0:
-            elif n_char_t > 0:
-                p1_total = 0
-                p2_total = 0
-                p1_totalt = 0
-                p2_totalt = 0
-                for p in p1_l:
-                    p1_total = p1_total + p
-                p1_total = (p1_total/n_char) - 0.5*(n_char-1)
-                for p in p2_l:
-                    p2_total = p2_total + p
-                p2_total = (p2_total/n_char) - 0.5*(n_char-1)
-            
-                for p in p1_lt:    
-                    p1_totalt = p1_totalt + p
-                p1_totalt = (p1_totalt/n_char_t) - 0.5*(n_char_t-1)
-                for p in p2_lt:    
-                    p2_totalt = p2_totalt + p
-                p2_totalt = (p2_totalt/n_char_t) - 0.5*(n_char_t-1)
-            
-                if (p1_totalt+p2_totalt)<(p1_total+p2_total):
-                    p1_l = p1_lt.copy()
-                    p2_l = p2_lt.copy()
-                    p1_total = p1_totalt
-                    p2_total = p2_totalt
-                    n_char = n_char_t
-                    #print("p1_l & p2_l")
-                    #print(p1_l)
-                    #print(p2_l)
-                else:
-                    pass
+            else:
+                pass
+    if len(dependst)<3 or len(depends2t)<3:
+        if len(p1_l) == 0:
+            return -1.0
                     #print("p1_l & p2_l")
                     #print(p1_l)
                     #print(p2_l)
@@ -170,119 +176,56 @@ def wordsEng(word1, word2):
             else:
                 break
         c_noise = abs(c_noise)
-        d_noise = math.pow(0.8,c_noise)
+        d_noise = math.pow(0.9,c_noise)
         m_i = 0
         h_i = 0
         q_i = 0
         y_total = 0
-        for i in p_l_min:
-            m_i = p_min_avg + i
+        for i in range(0,len(p_l_min)):
+            m_i = p_min_avg + i + 1
             #print("p_min_avg = " + str(p_min_avg))
             #print("m_i = " + str(m_i))
-            if (m_i>=0 and m_i < 1) or (m_i > 3 and m_i <=4):
-                h_i = 0.05
-                f_i = 0.927 - (0.184 * m_i)
-                g_i = 0.522 - (0.241*m_i) + (0.031*math.pow(m_i,2))
-                q_i = h_i + f_i - g_i*math.log(len(depends2t))
-                y_total = y_total + q_i
-            elif m_i >= 1 and m_i <=3:
-                h_i = -0.05
-                f_i = 0.927 - (0.184 * m_i)
-                g_i = 0.522 - (0.241*m_i) + (0.031*math.pow(m_i,2))
-                q_i = h_i + f_i - g_i*math.log(len(depends2t))
-                y_total = y_total + q_i
-            elif m_i > 4 and m_i <=5:
-                h_i = 0.0
-                f_i = 0.927 - (0.184 * m_i)
-                g_i = 0.522 - (0.241*m_i) + (0.031*math.pow(m_i,2))
-                q_i = h_i + f_i - g_i*math.log(len(depends2t))
-                y_total = y_total + q_i
-            elif m_i > 5 and m_i <=6:
-                q_i = 0.11
-                y_total = y_total + q_i
-            elif m_i > 6:
-                q_i = 0.22/(len(depends2t)-4)
-                y_total = y_total + q_i
-            else:
-                pass
-    
-        if len(dependsii)+abs(p1-p2) > 0:
-            r = n_char/(len(depends2t)+abs(p1-p2))
+            if len(dependst) <= 5:
+                if m_i < 2 or (m_i >= 4 and m_i < 5):
+                    h_i = 0.05
+                    f_i = 0.927 - (0.184 * m_i)
+                    g_i = 0.522 - (0.241*m_i) + (0.031*math.pow(m_i,2))
+                    q_i = h_i + f_i - g_i*math.log(len(dependst))
+                    y_total = y_total + q_i
+                elif m_i >=2 and m_i < 4:
+                    h_i = -0.05
+                    f_i = 0.927 - (0.184 * m_i)
+                    g_i = 0.522 - (0.241*m_i) + (0.031*math.pow(m_i,2))
+                    q_i = h_i + f_i - g_i*math.log(len(dependst))
+                    y_total = y_total + q_i
+                elif m_i == 5:
+                    q_i = 0.11
+                    y_total = y_total + q_i
+                else:
+                    pass
+            elif len(dependst) > 5:    
+                if m_i < 5:
+                    h_i = 0.0
+                    f_i = 0.927 - (0.184 * m_i)
+                    g_i = 0.522 - (0.241*m_i) + (0.031*math.pow(m_i,2))
+                    q_i = h_i + f_i - g_i*math.log(6)
+                    y_total = y_total + q_i
+                elif m_i >= 5:
+                    q_i = 0.22/(len(dependst)-4)
+                    y_total = y_total + q_i
+                else:
+                    pass
+        if len(dependsii)+abs(p1_l[0]-p2_l[0]) > 0:
+            r = n_char/(len(wordMax)+abs(p1_l[0]-p2_l[0]))
+            #print("r = " + str(n_char) + "/(" + str(len(depends2t)) + "+" + str(abs(p1_l[0]-p2_l[0])) + ")" + " = " + str(r))
         else:
-            r = 1
+            r = 0.01
+        #print("r = " + str(r))
+        #print("a = " + str(y_total) + "*" + str(d_noise) + "*" + str(r) + "*" + str(1.25))
         a = y_total * d_noise * r * 1.25
         return a*100
     else:
-        for ii in range(0,len(dependsii)):
-            depends = dependst.copy()
-            depends2 = depends2t.copy()
-            n_char_t = 0
-            p1_lt = []
-            p2_lt = []
-            for i in range(ii,len(depends)):
-                for j in range(0,len(depends2)):
  
-                    if depends[-1].strip() == "" or depends2[-1].strip() == "":
-                        break
-                        break
-                    if depends[i] == depends2[j] and depends[i].strip() != "" :
-                        same = True
-                        n_char_t = n_char_t + 1
-                        p1_lt.append(i)
-                        p2_lt.append(j)
-                        for x in range(0,i+1):
-                            depends[x] = ""
-                        for y in range(0,j+1):
-                            depends2[y] = ""
-            if same == True and p1_l == [] and p2_l == []:
-                p1_l = p1_lt.copy()
-                p2_l = p2_lt.copy()
-                #print("p1_l & p2_l")
-                #print(p1_l)
-                #print(p2_l)
-                #print(p1_l)
-                #print(p2_l)
-                p1_total = 0
-                p2_total = 0
-                for p in p1_l:
-                    p1_total = p1_total + p
-                p1_total = (p1_total/n_char_t) - 0.5*(n_char-1)
-                for p in p2_l:
-                    p2_total = p2_total + p
-                p2_total = (p2_total/n_char_t) - 0.5*(n_char-1)
-                n_char = n_char_t
-            #elif same == True and n_char_t > 0:
-            elif n_char_t > 0:
-                p1_total = 0
-                p2_total = 0
-                p1_totalt = 0
-                p2_totalt = 0
-                for p in p1_l:
-                    p1_total = p1_total + p
-                p1_total = (p1_total/n_char) - 0.5*(n_char-1)
-                for p in p2_l:
-                    p2_total = p2_total + p
-                p2_total = (p2_total/n_char) - 0.5*(n_char-1)
-            
-                for p in p1_lt:    
-                    p1_totalt = p1_totalt + p
-                p1_totalt = (p1_totalt/n_char_t) - 0.5*(n_char_t-1)
-                for p in p2_lt:    
-                    p2_totalt = p2_totalt + p
-                p2_totalt = (p2_totalt/n_char_t) - 0.5*(n_char_t-1)
-            
-                if (p1_totalt+p2_totalt)<(p1_total+p2_total):
-                    p1_l = p1_lt.copy()
-                    p2_l = p2_lt.copy()
-                    p1_total = p1_totalt
-                    p2_total = p2_totalt
-                    n_char = n_char_t
-                    #print("p1_l & p2_l")
-                    #print(p1_l)
-                    #print(p2_l)
-                else:
-                    pass
-    
         """
         same = False
         for i in p1_l:
@@ -318,33 +261,40 @@ def wordsEng(word1, word2):
         if len(p1_l) == 0:
             return 0.0
         #print("word1 : word2 = " + word1+ ":" + word2)
-        others = 0
+
         if len(word1) > len(word2):
             long = len(word1)
-            others = len(word1) - len(p1_l)
             #print("p1_l:")
             #print(p1_l)
         else:
             long = len(word2)
-            others = len(word2) - len(p1_l)
 
         #print("others = " + str(others))
             # Compare the total the same words
         if p1_l[0] > p2_l[0]:
             pos = p1_l[0]
+            pos_l = p1_l.copy()
         else:
             pos = p2_l[0]
-        ends = pos+n_char
-        if ends >10:
-            ends = 10
+            pos_l = p2_l.copy()
+        others = 0
+        for i in range(0,len(p1_l)):
+            if (i+1) < len(p1_l):
+                others = others + (p1_l[i+1]-p1_l[i]-1)
+        for i in range(0,len(p2_l)):
+            if (i+1) < len(p2_l):
+                others = others + (p2_l[i+1]-p2_l[i]-1)
+        others = others/2.0
         a = 0
+        #print("others = " + str(others))
         #print("n_char = " + str(n_char))
+        ends = pos+n_char
         for i in range(pos,ends):
-            a = a + weight_l[long-2][i]
-            #print("pa="+str(a))
+            if i <12:
+                a = a + weight_l[long-2][i]
         #print("long="+str(long))
 
-        a = a * n_char*1.5936/(long+others)
+        a = a * n_char*1.5/(long+others)
         #print("n_char = " + str(n_char))
         #print("long = " + str(long))
         #a = a * n_char*2./long
