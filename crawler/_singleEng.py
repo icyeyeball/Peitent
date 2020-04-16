@@ -144,7 +144,7 @@ def wordsEng(word1, word2):
                 #print(p2_l)
             else:
                 pass
-    if len(dependst)<3 or len(depends2t)<3:
+    if len(dependst)<4 or len(depends2t)<4:
         if len(p1_l) == 0:
             return -1.0
                     #print("p1_l & p2_l")
@@ -294,7 +294,7 @@ def wordsEng(word1, word2):
                 a = a + weight_l[long-2][i]
         #print("long="+str(long))
 
-        a = a * n_char*1.5/(long+others)
+        a = a * n_char*1.3/(long+others)
         #print("n_char = " + str(n_char))
         #print("long = " + str(long))
         #a = a * n_char*2./long

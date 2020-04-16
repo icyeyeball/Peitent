@@ -1,6 +1,4 @@
-import math
-a = 3
-
-b = math.log(3)
-
-print(b)
+from langconv import *
+word1 = "满天星"
+word1 = Converter('zh-hant').convert(word1)
+print(word1)
