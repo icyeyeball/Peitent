@@ -13,32 +13,33 @@ cursor=tmarkdb.cursor()
 # Read
 
 #delete_users = "DELETE FROM tmarkTable WHERE examNo = 11111"
-judge1 = "LIKE '" + str(sys.argv[1]) + "%'"
-judge2 = "LIKE '%、" + str(sys.argv[1]) + "%'"
+find = str(sys.argv[1])
+judge1 = "LIKE '" + str(sys.argv[2]) + "%'"
+judge2 = "LIKE '%、" + str(sys.argv[2]) + "%'"
 
 
-cmd_users = "SELECT tmarkName FROM tmarkTable WHERE applNo "+ judge1
+cmd_users = "SELECT "+find+" FROM tmarkTable WHERE applNo "+ judge1
 cursor.execute(cmd_users)
 tmark_list11 = cursor.fetchall()
-cmd_users = "SELECT tmarkName FROM tmarkTable WHERE applNo "+ judge1
+cmd_users = "SELECT "+find+" FROM tmarkTable WHERE applNo "+ judge1
 cursor.execute(cmd_users)
 tmark_list12 = cursor.fetchall()
-cmd_users = "SELECT tmarkName FROM tmarkTable2 WHERE applNo "+ judge1
+cmd_users = "SELECT "+find+" FROM tmarkTable2 WHERE applNo "+ judge1
 cursor.execute(cmd_users)
 tmark_list21 = cursor.fetchall()
-cmd_users = "SELECT tmarkName FROM tmarkTable2 WHERE applNo "+ judge1
+cmd_users = "SELECT "+find+" FROM tmarkTable2 WHERE applNo "+ judge1
 cursor.execute(cmd_users)
 tmark_list22 = cursor.fetchall()
-cmd_users = "SELECT tmarkName FROM tmarkTable3 WHERE applNo "+ judge1
+cmd_users = "SELECT "+find+" FROM tmarkTable3 WHERE applNo "+ judge1
 cursor.execute(cmd_users)
 tmark_list31 = cursor.fetchall()
-cmd_users = "SELECT tmarkName FROM tmarkTable3 WHERE applNo "+ judge1
+cmd_users = "SELECT "+find+" FROM tmarkTable3 WHERE applNo "+ judge1
 cursor.execute(cmd_users)
 tmark_list32 = cursor.fetchall()
-cmd_users = "SELECT tmarkName FROM tmarkTable4 WHERE applNo "+ judge1
+cmd_users = "SELECT "+find+" FROM tmarkTable4 WHERE applNo "+ judge1
 cursor.execute(cmd_users)
 tmark_list41 = cursor.fetchall()
-cmd_users = "SELECT tmarkName FROM tmarkTable4 WHERE applNo "+ judge1
+cmd_users = "SELECT "+find+" FROM tmarkTable4 WHERE applNo "+ judge1
 cursor.execute(cmd_users)
 tmark_list42 = cursor.fetchall()
 #combine these two lists
