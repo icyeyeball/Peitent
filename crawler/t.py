@@ -1,6 +1,4 @@
-from langconv import *
-from alexnet import *
-
-a = alexnet("./097048289-1.png")
-
+import sys
+a = sys.argv[1]
+b = sys.argv[2]
 print(a)

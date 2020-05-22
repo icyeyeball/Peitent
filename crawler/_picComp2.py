@@ -129,7 +129,8 @@ for i in range(len(tmark_list11)):
 #print(tmark_list)
 
 tmark_l = []
-
+tmark = {'applno': "00000000",'file':sys.argv[0]}
+tmark_l.append(tmark)
 for i in range(0, len(tmark_list)):
 
     #if len(cop.sub('', str(tmark_list[i]))) == 24:
@@ -168,6 +169,8 @@ ret,sampleImage2 = cv2.threshold(sampleImage2,220,255,cv2.THRESH_BINARY)
 #sampleImage = cv2.Canny(sampleImage, 30, 150)
 kp1_2, des1_2 = sift.detectAndCompute(sampleImage2, None) #detect the features of sample
 index = 0
+
+
 for t in tmark_l:
     index = index + 1
     #print(index)
@@ -249,7 +252,7 @@ for t in tmark_l:
             else:
                 subtotal = subtotal_2
                 
-            if subtotal["ratio"] > 30.0:
+            if subtotal["ratio"] > 50.0:
                 result.append(subtotal)
                 for i in range(0,len(result)-1):
                     for j in range(0,len(result)-1-i): 
@@ -257,8 +260,8 @@ for t in tmark_l:
                             tmp = result[j]
                             result[j]= result[j+1]
                             result[j+1] = tmp
-                if len(result) > 500:
-                    del result[500]
+                if len(result) > 100:
+                    del result[100]
             else:
                 continue
 
