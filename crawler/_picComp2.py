@@ -29,113 +29,11 @@ def getMatchNum(matches,ratio):
             matchesMask[i]=[1,0]
             matchNum+=1
     return (matchNum,matchesMask)
-#connect to database
-tmarkdb = mysql.connector.connect( host = "127.0.0.1", user = "root", password = "lehsiao", database = "tmarkdb",  )
-cursor=tmarkdb.cursor()
-cop = re.compile("[^.^/^A-Z^a-z^0-9^-]")
-copNo = re.compile("[^0-9^]")
-
-judge1 = "LIKE '" + str(sys.argv[2]) + "%'"
-judge2 = "LIKE '%、" + str(sys.argv[2]) + "%'"
-#print(judge1)
-#print(judge2)
-
-# for instance: (1)"LIKE '45%'"  (2)"LIKE '%、45%'" (3)"LIKE '3519%'" (4)"LIKE '%、3519%'"
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable WHERE goodsGroup " + judge1
-cursor.execute(cmd_users)
-tmark_list11 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable WHERE goodsGroup " + judge2
-cursor.execute(cmd_users)
-tmark_list12 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable2 WHERE goodsGroup " + judge1
-cursor.execute(cmd_users)
-tmark_list21 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable2 WHERE goodsGroup " + judge2
-cursor.execute(cmd_users)
-tmark_list22 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable3 WHERE goodsGroup " + judge1
-cursor.execute(cmd_users)
-tmark_list31 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable3 WHERE goodsGroup " + judge2
-cursor.execute(cmd_users)
-tmark_list32 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable4 WHERE goodsGroup " + judge1
-cursor.execute(cmd_users)
-tmark_list41 = cursor.fetchall()
-cmd_users = "SELECT imageData1, tmarkName, applNo FROM tmarkTable4 WHERE goodsGroup " + judge2
-cursor.execute(cmd_users)
-tmark_list42 = cursor.fetchall()
-#combine these two lists
-tmark_list11.extend(tmark_list12)
-tmark_list11.extend(tmark_list21)
-tmark_list11.extend(tmark_list22)
-tmark_list11.extend(tmark_list31)
-tmark_list11.extend(tmark_list32)
-tmark_list11.extend(tmark_list41)
-tmark_list11.extend(tmark_list42)
-tmark_list11 = list(set(tmark_list11))
-#標章圖 標章 及圖 圖 及少女圖 及圖案 設計圖
-tmark_list = []
-for i in range(len(tmark_list11)):
-    try:
-        nPos = tmark_list11[i][1].index("圖")
-    except ValueError:
-        continue
-    else:
-        if nPos > 1:
-            tmark_list.append(tmark_list11[i])
-            continue
-    try:
-        nPos = tmark_list11[i][1].index("標章")
-    except ValueError:
-        continue
-    else:
-        if nPos > 1:
-            tmark_list.append(tmark_list11[i])
-            continue
-    try:
-        nPos = tmark_list11[i][1].index("設計字")
-    except ValueError:
-        continue
-    else:
-        if nPos > 1:
-            tmark_list.append(tmark_list11[i])
-            continue
-    try:
-        nPos = tmark_list11[i][1].index("Logo")
-    except ValueError:
-        continue
-    else:
-        if nPos > 1:
-            tmark_list.append(tmark_list11[i])
-            continue
-    try:
-        nPos = tmark_list11[i][1].index("LOGO")
-    except ValueError:
-        continue
-    else:
-        if nPos > 1:
-            tmark_list.append(tmark_list11[i])
-            continue
-    try:
-        nPos = tmark_list11[i][1].index("設計圖")
-    except ValueError:
-        continue
-    else:
-        if nPos > 1:
-            tmark_list.append(tmark_list11[i])
-            continue               
-
-#print(tmark_list)
 
 tmark_l = []
-tmark = {'applno': "00000000",'file':sys.argv[0]}
+tmark = {'applno': "00000000",'file':sys.argv[2]}
 tmark_l.append(tmark)
-for i in range(0, len(tmark_list)):
 
-    #if len(cop.sub('', str(tmark_list[i]))) == 24:
-    tmark = {'applno': tmark_list[i][2],'file':tmark_list[i][0]}
-    tmark_l.append(tmark)
 
 samplePath = sys.argv[1] #input sample
 #sift extractpr
@@ -283,7 +181,6 @@ for k in range(0,len(result)):
     cv2.imwrite(outpath, result[k]["picture"])
 
 # initial time and end time
-print("總筆數 = " + str(len(tmark_list11)))
 localtime_end = time.asctime( time.localtime(time.time()))
 print("開始時間: "+ localtime_init)     
 print("結束時間: "+ localtime_end)
