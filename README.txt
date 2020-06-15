@@ -12,6 +12,8 @@ https://developer.nvidia.com/rdp/cudnn-download
 
 pip3 install tensorflow
 
+pip install opencv-contrib-python
+
 add env values
 
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin
