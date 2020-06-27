@@ -6,6 +6,11 @@ python _build.py
 
 
 cd cmder
+cd yolo
+cd darkflow
+activate python36gpu
+
+cd cmder
 cd peitent
 cd c
 activate python36gpu

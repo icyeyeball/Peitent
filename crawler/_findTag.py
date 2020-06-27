@@ -13,12 +13,14 @@ tmarkdb = mysql.connector.connect( host = "127.0.0.1", user = "root", password =
 cursor=tmarkdb.cursor()
 
 copAB = re.compile("[^A-Z^a-z^,^]")
-tmpfiles = os.listdir('./picBase2')
-print("tmpfiles:" + str(len(tmpfiles)))
+
+tmpfiles = os.listdir('./yoloout')
 tmpfiles.sort()
-tag_list=["umbrella", "person", "tie"]
+print("tmpfiles:" + str(len(tmpfiles)))
+tag_list=["tie"]
 len_tag_list = len(tag_list)
 tag_total = []
+
 index =0
 for f in tmpfiles:
     index = index+1
@@ -32,12 +34,11 @@ for f in tmpfiles:
     #print(tag_string)
     str0 = tag_string.split(",")
     tag_total = [i for i in str0 if i in tag_list]
-    print(tag_total)
-    if len(tag_total)<=1:
-        continue
-    else:
-        shutil.copyfile('./picBase2/'+str(f),'./yoloout/'+str(f[0:-6]+"-"+str(len(tag_total))+".png"))
-        
+    
+    if len(tag_total)>=1:
+        print(tag_total)
+        shutil.copyfile('./picBase2/'+str(f),'./yoloout2/'+str(f[0:-6]+"-"+str(len(tag_total))+".png"))
+
         
         
     

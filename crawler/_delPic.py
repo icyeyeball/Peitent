@@ -19,7 +19,10 @@ cursor=tmarkdb.cursor()
 samplePath = './picBase/'
 tmpfiles = os.listdir(samplePath)
 tmpfiles.sort()
+index = 0
 for f in tmpfiles:
+    index = index +1
+    print(index)
     cmd_users = "SELECT tmarkName FROM tmarkTable WHERE applNo='"+ str(f[0:-6]) +"'"
     cursor.execute(cmd_users)
     tmark_list1 = cursor.fetchall()
@@ -35,6 +38,6 @@ for f in tmpfiles:
     if tmark_list1 or tmark_list2 or tmark_list3 or tmark_list4:
         continue
     else:
-        print(f)
+        print("del"+str(f))
         os.remove('./picBase/'+str(f))
 
