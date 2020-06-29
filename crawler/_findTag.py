@@ -14,31 +14,64 @@ cursor=tmarkdb.cursor()
 
 copAB = re.compile("[^A-Z^a-z^,^]")
 
-tmpfiles = os.listdir('./yoloout')
+tmpfiles = os.listdir('./yoloin')
 tmpfiles.sort()
 print("tmpfiles:" + str(len(tmpfiles)))
-tag_list=["tie"]
+tag_list=["toilet"]
 len_tag_list = len(tag_list)
 tag_total = []
 
 index =0
 for f in tmpfiles:
     index = index+1
-    print(index)
+    print(index)    
+    
     cmd_users = "SELECT tag FROM tmarkTable WHERE applNo='"+ f[0:-6] +"'"
-    #print(cmd_users)
     cursor.execute(cmd_users)
     tag_tuple = cursor.fetchall()
-    tag_list_db = list(tag_tuple[0])
+    print(tag_tuple)
+    if not len(tag_tuple) == 0:
+        tag_list_db = list(tag_tuple[0])
     tag_string = tag_list_db[0]
-    #print(tag_string)
-    str0 = tag_string.split(",")
-    tag_total = [i for i in str0 if i in tag_list]
+    str1 = tag_string.split(",")
+
+    
+    cmd_users = "SELECT tag FROM tmarkTable2 WHERE applNo='"+ f[0:-6] +"'"
+    cursor.execute(cmd_users)
+    tag_tuple = cursor.fetchall()
+    print(tag_tuple)
+    if not len(tag_tuple) == 0:
+        tag_list_db = list(tag_tuple[0])
+    tag_string = tag_list_db[0]
+    str2 = tag_string.split(",")
+
+    
+    cmd_users = "SELECT tag FROM tmarkTable3 WHERE applNo='"+ f[0:-6] +"'"
+    cursor.execute(cmd_users)
+    tag_tuple = cursor.fetchall()
+    print(tag_tuple)
+    if not len(tag_tuple) == 0:
+        tag_list_db = list(tag_tuple[0])
+    tag_string = tag_list_db[0]
+    str3 = tag_string.split(",")
+
+    
+    cmd_users = "SELECT tag FROM tmarkTable4 WHERE applNo='"+ f[0:-6] +"'"
+    cursor.execute(cmd_users)
+    tag_tuple = cursor.fetchall()
+    print(tag_tuple)
+    if not len(tag_tuple) == 0:
+        tag_list_db = list(tag_tuple[0])
+    tag_string = tag_list_db[0]
+    str4 = tag_string.split(",")
+        
+    str5 = str1+str2+str3+str4
+        
+    tag_total = [i for i in str5 if i in tag_list]
     
     if len(tag_total)>=1:
         print(tag_total)
-        shutil.copyfile('./picBase2/'+str(f),'./yoloout2/'+str(f[0:-6]+"-"+str(len(tag_total))+".png"))
-
+        shutil.copyfile('./yoloin/'+str(f),'./yoloout_1/'+str(f[0:-6]+".png"))
         
         
-    
+        
