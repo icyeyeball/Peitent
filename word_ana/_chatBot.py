@@ -10,10 +10,12 @@ import json
 import re
 
 input = sys.argv[1]
-
+jieba.add_word('駁回')
+jieba.add_word('會過')
+jieba.add_word('不會過')
 seg_list = jieba.lcut(input, cut_all=False)
 
-print(seg_list)
+#print(seg_list)
 
 list_key = [["商標","申請","註冊","流程","時間","多久","多長"],\
             ["個人","申請","公司","商標","名義","獨自"],\
@@ -66,10 +68,10 @@ for i in range(0,len(list_key)):
                 weight = weight + list_num[i][j]
     if z > 1:
         weight = weight*1.2
-        subresult = {"q":i,"weight":weight}
+        subresult = {"q":i+1,"weight":weight}
         result.append(subresult)
     else:
-        subresult = {"q":i,"weight":weight}
+        subresult = {"q":i+1,"weight":weight}
         result.append(subresult)
         
 #print(result)
