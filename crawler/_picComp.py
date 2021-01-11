@@ -117,14 +117,7 @@ for i in range(len(tmark_list11)):
         if nPos > 1:
             tmark_list.append(tmark_list11[i])
             continue
-    try:
-        nPos = tmark_list11[i][1].index("設計圖")
-    except ValueError:
-        continue
-    else:
-        if nPos > 1:
-            tmark_list.append(tmark_list11[i])
-            continue               
+             
 
 #print(tmark_list)
 
