@@ -24,7 +24,7 @@ C:\Program Files\NVIDIA Corporation\NVSMI //to use NVIDIA-smi
 in new cmd:
 nvcc -V # check CUDA
 -----------------------------------
-1.§¹¥ş­««Øª©¥»?
+1.å®Œå…¨é‡å»ºç‰ˆæœ¬?
 $ rm -rf .git
 $ git init
 $ git add .
@@ -39,17 +39,17 @@ Name: lehsiao
 Google search API key: AIzaSyDJKq14y8VwWDhgKfreAh5JSe522ppeRiQ 
 
 
-²Î¤@½s¸¹	85013961
-¤½¥q¦WºÙ	¼Ö¾P¤H¤u´¼¼z¦³­­¤½¥q(Lehsiao)
+çµ±ä¸€ç·¨è™Ÿ	85013961
+å…¬å¸åç¨±	æ¨‚éŠ·äººå·¥æ™ºæ…§æœ‰é™å…¬å¸(Lehsiao)
 ywgvRgZ1
 ======================================
-´¼°]§½¶}©ñ¸ê®Æ¤U¸ü -> ¶}©ñ¸ê®Æ
+æ™ºè²¡å±€é–‹æ”¾è³‡æ–™ä¸‹è¼‰ -> é–‹æ”¾è³‡æ–™
 https://tiponet.tipo.gov.tw/TipoMenu/
- 1.->³Ì·s®ø®§¤W­±
- ¥Ó½Ğapi
- 2.->°Ó¼ĞÅv»PÃöÁp¤å¥ó
-  °Ó¼Ğª¬ºA²§°Ê¸ê®Æ -> API»¡©ú¤U¸ü
+ 1.->æœ€æ–°æ¶ˆæ¯ä¸Šé¢
+ ç”³è«‹api
+ 2.->å•†æ¨™æ¬Šèˆ‡é—œè¯æ–‡ä»¶
+  å•†æ¨™ç‹€æ…‹ç•°å‹•è³‡æ–™ -> APIèªªæ˜ä¸‹è¼‰
   https://tiponet.tipo.gov.tw/Gazette/OpenData/OD/OD04.aspx?QryDS=DSP11
-  api »¡©úªºpdf ²Ä16­¶¦³¦ì§}
+  api èªªæ˜çš„pdf ç¬¬16é æœ‰ä½å€
 https://tiponet.tipo.gov.tw/Gazette/OpenData/DownLoadFiles/%e5%95%86%e6%a8%99API%e8%aa%aa%e6%98%8e%e6%96%87%e4%bb%b6.pdf
 =====================================
