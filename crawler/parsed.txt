@@ -1,0 +1,2399 @@
+end
+start
+examNo =00000001
+exam2No =00000001
+applNo =000000001
+appl2No =000000001
+appl3No =000000001
+tmarkName =林森（墨色）
+tmarkClassDesc =商標
+imageData1 =./picBase/000000001-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/000/000/001/pic_000000001_20110105_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =林森
+tmarkDraftE =
+tmarkDraftJ =
+tmarkSign =
+wordDescription =
+goodsclassCode =032
+goodsName =美髮霜商品。
+goodsGroup =0301、030101、0303、0519、0521、2118、351918、4402
+goodsGroup =
+
+goodsGroup =
+
+deadline =1991/07/15
+dead2line =1991/07/15
+dead3line =1991/07/15
+dead4line =1991/07/15
+dead5line =1991/07/15
+dead6line =1991/07/15
+dead7line =1991/07/15
+dead8line =1991/07/15
+dead9line =1991/07/15
+dead10line =1991/07/15
+applDate =1951/02/27
+regDate =1951/07/16
+regNoticeDate =
+_examNoticeDate =1951/06/30
+delReason =6
+volNo1 =
+volNo2 =
+processorName =
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =盛香堂化工廠股份有限公司
+holderEnglishName =
+holderJapaneseName =
+holderAddress =臺中市東區復興路4段19號
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =許森林
+agentAddress =臺北市中山區長安東路2段161之1號2樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000001
+exam2No =00000001
+applNo =061005868
+appl2No =061005868
+appl3No =061005868
+tmarkName =新力牌ＳＯＮＹソニ–        （墨色）
+tmarkClassDesc =商標(原服務標章)
+imageData1 =./picBase/061005868-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/061/005/868/pic_061005868_20110105_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =新力牌
+tmarkDraftE =SONY
+tmarkDraftJ =ソニ–
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =001
+goodsName =各種教育事業戲院歌廳俱樂部音樂社娛樂業。
+goodsGroup =4103、4106、9900
+goodsGroup =
+
+goodsGroup =
+
+deadline =1983/07/31
+dead2line =1983/07/31
+dead3line =1983/07/31
+dead4line =1983/07/31
+dead5line =1983/07/31
+dead6line =1983/07/31
+dead7line =1983/07/31
+dead8line =1983/07/31
+dead9line =1983/07/31
+dead10line =1983/07/31
+applDate =1972/12/22
+regDate =1973/08/01
+regNoticeDate =1973/12/01
+_examNoticeDate =1973/08/01
+delReason =6
+volNo1 =
+
+volNo2 =
+
+processorName =
+
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =蘇妮股份有限公司
+holderEnglishName =
+
+holderJapaneseName =ソニ–株式會社
+holderAddress =日本
+countryCode =JP
+chineseCountryName =日本
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =林敏生
+agentAddress =臺北市中山區南京東路2段125號7樓偉成第一大樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000001
+exam2No =00000001
+applNo =083003745
+appl2No =083003745
+appl3No =083003745
+tmarkName =台灣精品標誌
+tmarkClassDesc =證明標章
+imageData1 =./picBase/083003745-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/083/003/745/pic_083003745_20110107_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =
+
+tmarkDraftE =
+
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =
+
+goodsName =證明中華民國各廠商之產品具有優良品質及設計。
+goodsGroup =
+
+goodsGroup =
+
+goodsGroup =
+
+deadline =2025/03/15
+dead2line =2025/03/15
+dead3line =2025/03/15
+dead4line =2025/03/15
+dead5line =2025/03/15
+dead6line =2025/03/15
+dead7line =2025/03/15
+dead8line =2025/03/15
+dead9line =2025/03/15
+dead10line =2025/03/15
+applDate =1994/01/26
+regDate =1995/03/16
+regNoticeDate =1995/04/16
+_examNoticeDate =1994/12/16
+delReason =
+
+volNo1 =022
+volNo2 =008
+processorName =賴淑芳
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =經濟部
+holderEnglishName =
+
+holderJapaneseName =
+
+holderAddress =臺北市中正區福州街15號
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =陳長文
+agentAddress =臺北市信義區忠孝東路4段555號8樓
+agentAddress =
+
+agentChineseName =黃麗倩
+agentAddress =臺北市信義區忠孝東路4段555號8樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000001
+exam2No =00000001
+applNo =082054377
+appl2No =082054377
+appl3No =082054377
+tmarkName =TFTD及圖
+tmarkClassDesc =團體標章
+imageData1 =./picBase/082054377-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/082/054/377/pic_082054377_20110107_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =
+
+tmarkDraftE =TFTD
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =
+
+goodsName =表彰台北市鮮花設計服務協會之組織和其會員之會籍。
+goodsGroup =
+
+goodsGroup =
+
+goodsGroup =
+
+deadline =2005/06/30
+dead2line =2005/06/30
+dead3line =2005/06/30
+dead4line =2005/06/30
+dead5line =2005/06/30
+dead6line =2005/06/30
+dead7line =2005/06/30
+dead8line =2005/06/30
+dead9line =2005/06/30
+dead10line =2005/06/30
+applDate =1994/06/22
+regDate =1995/07/01
+regNoticeDate =1995/08/01
+_examNoticeDate =1995/04/01
+delReason =6
+volNo1 =022
+volNo2 =015
+processorName =周建文
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =台北巿鮮花設計服務協會　林秀德
+holderEnglishName =
+
+holderJapaneseName =
+
+holderAddress =臺北市中山區農安街23號9樓之1
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =李春福
+agentAddress =臺北市中山區南京西路5之1號9樓之1
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000002
+exam2No =00000002
+applNo =000000002
+appl2No =000000002
+appl3No =000000002
+tmarkName =林森（墨色）
+tmarkClassDesc =商標
+imageData1 =./picBase/000000002-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/000/000/002/pic_000000002_20110105_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =林森
+tmarkDraftE =
+
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =033
+goodsName =面霜商品。
+goodsGroup =0301、030101、0303、0519、0521、2118、351918、4402
+goodsGroup =
+
+goodsGroup =
+
+deadline =1991/07/15
+dead2line =1991/07/15
+dead3line =1991/07/15
+dead4line =1991/07/15
+dead5line =1991/07/15
+dead6line =1991/07/15
+dead7line =1991/07/15
+dead8line =1991/07/15
+dead9line =1991/07/15
+dead10line =1991/07/15
+applDate =1951/02/27
+regDate =1951/07/16
+regNoticeDate =1951/09/01
+_examNoticeDate =1951/06/30
+delReason =6
+volNo1 =
+
+volNo2 =
+
+processorName =
+
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =盛香堂化工廠股份有限公司
+holderEnglishName =
+
+holderJapaneseName =
+
+holderAddress =臺中市東區復興路4段19號
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =許森林
+agentAddress =臺北市中山區長安東路2段161之1號2樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000002
+exam2No =00000002
+applNo =062006660
+appl2No =062006660
+appl3No =062006660
+tmarkName =MANPOWER
+tmarkClassDesc =商標(原服務標章)
+imageData1 =./picBase/062006660-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/062/006/660/pic_062006660_20110105_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =
+
+tmarkDraftE =MANPOWER
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =001
+goodsName =短期之協助服務；提供臨時工作人員之服務，人才派遣服務。
+goodsGroup =3508
+goodsGroup =
+
+goodsGroup =
+
+deadline =2023/10/31
+dead2line =2023/10/31
+dead3line =2023/10/31
+dead4line =2023/10/31
+dead5line =2023/10/31
+dead6line =2023/10/31
+dead7line =2023/10/31
+dead8line =2023/10/31
+dead9line =2023/10/31
+dead10line =2023/10/31
+applDate =1973/02/15
+regDate =1973/11/01
+regNoticeDate =1973/12/01
+_examNoticeDate =1973/08/01
+delReason =
+
+volNo1 =
+
+volNo2 =
+
+processorName =
+
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =萬保華集團公司
+holderEnglishName =MANPOWERGROUP INC.
+holderJapaneseName =
+
+holderAddress =美國
+countryCode =US
+chineseCountryName =美國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =惲軼群
+agentAddress =臺北市松山區南京東路3段248號7樓
+agentAddress =
+
+agentChineseName =陳文郎
+agentAddress =臺北市松山區南京東路3段248號7樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000002
+exam2No =00000002
+applNo =083044909
+appl2No =083044909
+appl3No =083044909
+tmarkName =ONE CALIFORNIA  DESIGN
+tmarkClassDesc =證明標章
+imageData1 =./picBase/083044909-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/083/044/909/pic_083044909_20110105_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =
+
+tmarkDraftE =CALIFORNIA
+tmarkDraftJ =
+
+tmarkSign =1
+wordDescription =
+
+goodsclassCode =
+
+goodsName =證明產品中之黏核桃係產於美國加利福尼亞州，並證明美國加利福尼亞州黏核桃及混合水果皆依申請人制定之品質標準於加利福尼亞州包裝。產品指加利福尼亞州黏核桃及罐裝混合水果含有加利福尼亞州黏核桃。
+goodsGroup =
+
+goodsGroup =
+
+goodsGroup =
+
+deadline =2005/03/16
+dead2line =2005/03/16
+dead3line =2005/03/16
+dead4line =2005/03/16
+dead5line =2005/03/16
+dead6line =2005/03/16
+dead7line =2005/03/16
+dead8line =2005/03/16
+dead9line =2005/03/16
+dead10line =2005/03/16
+applDate =1994/06/30
+regDate =1995/03/16
+regNoticeDate =1995/04/16
+_examNoticeDate =1994/12/16
+delReason =6
+volNo1 =022
+volNo2 =008
+processorName =賴淑芳
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =美國黏核桃託管顧問理事會
+holderEnglishName =CLING PEACH ADVISORY BOARD OF TRUSTEES
+holderJapaneseName =
+
+holderAddress =美國加利福尼亞州舊金山市斯皮爾街160號1330室
+countryCode =US
+chineseCountryName =美國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =陳長文　徐秀惠
+agentAddress =臺北市信義區忠孝東路4段555號8樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000002
+exam2No =00000002
+applNo =082057238
+appl2No =082057238
+appl3No =082057238
+tmarkName =中華安清CHUNG HWA AN CHAIN ORGANIZATION及圖
+tmarkClassDesc =團體標章
+imageData1 =./picBase/082057238-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/082/057/238/pic_082057238_20110107_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =彩色
+tmarkDraftC =中華安清
+tmarkDraftE =CHUNG HWA AN CHAIN ORGANIZATION
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =
+
+goodsName =表示中華安和清平協會組織及其會員之會籍。
+goodsGroup =
+
+goodsGroup =
+
+goodsGroup =
+
+deadline =2005/06/30
+dead2line =2005/06/30
+dead3line =2005/06/30
+dead4line =2005/06/30
+dead5line =2005/06/30
+dead6line =2005/06/30
+dead7line =2005/06/30
+dead8line =2005/06/30
+dead9line =2005/06/30
+dead10line =2005/06/30
+applDate =1994/03/15
+regDate =1995/07/01
+regNoticeDate =1995/08/01
+_examNoticeDate =1995/04/01
+delReason =6
+volNo1 =022
+volNo2 =015
+processorName =周建文
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =中華安和清平協會　高龍
+holderEnglishName =
+
+holderJapaneseName =
+
+holderAddress =
+
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+end
+start
+examNo =00000003
+exam2No =00000003
+applNo =000000003
+appl2No =000000003
+appl3No =000000003
+tmarkName =日月潭（紅色）
+tmarkClassDesc =商標
+imageData1 =./picBase/000000003-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/000/000/003/pic_000000003_20110105_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =紅色
+tmarkDraftC =日月潭
+tmarkDraftE =
+
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =271
+goodsName =各支棉紗商品。
+goodsGroup =2301、230101
+goodsGroup =
+
+goodsGroup =
+
+deadline =1971/07/15
+dead2line =1971/07/15
+dead3line =1971/07/15
+dead4line =1971/07/15
+dead5line =1971/07/15
+dead6line =1971/07/15
+dead7line =1971/07/15
+dead8line =1971/07/15
+dead9line =1971/07/15
+dead10line =1971/07/15
+applDate =1951/02/27
+regDate =1951/07/16
+regNoticeDate =1951/09/01
+_examNoticeDate =1951/06/30
+delReason =6
+volNo1 =
+
+volNo2 =
+
+processorName =
+
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =台灣大秦紡織股份有限公司
+holderEnglishName =
+
+holderJapaneseName =
+
+holderAddress =臺北市中正區南陽街8號
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+end
+start
+examNo =00000003
+exam2No =00000003
+applNo =062007108
+appl2No =062007108
+appl3No =062007108
+tmarkName =正興電子股份有限公司股務標章                                （彩色）
+tmarkClassDesc =商標(原服務標章)
+imageData1 =./picBase/062007108-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/062/007/108/pic_062007108_20110105_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =彩色
+tmarkDraftC =
+
+tmarkDraftE =
+
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =002
+goodsName =電子營業範圍。
+goodsGroup =
+
+goodsGroup =
+
+goodsGroup =
+
+deadline =1983/07/31
+dead2line =1983/07/31
+dead3line =1983/07/31
+dead4line =1983/07/31
+dead5line =1983/07/31
+dead6line =1983/07/31
+dead7line =1983/07/31
+dead8line =1983/07/31
+dead9line =1983/07/31
+dead10line =1983/07/31
+applDate =1973/03/14
+regDate =1973/08/01
+regNoticeDate =1973/12/01
+_examNoticeDate =1973/08/01
+delReason =6
+volNo1 =
+
+volNo2 =
+
+processorName =
+
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =正興電子股份有限公司
+holderEnglishName =
+
+holderJapaneseName =
+
+holderAddress =臺北市中山區中山北路2段96號嘉新大樓909號
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =端木愷　李文儀　廖修
+agentAddress =臺北市中正區臨沂街27巷2號2樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000003
+exam2No =00000003
+applNo =083067324
+appl2No =083067324
+appl3No =083067324
+tmarkName =優良商店作業規範（GSP）標章
+tmarkClassDesc =證明標章
+imageData1 =./picBase/083067324-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/083/067/324/pic_083067324_20110105_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =彩色
+tmarkDraftC =優良商店
+tmarkDraftE =GOOD STORE PRACTICE
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =
+
+goodsName =優良商店作業規範（ＧＳＰ）標準係在證明商店在進貨、銷貨及售後服務等過程中，有關人員、建築、設施之設置及商品陳列、安全衛生、營運及服務等管理均符合艮好條件之專業指引以減少作業錯誤發生及健全之品保體系、並提供消費者安心滿意的購物環境及服務品質。
+goodsGroup =
+
+goodsGroup =
+
+goodsGroup =
+
+deadline =2025/03/15
+dead2line =2025/03/15
+dead3line =2025/03/15
+dead4line =2025/03/15
+dead5line =2025/03/15
+dead6line =2025/03/15
+dead7line =2025/03/15
+dead8line =2025/03/15
+dead9line =2025/03/15
+dead10line =2025/03/15
+applDate =1994/11/03
+regDate =1995/03/16
+regNoticeDate =1995/04/16
+_examNoticeDate =1994/12/16
+delReason =
+
+volNo1 =022
+volNo2 =008
+processorName =賴淑芳
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =經濟部
+holderEnglishName =
+
+holderJapaneseName =
+
+holderAddress =臺北市中正區福州街15號
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =高建成
+agentAddress =臺北市松山區復興南路1段27號4樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000003
+exam2No =00000003
+applNo =082060331
+appl2No =082060331
+appl3No =082060331
+tmarkName =埔里四季早泳會標章
+tmarkClassDesc =團體標章
+imageData1 =./picBase/082060331-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/082/060/331/pic_082060331_20110107_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =
+
+tmarkDraftE =
+
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =
+
+goodsName =表彰南投縣埔里鎮四季早泳會組織和其會員之會籍。
+goodsGroup =
+
+goodsGroup =
+
+goodsGroup =
+
+deadline =2025/06/30
+dead2line =2025/06/30
+dead3line =2025/06/30
+dead4line =2025/06/30
+dead5line =2025/06/30
+dead6line =2025/06/30
+dead7line =2025/06/30
+dead8line =2025/06/30
+dead9line =2025/06/30
+dead10line =2025/06/30
+applDate =1994/05/17
+regDate =1995/07/01
+regNoticeDate =1995/08/01
+_examNoticeDate =1995/04/01
+delReason =
+
+volNo1 =022
+volNo2 =015
+processorName =周建文
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =社團法人南投縣埔里鎮四季早泳會
+holderEnglishName =
+
+holderJapaneseName =
+
+holderAddress =南投縣埔里鎮南興街3之4號
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =林鐘靈
+agentAddress =臺中市南區五權南路680巷40號
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000004
+exam2No =00000004
+applNo =000000004
+appl2No =000000004
+appl3No =000000004
+tmarkName =黑松
+tmarkClassDesc =商標
+imageData1 =./picBase/000000004-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/000/000/004/pic_000000004_20110105_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =彩色
+tmarkDraftC =黑松
+tmarkDraftE =
+
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =393
+goodsName =汽水。
+goodsGroup =290101、290102、300102、300202、3202、320201、351902、430201
+goodsGroup =
+
+goodsGroup =
+
+deadline =2021/07/15
+dead2line =2021/07/15
+dead3line =2021/07/15
+dead4line =2021/07/15
+dead5line =2021/07/15
+dead6line =2021/07/15
+dead7line =2021/07/15
+dead8line =2021/07/15
+dead9line =2021/07/15
+dead10line =2021/07/15
+applDate =1951/03/24
+regDate =1951/07/16
+regNoticeDate =1951/09/01
+_examNoticeDate =
+
+delReason =
+
+volNo1 =
+
+volNo2 =
+
+processorName =
+
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =黑松股份有限公司
+holderEnglishName =HEY-SONG CORPORATION
+holderJapaneseName =
+
+holderAddress =臺北市大安區信義路4段296號3樓
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =何連國
+agentAddress =臺北市松山區光復北路6之6號12樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000004
+exam2No =00000004
+applNo =061003769
+appl2No =061003769
+appl3No =061003769
+tmarkName =第一信託      （墨色）
+tmarkClassDesc =商標(原服務標章)
+imageData1 =./picBase/061003769-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/061/003/769/pic_061003769_20110105_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =第一信託
+tmarkDraftE =TFIT
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =003
+goodsName =金融、保險類。
+goodsGroup =3602
+goodsGroup =
+
+goodsGroup =
+
+deadline =2003/10/31
+dead2line =2003/10/31
+dead3line =2003/10/31
+dead4line =2003/10/31
+dead5line =2003/10/31
+dead6line =2003/10/31
+dead7line =2003/10/31
+dead8line =2003/10/31
+dead9line =2003/10/31
+dead10line =2003/10/31
+applDate =1972/08/30
+regDate =1973/11/01
+regNoticeDate =1973/12/01
+_examNoticeDate =1973/08/01
+delReason =6
+volNo1 =
+
+volNo2 =
+
+processorName =
+
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =台灣第一信託投資股份有限公司
+holderEnglishName =
+
+holderJapaneseName =
+
+holderAddress =臺北市大安區仁愛路4段85號
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =邱鉯淇
+agentAddress =新北市新店區新店路258號17樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000004
+exam2No =00000004
+applNo =083032884
+appl2No =083032884
+appl3No =083032884
+tmarkName =食品良好作業規範（GMP）認證標誌
+tmarkClassDesc =證明標章
+imageData1 =./picBase/083032884-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/083/032/884/pic_083032884_20110105_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =
+
+tmarkDraftE =
+
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =
+
+goodsName =對已實施食品〈ＧＭＰ〉制度且符合「食品ＧＭＰ認證制度實施規章」之食品工廠的產品予以認證。
+goodsGroup =
+
+goodsGroup =
+
+goodsGroup =
+
+deadline =2025/04/30
+dead2line =2025/04/30
+dead3line =2025/04/30
+dead4line =2025/04/30
+dead5line =2025/04/30
+dead6line =2025/04/30
+dead7line =2025/04/30
+dead8line =2025/04/30
+dead9line =2025/04/30
+dead10line =2025/04/30
+applDate =1994/05/10
+regDate =1995/05/01
+regNoticeDate =1995/06/01
+_examNoticeDate =1995/02/01
+delReason =
+
+volNo1 =022
+volNo2 =011
+processorName =周建文
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =台灣優良食品發展協會
+holderEnglishName =
+
+holderJapaneseName =
+
+holderAddress =臺北市大安區忠孝東路4段219號6樓
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =賴文平
+agentAddress =臺北市大安區忠孝東路4段169號10樓之1
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000004
+exam2No =00000004
+applNo =083000802
+appl2No =083000802
+appl3No =083000802
+tmarkName =台北巿廣告公會標章
+tmarkClassDesc =團體標章
+imageData1 =./picBase/083000802-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/083/000/802/pic_083000802_20110107_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =
+
+tmarkDraftE =
+
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =
+
+goodsName =表彰台北市廣告工程商業同業工會組織和其會員之會籍。
+goodsGroup =
+
+goodsGroup =
+
+goodsGroup =
+
+deadline =2005/06/30
+dead2line =2005/06/30
+dead3line =2005/06/30
+dead4line =2005/06/30
+dead5line =2005/06/30
+dead6line =2005/06/30
+dead7line =2005/06/30
+dead8line =2005/06/30
+dead9line =2005/06/30
+dead10line =2005/06/30
+applDate =1994/01/08
+regDate =1995/07/01
+regNoticeDate =1995/08/01
+_examNoticeDate =1995/04/01
+delReason =6
+volNo1 =022
+volNo2 =015
+processorName =周建文
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =台北巿廣告工程商業同業公會　許憶真
+holderEnglishName =
+
+holderJapaneseName =
+
+holderAddress =臺北市中山區林森北路159巷46之2號3樓
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =林晉章
+agentAddress =臺北市中山區長安東路2段112號9樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000005
+exam2No =00000005
+applNo =000000005
+appl2No =000000005
+appl3No =000000005
+tmarkName =黑松牌（墨色）
+tmarkClassDesc =商標
+imageData1 =./picBase/000000005-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/000/000/005/pic_000000005_20110105_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =
+
+tmarkDraftE =
+
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =393
+goodsName =汽水。
+goodsGroup =290101、290102、300102、300202、3202、320201、351902、430201
+goodsGroup =
+
+goodsGroup =
+
+deadline =2001/07/15
+dead2line =2001/07/15
+dead3line =2001/07/15
+dead4line =2001/07/15
+dead5line =2001/07/15
+dead6line =2001/07/15
+dead7line =2001/07/15
+dead8line =2001/07/15
+dead9line =2001/07/15
+dead10line =2001/07/15
+applDate =1951/03/24
+regDate =1951/07/16
+regNoticeDate =1951/09/01
+_examNoticeDate =1951/06/30
+delReason =6
+volNo1 =
+
+volNo2 =
+
+processorName =
+
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =黑松股份有限公司
+holderEnglishName =HEY-SONG CORPORATION
+holderJapaneseName =
+
+holderAddress =臺北市大安區信義路4段296號3樓
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =何連國
+agentAddress =臺北市松山區光復北路6之6號12樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000005
+exam2No =00000005
+applNo =061005871
+appl2No =061005871
+appl3No =061005871
+tmarkName =新力牌ＳＯＮＹソニ–      （墨色）
+tmarkClassDesc =商標(原服務標章)
+imageData1 =./picBase/061005871-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/061/005/871/pic_061005871_20110105_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =新力牌
+tmarkDraftE =SONY
+tmarkDraftJ =ソニ–
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =004
+goodsName =各種水陸空運輸業旅運貨運業出租車業交通事業車輛器材製造及販賣業倉庫業。
+goodsGroup =
+
+goodsGroup =
+
+goodsGroup =
+
+deadline =1983/07/31
+dead2line =1983/07/31
+dead3line =1983/07/31
+dead4line =1983/07/31
+dead5line =1983/07/31
+dead6line =1983/07/31
+dead7line =1983/07/31
+dead8line =1983/07/31
+dead9line =1983/07/31
+dead10line =1983/07/31
+applDate =1972/12/22
+regDate =1973/08/01
+regNoticeDate =1973/12/01
+_examNoticeDate =1973/08/01
+delReason =6
+volNo1 =
+
+volNo2 =
+
+processorName =
+
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =蘇妮股份有限公司
+holderEnglishName =
+
+holderJapaneseName =ソニ–株式會社
+holderAddress =日本
+countryCode =JP
+chineseCountryName =日本
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =林敏生
+agentAddress =臺北市中山區南京東路2段125號7樓偉成第一大樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000005
+exam2No =00000005
+applNo =083064003
+appl2No =083064003
+appl3No =083064003
+tmarkName =ＴＳＳ及圖
+tmarkClassDesc =證明標章
+imageData1 =./picBase/083064003-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/083/064/003/pic_083064003_20110105_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =
+
+tmarkDraftE =TSS
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =
+
+goodsName =證明砂石產品含鹽量在0.03﹪以下（含氯離子在0.018﹪以下）含泥量在0.05以下為優良砂石產品。
+goodsGroup =
+
+goodsGroup =
+
+goodsGroup =
+
+deadline =2005/06/30
+dead2line =2005/06/30
+dead3line =2005/06/30
+dead4line =2005/06/30
+dead5line =2005/06/30
+dead6line =2005/06/30
+dead7line =2005/06/30
+dead8line =2005/06/30
+dead9line =2005/06/30
+dead10line =2005/06/30
+applDate =1994/10/14
+regDate =1995/07/01
+regNoticeDate =1995/08/01
+_examNoticeDate =1995/04/01
+delReason =6
+volNo1 =022
+volNo2 =015
+processorName =周建文
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =台灣省砂石商業同業公會聯合會　邱昇鴻
+holderEnglishName =
+
+holderJapaneseName =
+
+holderAddress =高雄市新興區復橫一路120號
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+end
+start
+examNo =00000005
+exam2No =00000005
+applNo =083001837
+appl2No =083001837
+appl3No =083001837
+tmarkName =台北縣小客車租賃商業同業公會標章
+tmarkClassDesc =團體標章
+imageData1 =./picBase/083001837-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/083/001/837/pic_083001837_20110107_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =台灣縣小客車租賃商業同業公會
+tmarkDraftE =
+
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =
+
+goodsName =係表示台北縣小客車租賃商業同業公會之組織和其會員之會籍。
+goodsGroup =
+
+goodsGroup =
+
+goodsGroup =
+
+deadline =2005/06/30
+dead2line =2005/06/30
+dead3line =2005/06/30
+dead4line =2005/06/30
+dead5line =2005/06/30
+dead6line =2005/06/30
+dead7line =2005/06/30
+dead8line =2005/06/30
+dead9line =2005/06/30
+dead10line =2005/06/30
+applDate =1994/01/15
+regDate =1995/07/01
+regNoticeDate =1995/08/01
+_examNoticeDate =1995/04/01
+delReason =6
+volNo1 =022
+volNo2 =015
+processorName =周建文
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =台北縣小客車租賃商業同業公會　王順發
+holderEnglishName =
+
+holderJapaneseName =
+
+holderAddress =新北市中和區景平路762號
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =賴福生
+agentAddress =臺北市信義區基隆路2段189號3樓之5
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000006
+exam2No =00000006
+applNo =000000006
+appl2No =000000006
+appl3No =000000006
+tmarkName =黑松牌（墨色）
+tmarkClassDesc =商標
+imageData1 =./picBase/000000006-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/000/000/006/pic_000000006_20110105_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =黑松
+tmarkDraftE =
+
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =393
+goodsName =汽水。
+goodsGroup =290101、290102、300102、300202、3202、320201、351902、430201
+goodsGroup =
+
+goodsGroup =
+
+deadline =2001/07/15
+dead2line =2001/07/15
+dead3line =2001/07/15
+dead4line =2001/07/15
+dead5line =2001/07/15
+dead6line =2001/07/15
+dead7line =2001/07/15
+dead8line =2001/07/15
+dead9line =2001/07/15
+dead10line =2001/07/15
+applDate =1951/03/24
+regDate =1951/07/16
+regNoticeDate =1951/09/01
+_examNoticeDate =1951/06/30
+delReason =6
+volNo1 =
+
+volNo2 =
+
+processorName =
+
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =黑松股份有限公司
+holderEnglishName =HEY-SONG CORPORATION
+holderJapaneseName =
+
+holderAddress =臺北市大安區信義路4段296號3樓
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =何連國
+agentAddress =臺北市松山區光復北路6之6號12樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000006
+exam2No =00000006
+applNo =061005486
+appl2No =061005486
+appl3No =061005486
+tmarkName =MASTER CHARGE（墨色）
+tmarkClassDesc =商標(原服務標章)
+imageData1 =./picBase/061005486-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/061/005/486/pic_061005486_20110105_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =
+
+tmarkDraftE =MASTER CHARGE
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =005
+goodsName =有關給予記帳信用卡之業務，安排銀行間互惠記帳信用之權利及與以上有關之廣告服務。
+goodsGroup =3501、3601
+goodsGroup =
+
+goodsGroup =
+
+deadline =2023/10/31
+dead2line =2023/10/31
+dead3line =2023/10/31
+dead4line =2023/10/31
+dead5line =2023/10/31
+dead6line =2023/10/31
+dead7line =2023/10/31
+dead8line =2023/10/31
+dead9line =2023/10/31
+dead10line =2023/10/31
+applDate =1972/12/01
+regDate =1973/11/01
+regNoticeDate =1973/12/01
+_examNoticeDate =1973/08/01
+delReason =
+
+volNo1 =
+
+volNo2 =
+
+processorName =
+
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =萬事達卡國際股份有限公司
+holderEnglishName =MASTERCARD INTERNATIONAL INCORPORATED
+holderJapaneseName =
+
+holderAddress =美國
+countryCode =US
+chineseCountryName =美國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =陳長文
+agentAddress =臺北市信義區忠孝東路4段555號8樓
+agentAddress =
+
+agentChineseName =丁靜玟
+agentAddress =臺北市信義區忠孝東路4段555號8樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000006
+exam2No =00000006
+applNo =083008633
+appl2No =083008633
+appl3No =083008633
+tmarkName =API SERVICE and Design
+tmarkClassDesc =證明標章
+imageData1 =./picBase/083008633-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/083/008/633/pic_083008633_20110107_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =
+
+tmarkDraftE =API SERVICE
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =
+
+goodsName =本標章係由本美國石油協會授權之人使用，玆證明其製造行銷之車用機油商品，符合美國石油協會制定之標準。
+goodsGroup =
+
+goodsGroup =
+
+goodsGroup =
+
+deadline =2025/08/31
+dead2line =2025/08/31
+dead3line =2025/08/31
+dead4line =2025/08/31
+dead5line =2025/08/31
+dead6line =2025/08/31
+dead7line =2025/08/31
+dead8line =2025/08/31
+dead9line =2025/08/31
+dead10line =2025/08/31
+applDate =1994/02/28
+regDate =1995/09/01
+regNoticeDate =1995/10/01
+_examNoticeDate =1995/06/01
+delReason =
+
+volNo1 =022
+volNo2 =019
+processorName =周建文
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =美國石油協會
+holderEnglishName =AMERICAN PETROLEUM INSTITUTE
+holderJapaneseName =
+
+holderAddress =美國
+countryCode =US
+chineseCountryName =美國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =閻啓泰
+agentAddress =臺北市長安東路2段112號9樓
+agentAddress =
+
+agentChineseName =林景郁
+agentAddress =臺北市長安東路2段112號9樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000006
+exam2No =00000006
+applNo =083006275
+appl2No =083006275
+appl3No =083006275
+tmarkName =TSMA  device
+tmarkClassDesc =團體標章
+imageData1 =./picBase/083006275-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/083/006/275/pic_083006275_20110107_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =
+
+tmarkDraftE =TSMA
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =
+
+goodsName =表彰台灣區體育用品工業同業公會之組織和其會員之會籍。
+goodsGroup =
+
+goodsGroup =
+
+goodsGroup =
+
+deadline =2025/06/30
+dead2line =2025/06/30
+dead3line =2025/06/30
+dead4line =2025/06/30
+dead5line =2025/06/30
+dead6line =2025/06/30
+dead7line =2025/06/30
+dead8line =2025/06/30
+dead9line =2025/06/30
+dead10line =2025/06/30
+applDate =1994/02/08
+regDate =1995/07/01
+regNoticeDate =1995/08/01
+_examNoticeDate =1995/04/01
+delReason =
+
+volNo1 =022
+volNo2 =015
+processorName =周建文
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =臺灣體育用品工業同業公會
+holderEnglishName =TAIWAN SPORTING GOODS MANUFACTURERS ASSOCIATION
+holderJapaneseName =
+
+holderAddress =臺北市中山區德惠街22號8樓
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =賴經臣
+agentAddress =臺北市松山區南京東路3段346號11樓
+agentAddress =
+
+agentChineseName =宿希成
+agentAddress =臺北市松山區南京東路3段346號11樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end
+start
+examNo =00000007
+exam2No =00000007
+applNo =000000007
+appl2No =000000007
+appl3No =000000007
+tmarkName =黑松牌（墨色）
+tmarkClassDesc =商標
+imageData1 =./picBase/000000007-1.png
+img_url1 =https://twtmsearch.tipo.gov.tw/imageLoad.jsp?path=/20160227/000/000/007/pic_000000007_20110105_1.jpg&formatName=jpg&pathCodeId=282_pic
+imageData2 =
+img_url2 =
+imageData3 =
+img_url3 =
+imageData4 =
+img_url4 =
+imageData5 =
+img_url5 =
+imageData6 =
+img_url6 =
+tmarkType =3
+ttmarkTypeDesc =平面
+tmarkColor =
+ttmarkColorDesc =墨色
+tmarkDraftC =黑松
+tmarkDraftE =
+
+tmarkDraftJ =
+
+tmarkSign =
+
+wordDescription =
+
+goodsclassCode =393
+goodsName =汽水
+goodsGroup =290101、290102、300102、300202、3202、320201、351902、430201
+goodsGroup =
+
+goodsGroup =
+
+deadline =2001/07/15
+dead2line =2001/07/15
+dead3line =2001/07/15
+dead4line =2001/07/15
+dead5line =2001/07/15
+dead6line =2001/07/15
+dead7line =2001/07/15
+dead8line =2001/07/15
+dead9line =2001/07/15
+dead10line =2001/07/15
+applDate =1951/03/24
+regDate =1951/07/16
+regNoticeDate =1951/09/01
+_examNoticeDate =1951/06/30
+delReason =6
+volNo1 =
+
+volNo2 =
+
+processorName =
+
+oppositionStatus =0
+examStatus =0
+nullityActStatus =0
+applDelStatus =0
+autStatus =0
+agaAutStatus =0
+extendedStatus =0
+amedmentStatus =0
+transferStatus =0
+issueOppStatus =0
+issueDelStatus =0
+quotaStatus =0
+unableUseStatus =0
+holderChineseName =黑松股份有限公司
+holderEnglishName =HEY-SONG CORPORATION
+holderJapaneseName =
+
+holderAddress =臺北市大安區信義路4段296號3樓
+countryCode =TW
+chineseCountryName =中華民國
+chineseCountryName =
+
+chineseCountryName =
+
+agentChineseName =何連國
+agentAddress =臺北市松山區光復北路6之6號12樓
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+agentAddress =
+
+end

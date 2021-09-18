@@ -1,0 +1,27 @@
+cd cmder
+cd peitent
+cd crawler
+activate python36gpu
+python _build.py
+
+cd cmder
+cd peitent
+cd word_ana
+activate python36gpu
+
+cd cmder
+cd peitent
+cd word2vec
+activate python36gpu
+
+cd cmder
+cd yolo3
+cd darkflow
+activate python36gpu
+
+cd cmder
+cd peitent
+cd c
+activate python36gpu
+
+941616

@@ -1,0 +1,6 @@
+4 person,tvmonitor,clock
+22 clock
+62 motobike.person
+415 person, clock
+466 person,bench
+594 parkingmeter,person,toothbrush,oven,cellphone

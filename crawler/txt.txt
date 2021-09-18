@@ -1,0 +1,9 @@
+python _picComp.py inputs/h1.jpg 45
+
+python _wordComp.py 統一 45 320
+
+
+python _wordComp_i.py 好不快樂樓火力強阿門 這快樂無邊際樓 13
+
+
+python _wordComp_t.py 統一 1301

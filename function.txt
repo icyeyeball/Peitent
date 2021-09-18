@@ -1,0 +1,23 @@
+cop = re.compile("[^\u4e00-\u9fa5^ ^A-Z^a-z^]")
+line = cop.sub('', line)
+
+model.most_similar(sys.argv[1])
+model.similarity(sys.argv[1], sys.argv[2])
+
+model = gensim.models.Word2Vec.load('mymodel')
+model.train(more_sentences)
+
+print (soup.prettify())
+
+# Cut line into every combination
+for i in range(0,len(line)):
+    for j in range(0,len(line)-i):
+        try:
+            model.most_similar(line[j:j+i+1])
+        except KeyError:
+            print ("XXXXXXXXXXXX " + line[j:j+i+1])
+            continue
+        else:
+            print ("OOOOOOOOO " + line[j:j+i+1])
+
+
