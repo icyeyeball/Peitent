@@ -23,6 +23,16 @@ C:\Program Files\NVIDIA Corporation\NVSMI //to use NVIDIA-smi
 
 in new cmd:
 nvcc -V # check CUDA
+-----------------------------------
+1.完全重建版本?
+$ rm -rf .git
+$ git init
+$ git add .
+$ git cm "first commit"
+$ git remote add origin <your_github_repo_url>
+$ git push -f -u origin master
+
+
 ======================================
 Name: lehsiao
 
