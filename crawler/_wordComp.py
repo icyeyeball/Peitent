@@ -19,7 +19,10 @@ from _dict_pinyin_offline import pinyin
 import json
 import time
 from langconv import *
-
+#------------
+#USAGE
+#python _wordComp.py word group special#(or uuid)
+#------------
 localtime_init = time.asctime( time.localtime(time.time()))
 print("開始時間: "+ localtime_init) 
 
@@ -60,6 +63,7 @@ tmark_list41 = cursor.fetchall()
 cmd_users = "SELECT tmarkName, applno FROM tmarkTable4 WHERE goodsGroup " + judge2
 cursor.execute(cmd_users)
 tmark_list42 = cursor.fetchall()
+
 #combine these two lists
 tmark_list11.extend(tmark_list12)
 tmark_list11.extend(tmark_list21)
@@ -176,7 +180,7 @@ string03 = "共購、在線、宅配、行銷、直播、連鎖、視訊、視�
 string04 = "工程、工業、五金、文化、文教、文創、生技、生醫、企業、光電、光學、全球、印刷、百貨、技研、投資、投顧、沙龍、事業、協會、房產、牧業、物流、物產、物業、金控、建設、建築、科技、食品、娛樂、展業、旅遊、書店、租車、租賃、紙業、能源、茶業、商旅、商務、商貿、商業、商辦、國際、控股、產業、通信、通訊、通運、創投、媒體、棉業、貿易、開發、集團、傳媒、傳播、會社、資訊、資產、農產、電子、電信、電訊、電商、電腦、電機、電競、團隊、實業、精機、銀行、影視、影業、影像、鞋業、機械、機電、機構、興業、餐飲、營建、營造、環球、聯合、聯盟、禮儀、不動產、多媒體、房地產、基金會、生命禮儀、生物科技、物流開發、能源科技、集團控股、管理顧問、數位通訊、應用科技、.COM、AEROSPACE、ALLIANCE、ARCHITECTURE、ASSET、ASSOCIATION、BANK、BIOTECH、BIOTECHNOLOGY、BUSINESS、CAPITAL、COMMUNICATION、CONSTRUCTION、CONSULTING、CULTRUAL CREATIVE、CULTURE、DEVELOPMENT、ELECTRIC、ENGINEERING、ENTERPRISE、ENTERTAINMENT、eSports、ESTATE、EXPRESS、EXPRESS & LOGISTICS、FACTORY、FLORIST、FOUNDATION、FREIGHT、GLOBAL、GROUP、HOLDING、INDUSTRIAL、INDUSTRY、INFORMATION、INSTITUTE、INSTITUTION、INSURANCE、INTERNATIONAL、INTERNATIONAL TRADE、INVESTMENT、LAND DEVELOPMENT、LAW OFFICE、LEASE、LOGISTIC PROPERTY、LOGISTICS、MACHINE、MANUFACTURING、MATERIAL TECHNOLOGY、METAL INDUSTRY、NEWS、OPTO、OPTOELECTRONIC、ORGANIZATION、PARTNERSHIP、PHOTOGRAPHY、PROPERTY、REAL ESTATE、RENTAL、SALON、TEAM、TECHNIC、TECHNOLOGY、TECH、TEK、TELECOMMUNICATION、TOUR、TOURISM、TRAVEL、TRIP"
 string05 = "庄、行、坊、局、店、房、社、舍、亭、室、屋、苑、家、記、軒、院、堂、庵、莊、堡、場、園、號、網、樓、館、齋、小棧、小廚、小舖、小館、山莊、工坊、工房、工場、工廠、中心、天地、市集、本舖、冰城、冰站、冰舖、老店、老街、老舖、店舖、果園、果舖、牧場 、花坊、花園、客棧、洋行、食坊、食府、食堂、香舖、料亭、旅店、旅棧、書坊、書房、書城、書屋、書院、書齋、茶行、茶坊、茶社、茶屋、茶站、茶軒、茶堂、茶莊、茶棧、茶園、茶鋪、茶舖、茶館、草堂、酒坊、酒店、酒莊、酒棧、酒館、酒舖、酒樓、商行、商城、商場、商號、莊園、貨舖、魚舖、漁舖、園區、會館、當鋪、農莊、農場、農園、道院、道場、精舍、餅店、餅家、餅舖、劇場、廚坊、廚房、廣場、影城、學苑、學園、餐館、館子、講堂、藝坊、藝廊、藥局、麵屋、麵館、麵攤、工作坊、工作室、工務所、工程行、工藝坊、中藥行、手作坊、手作屋、文化館、水果店、生活館、事務所、便利店、風味館、娛樂城、娛樂場、宴會館、時尚館、桑拿屋、烘焙坊、商店街、專門店、專賣店、御膳坊、甜品屋、創始店、創藝坊、渡假莊、飲品館、實驗室、旗艦店、演藝坊、精品店、精品館、製香舖、製麵所、廚藝坊、碾米廠、養生坊、養生舖、養蜂場、親子館、錄音室、餐酒館、點心坊、麵飯館、露營社、體驗館、手作食坊、文化廣場、主題公園、生活商場、生態茶場、生態農場、行動商城、料理食堂、烘焙教室、訓練中心、商務中心、國際商城、婚宴會館、甜點工坊、都會旅店、創始本舖、森林農場、渡假山莊、渡假酒店、渡假會館、結婚會舘、農產小舖、暢貨中心、精選酒店、網路商城、養生世界、養身會館、購物廣場、藝術工坊、藝術中心、露天農場、顧問中心、觀光酒店、手作文創店、手烘咖啡坊、茶飲專賣店、健康生活館、造型工作室、飲品專賣店、數位生活館、趣味生活館、ACADEMY、BAR、BEAUTY HOUSE、BISTRO、BOUTIQUE、BUTCHER'S SHOP、CANTEEN、CENTER、CINEMA、CLINIC、CLUB、COLLEGE、COMPOUND RESTAURANT、DELI、DELICATESSEN、DEVELOPMENT CENTER、EDUCATIONAL CENTER、ESHOP、FARM、FOOD COURT、FRUIT GARDEN、FUSION RESTAURANT、GALLERY、GARDEN、GOURMET STORE、GROCERY、GYM、HAIR STUDIO、HOME、HOTEL、HOUSE、HUB、INDUSTRIAL PARK、INN、IZAKAYA、KIDS MALL、KITCHEN、LAB、LABORATORY、LAW FIRM、LIFE HOUSE、LIFE MALL、LIVING CENTER、LIVING MALL、MALL、MARKET、MART、MUSEUM OF ART、NATIONAL MALL、NIGHT MARKET、ORCHARD、OUTLET、PHARMACY、PIZZERIA、PLAZA、PUB、RANCH 、RESORT、RESORT HOTEL、RESTAURANT、SCHOOL、SERVICE AREA、SHOP、SHOPPING CENTER、SHOPPING MALL、SQUARE、STATION、STEAKHOUSE、STORAGE、STORE、STUDIO、SUPER MARKET、TEA FACTORY、TEA GARDEN、TEA HOUSE、TEA SHOP、TEAROOM、TOAST SHOP、VILLAGE、WEDDING STUDIO 、WORK SHOP、WORLD、ZONE"
 string06 = "阿門、哈利路亞、南無阿彌陀佛、NAMO AMITABHA"
-string07 = "設計 設計字 設計圖 標章 墨色 圖型 圖形 股份有限公司 有限公司 集團 logo Logo LOGO"
+string07 = "設計 設計字 設計圖 標章 墨色 圖型 圖形 股份有限公司 有限公司 集團 logo Logo LOGO 墨色 彩色"
 
 str0 = string.split("、")
 string00 = string00.split("、")
@@ -204,8 +208,6 @@ word2=""
 result = []
 
 word1 = cop.sub('', word1)
-if word1 = "":
-    return -1.0
 
 if word1 == "":
     print("輸入文字去除說明字以後空白，請更動並輸入商標文字")
@@ -214,7 +216,7 @@ if word1 == "":
 word1_t = word1
 word1 = Converter('zh-hant').convert(word1)
 for tmark in tmark_list11:
-    time.sleep(0.01)
+    #time.sleep(0.01)
     
     flag = True
     word2 = ""
@@ -228,10 +230,16 @@ for tmark in tmark_list11:
         word2 = word[0:word.find("及")]
     elif word.find("及") > 0 and word.find("標章圖") > 0:
         word2 = word[0:str(word).find("及")]
+    elif word.find("墨色") > 0:
+        word2 = word[0:word.find("墨色")]
+    elif word.find("彩色") > 0:
+        word2 = word[0:word.find("彩色")]
     elif word.find("及") == -1 and (word.find("圖") ==-1 and word.find("標章") == -1 and word.find("標章圖")==-1):
         word2 = word
-    elif word.find("及") == -1 and (word.find("圖") > 0 or word.find("標章") > 0 or word.find("標章圖") > 0):
+    elif word.find("及") == -1 and (word.find("圖") > 0 or word.find("標章") > 0 or word.find("標章圖") > 0 or word.find("LOGO") > 0 or word.find("Logo") > 0):
         word2 = "-"
+        
+
     #to remove the descriptive words
     for i in string0:
         if word2.find(i)>1:
@@ -246,6 +254,7 @@ for tmark in tmark_list11:
     num = 0
     subword = ""
     #decision logic
+    #print(word2)
     if len(word1)<=len(word2):
         num = len(word1)
     else:
@@ -257,17 +266,17 @@ for tmark in tmark_list11:
         leng_word = len(word2)
         
     if word1 == word2:
-        subresult = {"applno":tmark[1],"ratio":300.00}
+        subresult = {"applno":tmark[1],"ratio":300.00,"tmarkName":tmark[0]}
         result.append(subresult)
         continue
     elif (len(word1) == 1 and len(word2) == 1 and word1 == word2) or (len(word1) == 2 and len(word2) == 2 and word1 == word2):
-        subresult = {"applno":tmark[1],"ratio":300.00}
+        subresult = {"applno":tmark[1],"ratio":300.00,"tmarkName":tmark[0]}
         result.append(subresult)
         continue
         #break
     elif (len(word1) == 1 and len(word2) == 1 and word1 != word2):
         picsim= pic(word1,word2,indx)
-        subresult = {"applno":tmark[1],"ratio":0}
+        subresult = {"applno":tmark[1],"ratio":0,"tmarkName":tmark[0]}
         result.append(subresult)
         continue
     elif (len(word1) == 2 and len(word2) == 2 and word1 != word2):
@@ -298,14 +307,14 @@ for tmark in tmark_list11:
                                 if picsim < 60:
                                     a = 100. * 0.6 * 1.
                                     picsim= picsim * 0.1 * 0.4 * 1.
-                                    subresult = {"applno":tmark[1],"ratio":round(a+picsim,2)}
+                                    subresult = {"applno":tmark[1],"ratio":round(a+picsim,2),"tmarkName":tmark[0]}
                                     if subresult["ratio"]>60:
                                         result.append(subresult)
                                         continue
                                 else:
                                     a = 100. * 0.6 * 1.
                                     picsim= (picsim - 50) * 2.5 * 0.4 * 1.
-                                    subresult = {"applno":tmark[1],"ratio":round(a+picsim,2)}
+                                    subresult = {"applno":tmark[1],"ratio":round(a+picsim,2),"tmarkName":tmark[0]}
                                     if subresult["ratio"]>60:
                                         result.append(subresult)
                                         continue
@@ -315,14 +324,14 @@ for tmark in tmark_list11:
                                 if picsim < 60:
                                     a = 100. * 0.4 * 1.
                                     picsim= picsim * 0.1 * 0.6 * 1.
-                                    subresult = {"applno":tmark[1],"ratio":round(a+picsim,2)}
+                                    subresult = {"applno":tmark[1],"ratio":round(a+picsim,2),"tmarkName":tmark[0]}
                                     if subresult["ratio"]>60:
                                         result.append(subresult)
                                         continue
                                 else:
                                     a = 100. * 0.4 * 1.
                                     picsim= (picsim - 50) * 2.5 * 0.6 * 1.
-                                    subresult = {"applno":tmark[1],"ratio":round(a+picsim,2)}
+                                    subresult = {"applno":tmark[1],"ratio":round(a+picsim,2),"tmarkName":tmark[0]}
                                     if subresult["ratio"]>60:
                                         result.append(subresult)
                                         continue
@@ -334,7 +343,7 @@ for tmark in tmark_list11:
                 #subresult = {"applno":tmark[1],"ratio":54.0}
                 #result.append(subresult)
     elif (len(word1) > 2 and len(word2) > 2) and word1 == word2:
-        subresult = {"applno":tmark[1],"ratio":300.00}
+        subresult = {"applno":tmark[1],"ratio":300.00,"tmarkName":tmark[0]}
         result.append(subresult)
         continue
     elif ((len(word1) >= 2 and len(word2) == 2) or (len(word1) == 2 and len(word2) >= 2) or (len(word1) > 2 and len(word2) > 2)) and word1 != word2:
@@ -399,7 +408,7 @@ for tmark in tmark_list11:
                         nb = nb + 1
                     # calculate the similarity
                     score = (a*100. + b)*(leng_subword+nb)*1.3/leng_word
-                    subresult = {"applno":tmark[1],"ratio":round(score,2)}
+                    subresult = {"applno":tmark[1],"ratio":round(score,2),"tmarkName":tmark[0]}
                     if subresult["ratio"]>60:
                         result.append(subresult)
                         continue
@@ -416,7 +425,7 @@ for tmark in tmark_list11:
                         continue
                     else:
                         score = score * num *1.3/leng_word
-                        subresult = {"applno":tmark[1],"ratio":round(score,2)}
+                        subresult = {"applno":tmark[1],"ratio":round(score,2),"tmarkName":tmark[0]}
                         if subresult["ratio"]>60:
                             result.append(subresult)
                             continue
@@ -424,7 +433,7 @@ for tmark in tmark_list11:
                 for i in range(0,7):
                     score = score + (pic(word1[i:i+1], word2[i:i+1], indx) * weight_l[num-2][i])
                 score = score * num *1.3/leng_word
-                subresult = {"applno":tmark[1],"ratio":round(score,2)}
+                subresult = {"applno":tmark[1],"ratio":round(score,2),"tmarkName":tmark[0]}
                 if subresult["ratio"]>60:
                     result.append(subresult)
                     continue
@@ -439,6 +448,7 @@ for i in range(0,len(result)-1):
             tmp = result[j]
             result[j]= result[j+1]
             result[j+1] = tmp
+            
 data = []
 #print(len(result))
 for i in range(0,500):
@@ -446,9 +456,19 @@ for i in range(0,500):
         data.append(result[i])
     else:
         break
-app_json = json.dumps(data)
+app_json = json.dumps(data,ensure_ascii=False)
 print(app_json)
 
+"""
+for i in range(len(result)):
+    cmd_users = "SELECT tmarkName FROM tmarkTable WHERE applno = " + result[i]["applno"]
+    cursor.execute(cmd_users)
+    name = cursor.fetchall()
+    print(name)
+
+for i in range(len(result)):
+    print(result[i]["applno"])
+"""
 file1 = r"./pic/" + str(indx) + ".1.jpg"
 file2 = r"./pic/" + str(indx) + ".2.jpg"
 try:

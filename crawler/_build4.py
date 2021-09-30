@@ -657,8 +657,9 @@ class tmarkHandler( xml.sax.ContentHandler ):
            self.unableusestatus = content
            
 for index in range(224519, 2500000,400):
-    #url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=100&skip=7485&orderby=appl-no&tk=ywgvRgZ1'
     url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=400&skip='+str(index)+'&orderby=appl-no&tk=ywgvRgZ1'
+    #url = 'https://tiponet.tipo.gov.tw/OpenDataApi/OpenData/API/TmarkRights?format=xml&top=100&skip=7485&orderby=appl-no&tk=ywgvRgZ1'
+    
     r = requests.get(url, verify=False)
     soup = BeautifulSoup(r.text, 'html.parser')
     f = open("./tmark.xml",'w',encoding="utf-8")

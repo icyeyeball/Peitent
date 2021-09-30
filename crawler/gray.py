@@ -17,7 +17,7 @@ image = cv2.resize(image, (500, 500), interpolation=cv2.INTER_CUBIC)
 
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-blurred = cv2.GaussianBlur(gray, (13, 13), 0)
+blurred = cv2.GaussianBlur(gray, (5, 5), 0)
 
 canny = cv2.Canny(blurred, 30, 150)
 
